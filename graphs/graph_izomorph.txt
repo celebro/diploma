@@ -1,0 +1,24 @@
+digraph finite_state_machine {
+	rankdir=LR;	
+	size="8!";
+	node [shape = circle, width=.30, fixedsize=true];
+	//edge [arrowhead=none]; 
+	a [pos="100,100"]
+	b [pos="200,100"]
+	c [pos="200,0"]
+	d [pos="100,0"]
+	
+	a -> {b; c; d}
+	b -> {c; d}
+	d -> c
+	
+	1 [pos="250,100"]
+	2 [pos="350,100"]
+	3 [pos="300,55"]
+	4 [pos="300,0"]
+
+	1 -> {2; 3; 4}
+	2 -> {3; 4}
+	4 -> 3
+
+}
