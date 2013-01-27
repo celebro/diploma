@@ -37,53 +37,17 @@
 \usepackage[nottoc]{tocbibind}	% prepreči številko za literaturo v kazalu
 \usepackage{amssymb}		% oznake za množice števil, npr. N za naravna števila
 
-\usepackage{listings} 			% source code
-\definecolor{codecolor}{RGB}{240,240,240}
-\lstdefinelanguage{pseudo}{
-	morekeywords={if, else, for, in, remove, from, case, do, forever, to, False, True},
-	sensitive=true,%
-	morecomment=[l]\#,%
-	morestring=[b]',%
-}
-\lstset{
-	language=pseudo,
-	basicstyle=\footnotesize,
-	numbers=left,
-	numberstyle=\footnotesize,
-%	numbersep=5pt, % how far the line-numbers are from the code
-	backgroundcolor=\color{codecolor}, % sets background color (needs package)
-	showspaces=false, % show spaces adding particular underscores
-	showstringspaces=false, % underline spaces within strings
-	showtabs=false, % show tabs within strings through particular underscores
-	frame=tb, % adds a frame around the code
-%	tabsize=2, % sets default tab-size to 2 spaces
-%	captionpos=b, % sets the caption-position to bottom
-%	breaklines=true, % sets automatic line breaking
-%	breakatwhitespace=false, % automatic breaks happen at whitespace
-%	morecomment=[l]{//}, % displays comments in italics (language dependent)
-	%aboveskip=1em,
-	%belowskip=1em,
-	%commentstyle=\textit,
-	%rulecolor=,
-	%keywordstyle=\bfseries,
-	%%xleftmargin=0.7cm,
-	%%xrightmargin=0.7cm,
-	%escapeinside={\%*}{*)},
-	title=Test
-}
-\usepackage{caption}
-\DeclareCaptionFont{white}{\color{white}}
-%\DeclareCaptionFormat{listing}{\colorbox[cmyk]{0.43, 0.35, 0.35,0.01}{\parbox{\textwidth}{\hspace{15pt}#1#2#3}}}
-\DeclareCaptionFormat{listing}{{{\hspace{15pt}#1#2#3}}}
-\captionsetup[lstlisting]{
-	format=listing,
-	%labelfont=white,
-	%textfont=white,
-	%singlelinecheck=false,
-	%margin=0pt,
-	%font={bf,footnotesize}
-}
-\renewcommand*{\lstlistingname}{Algoritem}	% prevod za listing caption
+%---------------------------------------------
+% pseudokoda
+\usepackage[chapter]{algorithm}
+\usepackage[noend]{algpseudocode}
+%\usepackage{algorithmicx}
+\usepackage{setspace}
+\newcommand{\alglinestretch}{1}
+\floatname{algorithm}{Algoritem}
+\renewcommand{\algorithmicrequire}{\textbf{Vhod:}}
+\renewcommand{\algorithmicensure}{\textbf{Izhod:}}
+%---------------------------------------------
 
 
 
@@ -100,10 +64,12 @@
 \fancyhead[LO]{\sl \rightmark}
 \fancyhead[RE]{\sl \leftmark}
 
+
 \newcommand{\BibTeX}{{\sc Bib}\TeX}
 
 \newcommand{\autfont}{\Large}
 \newcommand{\titfont}{\LARGE\bf}
+
 \setcounter{tocdepth}{1}	      % globina kazala
 
 % konstrukti
@@ -138,7 +104,7 @@
 	      Fakulteta za računalništvo in informatiko}%
 	    \vskip 10em%
 	    {\autfont Nejc Ramovš\par}%
-	    {\titfont \TODO{Problem izomorfnega podgrafa} \par}%
+	    {\titfont Problem izomorfnega podgrafa \par}%
 	    {\vskip 2em \textsc{DIPLOMSKO DELO\\NA UNIVERZITETNEM ŠTUDIJU}\par}%
 	    \vfill\null%
 	    {\large \textsc{Mentor}: prof.~dr.~Borut Robič\par}%
@@ -198,7 +164,7 @@
 	 
 	
 	\vspace{0.5cm}
-	\emph{\TODO{Problem izomorfnega podgrafa}}
+	\emph{Problem izomorfnega podgrafa}
 	
 	\vspace{1.5cm}
 	\noindent S svojim podpisom zagotavljam, da:
@@ -265,8 +231,8 @@
 	% abstract
 	\selectlanguage{english}
 	\chapter*{Abstract}
-	This sample document presents an approach to typesetting your BSc thesis using \LaTeX. A 
-	proper abstract should contain around 100 words which makes this one way too short.
+	\TODO{This sample document presents an approach to typesetting your BSc thesis using \LaTeX. A 
+	proper abstract should contain around 100 words which makes this one way too short.}
 	\selectlanguage{slovene}
 	
 	\vspace{2cm}
@@ -296,7 +262,8 @@
 
 	\section{Graf}
 	Graf $G = \langle V, E \rangle$ je definiran z množico vozlišč $V$ (ang.~vertices) in množico povezav $E$ (ang.~edges). Povezava je par vozlišč: 
-	$E \subseteq V \times V$. Vozlišči, ki sta vsebovani v povezavi, sta sosednji (ang.~adjacent). Graf je lahko usmerjen (ang.~directed) ali neusmerjen
+	$E \subseteq V \times V$. Kardinalnost $V$ označimo z $n$, kardinalnost $E$ pa z $m$.
+	Vozlišči, ki sta vsebovani v povezavi, sta sosednji (ang.~adjacent). Graf je lahko usmerjen (ang.~directed) ali neusmerjen
 	(ang.~undirected). V neusmerjenem
 	grafu je ena povezava neurejen par vozlišč $u, v \in V$ in jo označimo z $\{u, v\}$. V usmerjenem grafu je povezava urejen par 
 	vozlišč $u, v \in V$, kjer je prvo vozlišče začetek (ang.~head), drugo pa konec (ang.~tail) povezave. Označimo jo z $(u, v)$.
@@ -377,34 +344,224 @@
 
 		
 
-\chapter{Ullmanov algoritem}
+\chapter{Ullmannov algoritem}
 
 
+\begin{equation}
+\label{eq:ullmann1}
+C = [c_{i,j}] = M(MT)^T
+\end{equation}
 
-	\begin{lstlisting}[caption={Test caption}]	
+\begin{equation}
+\label{eq:ullmann2}
+M^0 = m_{i,j}^0 = \left\{ 
+  \begin{array}{l l}
+    1 & \text{$d(i) \leq d(j)$}\\
+    0 & \text{sicer.}
+  \end{array} \right.
+\end{equation}
 
-import orange
-import pylab
+\begin{equation}
+\label{eq:ullmann3}
+\forall x \in [1, n_p] : p_{i,x} = 1 \Rightarrow \exists y \in [1, n_t] : m_{x,y}.t_{j,y} = 1
+\end{equation}
 
-dataTable = orange.ExampleTable('../data/adult')
+Bla
 
-# Entropy
-def h(counts):
-    n = float(sum(counts))
-    if n == 0: return 0 
-    return sum([wi(c/n) for c in counts]
+Bla
 
-def task1():
-    attStat = orange.DomainBasicAttrStat(dataTable)
-    print 'Min age:', attStat['age'].min
-    print 'Max age:', attStat['age'].max
-    print 'Avg age:', attStat['age'].avg
- }
-	\end{lstlisting}
+Bla
+
+Bla
+
+Bla
+
+Bla
+\begin{algorithm}
+%\caption{Ullmannov algoritem}
+\label{alg:ullmann1}
+\begin{algorithmic}[1]
+	%\Require Matriki sosednosti $P$ in $T$, začetna matrika $M^0$
+	%\Ensure $false$ ali $|N_p|*|N_t|$ matrika $M$, ki predstavlja preslikavo podgrafnega izomorfizma
+	\State $M \gets M^0; d \gets 1; H_1 \gets 0; k \gets 0; backtract \gets true$
+	\For{$i $ in$ [1, |N_p|]$} $F_i \gets 0;$ \EndFor
+	\While{$d \not = 0$}
+		\If{$[\; refine(M, P, T) \; \wedge \; ] \; (\exists k : m_{d,k} = 1 \wedge F_k = 0)$}
+			\State $\forall j \not = k : m_{d,j} \gets 0$
+			\If{$( d = |N_p| < \wedge$ condition (\ref{eq:ullmann1}) is satisfied $ > ) $}
+				\State \Return $M$
+			\EndIf
+			\State $backtrack \gets false$
+		\EndIf
+		\If{$backtract$}
+			\State $F_k \gets 0; d \gets d-1;$
+			\If{$d > 0 $}
+				\State $M \gets M_d; k \gets H_d;$
+			\EndIf
+		\Else
+			\State $H_d \gets k; F_k \gets 1; M_d \gets M; d \gets d+1$
+		\EndIf
+	\EndWhile
+	\State \Return $false$	
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+%\caption{Ullmannov algoritem}
+\label{alg:ullmann1}
+\begin{algorithmic}[1]
+	%\Require Matriki sosednosti $P$ in $T$, začetna matrika $M^0$
+	%\Ensure $false$ ali $|N_p|*|N_t|$ matrika $M$, ki predstavlja preslikavo podgrafnega izomorfizma
+	\State $M \gets M^0; d \gets 1; H_1 \gets 0; k \gets 0; backtract \gets true$
+	\For{$i $ in$ [1, |N_p|]$} $F_i \gets 0;$ \EndFor
+	\State
+	\Function{recurse}{d}
+		\State $M_d \gets M$
+		\If{$[! \; refine(M, P, T)\; ]$}
+			\State \Return
+		\EndIf
+		\ForAll{$k \in [1,n_t]$}
+			\If{$m_{d,k} = 1 \wedge F_k = 0$}
+				\State $\forall j \not = k : m_{d,j} \gets 0$
+				\State $F_k \gets 1$
+				\If{$d = n_p$}
+					\If{$ < $ condition (\ref{eq:ullmann1}) is satisfied $ > $}
+						\State $print(M)$
+					\EndIf
+				\Else
+					\State $recurse(d+1)$
+				\EndIf
+				\State $F_k \gets 0; M \gets M_d$
+			\EndIf
+		\EndFor
+	\EndFunction
+	\State
+	\While{$d \not = 0$}
+		\If{$[\; refine(M, P, T) \; \wedge \; ] \; (\exists k : m_{d,k} = 1 \wedge F_k = 0)$}
+			\State $M_d \gets M$
+			\State $\forall j \not = k : m_{d,j} \gets 0$
+			\If{$( d = |N_p| < \wedge$ condition (\ref{eq:ullmann1}) is satisfied $ > ) $}
+				\State \Return $M$
+			\EndIf
+			\State $backtrack \gets false$
+		\EndIf
+		\If{$backtract$}
+			\State $F_k \gets 0; d \gets d-1;$
+			\If{$d > 0 $}
+				\State $M \gets M_d; k \gets H_d;$
+			\EndIf
+		\Else
+			\State $H_d \gets k; H_{d+1} \gets 0;  F_k \gets 1; d \gets d+1$
+		\EndIf
+	\EndWhile
+	\State \Return $false$	
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+%\caption{Ullmannov algoritem}
+\label{alg:ullmann1}
+\begin{algorithmic}[1]
+	%\Require Matriki sosednosti $P$ in $T$, začetna matrika $M^0$
+	%\Ensure $false$ ali $|N_p|*|N_t|$ matrika $M$, ki predstavlja preslikavo podgrafnega izomorfizma
+	\State $M \gets M^0; d \gets 1; H_1 \gets 0; k \gets 0; backtract \gets true$
+	\For{$i $ in$ [1, |N_p|]$} $F_i \gets 0;$ \EndFor
+	\While{$d \not = 0$}
+		\If{$[\; refine(M, P, T) \; \wedge \; ] \; (\exists k : m_{d,k} = 1 \wedge F_k = 0)$}
+			\State $M_d \gets M$
+			\State $\forall j \not = k : m_{d,j} \gets 0$
+			\If{$( d = |N_p| < \wedge$ condition (\ref{eq:ullmann1}) is satisfied $ > ) $}
+				\State \Return $M$
+			\EndIf
+			\State $backtrack \gets false$
+		\EndIf
+		\If{$backtract$}
+			\State $F_k \gets 0; d \gets d-1;$
+			\If{$d > 0 $}
+				\State $M \gets M_d; k \gets H_d;$
+			\EndIf
+		\Else
+			\State $H_d \gets k; H_{d+1} \gets 0;  F_k \gets 1; d \gets d+1$
+		\EndIf
+	\EndWhile
+	\State \Return $false$	
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+%\caption{Ullmannov algoritem}
+\label{alg:ullmann2}
+\begin{algorithmic}[1]
+	%\Require Matriki sosednosti $P$ in $T$, začetna matrika $M^0$
+	%\Ensure $false$ ali $|N_p|*|N_t|$ matrika $M$, ki predstavlja preslikavo podgrafnega izomorfizma
+	\State $M \gets M^0; d \gets 1; H_1 \gets 0; k \gets 0; backtract \gets true$
+	\For{$i $ in$ [1, |N_p|]$} $F_i \gets 0;$ \EndFor
+	\While{$d \not = 0$}
+		\If{$(\exists k : m_{d,k} = 1 \wedge F_k = 0)$}
+			\State $M_d \gets M$
+			\If{$d = 1$}
+				\State $k \gets H_1$
+			\Else
+				\State $k \gets 0$
+			\EndIf
+			\Repeat
+				\State $k \gets k+1$
+			\Until{$m_{d,k} = 1 \wedge F_k = 0$}
+			\State $\forall j \not = k : m_{d,j} \gets 0$
+			\If{$( d = |N_p| < \wedge$ condition (\ref{eq:ullmann1}) is satisfied $ > ) $}
+				\State \Return $M$
+			\EndIf
+		\Else
+			\State $backtrack \gets true$
+		\EndIf
+	
+		\State
+	
+		\If{$[\; refine(M, P, T) \; \wedge \; ] \; (\exists k : m_{d,k} = 1 \wedge F_k = 0)$}
+			\State $\forall j \not = k : m_{d,j} \gets 0$
+			\If{$( d = |N_p| < \wedge$ condition (\ref{eq:ullmann1}) is satisfied $ > ) $}
+				\State \Return $M$
+			\EndIf
+			\State $backtrack \gets false$
+		\EndIf
+		\If{$backtract$}
+			\State $F_k \gets 0; d \gets d-1;$
+			\If{$d > 0 $}
+				\State $M \gets M_d; k \gets H_d;$
+			\EndIf
+		\Else
+			\State $H_d \gets k; F_k \gets 1; M_d \gets M; d \gets d+1$
+		\EndIf
+	\EndWhile
+	\State \Return $false$	
+\end{algorithmic}
+\end{algorithm}
 
 
-
-
+%\begin{spacing}{1} 
+\begin{algorithm}
+\caption{Dodatno omejevanje prostora}
+\label{alg:ullmann2}
+\begin{algorithmic}[1]
+	\Require Matrika $M$ in sosednostni matriki $P$ in $T$
+	\Ensure $true$ če je bila M omejena, $false$ če vrstica ne vsebuje nobene 1
+	\Function{refine}{$M$, $P$, $T$}
+		\State $fixpoint \gets true$
+		\Repeat
+			\For{$\forall (i,j): m_{i,j} = 1$}
+				\If{Condition (\ref{eq:ullmann3}) is not satisfied}
+					\State $m_{i,j} \gets 0; fixpoint \gets false;$
+					\If{$\forall k : m_{i,k} = 0$}
+						\State \Return false
+					\EndIf
+				\EndIf
+			\EndFor
+		\Until{$fixpoint$}
+		\State \Return $true$
+	\EndFunction
+\end{algorithmic}
+\end{algorithm}
+%\end{spacing}
 
 \chapter{VF2}
 
