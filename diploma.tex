@@ -21,6 +21,7 @@
 \usepackage{amsmath}           % eqref, npr.
 
 \usepackage{color}		% barve
+
 \usepackage{hyphenat}
 \usepackage{hyperref}	% povezave
 \hypersetup{
@@ -36,8 +37,53 @@
 \usepackage[nottoc]{tocbibind}	% prepreči številko za literaturo v kazalu
 \usepackage{amssymb}		% oznake za množice števil, npr. N za naravna števila
 
-
-
+\usepackage{listings} 			% source code
+\definecolor{codecolor}{RGB}{240,240,240}
+\lstdefinelanguage{pseudo}{
+	morekeywords={if, else, for, in, remove, from, case, do, forever, to, False, True},
+	sensitive=true,%
+	morecomment=[l]\#,%
+	morestring=[b]',%
+}
+\lstset{
+	language=pseudo,
+	basicstyle=\footnotesize,
+	numbers=left,
+	numberstyle=\footnotesize,
+%	numbersep=5pt, % how far the line-numbers are from the code
+	backgroundcolor=\color{codecolor}, % sets background color (needs package)
+	showspaces=false, % show spaces adding particular underscores
+	showstringspaces=false, % underline spaces within strings
+	showtabs=false, % show tabs within strings through particular underscores
+	frame=tb, % adds a frame around the code
+%	tabsize=2, % sets default tab-size to 2 spaces
+%	captionpos=b, % sets the caption-position to bottom
+%	breaklines=true, % sets automatic line breaking
+%	breakatwhitespace=false, % automatic breaks happen at whitespace
+%	morecomment=[l]{//}, % displays comments in italics (language dependent)
+	%aboveskip=1em,
+	%belowskip=1em,
+	%commentstyle=\textit,
+	%rulecolor=,
+	%keywordstyle=\bfseries,
+	%%xleftmargin=0.7cm,
+	%%xrightmargin=0.7cm,
+	%escapeinside={\%*}{*)},
+	title=Test
+}
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+%\DeclareCaptionFormat{listing}{\colorbox[cmyk]{0.43, 0.35, 0.35,0.01}{\parbox{\textwidth}{\hspace{15pt}#1#2#3}}}
+\DeclareCaptionFormat{listing}{{{\hspace{15pt}#1#2#3}}}
+\captionsetup[lstlisting]{
+	format=listing,
+	%labelfont=white,
+	%textfont=white,
+	%singlelinecheck=false,
+	%margin=0pt,
+	%font={bf,footnotesize}
+}
+\renewcommand*{\lstlistingname}{Algoritem}	% prevod za listing caption
 
 
 
@@ -242,10 +288,14 @@
 
 \chapter{Uvod}
 
-\chapter{Definicije}
+
+
+
+
+\chapter{Definicija problema}
 
 	\section{Graf}
-	Graf $G = (V, E)$ je definiran z množico vozlišč $V$ (ang.~vertices) in množico povezav $E$ (ang.~edges). Povezava je par vozlišč 
+	Graf $G = \langle V, E \rangle$ je definiran z množico vozlišč $V$ (ang.~vertices) in množico povezav $E$ (ang.~edges). Povezava je par vozlišč: 
 	$E \subseteq V \times V$. Vozlišči, ki sta vsebovani v povezavi, sta sosednji (ang.~adjacent). Graf je lahko usmerjen (ang.~directed) ali neusmerjen
 	(ang.~undirected). V neusmerjenem
 	grafu je ena povezava neurejen par vozlišč $u, v \in V$ in jo označimo z $\{u, v\}$. V usmerjenem grafu je povezava urejen par 
@@ -256,11 +306,11 @@
 
 
 	\section{Podgrafni izomorfizem}
-	Graf $G' = (V', E')$ je podgraf danega grafa $G = (V, E)$, če velja $V' \subseteq V \wedge E' \subseteq E$. 
-	Graf $G' = (V', E')$ je induciran podgraf danega grafa $G = (V, E)$, če vsebuje vse povezave, katerih vozlišča so v $V'$, oz. če velja
-	$E' = E \cap (V' \times V')$.
+	Graf $G' = \langle V', E' \rangle$ je podgraf danega grafa $G = \langle V, E \rangle$, če velja $V' \subseteq V \wedge E' \subseteq E$. 
+	Graf $G' = \langle V', E' \rangle$ je induciran podgraf danega grafa $G = \langle V, E \rangle$, če vsebuje vse povezave, katerih vozlišča so
+	v $V'$, oz. če velja $E' = E \cap (V' \times V')$.
 
-	Grafa $G_p = (V_p, E_p)$ in $G_t = (V_t, E_t)$ sta izomorfna, če obstaja bijektivna preslikava $f: V_p \to V_t$ da velja: 
+	Grafa $G_p = \langle V_p, E_p \rangle $ in $G_t = \langle V_t, E_t \rangle$ sta izomorfna, če obstaja bijektivna preslikava $f: V_p \to V_t$ da velja: 
 	$(a,b) \in E_p \Leftrightarrow (f(a), f(b)) \in E_t;$
 	oznaka $p$ pomeni vzorčni (ang.~pattern) graf, oznaka $t$ pa ciljni (ang.~target) graf. V primeru grafa z oznakami, mora preslikovalna funkcija
 	ohranjati oznake. Primer izomorfizma grafov je podan na sliki~\ref{pic_iso}.
@@ -281,6 +331,10 @@
 	$(a,b) \in E_p \Leftrightarrow (f(a), f(b)) \in E_t$. Na sliki~\ref{pic_sub_iso} vidimo, da je med $b)$ in $c)$ samo parcialni podgrafni
 	izomorfizem, ker v vzorčnem grafu ni povezave $(B, C)$, medtem ko preslikavi teh vozlišč $(2, 3)$ tvorita povezavo v $c)$. Induciran 
 	podgrafni izomorfizem lahko obstaja samo, če se ohranijo tudi ne-povezave.
+	
+	Pri reševanju problema izomorfnega podgrafa lahko ugotavljamo obstoj oz.~število podgrafnih izomorfizmov ali pa iščemo enega oz.~vse
+	podgrafne izomorfizme (preslikave $f$). Najtežja je generiranje vseh preslikav - to različico rešujejo opisani algoritmi. Dodatno lahko rešujemo
+	problem še na usmerjenih ali neusmerjenih ter označenih ali neoznačenih grafih.
 
 
 	\begin{figure}
@@ -324,6 +378,31 @@
 		
 
 \chapter{Ullmanov algoritem}
+
+
+
+	\begin{lstlisting}[caption={Test caption}]	
+
+import orange
+import pylab
+
+dataTable = orange.ExampleTable('../data/adult')
+
+# Entropy
+def h(counts):
+    n = float(sum(counts))
+    if n == 0: return 0 
+    return sum([wi(c/n) for c in counts]
+
+def task1():
+    attStat = orange.DomainBasicAttrStat(dataTable)
+    print 'Min age:', attStat['age'].min
+    print 'Max age:', attStat['age'].max
+    print 'Avg age:', attStat['age'].avg
+ }
+	\end{lstlisting}
+
+
 
 
 
