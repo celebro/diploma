@@ -344,13 +344,42 @@
 
 		
 
+
 \chapter{Ullmannov algoritem}
+\TODO{Intro.}
+	V tem algoritmu predstavimo grafe in problem reševanja podgrafnih izomorfizmov z matrikami. Matriki $P = [p_{i,j}] : 1 \le i,j \le n_p $ in
+	$T = [t_{i,j}] = 1 \le i,j \le n_t$ sta matriki sosednosti grafov $G_p$ in $G_t$, kjer vrednost 1 v vrstici $i$ in stolpcu $j$ pomeni, 
+	da v grafu obstaja povezava
+	iz $i$ v $j$:
+		\begin{equation}
+		 	p_{i,j} = \left\{
+			\begin{array}{l l}
+			    1 & (i,j) \in E_p\\
+			    0 & \text{sicer.}
+			\end{array} \right.
+		\end{equation}
+	Matrika $M = [m_{i,j}]: 1 \le i \le n_p \wedge 1 \le j \le n_t$ predstavlja preslikavo $f: V_p \to V_t$. Vrednost 1 v v vrstici $i$ in stolpcu $j$ 
+	pomeni preslikavo vozlišča
+	$i \in V_p$ v $j \in V_t$:
+		\begin{equation}
+			m_{i,j} = \left\{
+			\begin{array}{l l}
+			    1 & f(i) = j\\
+			    0 & \text{sicer.}
+			\end{array} \right.
+		\end{equation}
+	Matrika $M$ je injektivna, če je v vsaki vrstici natanko ena 1 in v vsakem stolpcu največ ena 1. Samo preslikavo lahko lahko zapišemo v matrični obliki:
+		\begin{equation}
+			C = [c_{i,j}] = M(MT)^T
+		\end{equation}
+	$M$ predstavlja podgrafni izomorfizem iz $G_p$ v $G_t$, če je dobljena matrika C enaka matriki sosednosti P:
+		\begin{equation}
+			\label{eq:ullmann1}
+			c_{i,j} = p_{i,j}\;\; \forall i,j \in [1, np]
+		\end{equation}	 
 
-
-\begin{equation}
-\label{eq:ullmann1}
-C = [c_{i,j}] = M(MT)^T
-\end{equation}
+	Ullmannov algoritem enumerira različne matrike $M$ in jih preverja s pogojem~(\ref{eq:ullmann1})
+	
 
 \begin{equation}
 \label{eq:ullmann2}
@@ -366,29 +395,18 @@ M^0 = m_{i,j}^0 = \left\{
 \forall x \in [1, n_p] : p_{i,x} = 1 \Rightarrow \exists y \in [1, n_t] : m_{x,y}.t_{j,y} = 1
 \end{equation}
 
-Bla
-
-Bla
-
-Bla
-
-Bla
-
-Bla
-
-Bla
 \begin{algorithm}
-%\caption{Ullmannov algoritem}
+\caption{Ullmannov algoritem - iterativna različica}
 \label{alg:ullmann1}
 \begin{algorithmic}[1]
-	%\Require Matriki sosednosti $P$ in $T$, začetna matrika $M^0$
-	%\Ensure $false$ ali $|N_p|*|N_t|$ matrika $M$, ki predstavlja preslikavo podgrafnega izomorfizma
+	\Require Matriki sosednosti $P$ in $T$, začetna matrika $M^0$
+	\Ensure $false$ ali $n_p*n_t$ matrika $M$, ki predstavlja preslikavo podgrafnega izomorfizma
 	\State $M \gets M^0; d \gets 1; H_1 \gets 0; k \gets 0; backtract \gets true$
-	\For{$i $ in$ [1, |N_p|]$} $F_i \gets 0;$ \EndFor
+	\For{$i $ in$ [1, n_p]$} $F_i \gets 0;$ \EndFor
 	\While{$d \not = 0$}
 		\If{$[\; refine(M, P, T) \; \wedge \; ] \; (\exists k : m_{d,k} = 1 \wedge F_k = 0)$}
 			\State $\forall j \not = k : m_{d,j} \gets 0$
-			\If{$( d = |N_p| < \wedge$ condition (\ref{eq:ullmann1}) is satisfied $ > ) $}
+			\If{$( d = n_p < \wedge$ condition (\ref{eq:ullmann1}) is satisfied $ > ) $}
 				\State \Return $M$
 			\EndIf
 			\State $backtrack \gets false$
@@ -407,14 +425,15 @@ Bla
 \end{algorithm}
 
 \begin{algorithm}
-%\caption{Ullmannov algoritem}
+\caption{Ullmannov algoritem - rekurzivna različica}
 \label{alg:ullmann1}
 \begin{algorithmic}[1]
-	%\Require Matriki sosednosti $P$ in $T$, začetna matrika $M^0$
-	%\Ensure $false$ ali $|N_p|*|N_t|$ matrika $M$, ki predstavlja preslikavo podgrafnega izomorfizma
-	\State $M \gets M^0; d \gets 1; H_1 \gets 0; k \gets 0; backtract \gets true$
+	\Require Matriki sosednosti $P$ in $T$, začetna matrika $M^0$
+	\Ensure Seznam $n_p*n_t$ matrik, ki predstavljajo preslikave podgrafnih izomorfizmov
+	\State $M \gets M^0$
 	\For{$i $ in$ [1, |N_p|]$} $F_i \gets 0;$ \EndFor
-	\State
+	\State $recurse(1)$
+	\Statex
 	\Function{recurse}{d}
 		\If{$[! \; refine(M, P, T)\; ]$}
 			\State \Return
@@ -426,7 +445,7 @@ Bla
 				\State $F_k \gets 1$
 				\If{$d = n_p$}
 					\If{$ < $ condition (\ref{eq:ullmann1}) is satisfied $ > $}
-						\State $print(M)$
+						\State $store(M)$
 					\EndIf
 				\Else
 					\State $recurse(d+1)$
@@ -438,86 +457,6 @@ Bla
 	
 \end{algorithmic}
 \end{algorithm}
-
-\begin{algorithm}
-%\caption{Ullmannov algoritem}
-\label{alg:ullmann1}
-\begin{algorithmic}[1]
-	%\Require Matriki sosednosti $P$ in $T$, začetna matrika $M^0$
-	%\Ensure $false$ ali $|N_p|*|N_t|$ matrika $M$, ki predstavlja preslikavo podgrafnega izomorfizma
-	\State $M \gets M^0; d \gets 1; H_1 \gets 0; k \gets 0; backtract \gets true$
-	\For{$i $ in$ [1, |N_p|]$} $F_i \gets 0;$ \EndFor
-	\While{$d \not = 0$}
-		\If{$[\; refine(M, P, T) \; \wedge \; ] \; (\exists k : m_{d,k} = 1 \wedge F_k = 0)$}
-			\State $M_d \gets M$
-			\State $\forall j \not = k : m_{d,j} \gets 0$
-			\If{$( d = |N_p| < \wedge$ condition (\ref{eq:ullmann1}) is satisfied $ > ) $}
-				\State \Return $M$
-			\EndIf
-			\State $backtrack \gets false$
-		\EndIf
-		\If{$backtract$}
-			\State $F_k \gets 0; d \gets d-1;$
-			\If{$d > 0 $}
-				\State $M \gets M_d; k \gets H_d;$
-			\EndIf
-		\Else
-			\State $H_d \gets k; H_{d+1} \gets 0;  F_k \gets 1; d \gets d+1$
-		\EndIf
-	\EndWhile
-	\State \Return $false$	
-\end{algorithmic}
-\end{algorithm}
-
-\begin{algorithm}
-%\caption{Ullmannov algoritem}
-\label{alg:ullmann2}
-\begin{algorithmic}[1]
-	%\Require Matriki sosednosti $P$ in $T$, začetna matrika $M^0$
-	%\Ensure $false$ ali $|N_p|*|N_t|$ matrika $M$, ki predstavlja preslikavo podgrafnega izomorfizma
-	\State $M \gets M^0; d \gets 1; H_1 \gets 0; k \gets 0; backtract \gets true$
-	\For{$i $ in$ [1, |N_p|]$} $F_i \gets 0;$ \EndFor
-	\While{$d \not = 0$}
-		\If{$(\exists k : m_{d,k} = 1 \wedge F_k = 0)$}
-			\State $M_d \gets M$
-			\If{$d = 1$}
-				\State $k \gets H_1$
-			\Else
-				\State $k \gets 0$
-			\EndIf
-			\Repeat
-				\State $k \gets k+1$
-			\Until{$m_{d,k} = 1 \wedge F_k = 0$}
-			\State $\forall j \not = k : m_{d,j} \gets 0$
-			\If{$( d = |N_p| < \wedge$ condition (\ref{eq:ullmann1}) is satisfied $ > ) $}
-				\State \Return $M$
-			\EndIf
-		\Else
-			\State $backtrack \gets true$
-		\EndIf
-	
-		\State
-	
-		\If{$[\; refine(M, P, T) \; \wedge \; ] \; (\exists k : m_{d,k} = 1 \wedge F_k = 0)$}
-			\State $\forall j \not = k : m_{d,j} \gets 0$
-			\If{$( d = |N_p| < \wedge$ condition (\ref{eq:ullmann1}) is satisfied $ > ) $}
-				\State \Return $M$
-			\EndIf
-			\State $backtrack \gets false$
-		\EndIf
-		\If{$backtract$}
-			\State $F_k \gets 0; d \gets d-1;$
-			\If{$d > 0 $}
-				\State $M \gets M_d; k \gets H_d;$
-			\EndIf
-		\Else
-			\State $H_d \gets k; F_k \gets 1; M_d \gets M; d \gets d+1$
-		\EndIf
-	\EndWhile
-	\State \Return $false$	
-\end{algorithmic}
-\end{algorithm}
-
 
 %\begin{spacing}{1} 
 \begin{algorithm}
