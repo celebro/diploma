@@ -384,7 +384,8 @@
 			\label{eq:ullmann1}
 			c_{i,j} = p_{i,j}\;\; \forall i,j \in [1, n_p]
 		\end{equation}	 
-
+	Podana enačba velja za inducirani izomorfizem, pri enostavnem izomorfizmu je pogoj $p_{i,j} \Rightarrow c_{i, j}$.
+	
 	Ullmannov algoritem v osnovi generira različne matrike $M$ in jih preverja s pogojem~(\ref{eq:ullmann1}). Vseh možnih matrik $M$ je
 	$\frac{n_t!}{(n_t-n_p)!}$ (ob upoštevanju pogoja za injektivnost: točno ena 1 v vrstici in največ ena 1 v stolpcu), kar je preveč za izčrpno preiskovanje.
 	Algoritem zato začne z pred-procesirano matriko $M^0$~(\ref{eq:ullmann2}), na vsakem koraku pa jo še dodatno omeji~(\ref{eq:ullmann3}).
@@ -403,10 +404,16 @@
 		\end{equation}
 	Pri usmerjenih grafih mora pogoj  veljati tako za vhodno kot za izhodno stopnjo.
 
-\begin{equation}
+\begin{eqnarray}
 \label{eq:ullmann3}
-\forall x \in [1, n_p] : p_{i,x} = 1 \Rightarrow \exists y \in [1, n_t] : m_{x,y}.t_{j,y} = 1
-\end{equation}
+\nonumber 
+\forall x \in N_{p}(i) & \Rightarrow & \exists y \in N_t(j) \wedge m_{x,y} = 1
+\\
+\forall x \in [1, n_p] : p_{i,x} = 1 & \Rightarrow & \exists y \in [1, n_t] : t_{j,y} = 1 \wedge m_{x,y} = 1
+\end{eqnarray}
+
+\TODO{ta pogoj lahko nadomesti pogoj z množenjem matrik}
+
 
 
 
@@ -422,17 +429,17 @@
 
 
 \begin{algorithm}
-\caption{Ullmannov algoritem - iterativna različica}
+\caption{Ullmannov algoritem}
 \label{alg:ullmann1}
 \begin{algorithmic}[1]
 	\Require Matriki sosednosti $P$ in $T$, začetna matrika $M^0$
-	\Ensure Vse $n_p*n_t$ matrike $M$, ki predstavljajo preslikavo podgrafnega izomorfizma
-	\State $M \gets M^0; d \gets 1; H_1 \gets 0; k \gets 0; backtract \gets true$
+	\Ensure Seznam $result$ $n_p \times n_t$ matrik $M$, ki predstavljajo preslikave podgrafnih izomorfizmov
+	\State $M \gets M^0; d \gets 1; H_1 \gets 0; k \gets 0; backtract \gets true; result \gets [\;]$
 	\For{$i $ in$ [1, n_p]$} $F_i \gets 0;$ \EndFor
 	\State $M_1 \gets M^0$
 	\While{$d \not = 0$}
 		\State $backtrack \gets true$
-		\If{$\exists j : j > k \wedge m_{d,j} = 1 \wedge F_j = 0$}
+		\If{$(\exists j : j > k \wedge m_{d,j} = 1 \wedge F_j = 0) \;\; [\; \wedge \; refine(M, P, T)]$}
 			%\State $$
 			\Repeat \State $k \gets k +1$ \Until{$m_{d,k} = 1 \vee F_k = 1$}
 			\State $\forall j \not = k : m_{d,j} \gets 0$
@@ -441,7 +448,7 @@
 				\State $H_d \gets k; F_k \gets 1; d \gets d+1; k \gets 0; M_d \gets M; backtrack \gets false$
 			\Else
 				\If {$<$ condition(\ref{eq:ullmann1}) $>$}
-					\State print
+					\State $results \gets [result, M]$
 				\EndIf
 				\If{$\exists j : j > k \wedge m_{d,j} = 1 \wedge F_j = 0$}
 					\State $M \gets M_d; backtrack \gets false$
@@ -457,82 +464,6 @@
 		\EndIf
 	\EndWhile
 	\State \Return $false$	
-\end{algorithmic}
-\end{algorithm}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\begin{algorithm}
-\caption{Ullmannov algoritem - iterativna različica}
-\label{alg:ullmann1}
-\begin{algorithmic}[1]
-	\Require Matriki sosednosti $P$ in $T$, začetna matrika $M^0$
-	\Ensure $false$ ali $n_p*n_t$ matrika $M$, ki predstavlja preslikavo podgrafnega izomorfizma
-	\State $M \gets M^0; d \gets 1; H_1 \gets 0; k \gets 0; backtract \gets true$
-	\For{$i $ in$ [1, n_p]$} $F_i \gets 0;$ \EndFor
-	\While{$d \not = 0$}
-		\If{$[\; refine(M, P, T) \; \wedge \; ] \; (\exists k : m_{d,k} = 1 \wedge F_k = 0)$}
-			\State $\forall j \not = k : m_{d,j} \gets 0$
-			\If{$( d = n_p < \wedge$ condition (\ref{eq:ullmann1}) is satisfied $ > ) $}
-				\State \Return $M$
-			\EndIf
-			\State $backtrack \gets false$
-		\EndIf
-		\If{$backtract$}
-			\State $F_k \gets 0; d \gets d-1;$
-			\If{$d > 0 $}
-				\State $M \gets M_d; k \gets H_d;$
-			\EndIf
-		\Else
-			\State $H_d \gets k; F_k \gets 1; M_d \gets M; d \gets d+1$
-		\EndIf
-	\EndWhile
-	\State \Return $false$	
-\end{algorithmic}
-\end{algorithm}
-
-\begin{algorithm}
-\caption{Ullmannov algoritem - rekurzivna različica}
-\label{alg:ullmann1}
-\begin{algorithmic}[1]
-	\Require Matriki sosednosti $P$ in $T$, začetna matrika $M^0$
-	\Ensure Seznam $n_p*n_t$ matrik, ki predstavljajo preslikave podgrafnih izomorfizmov
-	\State $M \gets M^0$
-	\For{$i $ in$ [1, |N_p|]$} $F_i \gets 0;$ \EndFor
-	\State $recurse(1)$
-	\Statex
-	\Function{recurse}{d}
-		\If{$[! \; refine(M, P, T)\; ]$}
-			\State \Return
-		\EndIf
-		\State $M_d \gets M$
-		\ForAll{$k \in [1,n_t]$}
-			\If{$m_{d,k} = 1 \wedge F_k = 0$}
-				\State $\forall j \not = k : m_{d,j} \gets 0$
-				\State $F_k \gets 1$
-				\If{$d = n_p$}
-					\If{$ < $ condition (\ref{eq:ullmann1}) is satisfied $ > $}
-						\State $store(M)$
-					\EndIf
-				\Else
-					\State $recurse(d+1)$
-				\EndIf
-				\State $F_k \gets 0; M \gets M_d$
-			\EndIf
-		\EndFor
-	\EndFunction
-	
 \end{algorithmic}
 \end{algorithm}
 
@@ -560,6 +491,82 @@
 \end{algorithmic}
 \end{algorithm}
 %\end{spacing}
+
+
+
+
+
+
+
+
+
+
+
+
+%\begin{algorithm}
+%\caption{Ullmannov algoritem - iterativna različica}
+%\label{alg:ullmann1}
+%\begin{algorithmic}[1]
+%	\Require Matriki sosednosti $P$ in $T$, začetna matrika $M^0$
+%	\Ensure $false$ ali $n_p*n_t$ matrika $M$, ki predstavlja preslikavo podgrafnega izomorfizma
+%	\State $M \gets M^0; d \gets 1; H_1 \gets 0; k \gets 0; backtract \gets true$
+%	\For{$i $ in$ [1, n_p]$} $F_i \gets 0;$ \EndFor
+%	\While{$d \not = 0$}
+%		\If{$[\; refine(M, P, T) \; \wedge \; ] \; (\exists k : m_{d,k} = 1 \wedge F_k = 0)$}
+%			\State $\forall j \not = k : m_{d,j} \gets 0$
+%			\If{$( d = n_p < \wedge$ condition (\ref{eq:ullmann1}) is satisfied $ > ) $}
+%				\State \Return $M$
+%			\EndIf
+%			\State $backtrack \gets false$
+%		\EndIf
+%		\If{$backtract$}
+%			\State $F_k \gets 0; d \gets d-1;$
+%			\If{$d > 0 $}
+%				\State $M \gets M_d; k \gets H_d;$
+%			\EndIf
+%		\Else
+%			\State $H_d \gets k; F_k \gets 1; M_d \gets M; d \gets d+1$
+%		\EndIf
+%	\EndWhile
+%	\State \Return $false$	
+%\end{algorithmic}
+%\end{algorithm}
+
+\begin{algorithm}
+\caption{Ullmannov algoritem - rekurzivna različica}
+\label{alg:ullmann1}
+\begin{algorithmic}[1]
+	\Require Matriki sosednosti $P$ in $T$, začetna matrika $M^0$
+	\Ensure Seznam $result$ $n_p \times n_t$ matrik $M$, ki predstavljajo preslikave podgrafnih izomorfizmov
+	\State $M \gets M^0;  result \gets [\;]$
+	\For{$i $ in$ [1, n_p]$} $F_i \gets 0;$ \EndFor
+	\State $step(1)$
+	\Statex
+	\Function{step}{d}
+		\If{$[! \; refine(M, P, T)\; ]$}
+			\State \Return
+		\EndIf
+		\State $M_d \gets M$
+		\ForAll{$k \in [1,n_t]$}
+			\If{$m_{d,k} = 1 \wedge F_k = 0$}
+				\State $\forall j \not = k : m_{d,j} \gets 0$
+				\State $F_k \gets 1$
+				\If{$d = n_p$}
+					\If {$<$ condition(\ref{eq:ullmann1}) $>$}
+						\State $results \gets [result, M]$
+					\EndIf
+				\Else
+					\State $step(d+1)$
+				\EndIf
+				\State $F_k \gets 0; M \gets M_d$
+			\EndIf
+		\EndFor
+	\EndFunction
+	
+\end{algorithmic}
+\end{algorithm}
+
+
 
 \chapter{VF2}
 
