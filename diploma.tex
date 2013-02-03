@@ -390,25 +390,87 @@
 	Algoritem zato začne z pred-procesirano matriko $M^0$~(\ref{eq:ullmann2}), na vsakem koraku pa jo še dodatno omeji~(\ref{eq:ullmann3}).
 	
 	\section{Algoritem}
-	Matrika $M$ v postopku algoritma predstavlja 
-
-
-	
-
-\begin{equation}
-\label{eq:ullmann2}
-M^0 = m_{i,j}^0 = \left\{ 
-  \begin{array}{l l}
-    1 & \text{$d(i) \leq d(j)$}\\
-    0 & \text{sicer.}
-  \end{array} \right.
-\end{equation}
-
+	Matriko $M$ generiramo postopoma, po korakih. V danem koraku nam vrednost $m_{i,j}^k$ pove, ali se vozlišče $i \in V_p$ lahko preslika 
+	v $j \in V_t$ (ima vrednost $1$) ali ne	(ima vrednost $0$). Izhajamo iz začetne matike $M^0$. V generiranju te matrike upoštevamo dejstvo, da
+	se lahko vozlišče $i$ preslika v $j$ samo, če je stopnja vozlišča v vzorčnem grafu manjša ali enaka stopnji vozlišča v ciljnem grafu:
+		\begin{equation}
+		\label{eq:ullmann2}
+		m_{i,j}^0 = \left\{ 
+		  \begin{array}{l l}
+		    1 & \text{$d(i) \leq d(j)$}\\
+		    0 & \text{sicer.}
+		  \end{array} \right.
+		\end{equation}
+	Pri usmerjenih grafih mora pogoj  veljati tako za vhodno kot za izhodno stopnjo.
 
 \begin{equation}
 \label{eq:ullmann3}
 \forall x \in [1, n_p] : p_{i,x} = 1 \Rightarrow \exists y \in [1, n_t] : m_{x,y}.t_{j,y} = 1
 \end{equation}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{algorithm}
+\caption{Ullmannov algoritem - iterativna različica}
+\label{alg:ullmann1}
+\begin{algorithmic}[1]
+	\Require Matriki sosednosti $P$ in $T$, začetna matrika $M^0$
+	\Ensure Vse $n_p*n_t$ matrike $M$, ki predstavljajo preslikavo podgrafnega izomorfizma
+	\State $M \gets M^0; d \gets 1; H_1 \gets 0; k \gets 0; backtract \gets true$
+	\For{$i $ in$ [1, n_p]$} $F_i \gets 0;$ \EndFor
+	\State $M_1 \gets M^0$
+	\While{$d \not = 0$}
+		\State $backtrack \gets true$
+		\If{$\exists j : j > k \wedge m_{d,j} = 1 \wedge F_j = 0$}
+			%\State $$
+			\Repeat \State $k \gets k +1$ \Until{$m_{d,k} = 1 \vee F_k = 1$}
+			\State $\forall j \not = k : m_{d,j} \gets 0$
+		
+			\If {$d < n_p$}
+				\State $H_d \gets k; F_k \gets 1; d \gets d+1; k \gets 0; M_d \gets M; backtrack \gets false$
+			\Else
+				\If {$<$ condition(\ref{eq:ullmann1}) $>$}
+					\State print
+				\EndIf
+				\If{$\exists j : j > k \wedge m_{d,j} = 1 \wedge F_j = 0$}
+					\State $M \gets M_d; backtrack \gets false$
+				\EndIf
+			\EndIf
+		\EndIf
+		
+		\If{$backtract$}
+			\State $F_k \gets 0; d \gets d-1;$
+			\If{$d > 0 $}
+				\State $M \gets M_d; k \gets H_d;$
+			\EndIf
+		\EndIf
+	\EndWhile
+	\State \Return $false$	
+\end{algorithmic}
+\end{algorithm}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 \begin{algorithm}
