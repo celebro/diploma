@@ -347,6 +347,8 @@
 
 \chapter{Ullmannov algoritem}
 \TODO{Intro.}
+
+	\section{Predstavitev problema podgrafnega izomorfizma z matrikami}
 	V tem algoritmu predstavimo grafe in problem reševanja podgrafnih izomorfizmov z matrikami. Matriki $P = [p_{i,j}] : 1 \le i,j \le n_p $ in
 	$T = [t_{i,j}] = 1 \le i,j \le n_t$ sta matriki sosednosti grafov $G_p$ in $G_t$, kjer vrednost 1 v vrstici $i$ in stolpcu $j$ pomeni, 
 	da v grafu obstaja povezava
@@ -372,13 +374,25 @@
 		\begin{equation}
 			C = [c_{i,j}] = M(MT)^T
 		\end{equation}
+		\TODO{
+		$$%\begin{equation}
+			\text{mogoce tako, zaradi usmerjenih grafov? } C = [c_{i,j}] = (M(MT)^T)^T
+		$$%\end{equation}
+		}
 	$M$ predstavlja podgrafni izomorfizem iz $G_p$ v $G_t$, če je dobljena matrika C enaka matriki sosednosti P:
 		\begin{equation}
 			\label{eq:ullmann1}
-			c_{i,j} = p_{i,j}\;\; \forall i,j \in [1, np]
+			c_{i,j} = p_{i,j}\;\; \forall i,j \in [1, n_p]
 		\end{equation}	 
 
-	Ullmannov algoritem enumerira različne matrike $M$ in jih preverja s pogojem~(\ref{eq:ullmann1})
+	Ullmannov algoritem v osnovi generira različne matrike $M$ in jih preverja s pogojem~(\ref{eq:ullmann1}). Vseh možnih matrik $M$ je
+	$\frac{n_t!}{(n_t-n_p)!}$ (ob upoštevanju pogoja za injektivnost: točno ena 1 v vrstici in največ ena 1 v stolpcu), kar je preveč za izčrpno preiskovanje.
+	Algoritem zato začne z pred-procesirano matriko $M^0$~(\ref{eq:ullmann2}), na vsakem koraku pa jo še dodatno omeji~(\ref{eq:ullmann3}).
+	
+	\section{Algoritem}
+	Matrika $M$ v postopku algoritma predstavlja 
+
+
 	
 
 \begin{equation}
@@ -390,10 +404,12 @@ M^0 = m_{i,j}^0 = \left\{
   \end{array} \right.
 \end{equation}
 
+
 \begin{equation}
 \label{eq:ullmann3}
 \forall x \in [1, n_p] : p_{i,x} = 1 \Rightarrow \exists y \in [1, n_t] : m_{x,y}.t_{j,y} = 1
 \end{equation}
+
 
 \begin{algorithm}
 \caption{Ullmannov algoritem - iterativna različica}
