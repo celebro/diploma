@@ -350,6 +350,7 @@
 \chapter{Ullmannov algoritem}
 \TODO{Intro.}
 
+
 	\section{Predstavitev problema podgrafnega izomorfizma z matrikami}
 	V tem algoritmu predstavimo grafe in problem reševanja podgrafnih izomorfizmov z matrikami. Matriki $P = [p_{i,j}] : 1 \le i,j \le n_p $ in
 	$T = [t_{i,j}] = 1 \le i,j \le n_t$ sta matriki sosednosti grafov $G_p$ in $G_t$, kjer vrednost 1 v vrstici $i$ in stolpcu $j$ pomeni, 
@@ -392,6 +393,7 @@
 	$\frac{n_t!}{(n_t-n_p)!}$ (ob upoštevanju pogoja za injektivnost: točno ena 1 v vrstici in največ ena 1 v stolpcu), kar je preveč za izčrpno preiskovanje.
 	Algoritem zato začne z pred-procesirano matriko $M^0$~(\ref{eq:ullmann2}), na vsakem koraku pa jo še dodatno omeji~(\ref{eq:ullmann3}).
 	
+	
 	\section{Algoritem}
 	Matriko $M$ generiramo postopoma, po korakih. V danem koraku nam vrednost $m_{i,j}^k$ pove, ali se vozlišče $i \in V_p$ lahko preslika 
 	v $j \in V_t$ (ima vrednost $1$) ali ne	(ima vrednost $0$). Izhajamo iz začetne matike $M^0$. V generiranju te matrike upoštevamo dejstvo, da
@@ -428,18 +430,20 @@
 	Prevdokoda algoritma je podana v \refalg{alg:ullmann1}. V vrsticah 1--2 inicializiramo vse spremenljivke -- začnemo z začetno matriko $M^0$, 
 	na globini 1 in brez izbranega stolpca. V vrstici 3 shranimo matriko $M$ za prvi korak - matriko vedno shranjujemo pred vstopom v naslednji korak. 	
 	Zanka v vrstici 4 še izteče, ko sestopimo iz obdelave prve vrstice, torej ko v prvi vrstici zmanjka neobiskanih stolpcev. V vrstici 5 poskrbimo, da 
-	algoritem sestopi, če ne najdemo ustreznega stolpca. V vrstici 6 preverimo, če v trenutni vrstici obstaja še neobiskan stolpec (zaenkrat ignorirajmo del v 	
-	oglatih oklepajih). Ta stolpec mora biti še neizbran v trenutni vrstici ($j > k$), biti združljiv s trenutno vrstico ($m_{d,j} = 1$) in ne sme biti izbran v
-	katerem od prejšnjih korakov ($F_j=0$; pogoj za injektivno preslikavo). Sama izbira stolpca poteka v vrsticah 7--9, ko vrednost $k$ postavimo na izbrani
-	stolpec.
-	V vrstici 10 postavimo vse neizbrane stolpce v vrstici na $0$, torej izbrani stolpec označimo tudi v matriki $M$. Če nismo prišli do dna preiskovalnega
-	drevesa (vrstica 11), gremo v naslednji korak (vrstica 12): shranimo zadnji izbrani stolpec na trenutni globini ($H_d \gets k$), stolpec označimo kot
-	že izbranega ($F_k \gets 1$), povečamo globino ($d \gets d + 1$), resetiramo izbiro stolpca za naslednji korak ($k \gets 0$), shranimo matriko $M$
-	za naslednji korak ($M_d \gets M$; od tukaj bomo obnavljali matriko $M$ ob vračanju v tisti korak) in preprečimo sestopanje ($backtrack \gets false$).
-	Če smo obdelali že vse vrstice v matriki $M$, potem v vrstici 14 preverimo, če matrika ustreza pogoju~(\ref{eq:ullmann1}), torej če matrika predstavlja
-	podgrafni izomorfizem. V pozitivnem primeru jo ustrezno shranimo ali izpišemo. V vrstici 16 obnovimo matriko $M$ in preprečimo sestopanje. Tako bomo
-	v naslednji ponovitvi zanke preverili, če je v zadnji vrstici še kakšen primeren stolpec. Vrstice 17--20 skrbijo za sestopanje, ki se izvede, če v trenutni 
-	vrstici ni nobenega primernega stolpca več. V vrstici 18 sprostimo zadnji izbrani stolpec ($F_k \gets 0$) in znižamo globino. Nato v vrstici 20 obnovimo
+	algoritem sestopi, če ne najdemo ustreznega stolpca. V vrstici 6 preverimo, če v trenutni vrstici obstaja še neobiskan stolpec. Ta stolpec mora biti še
+	neizbran v trenutni vrstici ($j > k$), biti združljiv s trenutno vrstico ($m_{d,j} = 1$) in ne sme biti izbran v	katerem od prejšnjih korakov ($F_j=0$;
+	pogoj za injektivno preslikavo). Sama izbira stolpca poteka v vrsticah 8--10, ko vrednost $k$ postavimo na izbrani stolpec, v vrstici 7 pa preprečimo 
+	sestopanje, saj bomo v naslednji ponovitve zanke ali povečali globino ali pa ostali na isti globini.
+	V vrstici 11 postavimo vse neizbrane stolpce v vrstici na $0$, torej izbrani stolpec označimo tudi v matriki $M$. Pogoj v vrstici 12 zaenkrat ignorirajmo.
+	Če nismo prišli do dna preiskovalnega
+	drevesa (vrstica 13), gremo v naslednji korak (vrstica 14): shranimo zadnji izbrani stolpec na trenutni globini ($H_d \gets k$), stolpec označimo kot
+	že izbranega ($F_k \gets 1$), povečamo globino ($d \gets d + 1$), resetiramo izbiro stolpca za naslednji korak ($k \gets 0$) in shranimo matriko $M$
+	za naslednji korak ($M_d \gets M$; od tukaj bomo obnavljali matriko $M$ ob vračanju v tisti korak).
+	Če smo obdelali že vse vrstice v matriki $M$, potem v vrstici 16 preverimo, če matrika ustreza pogoju~(\ref{eq:ullmann1}), torej če matrika predstavlja
+	podgrafni izomorfizem. Če pogoj drži, jo ustrezno shranimo ali izpišemo. V vrstici 18 obnovimo matriko $M$. Tako bomo
+	v naslednji ponovitvi zanke preverili, če je v zadnji vrstici še kakšen primeren stolpec. Vrstici 19 in 20, tako kot vrstico 12, zaenkrat preskočimo.
+	Vrstice 21--24 skrbijo za sestopanje, ki se izvede, če v trenutni 
+	vrstici ni nobenega primernega stolpca več. V vrstici 22 sprostimo zadnji izbrani stolpec ($F_k \gets 0$) in znižamo globino. Nato v vrstici 24 obnovimo
 	matriko $M$ in v $k$ obnovimo nazadnje izbrani stolpec na tej globini.
 	
 \begin{algorithm}
@@ -452,23 +456,26 @@
 	\For{$i $ in$ [1, n_p]$} $F_i \gets 0;$ \EndFor													
 	\State $M_1 \gets M^0$																	
 	\While{$d \not = 0$}																		
-		\State $backtrack \gets true$															
-		\If{$(\exists j : j > k \wedge m_{d,j} = 1 \wedge F_j = 0) \;\; [\; \wedge \; refine(M, P, T)]$}			
-			%\State $$													
+		\State $backtrack \gets true$													
+		\If{$(\exists j : j > k \wedge m_{d,j} = 1 \wedge F_j = 0)$}			
+			\State $backtrack \gets false$
 			\Repeat 
 				\State $k \gets k +1$ 															
 			\Until{$m_{d,k} = 1 \vee F_k = 1$}													
 			\State $\forall j \not = k : m_{d,j} \gets 0$												
-		
-			\If {$d < n_p$}																	
-				\State $H_d \gets k; F_k \gets 1; d \gets d+1; k \gets 0; M_d \gets M; backtrack \gets false$		
-			\Else																			
-				\If {$<$ condition(\ref{eq:ullmann1}) $>$}											
-					\State $<$ store $M$ $>$
-				\EndIf													
-				%\If{$\exists j : j > k \wedge m_{d,j} = 1 \wedge F_j = 0$}								
-					\State $M \gets M_d; backtrack \gets false$										
-				%\EndIf
+			\If {$[\;refine(M, P, T)\;]$}
+				\If {$d < n_p$}																	
+					\State $H_d \gets k; F_k \gets 1; d \gets d+1; k \gets 0; M_d \gets M$
+				\Else																			
+					\If {$<$ condition(\ref{eq:ullmann1}) $>$}											
+						\State $<$ store $M$ $>$
+					\EndIf													
+					%\If{$\exists j : j > k \wedge m_{d,j} = 1 \wedge F_j = 0$}								
+						\State $M \gets M_d$		
+					%\EndIf
+				\EndIf
+			\Else
+				\State $M \gets M_d$
 			\EndIf
 		\EndIf
 		
@@ -524,25 +531,28 @@
 \end{algorithm}
 
 
+	\section{Omejevanje prostora preiskovanja}
+	Ullmann je opazil, da lahko z dodatnim procesiranjem matrike $M$ na vsakem koraku dodatno omejimo prostor preiskovanja, torej da več 1 postavimo
+	na 0. Če se bo vozlišče $i$ v preslikalo v vozlišče $j$, potem se mora tudi vsako sosednje vozlišče vozlišča $i$ preslikati v eno od 
+	sosednjih vozlišč vozlišča $j$. Za vsak $m_{i,j} = 1$ preverimo pogoj:
+	\begin{eqnarray}
+	\label{eq:ullmann3}
+	\nonumber 
+	\forall x \in N_{p}(i) & \Rightarrow & \exists y \in N_t(j) \wedge m_{x,y} = 1
+	\\
+	\forall x \in [1, n_p] : p_{i,x} = 1 & \Rightarrow & \exists y \in [1, n_t] : t_{j,y} = 1 \wedge m_{x,y} = 1
+	\end{eqnarray}
+	Če pogoj ni izpolnjen, postavimo vrednost $m_{i,j}$ na 0. Vsaka sprememba v matriki lahko vpliva na pogoj pri ostalih vozliščih, zato postopek
+	ponavljamo, dokler pri pregledu celotne matrike ne naredimo nobene spremembe. Ta pogoj je hkrati tudi zadosten za preverjanje podgrafnega 
+	izomorfizma, zato lahko v algoritmih z njim nadomestimo pogoj~(\ref{eq:ullmann1}).
+	
+	Psevdokoda postopka je podana v~\refalg{alg:ullmann2}. Za vsak
+	združljiv par (vrstica 4) preverimo pogoj~(\ref{eq:ullmann3}) v vrstici 5. Če pogoj ni izpolnjen, označimo par kot nezdružljiv (vrstica 6). Poleg tega
+	označimo, da bo celoten postopek potrebno ponoviti ($fixpoint \gets false$). Ob spremembi v matriki $M$ preverimo še, če trenutna vrstica sedaj vsebuje
+	same 1 (vrstica 7). V tem primeru namreč izomorfizem ni več mogoč, zato vrnemo $false$ (vrstica 8). 
 
-\section{Omejevanje prostora preiskovanja}
-
-
-
-
-
-
-\begin{eqnarray}
-\label{eq:ullmann3}
-\nonumber 
-\forall x \in N_{p}(i) & \Rightarrow & \exists y \in N_t(j) \wedge m_{x,y} = 1
-\\
-\forall x \in [1, n_p] : p_{i,x} = 1 & \Rightarrow & \exists y \in [1, n_t] : t_{j,y} = 1 \wedge m_{x,y} = 1
-\end{eqnarray}
-
-\TODO{ta pogoj lahko nadomesti pogoj z množenjem matrik. ekvivalenca v primeru induciranega podgrafa}
-
-
+	Podani algoritem je v \refalg{alg:ullmann1} in \refalg{alg:ullmann1} že vključen, klic funkcije $refine$ je v oglatih oklepajih, ki smo jih predhodno
+	ignorirali.
 
 %\begin{spacing}{1} 
 \begin{algorithm}
@@ -550,12 +560,12 @@
 \label{alg:ullmann2}
 \begin{algorithmic}[1]
 	\Require Matrika $M$ in sosednostni matriki $P$ in $T$
-	\Ensure $true$ če je bila M omejena, $false$ če vrstica ne vsebuje nobene 1
+	\Ensure $true$ če je bila M omejena, $false$ če kakšna vrstica ne vsebuje nobene 1
 	\Function{refine}{$M$, $P$, $T$}
-		\State $fixpoint \gets true$
 		\Repeat
+			\State $fixpoint \gets true$
 			\For{$\forall (i,j): m_{i,j} = 1$}
-				\If{Condition (\ref{eq:ullmann3}) is not satisfied}
+				\If{condition (\ref{eq:ullmann3}) is not satisfied}
 					\State $m_{i,j} \gets 0; fixpoint \gets false;$
 					\If{$\forall k : m_{i,k} = 0$}
 						\State \Return false
@@ -569,47 +579,14 @@
 \end{algorithm}
 %\end{spacing}
 
+	Prostorska zahtevnost celotnega algoritma je $O(n_p^2 n_t)$. Na vsaki globini shranimo matriko $M$, ki je velikosti $n_p n_t$, maksimalna globina pa 
+	je $n_p$. Časovna kompleksnost funkcije $refine$ je $O(n_p n_t d_{max})$, kjer je $d_{max}$ največja možna stopnja vozlišča. Pogoj preverjamo za
+	vsak	element matrike $M$, časovna zahtevnost pogoja pa je $d_{max}$, ker preverjamo samo sosede. Postopek preverjanja se sicer ponavlja do fiksne
+	točke, ampak vsaka ponovitev dodatno poreže preiskovalno drevo, zato je ena ponovitev najslabši primer. Celoten algoritem ima časovno zahtevnost
+	$O(n_p! n_p n_t d_{max})$. V eni ponovitvi zanke je funkcija $refine$ najzahtevnejša, število ponovitev pa je reda $n_p!$.
 
 
-
-
-
-
-
-
-
-
-
-%\begin{algorithm}
-%\caption{Ullmannov algoritem - iterativna različica}
-%\label{alg:ullmann1}
-%\begin{algorithmic}[1]
-%	\Require Matriki sosednosti $P$ in $T$, začetna matrika $M^0$
-%	\Ensure $false$ ali $n_p*n_t$ matrika $M$, ki predstavlja preslikavo podgrafnega izomorfizma
-%	\State $M \gets M^0; d \gets 1; H_1 \gets 0; k \gets 0; backtract \gets true$
-%	\For{$i $ in$ [1, n_p]$} $F_i \gets 0;$ \EndFor
-%	\While{$d \not = 0$}
-%		\If{$[\; refine(M, P, T) \; \wedge \; ] \; (\exists k : m_{d,k} = 1 \wedge F_k = 0)$}
-%			\State $\forall j \not = k : m_{d,j} \gets 0$
-%			\If{$( d = n_p < \wedge$ condition (\ref{eq:ullmann1}) is satisfied $ > ) $}
-%				\State \Return $M$
-%			\EndIf
-%			\State $backtrack \gets false$
-%		\EndIf
-%		\If{$backtract$}
-%			\State $F_k \gets 0; d \gets d-1;$
-%			\If{$d > 0 $}
-%				\State $M \gets M_d; k \gets H_d;$
-%			\EndIf
-%		\Else
-%			\State $H_d \gets k; F_k \gets 1; M_d \gets M; d \gets d+1$
-%		\EndIf
-%	\EndWhile
-%	\State \Return $false$	
-%\end{algorithmic}
-%\end{algorithm}
-
-
+	\section{Izboljšave}
 
 
 
@@ -617,7 +594,7 @@
 
 \chapter{Subsee}
 
-\chapter{Primerjava algoritmov}
+\chapter{Eksperimentalna primerjava algoritmov}
 	\section{}
 
 \chapter{Sklepne ugotovitve}
