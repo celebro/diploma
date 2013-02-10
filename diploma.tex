@@ -425,26 +425,23 @@
 			tu obnovimo matriko $M$ pri sestopanju
 	\end{itemize}
 
-	Prevdokoda agloritma je podana v \refalg{alg:ullmann1}. V vrsticah 1--3 inicializiramo vse spremenljivke, začnemo z začetno matriko $M^0$, 
-	na globini 1 in brez izbranega stolpca. V vrstici 3 shranimo matriko $M$ na prvem koraku - matriko vedno shranjujemo pred vstopom v naslednji korak. 	
+	Prevdokoda algoritma je podana v \refalg{alg:ullmann1}. V vrsticah 1--2 inicializiramo vse spremenljivke -- začnemo z začetno matriko $M^0$, 
+	na globini 1 in brez izbranega stolpca. V vrstici 3 shranimo matriko $M$ za prvi korak - matriko vedno shranjujemo pred vstopom v naslednji korak. 	
 	Zanka v vrstici 4 še izteče, ko sestopimo iz obdelave prve vrstice, torej ko v prvi vrstici zmanjka neobiskanih stolpcev. V vrstici 5 poskrbimo, da 
-	algoritem sestopi, če ne najdemo ustreznega stolpca. V vrstici 6 preverimo, če v trenutni vrstici obstaja še neobiskan stolpec (zaenkrat ignoriramo del v 	
+	algoritem sestopi, če ne najdemo ustreznega stolpca. V vrstici 6 preverimo, če v trenutni vrstici obstaja še neobiskan stolpec (zaenkrat ignorirajmo del v 	
 	oglatih oklepajih). Ta stolpec mora biti še neizbran v trenutni vrstici ($j > k$), biti združljiv s trenutno vrstico ($m_{d,j} = 1$) in ne sme biti izbran v
-	katerem od prejšnjih korakov ($F_j=0$; pogoj za injektivno preslikavo). Sama izbira stolpca poteka v vrsticah 7--9, ko $k$ postavimo na izbrani stolpec.
+	katerem od prejšnjih korakov ($F_j=0$; pogoj za injektivno preslikavo). Sama izbira stolpca poteka v vrsticah 7--9, ko vrednost $k$ postavimo na izbrani
+	stolpec.
 	V vrstici 10 postavimo vse neizbrane stolpce v vrstici na $0$, torej izbrani stolpec označimo tudi v matriki $M$. Če nismo prišli do dna preiskovalnega
 	drevesa (vrstica 11), gremo v naslednji korak (vrstica 12): shranimo zadnji izbrani stolpec na trenutni globini ($H_d \gets k$), stolpec označimo kot
 	že izbranega ($F_k \gets 1$), povečamo globino ($d \gets d + 1$), resetiramo izbiro stolpca za naslednji korak ($k \gets 0$), shranimo matriko $M$
 	za naslednji korak ($M_d \gets M$; od tukaj bomo obnavljali matriko $M$ ob vračanju v tisti korak) in preprečimo sestopanje ($backtrack \gets false$).
 	Če smo obdelali že vse vrstice v matriki $M$, potem v vrstici 14 preverimo, če matrika ustreza pogoju~(\ref{eq:ullmann1}), torej če matrika predstavlja
 	podgrafni izomorfizem. V pozitivnem primeru jo ustrezno shranimo ali izpišemo. V vrstici 16 obnovimo matriko $M$ in preprečimo sestopanje. Tako bomo
-	v naslednji ponovitvi zanke preverili, če je v zadnji vrstici še kakšen primeren stolpec. Vrstice 17--20 skrbijo za sestopanje. V vrstici 18 sprostimo zadnji
-	izbrani stolpec ($F_k \gets 0$) in znižamo globino. Nato v vrstici 20 obnovimo matriko $M$ za ta korak in v $k$ obnovimo nazadnje izbrani stolpec na 
-	tej globini.
-
+	v naslednji ponovitvi zanke preverili, če je v zadnji vrstici še kakšen primeren stolpec. Vrstice 17--20 skrbijo za sestopanje, ki se izvede, če v trenutni 
+	vrstici ni nobenega primernega stolpca več. V vrstici 18 sprostimo zadnji izbrani stolpec ($F_k \gets 0$) in znižamo globino. Nato v vrstici 20 obnovimo
+	matriko $M$ in v $k$ obnovimo nazadnje izbrani stolpec na tej globini.
 	
-
-
-
 \begin{algorithm}
 \caption{Ullmannov algoritem}
 \label{alg:ullmann1}
@@ -467,7 +464,7 @@
 				\State $H_d \gets k; F_k \gets 1; d \gets d+1; k \gets 0; M_d \gets M; backtrack \gets false$		
 			\Else																			
 				\If {$<$ condition(\ref{eq:ullmann1}) $>$}											
-					\State $<$ store $M$ $>$													
+					\State $<$ store $M$ $>$
 				\EndIf													
 				%\If{$\exists j : j > k \wedge m_{d,j} = 1 \wedge F_j = 0$}								
 					\State $M \gets M_d; backtrack \gets false$										
@@ -484,6 +481,56 @@
 	\EndWhile
 \end{algorithmic}
 \end{algorithm}
+
+	Velik del podanega algoritma se ukvarja s sestopanjem in obnavljanjem stanja pri sestopanju. Zato v \refalg{alg:ullmann3} podajamo še rekurzivno 
+	različico algoritma. V tej različici za sestopanje in obnavljanje stanja skrbi sama rekurzija in je potek algoritma bolj očiten. V vrsticah 1 in 2 je
+	inicializacija, le da sedaj potrebujemo manj spremenljivk. V vrstici 3 začnemo preiskovanje na globini 1. V vrstici 7 shranimo trenutno matriko $M$,
+	ki jo bomo obnavljali ob sestopanju (ponovno zaenkrat ignoriramo del v oglatih oklepajih). V vrstici 8 je zanka, ki preveri vse stolpce. Ko pridemo do
+	ustreznega (vrstica 9), vse ostale stolpce postavimo na 0 (vrstica 10), in označimo stolpec kot izbran (vrstica 11). Če smo v zadnji vrstici matrike $M$,
+	potem preverimo pogoj~\ref{eq:ullmann1} in če smo našli izomorfizem, shranimo trenutno matriko $M$ (vrstice 12-14). Če to ni zadnja vrstica, gremo
+	v naslednji korak (vrstica 16). Ob sestopanju obnovimo matriko $M$ in označimo trenutni stolpec kot neizbran (vrstica 17).
+
+\begin{algorithm}
+\caption{Ullmannov algoritem - rekurzivna različica}
+\label{alg:ullmann3}
+\begin{algorithmic}[1]
+	\Require Matriki sosednosti $P$ in $T$, začetna matrika $M^0$
+	\Ensure Vse $n_p \times n_t$ matrike $M$, ki predstavljajo preslikave podgrafnih izomorfizmov				
+	\State $M \gets M^0$
+	\For{$i $ in$ [1, n_p]$} $F_i \gets 0;$ \EndFor
+	\State $step(1)$
+	\Statex
+	\Function{step}{d}
+		\If{$[! \; refine(M, P, T)\; ]$}
+			\State \Return
+		\EndIf
+		\State $M_d \gets M$
+		\ForAll{$k \in [1,n_t]$}
+			\If{$m_{d,k} = 1 \wedge F_k = 0$}
+				\State $\forall j \not = k : m_{d,j} \gets 0$
+				\State $F_k \gets 1$
+				\If{$d = n_p$}
+					\If {$<$ condition(\ref{eq:ullmann1}) $>$}
+						\State $<$ store $M$ $>$
+					\EndIf
+				\Else
+					\State $step(d+1)$
+				\EndIf
+				\State $F_k \gets 0; M \gets M_d$
+			\EndIf
+		\EndFor
+	\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+
+
+\section{Omejevanje prostora preiskovanja}
+
+
+
+
+
 
 \begin{eqnarray}
 \label{eq:ullmann3}
@@ -562,39 +609,7 @@
 %\end{algorithmic}
 %\end{algorithm}
 
-\begin{algorithm}
-\caption{Ullmannov algoritem - rekurzivna različica}
-\label{alg:ullmann3}
-\begin{algorithmic}[1]
-	\Require Matriki sosednosti $P$ in $T$, začetna matrika $M^0$
-	\Ensure Seznam $result$ $n_p \times n_t$ matrik $M$, ki predstavljajo preslikave podgrafnih izomorfizmov
-	\State $M \gets M^0;  result \gets [\;]$
-	\For{$i $ in$ [1, n_p]$} $F_i \gets 0;$ \EndFor
-	\State $step(1)$
-	\Statex
-	\Function{step}{d}
-		\If{$[! \; refine(M, P, T)\; ]$}
-			\State \Return
-		\EndIf
-		\State $M_d \gets M$
-		\ForAll{$k \in [1,n_t]$}
-			\If{$m_{d,k} = 1 \wedge F_k = 0$}
-				\State $\forall j \not = k : m_{d,j} \gets 0$
-				\State $F_k \gets 1$
-				\If{$d = n_p$}
-					\If {$<$ condition(\ref{eq:ullmann1}) $>$}
-						\State $results \gets [result, M]$
-					\EndIf
-				\Else
-					\State $step(d+1)$
-				\EndIf
-				\State $F_k \gets 0; M \gets M_d$
-			\EndIf
-		\EndFor
-	\EndFunction
-	
-\end{algorithmic}
-\end{algorithm}
+
 
 
 
