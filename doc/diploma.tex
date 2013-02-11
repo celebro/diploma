@@ -462,7 +462,7 @@
 			\Repeat 
 				\State $k \gets k +1$ 															
 			\Until{$m_{d,k} = 1 \vee F_k = 1$}													
-			\State $\forall j \not = k : m_{d,j} \gets 0$												
+			\State $\forall j \not = k : m_{d,j} \gets 0$										\label{alg:ullmann1.11}
 			\If {$[\;refine(M, P, T)\;]$}
 				\If {$d < n_p$}																	
 					\State $H_d \gets k; F_k \gets 1; d \gets d+1; k \gets 0; M_d \gets M$
@@ -551,7 +551,7 @@
 	označimo, da bo celoten postopek potrebno ponoviti ($fixpoint \gets false$). Ob spremembi v matriki $M$ preverimo še, če trenutna vrstica sedaj vsebuje
 	same 1 (vrstica 7). V tem primeru namreč izomorfizem ni več mogoč, zato vrnemo $false$ (vrstica 8). 
 
-	Podani algoritem je v \refalg{alg:ullmann1} in \refalg{alg:ullmann1} že vključen, klic funkcije $refine$ je v oglatih oklepajih, ki smo jih predhodno
+	Podani algoritem je v \refalg{alg:ullmann1} in \refalg{alg:ullmann3} že vključen, klic funkcije $refine$ je v oglatih oklepajih, ki smo jih predhodno
 	ignorirali.
 
 %\begin{spacing}{1} 
@@ -583,11 +583,41 @@
 	je $n_p$. Časovna kompleksnost funkcije $refine$ je $O(n_p n_t d_{max})$, kjer je $d_{max}$ največja možna stopnja vozlišča. Pogoj preverjamo za
 	vsak	element matrike $M$, časovna zahtevnost pogoja pa je $d_{max}$, ker preverjamo samo sosede. Postopek preverjanja se sicer ponavlja do fiksne
 	točke, ampak vsaka ponovitev dodatno poreže preiskovalno drevo, zato je ena ponovitev najslabši primer. Celoten algoritem ima časovno zahtevnost
-	$O(n_p! n_p n_t d_{max})$. V eni ponovitvi zanke je funkcija $refine$ najzahtevnejša, število ponovitev pa je reda $n_p!$.
+	$O(n_p! n_p n_t d_{max})$. V posamezni ponovitvi zanke je funkcija $refine$ najzahtevnejša, število ponovitev pa je reda $n_p!$.
 
 
 	\section{Izboljšave}
-
+	\TODO{Ref.}
+	
+	V \refalg{alg:ullmann1} obiskujemo vozlišča iz vzorčnega grafa po vrsti, glede na sam zapis grafa z matriko. Drugačen vrsti red obiskovanja lahko
+	pohitri algoritem, če čim hitreje ustavi preiskovanje poddreves, ki nimajo rešitve. Nekaj možnih hevristik:
+	\begin{itemize}
+	\item Najprej vozlišča z večjo stopnjo -- taka vozlišča imajo običajno manj kandidatov za preslikavo.
+	\item Preiskovanje v širino, znotraj iste globine pa po stopnji
+	\item Najboljši najprej -- začnemo z vozliščem z največjo stopnjo, v vsakem naslednjem koraku pa med sosedi že obiskanih vozlišč izberemo vozlišče z
+	največjo stopnjo.
+	\end{itemize}
+	
+	Omejevanje prostora iskanja s funkcijo $refine$ izkorišča dejstvo, da mora za vsakega soseda vozlišča $i$ obstajati združljiv sosed vozlišča $j$.
+	Podobno pa velja, če še $i$ preslika v $j$, potem sosedje vozlišča $i$ ne morejo biti združljivi z vozlišči, ki niso sosedje vozlišča $j$:
+	\begin{eqnarray}
+	\label{eq:ullmann_imp1}
+	\forall x \in N_p(i) \;\; \forall y \not \in N_t(j) : m_{x,y} = 0
+	\end{eqnarray}
+	Pri iskanju induciranega podgrafnega izomorfizma pa tudi v nasprotno smer:
+	\begin{eqnarray}
+	\label{eq:ullmann_imp2}
+	\forall y \in N_t(j) \;\; \forall x \not \in N_p(i) : m_{x,y} = 0
+	\end{eqnarray}
+	Ta postopek lahko za razliko od $refine$ uporabimo samo za tiste $(i, j)$, za katere vemo, da bo $m_{i,j}$ obdržala vrednost 1. V \refalg{alg:ullmann1}
+	bi ga uporabili v vrstici \ref{alg:ullmann1.11} nad $m_{d,k}$. Postopek zmanjša prostor preiskovanja za sosednja vozlišča, kar lahko dobro izkoristita 
+	zadnji dve hevristiki iz prejšnjega odstavka. Pri njiju bodo namreč sosednja vozlišča hitro na vrsti za preiskovanje.
+	
+	Izboljšati je mogoče tudi prostorsko zahtevnost. Osnovni algoritem namreč na vsakem koraku shrani celotno matriko $M$. Namesto sklada matrik lahko
+	uporabimo persistentno matriko. Ob spremembi vrednosti v matriki iz 1 v 0 na sklad shranimo koordinate spremembe. Ob sestopanju iz sklada
+	preberemo koordinate sprememb in na ustreznih mestih vrednost povrnemo nazaj v 1. Ker je sprememb kvečjemu $n_p n_t$, se prostorska
+	zahtevnost zmanjša na $O(n_p n_t)$.
+	
 
 
 \chapter{VF2}
