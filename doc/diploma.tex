@@ -330,21 +330,22 @@
 	V usmerjenem grafu je število povezav, ki imajo vozlišče $v$ za začetek
 	povezave, 	izstopna stopnja (ang.~out-degree) vozlišča. Označimo jo z $d^+(v)$.
 	Število povezav, ki imajo vozlišče $v$ za konec povezave, je vstopna stopnja (ang.~in-degree) vozlišča $v$. Označimo jo z $d^-(v)$.
-	Množica predhodnikov 
-	$N^+(v) = \{u \in V \big| (u,v) \in E\}$
-	so začetna vozlišča povezav, ki imajo za konec povezave vozlišče $v$. Množica naslednikov
-	$N^-(v) = \{u \in V \big| (v,u) \in E\}$
+	Množica naslednikov
+	$N^+(v) = \{u \in V \big| (v,u) \in E\}$
 	so končna vozlišča povezav, ki imajo za začetek povezave vozlišče $v$.
-	Množica vhodnih sosedov (ang.~in-neighbors) podgrafa $S = (V_S, E_S)$ je definirana kot 
-	$N^-(S) = \{ n \in (V \setminus V_S) \big| \exists m \in V_S : (n,m) \in E \}$.
+	Množica predhodnikov 
+	$N^-(v) = \{u \in V \big| (u,v) \in E\}$
+	so začetna vozlišča povezav, ki imajo za konec povezave vozlišče $v$. 
 	Množica izhodnih sosedov (ang.~out-neighbors) podgrafa $S = (V_S, E_S)$ je definirana kot 
 	$N^+(S) = \{ n \in (V \setminus V_S) \big| \exists m \in V_S : (m,n) \in E \}$.
+	Množica vhodnih sosedov (ang.~in-neighbors) podgrafa $S = (V_S, E_S)$ je definirana kot 
+	$N^-(S) = \{ n \in (V \setminus V_S) \big| \exists m \in V_S : (n,m) \in E \}$.
 
 	Rez grafa $G$ je razdelitev vozlišč $V$ v dve disjunktni množici $(A, \bar A)$. Množico povezav, kjer je en konec povezave v $A$ in drugi v
 	 $\bar A$ označimo z $e(A, \bar A) = \{(u,v) \in E \big| u \in A, v \not \in A\}$. Minimalna bisekcija  grafa G je rez, ki minimizira velikost reza 
 	$| e(A, \bar A) |$ po vseh množicah $A$ velikosti $\lceil | V | / 2 \rceil$.
 
-		
+	\TODO{\section{NP-polnost}}	
 
 
 \chapter{Ullmannov algoritem}
