@@ -337,9 +337,9 @@
 	$N^-(v) = \{u \in V \big| (u,v) \in E\}$
 	so začetna vozlišča povezav, ki imajo za konec povezave vozlišče $v$. 
 	Množica izhodnih sosedov (ang.~out-neighbors) podgrafa $S = (V_S, E_S)$ je definirana kot 
-	$N^+(S) = \{ n \in (V \setminus V_S) \big| \exists m \in V_S : (m,n) \in E \}$.
+	$T^+(S) = \{ n \in (V \setminus V_S) \big| \exists m \in V_S : (m,n) \in E \}$.
 	Množica vhodnih sosedov (ang.~in-neighbors) podgrafa $S = (V_S, E_S)$ je definirana kot 
-	$N^-(S) = \{ n \in (V \setminus V_S) \big| \exists m \in V_S : (n,m) \in E \}$.
+	$T^-(S) = \{ n \in (V \setminus V_S) \big| \exists m \in V_S : (n,m) \in E \}$.
 
 	Rez grafa $G$ je razdelitev vozlišč $V$ v dve disjunktni množici $(A, \bar A)$. Množico povezav, kjer je en konec povezave v $A$ in drugi v
 	 $\bar A$ označimo z $e(A, \bar A) = \{(u,v) \in E \big| u \in A, v \not \in A\}$. Minimalna bisekcija  grafa G je rez, ki minimizira velikost reza 
@@ -557,7 +557,7 @@
 
 %\begin{spacing}{1} 
 \begin{algorithm}
-\caption{Dodatno omejevanje prostora}
+\caption{Omejevanje prostora}
 \label{alg:ullmann2}
 \begin{algorithmic}[1]
 	\Require Matrika $M$ in sosednostni matriki $P$ in $T$
@@ -623,6 +623,48 @@
 
 \chapter{VF2}
 
+
+
+\begin{algorithm}
+\caption{Algoritem VF2}
+\label{alg:vf2}
+\begin{algorithmic}[1]
+	\Require Vmesno stanje $s$, začetno stanje $s_0$ ima $M(s_0) = \emptyset $
+	\Ensure Vse preslikave podgrafnih izomorfizmov
+	\Function{vf2}{$s$}
+		\If{ $M(s)$ covers all $G_p$}
+			\State output $M(s)$
+		\Else
+			\State Generate candidates $P(s)$
+			\ForAll{$p \in P(s)$}
+				\If{$feasible(p)$}
+					\State Compute $s'$ by adding $p$ to $M(s)$
+					\State $vf2(s')$
+				\EndIf
+			\EndFor
+		\EndIf
+		\State restore data structures
+	\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+	\begin{equation}
+	\begin{array}{rcl}
+	(\forall n' \in M_p(s)  \cap N_p^-(n)\; \exists m' \in N_t^-(m)    \!\!\!&:&\!\!	 (n', m') \in M(s)) \\
+	\;[\; \wedge \; (\forall m' \in M_t(s)  \cap N_t^-(m)\; \exists n' \in N_p^-(n) \!\!\!&:&\!\! (n', m') \in M(s)) \;]
+	\end{array}
+	\end{equation}
+
+	\begin{equation}
+	\begin{array}{rcl}
+	(\forall n' \in M_p(s)  \cap N_p^+(n)\; \exists m' \in N_t^+(m)    \!\!\!&:&\!\!	 (n', m') \in M(s)) \\
+	\;[\; \wedge \; (\forall m' \in M_t(s)  \cap N_t^+(m)\; \exists n' \in N_p^+(n)     \!\!\!&:&\!\!	 (n', m') \in M(s)) \;]
+	\end{array}
+	\end{equation}
+	
+
+
+
 \chapter{Subsee}
 
 \chapter{Eksperimentalna primerjava algoritmov}
@@ -657,5 +699,6 @@
 	Universit\'{e} catholique de Louvain, D\'{e}partement d’Ing\'{e}nierie Informatique, Belgija, 2008.
 
 \end{thebibliography}
+
 \end{document}
 
