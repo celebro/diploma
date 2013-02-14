@@ -536,13 +536,14 @@
 	Ullmann je opazil, da lahko z dodatnim procesiranjem matrike $M$ na vsakem koraku dodatno omejimo prostor preiskovanja, torej da več 1 postavimo
 	na 0. Če se bo vozlišče $i$ v preslikalo v vozlišče $j$, potem se mora tudi vsako sosednje vozlišče vozlišča $i$ preslikati v eno od 
 	sosednjih vozlišč vozlišča $j$. Za vsak $m_{i,j} = 1$ preverimo pogoj:
-	\begin{eqnarray}
+	\begin{equation}
 	\label{eq:ullmann3}
-	\nonumber 
+	\begin{array}{rcl}
 	\forall x \in N_{p}(i) & \Rightarrow & \exists y \in N_t(j) \wedge m_{x,y} = 1
 	\\
 	\forall x \in [1, n_p] : p_{i,x} = 1 & \Rightarrow & \exists y \in [1, n_t] : t_{j,y} = 1 \wedge m_{x,y} = 1
-	\end{eqnarray}
+	\end{array}
+	\end{equation}
 	Če pogoj ni izpolnjen, postavimo vrednost $m_{i,j}$ na 0. Vsaka sprememba v matriki lahko vpliva na pogoj pri ostalih vozliščih, zato postopek
 	ponavljamo, dokler pri pregledu celotne matrike ne naredimo nobene spremembe. Ta pogoj je hkrati tudi zadosten za preverjanje podgrafnega 
 	izomorfizma, zato lahko v algoritmih z njim nadomestimo pogoj~(\ref{eq:ullmann1}).
