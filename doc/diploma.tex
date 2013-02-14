@@ -651,24 +651,46 @@
 
 	\begin{equation}
 	\begin{array}{rcl}
-	(\forall n' \in M_p(s)  \cap N_p^-(n)\; \exists m' \in N_t^-(m)    \!\!\!&:&\!\!	 (n', m') \in M(s)) \\
-	\;[\; \wedge \; (\forall m' \in M_t(s)  \cap N_t^-(m)\; \exists n' \in N_p^-(n) \!\!\!&:&\!\! (n', m') \in M(s)) \;]
+	(\forall n' \in N_p^-(n) \cap M_p(s) \; \exists m' \in N_t^-(m)    \!\!\!&:&\!\!	 (n', m') \in M(s)) \\
+	\;[\; \wedge \; (\forall m' \in N_t^-(m) \cap M_t(s)\; \exists n' \in N_p^-(n) \!\!\!&:&\!\! (n', m') \in M(s)) \;]
 	\end{array}
 	\end{equation}
 
 	\begin{equation}
 	\begin{array}{rcl}
-	(\forall n' \in M_p(s)  \cap N_p^+(n)\; \exists m' \in N_t^+(m)    \!\!\!&:&\!\!	 (n', m') \in M(s)) \\
-	\;[\; \wedge \; (\forall m' \in M_t(s)  \cap N_t^+(m)\; \exists n' \in N_p^+(n)     \!\!\!&:&\!\!	 (n', m') \in M(s)) \;]
+	(\forall n' \in N_p^+(n)  \cap M_p(s)  \; \exists m' \in N_t^+(m)    \!\!\!&:&\!\!	 (n', m') \in M(s)) \\
+	\;[\; \wedge \; (\forall m' \in N_t^+(m) \cap  M_t(s)\; \exists n' \in N_p^+(n)     \!\!\!&:&\!\!	 (n', m') \in M(s)) \;]
 	\end{array}
 	\end{equation}
 
 	\begin{equation}
 	\begin{array}{rcl}
-	|N_p^+(n) \cap T_p^-(s)| \leq |N_t^+(s) \cap T_t^-(s)| \\
+	|N_p^-(n) \cap T_p^-(s)|   \! & \! \leq \! & \! |N_t^-(s) \cap T_t^-(s)| \; \wedge \\
+	|N_p^+(n) \cap T_p^-(s)|  \! & \! \leq \! & \! |N_t^+(s) \cap T_t^-(s)|
 	\end{array}
-	\end{equation}	
+	\end{equation}
+	
+	\begin{equation}
+	\begin{array}{rcl}
+	|N_p^-(n) \cap T_p^+(s)|   \! & \! \leq \! & \! |N_t^-(s) \cap T_t^+(s)| \; \wedge \\
+	|N_p^+(n) \cap T_p^+(s)|  \! & \! \leq \! & \!|N_t^+(s) \cap T_t^+(s)|
+	\end{array}
+	\end{equation}
 
+	\begin{equation}
+	\begin{array}{rcl}
+	|N_p^-(n) \setminus (M_p(s) \cup T_p(s))| \! & \! \leq \! & \! |N_t^-(n) \setminus (M_t(s) \cup T_t(s))| \; \wedge \\
+	|N_p^+(n) \setminus (M_p(s) \cup T_p(s))| \! & \! \leq \! & \! |N_t^+(n) \setminus (M_t(s) \cup T_t(s))|
+	\end{array}
+	\end{equation}
+
+	\begin{figure}
+	\begin{center}
+	\includegraphics[width=6cm]{img/graph_t_in_out.png}
+	\end{center}
+	\caption{}
+	\label{pic_t_in_out}
+	\end{figure}
 
 
 \chapter{Subsee}
