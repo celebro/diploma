@@ -1,0 +1,35 @@
+Files
+-----
+
+Makefile: make an executable (main) and test on the subgraph isomorphism instance defined by the two files pattern and target
+allDiff.c graph.c lad.c domains.c main.c: source files
+pattern: example of pattern graph
+target: example of target graph
+nodeComp: example of file defining node compatibilities
+README: this file
+
+Usage
+-----
+
+LAD may be used with the following arguments:
+-l (int: CPU time limit in seconds; default value is 60) 
+-f (1 if stop at first solution; 0 if search for all solutions; default value is 0) 
+-i (1 if search for an induced subgraph; 0 if search for a partial subgraph; default value is 0) 
+-p (input pattern graph filename) 
+-t (input target graph filename)
+-d (optional: input domain filename)
+-v (verboseness level: 2 if verbose trace; 1 if print solutions, and CPU time; 0 if print number of solutions and CPU time; default value is 0)
+
+Graph format
+------------
+
+Pattern and target graphs should be defined in two text files. The format of these files is:
+number of nodes on the first line
+for each node, give the degree of the node followed by the list of its adjacent nodes.
+
+Nodes must be numbered from 0.
+
+Domains format
+--------------
+
+If some pattern nodes are not compatible with all target nodes, so that the solution should match pattern nodes only with compatible target nodes, then one can specify node compatibilities in a text file which has one line for every pattern node. Each line successively gives the number of target nodes which are compatible with the corresponding pattern node, followed by the list of target nodes. See example in the nodeComp file.
