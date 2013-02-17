@@ -630,22 +630,17 @@
 
 	Cilj algoritma VF2 je zgraditi preslikavo $M = \{(n,m) \in N_p \times N_t\}$. Medtem ko Ullmannov algoritem generira in preveri vse možne preslikave
 	$M$, jih ta algoritem gradi postopoma. V vsakem stanju $s$ algoritma imamo delno preslikavo $M(s)$. Ta definira podgrafa $G_p(s) \subseteq G_p$ in
-	$G_t(s) \subseteq G_t$, ki sta si izomorfna. Podgrafa vsebujeta tista vozlišča, ki so tudi v $M(s)$. Uporabljali bomo oznaki $M_p(s)$ in $M_t(s)$,
+	$G_t(s) \subseteq G_t$, ki sta si izomorfna in vsebujeta tista vozlišča, ki so tudi v $M(s)$. Uporabljali bomo oznaki $M_p(s)$ in $M_t(s)$,
 	ki predstavljata množico vozlišč v omenjenih podgrafih.	Prehod iz stanja $s$ v naslednje stanje $s'$ predstavlja razširitev trenutne $M(s)$ z dodatnim
-	parom vozlišč. 
+	parom vozlišč. Nov par $(n, m)$ izberemo med sosedi $G_p$ in $G_t$ tako, da tudi razširjena $M(s')$ definira izomorfna podgrafa.
 	
-	Psevdokoda okvirnega poteka algoritma je podana v~\refalg{alg:vf2}. Algoritem je rekurziven. Ob prvem klicu je $M(s_0)$ prazna. V vrstici 2 preverimo,
+	Psevdokoda okvirnega poteka algoritma je podana v~\refalg{alg:vf2}. Algoritem je rekurziven in preiskuje z globino. Ob prvem klicu je $M(s_0)$ prazna.
+	V vrstici 2 preverimo,
 	če $M(s)$ že pokriva celoten vzorčni graf. Ker $M(s)$ po konstrukciji predstavlja izomorfizem, smo v tem primeru že našli pografni izomorfizem med
 	$G_p$ in $G_t$, zato $M$ izpišemo. V vrstici 5 izračunamo vse možne kandidate za razširitev $M(s)$, kjer kandidate izbiramo med sosedi trenutnih
 	podgrafov. Podrobnejši opis je v razdelku~\ref{vf2:candidate}. V vrsticah 6--9 za vsak par preverimo, če je združljiv. Pri tem uporabljamo pravila, ki so
 	opisana v razdelku~\ref{vf2:feasible}. Če je par ustrezen, z njim razširimo $M(s)$ (s čimer dobimo $s'$) in rekurzivno kličemo algoritem nad novim
 	stanjem.
-
-	\section{Izbira kandidatov $P(s)$}
-	\label{vf2:candidate}
-	
-	\section{Izračun združljivosti kandidatov}
-	\label{vf2:feasible}
 
 \begin{algorithm}
 \caption{Algoritem VF2}
@@ -669,6 +664,43 @@
 	\EndFunction
 \end{algorithmic}
 \end{algorithm}
+
+
+	\section{Izbira kandidatov $P(s)$}
+	\label{vf2:candidate}
+	
+	Množico kandidatov $P(s)$ izbiramo med neposrednimi sosedi podgrafov $G_p(s)$ in $G_t(s)$. Naj bosta $T_p^+(s)$ in $T_t^+(s)$ množici vozlišč iz
+	$G_p$ in $G_t$ , ki še niso v preslikavi $M(s)$ in so izhodni sosedi katerega izmed vozlišč v $M(s)$. Podobno naj bosta $T_p^-(s)$ in $T_t^-(s)$ množici
+	vozlišč, ki še niso v preslikavi $M(s)$ ter imajo izhodne sosede v $M(s)$. V množico $P(s)$ sestavljajo pari $(n,m)$, kjer velja $n \in T_p^+(s) \wedge
+	m \in T_t^+(s)$. Če takega para ni, se upoštevata množici $T_p^-$ in $T_t^-$. Če tudi takega para ni, upoštevamo vsa vozlišča, ki še niso v preslikavi
+	$M(s)$. Slednji primer se zgodi, če je graf sestavljen iz več nepovezanih delov in čisto na začetku, ko je $M(s)$ prazna. $P(s)$ torej postane ena od
+	naslednjih množic:
+	\begin{enumerate}
+	\item $T^+(s) = N^+(M_p(s)) \times N^+(M_t(s))$
+	\item $T^-(s) = N^-(M_p(s)) \times N^-(M_t(s))$\;\;\; če je $T^+(s)$ prazna
+	\item $P^d(s) = (V_p \setminus (M_p(s) \cup T_p(s)) )  \times (V_t \setminus (M_t(s) \cup T_t(s)) )$\;\;\; če je $T^-(s)$ prazna
+	\end{enumerate}
+
+	\begin{figure}[h]
+	\begin{center}
+	\includegraphics[width=8cm]{img/graph_t_in_out.png}
+	\end{center}
+	\caption{}
+	\label{pic_t_in_out}
+	\end{figure}
+	\TODO{pic, praksa vyamemo enega iz tp, preverimo vse iz tt, ker mora veljati ya vsakega}
+	V sami implementacije algoritma množica $P$ ni eksplicitno generirana. Total order
+
+
+
+
+
+
+
+	\section{Izračun združljivosti kandidatov}
+	\label{vf2:feasible}
+
+
 
 	\begin{equation}
 	\begin{array}{rcl}
@@ -705,13 +737,7 @@
 	\end{array}
 	\end{equation}
 
-	\begin{figure}
-	\begin{center}
-	\includegraphics[width=6cm]{img/graph_t_in_out.png}
-	\end{center}
-	\caption{}
-	\label{pic_t_in_out}
-	\end{figure}
+
 
 
 
@@ -741,6 +767,10 @@
 	%  number = {3}, % zvezek?
 	%  pages = {320-350},
 	%}
+
+	\bibitem{vf2} L.~Cordella, P.~Foggia, C.~Sansome, M.~Vento, ``A (Sub)Graph Isomorphism Algorithm for Matching Large Graphs",
+		\textit {IEEE Trans Pattern Anal Mach Intell}, št.~26, zv.~10, 2004, str.~1367--1372.
+	
 	\bibitem{subsea} V.~Lipets, N.~Vanetik, E.~Gudes, ``Subsea: an efficient heuristic aglorithm for subgraph isomorphism",
 		\textit {Data Mining and Knowledge Discovery}, št.~19, zv.~3, 2009, str.~320--350.
 
