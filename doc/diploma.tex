@@ -348,6 +348,10 @@
 	\TODO{\section{NP-polnost}}	
 
 
+
+
+
+
 \chapter{Ullmannov algoritem}
 \TODO{Intro.}
 
@@ -622,9 +626,26 @@
 	
 
 
-\chapter{VF2}
+\chapter{Algoritem VF2}
 
+	Cilj algoritma VF2 je zgraditi preslikavo $M = \{(n,m) \in N_p \times N_t\}$. Medtem ko Ullmannov algoritem generira in preveri vse možne preslikave
+	$M$, jih ta algoritem gradi postopoma. V vsakem stanju $s$ algoritma imamo delno preslikavo $M(s)$. Ta definira podgrafa $G_p(s) \subseteq G_p$ in
+	$G_t(s) \subseteq G_t$, ki sta si izomorfna. Podgrafa vsebujeta tista vozlišča, ki so tudi v $M(s)$. Uporabljali bomo oznaki $M_p(s)$ in $M_t(s)$,
+	ki predstavljata množico vozlišč v omenjenih podgrafih.	Prehod iz stanja $s$ v naslednje stanje $s'$ predstavlja razširitev trenutne $M(s)$ z dodatnim
+	parom vozlišč. 
+	
+	Psevdokoda okvirnega poteka algoritma je podana v~\refalg{alg:vf2}. Algoritem je rekurziven. Ob prvem klicu je $M(s_0)$ prazna. V vrstici 2 preverimo,
+	če $M(s)$ že pokriva celoten vzorčni graf. Ker $M(s)$ po konstrukciji predstavlja izomorfizem, smo v tem primeru že našli pografni izomorfizem med
+	$G_p$ in $G_t$, zato $M$ izpišemo. V vrstici 5 izračunamo vse možne kandidate za razširitev $M(s)$, kjer kandidate izbiramo med sosedi trenutnih
+	podgrafov. Podrobnejši opis je v razdelku~\ref{vf2:candidate}. V vrsticah 6--9 za vsak par preverimo, če je združljiv. Pri tem uporabljamo pravila, ki so
+	opisana v razdelku~\ref{vf2:feasible}. Če je par ustrezen, z njim razširimo $M(s)$ (s čimer dobimo $s'$) in rekurzivno kličemo algoritem nad novim
+	stanjem.
 
+	\section{Izbira kandidatov $P(s)$}
+	\label{vf2:candidate}
+	
+	\section{Izračun združljivosti kandidatov}
+	\label{vf2:feasible}
 
 \begin{algorithm}
 \caption{Algoritem VF2}
@@ -691,6 +712,10 @@
 	\caption{}
 	\label{pic_t_in_out}
 	\end{figure}
+
+
+
+
 
 
 \chapter{Subsee}
