@@ -86,6 +86,7 @@
 % Referenciranje algoritma
 \newcommand{\refalg}[1]{(Alg. \ref{#1})}
 
+\newcommand{\code}[1]{\mbox{\texttt{#1}}}
 
 
 
@@ -137,9 +138,9 @@
 	%---------------------------------------------
 	% stran 3 med uvodnimi listi
 	\noindent
-	Namesto te strani {\bf vstavite} original izdane teme diplomskega 
+	\TODO{Namesto te strani {\bf vstavite} original izdane teme diplomskega 
 	dela s podpisom mentorja in dekana ter žigom fakultete, ki ga diplomant
-	dvigne v študent\-skem referatu,  preden odda izdelek v vezavo!
+	dvigne v študent\-skem referatu,  preden odda izdelek v vezavo!}
 	
 	% prazna stran
 	\clearemptydoublepage
@@ -264,7 +265,7 @@
 
 	\section{Graf}
 	Graf $G = \langle V, E \rangle$ je definiran z množico vozlišč $V$ (ang.~vertices) in množico povezav $E$ (ang.~edges). Povezava je par vozlišč: 
-	$E \subseteq V \times V$. Kardinalnost $V$ označimo z $n$, kardinalnost $E$ pa z $m$.
+	$E \subseteq V \times V$.
 	Vozlišči, ki sta vsebovani v povezavi, sta sosednji (ang.~adjacent). Graf je lahko usmerjen (ang.~directed) ali neusmerjen
 	(ang.~undirected). V neusmerjenem
 	grafu je ena povezava neurejen par vozlišč $u, v \in V$ in jo označimo z $\{u, v\}$. V usmerjenem grafu je povezava urejen par 
@@ -585,6 +586,7 @@
 \end{algorithm}
 %\end{spacing}
 
+	\section {Časovna in prostorska zahtevnost}
 	Prostorska zahtevnost celotnega algoritma je $O(n_p^2 n_t)$. Na vsaki globini shranimo matriko $M$, ki je velikosti $n_p n_t$, maksimalna globina pa 
 	je $n_p$. Časovna kompleksnost funkcije $refine$ je $O(n_p n_t d_{max})$, kjer je $d_{max}$ največja možna stopnja vozlišča. Pogoj preverjamo za
 	vsak	element matrike $M$, časovna zahtevnost pogoja pa je $d_{max}$, ker preverjamo samo sosede. Postopek preverjanja se sicer ponavlja do fiksne
@@ -626,10 +628,13 @@
 	
 
 
+
+
+
 \chapter{Algoritem VF2}
 
 	Cilj algoritma VF2 je zgraditi preslikavo $M = \{(n,m) \in N_p \times N_t\}$. Medtem ko Ullmannov algoritem generira in preveri vse možne preslikave
-	$M$, jih ta algoritem gradi postopoma. V vsakem stanju $s$ algoritma imamo delno preslikavo $M(s)$. Ta definira podgrafa $G_p(s) \subseteq G_p$ in
+	$M$, jih ta algoritem gradi postopoma. V vsakem stanju $s$ algoritma imamo parcialno preslikavo $M(s)$. Ta definira podgrafa $G_p(s) \subseteq G_p$ in
 	$G_t(s) \subseteq G_t$, ki sta si izomorfna in vsebujeta tista vozlišča, ki so tudi v $M(s)$. Uporabljali bomo oznaki $M_p(s)$ in $M_t(s)$,
 	ki predstavljata množico vozlišč v omenjenih podgrafih.	Prehod iz stanja $s$ v naslednje stanje $s'$ predstavlja razširitev trenutne $M(s)$ z dodatnim
 	parom vozlišč. Nov par $(n, m)$ izberemo med sosedi $G_p$ in $G_t$ tako, da tudi razširjena $M(s')$ definira izomorfna podgrafa.
@@ -685,8 +690,10 @@
 	Primer opisanih množic je na sliki~\ref{pic_t_in_out}. Če bo algoritem iz trenutnega stanja prišel do konca (torej bo našel podgrafni izomorfizem), mora
 	obstajati preslikava za vsak element iz vzorčnega grafa. Zato je dovolj, da v parih, ki jih vstavimo v množico $P(s)$ nastopa samo eno vozlišče iz
 	vzorčnega grafa. Če algoritem ne bo našel podgrafnega izomorfizma z uporabo tega vozlišča, ga ne bo tudi z nobenim drugim. Zato iz vzorčnega grafa 
-	vzamemo vedno samo najmanjši element, kar predstavlja oznaka $min$ v enačbah. Na tak način se tudi izognemo generiranju enakih stanj. Omenimo še,
-	da v sami implementaciji algoritma ni potrebe po eksplicitnem generiranju $P(s)$, ampak se pare dobi implicitno iz uporabljenih podatkovnih struktur.
+	vzamemo vedno samo najmanjši element, kar predstavlja oznaka $min$ v enačbah. Na tak način se tudi izognemo generiranju enakih stanj. Podobno 
+	razmišljanje nas privede do zaključka, da lahko prekinemo trenutno pot preiskovanja, če je $T_t^+$ prazna, $T_p^+$ pa ne (in isto za $T_t^-$,
+	$T_p^-$). 	Omenimo še, da v sami implementaciji algoritma ni potrebe po eksplicitnem generiranju $P(s)$, ampak se pare dobi implicitno iz uporabljenih
+	podatkovnih struktur.
 	\TODO{cite to section?}
 
 	\begin{figure}
@@ -702,44 +709,68 @@
 	\section{Izračun združljivosti kandidatov}
 	\label{vf2:feasible}
 
-
-
+	Pri preverjanju posameznega para $(n,m)$ iz $P(s)$ upoštevamo pet pravil. Z enačbama ~\ref{eq:vf2r1} in \ref{eq:vf2r2} preverimo, da bo razširjena
+	parcialna preslikava še vedno predstavljala izomorfizem obdelanih podgrafov. Vsak sosed vozlišča iz vzorčnega grafa v parcialni preslikavi se mora
+	preslikati v soseda vozlišča iz ciljnega grafa. Pogoj ločimo za vhodne in izhodne sosede. V oglatih oklepajih je zapisan
+	še obratni pogoj, ki mora veljati pri iskanju induciranega podgrafa.
 	\begin{equation}
+	\label{eq:vf2r1}
 	\begin{array}{rcl}
 	(\forall n' \in N_p^-(n) \cap M_p(s) \; \exists m' \in N_t^-(m)    \!\!\!&:&\!\!	 (n', m') \in M(s)) \\
 	\;[\; \wedge \; (\forall m' \in N_t^-(m) \cap M_t(s)\; \exists n' \in N_p^-(n) \!\!\!&:&\!\! (n', m') \in M(s)) \;]
 	\end{array}
 	\end{equation}
-
 	\begin{equation}
+	\label{eq:vf2r2}
 	\begin{array}{rcl}
 	(\forall n' \in N_p^+(n)  \cap M_p(s)  \; \exists m' \in N_t^+(m)    \!\!\!&:&\!\!	 (n', m') \in M(s)) \\
 	\;[\; \wedge \; (\forall m' \in N_t^+(m) \cap  M_t(s)\; \exists n' \in N_p^+(n)     \!\!\!&:&\!\!	 (n', m') \in M(s)) \;]
 	\end{array}
 	\end{equation}
-
+	
+	Ta pogoj je zadosten za pravilno preiskovanje, z dodatnimi pogoji pa dodatno skrčimo prostor preiskovanja. Preverjamo število sosedov v posameznih 
+	množicah.  Prejšnji enačbi že preverjata sosede iz množice $M(s)$. Z enačbama~\ref{eq:vf2r3} in \ref{eq:vf2r4} preverjamo število sosedov v
+	množici $T(s)$. Posebej preverimo za $T^-(s)$ in $T^+(s)$ ter za vhodne in izhodne sosede. Število sosedov mora v vzorčen grafu biti manjše ali
+	enako število sosedov v ciljnem grafu.
 	\begin{equation}
+	\label{eq:vf2r3}
 	\begin{array}{rcl}
-	|N_p^-(n) \cap T_p^-(s)|   \! & \! \leq \! & \! |N_t^-(s) \cap T_t^-(s)| \; \wedge \\
-	|N_p^+(n) \cap T_p^-(s)|  \! & \! \leq \! & \! |N_t^+(s) \cap T_t^-(s)|
+	|N_p^-(n) \cap T_p^-(s)|   \! & \! \leq \! & \! |N_t^-(m) \cap T_t^-(s)| \; \wedge \\
+	|N_p^+(n) \cap T_p^-(s)|  \! & \! \leq \! & \! |N_t^+(m) \cap T_t^-(s)|
+	\end{array}
+	\end{equation}
+	\begin{equation}
+	\label{eq:vf2r4}
+	\begin{array}{rcl}
+	|N_p^-(n) \cap T_p^+(s)|   \! & \! \leq \! & \! |N_t^-(m) \cap T_t^+(s)| \; \wedge \\
+	|N_p^+(n) \cap T_p^+(s)|  \! & \! \leq \! & \!|N_t^+(m) \cap T_t^+(s)|
 	\end{array}
 	\end{equation}
 	
+	Enačba~\ref{eq:vf2r5} preveri še število sosedov, ki niso v množici $M(s)$ ali $T(s)$, torej sosede iz množice $P^d(s)$.
 	\begin{equation}
-	\begin{array}{rcl}
-	|N_p^-(n) \cap T_p^+(s)|   \! & \! \leq \! & \! |N_t^-(s) \cap T_t^+(s)| \; \wedge \\
-	|N_p^+(n) \cap T_p^+(s)|  \! & \! \leq \! & \!|N_t^+(s) \cap T_t^+(s)|
-	\end{array}
-	\end{equation}
-
-	\begin{equation}
+	\label{eq:vf2r5}
 	\begin{array}{rcl}
 	|N_p^-(n) \setminus (M_p(s) \cup T_p(s))| \! & \! \leq \! & \! |N_t^-(n) \setminus (M_t(s) \cup T_t(s))| \; \wedge \\
 	|N_p^+(n) \setminus (M_p(s) \cup T_p(s))| \! & \! \leq \! & \! |N_t^+(n) \setminus (M_t(s) \cup T_t(s))|
 	\end{array}
 	\end{equation}
+	
+	Pri grafih z oznakami enačbi~\ref{eq:vf2r1} dodamo še pogoj kompatibilnosti oznak povezav, oznake vozlišč pa lahko preverjamo že pri izgradnji
+	množice $P(s)$.
 
 
+	\section{Podrobnosti implementacije}
+	Algoritem uporablja šest vektorjev. Parcialno preslikavo $M(s)$ predstavljata vektorja \code{core\_p} in \code{core\_t}. Če $(n,m) \in P(s)$, potem
+	ima \code{core\_p[n]} vrednost $m$ in \code{core\_t[m]} vrednost $n$. V nasprotnem primeru imata oba vrednost $null$. Množice $T_p^-$, 
+	$T_p^+$, $T_t^-$, $T_t^+$ predstavimo z vektorji \code{in\_p}, \code{out\_p}, \code{in\_t}, \code{out\_t}. Vrednost \code{in\_p[n]} npr. je 
+	pozitivna, če velja $n \in T_p^- \; \vee \; n \in M(s)$, drugače je $null$. Za ekskluzivno pripadnost vozlišča $n$ množici $T_p^-$ mora veljati
+	\code{in\_p[n] > 0} in \code{core\_p[n] == null}.
+
+
+	
+	
+	\section{Časovna in prostorska zahtevnost}
 
 
 
