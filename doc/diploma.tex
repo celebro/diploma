@@ -666,6 +666,7 @@
 \end{algorithm}
 
 
+
 	\section{Izbira kandidatov $P(s)$}
 	\label{vf2:candidate}
 	
@@ -676,24 +677,25 @@
 	$M(s)$. Slednji primer se zgodi, če je graf sestavljen iz več nepovezanih delov in čisto na začetku, ko je $M(s)$ prazna. $P(s)$ torej postane ena od
 	naslednjih množic:
 	\begin{enumerate}
-	\item $T^+(s) = N^+(M_p(s)) \times N^+(M_t(s))$
-	\item $T^-(s) = N^-(M_p(s)) \times N^-(M_t(s))$\;\;\; če je $T^+(s)$ prazna
-	\item $P^d(s) = (V_p \setminus (M_p(s) \cup T_p(s)) )  \times (V_t \setminus (M_t(s) \cup T_t(s)) )$\;\;\; če je $T^-(s)$ prazna
+	\item $T^+(s) = \{min\; N^+(M_p(s))\} \times N^+(M_t(s))$
+	\item $T^-(s) = \{min\; N^-(M_p(s))\} \times N^-(M_t(s))$\;\;\; če je $T^+(s)$ prazna
+	\item $P^d(s) = \{min\; (V_p \setminus (M_p(s) \cup T_p(s))) \}  \times (V_t \setminus (M_t(s) \cup T_t(s)) )$\;\;\; če je $T^-(s)$ prazna
 	\end{enumerate}
+	
+	Primer opisanih množic je na sliki~\ref{pic_t_in_out}. Če bo algoritem iz trenutnega stanja prišel do konca (torej bo našel podgrafni izomorfizem), mora
+	obstajati preslikava za vsak element iz vzorčnega grafa. Zato je dovolj, da v parih, ki jih vstavimo v množico $P(s)$ nastopa samo eno vozlišče iz
+	vzorčnega grafa. Če algoritem ne bo našel podgrafnega izomorfizma z uporabo tega vozlišča, ga ne bo tudi z nobenim drugim. Zato iz vzorčnega grafa 
+	vzamemo vedno samo najmanjši element, kar predstavlja oznaka $min$ v enačbah. Na tak način se tudi izognemo generiranju enakih stanj. Omenimo še,
+	da v sami implementaciji algoritma ni potrebe po eksplicitnem generiranju $P(s)$, ampak se pare dobi implicitno iz uporabljenih podatkovnih struktur.
+	\TODO{cite to section?}
 
-	\begin{figure}[h]
+	\begin{figure}
 	\begin{center}
 	\includegraphics[width=8cm]{img/graph_t_in_out.png}
 	\end{center}
 	\caption{}
 	\label{pic_t_in_out}
 	\end{figure}
-	\TODO{pic, praksa vyamemo enega iz tp, preverimo vse iz tt, ker mora veljati ya vsakega}
-	V sami implementacije algoritma množica $P$ ni eksplicitno generirana. Total order
-
-
-
-
 
 
 
