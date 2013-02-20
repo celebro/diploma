@@ -338,9 +338,9 @@
 	$N^-(v) = \{u \in V \big| (u,v) \in E\}$
 	so začetna vozlišča povezav, ki imajo za konec povezave vozlišče $v$. 
 	Množica izhodnih sosedov (ang.~out-neighbors) podgrafa $S = (V_S, E_S)$ je definirana kot 
-	$T^+(S) = \{ n \in (V \setminus V_S) \big| \exists m \in V_S : (m,n) \in E \}$.
+	$N^+(S) = \{ n \in (V \setminus V_S) \big| \exists m \in V_S : (m,n) \in E \}$.
 	Množica vhodnih sosedov (ang.~in-neighbors) podgrafa $S = (V_S, E_S)$ je definirana kot 
-	$T^-(S) = \{ n \in (V \setminus V_S) \big| \exists m \in V_S : (n,m) \in E \}$.
+	$N^-(S) = \{ n \in (V \setminus V_S) \big| \exists m \in V_S : (n,m) \in E \}$.
 
 	Rez grafa $G$ je razdelitev vozlišč $V$ v dve disjunktni množici $(A, \bar A)$. Množico povezav, kjer je en konec povezave v $A$ in drugi v
 	 $\bar A$ označimo z $e(A, \bar A) = \{(u,v) \in E \big| u \in A, v \not \in A\}$. Minimalna bisekcija  grafa G je rez, ki minimizira velikost reza 
@@ -591,7 +591,8 @@
 	je $n_p$. Časovna kompleksnost funkcije $refine$ je $O(n_p n_t d_{max})$, kjer je $d_{max}$ največja možna stopnja vozlišča. Pogoj preverjamo za
 	vsak	element matrike $M$, časovna zahtevnost pogoja pa je $d_{max}$, ker preverjamo samo sosede. Postopek preverjanja se sicer ponavlja do fiksne
 	točke, ampak vsaka ponovitev dodatno poreže preiskovalno drevo, zato je ena ponovitev najslabši primer. Celoten algoritem ima časovno zahtevnost
-	$O(n_p! n_p n_t d_{max})$. V posamezni ponovitvi zanke je funkcija $refine$ najzahtevnejša, število ponovitev pa je reda $n_p!$.
+	%$O(n_p! n_p n_t d_{max})$. 
+	$O(n! n^2 d_{max})$. V posamezni ponovitvi zanke je funkcija $refine$ najzahtevnejša, število ponovitev pa je reda $n!$.
 
 
 	\section{Izboljšave}
@@ -692,10 +693,8 @@
 	vzorčnega grafa. Če algoritem ne bo našel podgrafnega izomorfizma z uporabo tega vozlišča, ga ne bo tudi z nobenim drugim. Zato iz vzorčnega grafa 
 	vzamemo vedno samo najmanjši element, kar predstavlja oznaka $min$ v enačbah. Na tak način se tudi izognemo generiranju enakih stanj. Podobno 
 	razmišljanje nas privede do zaključka, da lahko prekinemo trenutno pot preiskovanja, če je $T_t^+$ prazna, $T_p^+$ pa ne (in isto za $T_t^-$,
-	$T_p^-$). 	Omenimo še, da v sami implementaciji algoritma ni potrebe po eksplicitnem generiranju $P(s)$, ampak se pare dobi implicitno iz uporabljenih
-	podatkovnih struktur.
-	\TODO{cite to section?}
-
+	$T_p^-$). 	Omenimo še, da v sami implementaciji algoritma ni potrebe po eksplicitnem generiranju $P(s)$.
+	
 	\begin{figure}
 	\begin{center}
 	\includegraphics[width=8cm]{img/graph_t_in_out.png}
@@ -760,17 +759,36 @@
 	množice $P(s)$.
 
 
-	\section{Podrobnosti implementacije}
-	Algoritem uporablja šest vektorjev. Parcialno preslikavo $M(s)$ predstavljata vektorja \code{core\_p} in \code{core\_t}. Če $(n,m) \in P(s)$, potem
-	ima \code{core\_p[n]} vrednost $m$ in \code{core\_t[m]} vrednost $n$. V nasprotnem primeru imata oba vrednost $null$. Množice $T_p^-$, 
-	$T_p^+$, $T_t^-$, $T_t^+$ predstavimo z vektorji \code{in\_p}, \code{out\_p}, \code{in\_t}, \code{out\_t}. Vrednost \code{in\_p[n]} npr. je 
-	pozitivna, če velja $n \in T_p^- \; \vee \; n \in M(s)$, drugače je $null$. Za ekskluzivno pripadnost vozlišča $n$ množici $T_p^-$ mora veljati
-	\code{in\_p[n] > 0} in \code{core\_p[n] == null}.
 
-
-	
-	
 	\section{Časovna in prostorska zahtevnost}
+	\label{vf2:impl}
+	Za hitro izvajanje algoritma in čim manjšo porabo prostora je pomembna ustrezna izbira podatkovnih struktur. Implementacija avtorjev algoritma	
+	poleg podatkovnih struktur za hrambo grafov
+	uporablja šest vektorjev. Parcialno preslikavo $M(s)$ predstavljata vektorja \code{core\_p} in \code{core\_t}. Če $(n,m) \in M(s)$, potem
+	ima \code{core\_p[n]} vrednost $m$ in \code{core\_t[m]} vrednost $n$. V nasprotnem primeru imata oba vrednost $null$. Množice $T_p^-$, 
+	$T_p^+$, $T_t^-$, $T_t^+$ predstavimo z vektorji \code{in\_p}, \code{out\_p}, \code{in\_t}, \code{out\_t}. Vrednost \code{in\_p[n]} je 
+	pozitivna, če velja $n \in T_p^- \; \vee \; n \in M_p(s)$, drugače je $null$. Podobno so definirane tudi ostale množice. Za ekskluzivno pripadnost
+	vozlišča $n$ množici $T_p^-$ mora veljati \code{in\_p[n] > 0} in \code{core\_p[n] == null}.
+	
+	Omenjene vektorje si vsa stanja preiskovanja delijo. Velja namreč, da ob prehodu v novo stanje zapise v vektorjih samo dodajamo, oz. jim spreminjamo
+	vrednosti iz $null$ v neko pozitivno vrednost. Ob sestopanju jih lahko zato obnovimo. Vektorjema \code{core} spremenimo vsakemu samo eno vrednost in
+	si to vrednost zapomnimo. Pri ostalih vektorjih je ob spremembi pomembno samo, da imajo vrednost večjo od 0. Lahko jim damo vrednost, ki ustreza
+	trenutni globini preiskovanja. Ob sestopanju izbrišemo vrednosti s trenutno globino. Pri tem tudi ni potreben obhod celotnega vektorja,
+	ampak je zadosti, da preverimo samo sosede izbranega para. Samo za ta vozlišča je namreč bila sprememba možna.
+	Tako ni potrebe po hranjenju kopije vektorja pri vsakem stanju. Ker velja $n_t \geq n_p$, je torej prostorska zahtevnost celotnega algoritma $O(n_t)$.
+	
+	V najslabšem primeru bo algoritem moral zgenerirati vse možna stanja, ki jih je reda $n!$. Vsako stanje mora izračunati tri stvari:
+	\begin{itemize}
+	\item Preveri, če držijo pravila iz razdelka~\ref{vf2:feasible}. To je možno narediti z enim prehodom po vseh sosedih izbranega para, vse
+	potrebne operacije pa se zaradi izbranih podatkovnih struktur izvedejo v konstantnem času. Časovna zahtevnost tega dela je torej $O(d_p(n) + d_t(m))$.
+	\item Izračuna nove množice $T_p^-$, $T_p^+$, $T_t^-$, $T_t^+$. Tudi to lahko opravimo z enim prehodom po vseh sosedih, nastavljamo vrednost
+	na tistih indeksih, ki vrednosti še nimajo. Časovna zahtevnost je isto $O(d_p(n) + d_t(m))$.
+	\item Generiramo množico parov, ki so kandidati za vključitev v $M(s)$. Iz vzorčnega grafa vzamemo prvi element, ki v ustreznem vektorju (\code{in\_p},
+	\code{out\_p}) še nima vrednosti. V množico dodamo še vse elemente iz komplementarne množice, te dobimo z enim prehodom ustreznega vektorja.
+	Časovna zahtevnost je torej $O(n_t)$
+	\end{itemize}
+	Skupna časovna zahtevnost je zato $O(n!n)$
+
 
 
 
