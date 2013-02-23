@@ -256,7 +256,7 @@
 
 
 \chapter{Uvod}
-
+Notes: Splošni algoritmi, brez predpostavk topologiji grafov. Iskanje vseh podgrafov
 
 
 
@@ -469,7 +469,7 @@
 				\State $k \gets k +1$ 															
 			\Until{$m_{d,k} = 1 \vee F_k = 1$}													
 			\State $\forall j \not = k : m_{d,j} \gets 0$										\label{alg:ullmann1.11}
-			\If {$[\;refine(M, P, T)\;]$}
+			\If { [ \Call{refine}{$M, P, T$} ] }
 				\If {$d < n_p$}																	
 					\State $H_d \gets k; F_k \gets 1; d \gets d+1; k \gets 0; M_d \gets M$
 				\Else																			
@@ -513,8 +513,9 @@
 	\For{$i $ in$ [1, n_p]$} $F_i \gets 0;$ \EndFor
 	\State $step(1)$
 	\Statex
-	\Function{step}{d}
-		\If{$[! \; refine(M, P, T)\; ]$}
+	\Procedure{step}{d}
+		\If { [\;!\,\Call{refine}{$M, P, T$} ] }
+		%\If{$[! \; refine(M, P, T)\; ]$}
 			\State \Return
 		\EndIf
 		\State $M_d \gets M$
@@ -527,12 +528,12 @@
 						\State $<$ store $M$ $>$
 					\EndIf
 				\Else
-					\State $step(d+1)$
+					\State \Call{step}{$d+1$}
 				\EndIf
 				\State $F_k \gets 0; M \gets M_d$
 			\EndIf
 		\EndFor
-	\EndFunction
+	\EndProcedure
 \end{algorithmic}
 \end{algorithm}
 
@@ -568,7 +569,7 @@
 \begin{algorithmic}[1]
 	\Require Matrika $M$ in sosednostni matriki $P$ in $T$
 	\Ensure $true$ če je bila M omejena, $false$ če kakšna vrstica ne vsebuje nobene 1
-	\Function{refine}{$M$, $P$, $T$}
+	\Procedure{refine}{$M$, $P$, $T$}
 		\Repeat
 			\State $fixpoint \gets true$
 			\For{$\forall (i,j): m_{i,j} = 1$}
@@ -581,7 +582,7 @@
 			\EndFor
 		\Until{$fixpoint$}
 		\State \Return $true$
-	\EndFunction
+	\EndProcedure
 \end{algorithmic}
 \end{algorithm}
 %\end{spacing}
@@ -626,7 +627,7 @@
 	uporabimo persistentno matriko. Ob spremembi vrednosti v matriki iz 1 v 0 na sklad shranimo koordinate spremembe. Ob sestopanju iz sklada
 	preberemo koordinate sprememb in na ustreznih mestih vrednost povrnemo nazaj v 1. Ker je sprememb kvečjemu $n_p n_t$, se prostorska
 	zahtevnost zmanjša na $O(n_p n_t)$.
-	
+
 
 
 
@@ -635,8 +636,8 @@
 \chapter{Algoritem VF2}
 
 	Cilj algoritma VF2 je zgraditi preslikavo $M = \{(n,m) \in N_p \times N_t\}$. Medtem ko Ullmannov algoritem generira in preveri vse možne preslikave
-	$M$, jih ta algoritem gradi postopoma. V vsakem stanju $s$ algoritma imamo parcialno preslikavo $M(s)$. Ta definira podgrafa $G_p(s) \subseteq G_p$ in
-	$G_t(s) \subseteq G_t$, ki sta si izomorfna in vsebujeta tista vozlišča, ki so tudi v $M(s)$. Uporabljali bomo oznaki $M_p(s)$ in $M_t(s)$,
+	$M$, jih ta algoritem gradi postopoma. V vsakem stanju $s$ algoritma imamo parcialno preslikavo $M(s)$. Ta definira podgrafa $G_p(s) \subseteq G_p$ 
+	in $G_t(s) \subseteq G_t$, ki sta si izomorfna in vsebujeta tista vozlišča, ki so tudi v $M(s)$. Uporabljali bomo oznaki $M_p(s)$ in $M_t(s)$,
 	ki predstavljata množico vozlišč v omenjenih podgrafih.	Prehod iz stanja $s$ v naslednje stanje $s'$ predstavlja razširitev trenutne $M(s)$ z dodatnim
 	parom vozlišč. Nov par $(n, m)$ izberemo med sosedi $G_p$ in $G_t$ tako, da tudi razširjena $M(s')$ definira izomorfna podgrafa.
 	
@@ -654,7 +655,7 @@
 \begin{algorithmic}[1]
 	\Require Vmesno stanje $s$, začetno stanje $s_0$ ima $M(s_0) = \emptyset $
 	\Ensure Vse preslikave podgrafnih izomorfizmov
-	\Function{vf2}{$s$}
+	\Procedure{vf2}{$s$}
 		\If{ $M(s)$ covers all $G_p$}
 			\State output $M(s)$
 		\Else
@@ -662,12 +663,12 @@
 			\ForAll{$p \in P(s)$}
 				\If{$feasible(p)$}
 					\State Compute $s'$ by adding $p$ to $M(s)$
-					\State $vf2(s')$
+					\State \Call{vf2}{$s'$}
 				\EndIf
 			\EndFor
 		\EndIf
 		\State restore data structures
-	\EndFunction
+	\EndProcedure
 \end{algorithmic}
 \end{algorithm}
 
@@ -794,8 +795,54 @@
 
 
 
-
 \chapter{Subsee}
+	Notes: učinkovit za iskanje vseh podrafov. Samo za povezane grafe? Uporablja bisekcijo. Posebna predstavitev grafa, da algoritem najprej preveri bolj
+	goste dele -> hitro iskanje negativov. Posebno uporabno kjer je ciljni graf mnogo večji od vzorčnega (uporabno za web in socialna omrežja, geni,
+	proteini).
+	
+	Bisekcija, išče v posameznih delih, če je minimalna, hitro preveri povezave med razrezi. Traverse history se generira samo enkrat, vzorčni graf se
+	kasneje ne uporablja več.
+
+	\section{Bisekcija grafa}
+	Algoritem Subsee med delovanjem razdeli graf na dve enako veliki množici (particiji) - naredi bisekcijo. Algoritem deluje hitreje, če je bisekcija 
+	minimalna, torej če je število povezav med obema deloma grafov minimalno. Soroden problem je problem minimalnega reza, le da pri njem ni 
+	pomembno število elementov v particijah. Problem minimalne bisekcije je NP-poln, vendar pravilnost algoritma Subsee ni odvisna od natančnosti
+	minimalne bisekcije, zato se uporabljajo hitre aproksimacijske metode.
+
+\begin{algorithm}
+\caption{Bisekcija grafa - ``črne luknje"}
+\label{alg:sub_bh}
+\begin{algorithmic}[1]
+	\Require Graf $G = (V, E)$
+	\Ensure Rez $(B, \bar B)$, ki je aproksimacija minimalne bisekcije
+	\State $B_1 \gets B_2 \gets \emptyset$
+	\State $B_0 \gets V \setminus (B_1 \cup B_2)$
+	\Repeat
+		\State \Call{Add2Hole}{$1$}
+		\State \Call{Add2Hole}{$2$}
+	\Until {$B_0 = \emptyset $}
+	
+	\Statex
+	
+	\Procedure{Add2Hole}{$i$}
+		\If {$B_0 = \emptyset$} \Return \EndIf
+		\State $E_0 \gets \{ (u,v): u \in B_i, v \in B_0 \}$
+		\If {$E_0 \not = \emptyset $}
+			\State \textbf{choose randomly} $e = (u,v) \in E_0: v \in B_0$
+		\Else
+			\State \textbf{choose randomly} $v \in B_0$
+		\EndIf
+		\State $B_i \gets B_i \cup \{ v \}$
+		\State $B_0 \gets B_0 \setminus \{ v \}$
+	\EndProcedure
+
+\end{algorithmic}
+
+\end{algorithm}
+
+
+
+
 
 \chapter{Eksperimentalna primerjava algoritmov}
 	\section{}
