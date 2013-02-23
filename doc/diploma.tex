@@ -38,7 +38,7 @@
 \usepackage{amssymb}		% oznake za množice števil, npr. N za naravna števila
 
 %---------------------------------------------
-% pseudokoda
+% psevdokoda
 \usepackage[chapter]{algorithm}
 \usepackage[noend]{algpseudocode}
 %\usepackage{algorithmicx}
@@ -47,6 +47,28 @@
 \floatname{algorithm}{Algoritem}
 \renewcommand{\algorithmicrequire}{\textbf{Vhod:}}
 \renewcommand{\algorithmicensure}{\textbf{Izhod:}}
+
+%Multipart algorithm
+%\newcommand\Algphase[1]{%
+%\vspace*{-.7\baselineskip}\Statex\hspace*{\dimexpr-\algorithmicindent-2pt\relax}\rule{\textwidth}{0.4pt}%
+%\Statex\hspace*{-\algorithmicindent}\textbf{#1}%
+%\vspace*{-.7\baselineskip}\Statex\hspace*{\dimexpr-\algorithmicindent-2pt\relax}\rule{\textwidth}{0.4pt}%
+%}
+\newcommand\Subalg[1]{%
+	\Statex%
+	\vspace*{-.7\baselineskip}%
+	\hspace*{\dimexpr-\algorithmicindent-4pt\relax}%
+	\rule{\textwidth}{0.4pt}%
+	\Statex%
+	
+	\vspace*{-.7\baselineskip}%
+	\Statex\hspace*{\dimexpr-\algorithmicindent-2pt\relax}%
+	\rule{\textwidth}{0.4pt}%
+	
+	%\Statex\hspace*{-\algorithmicindent}\textbf{Algoritem \thealgorithm\, :: procedure} #1%
+	\Statex\hspace*{-\algorithmicindent}\textbf{procedure} #1%
+}
+
 %---------------------------------------------
 
 
@@ -256,7 +278,7 @@
 
 
 \chapter{Uvod}
-Notes: Splošni algoritmi, brez predpostavk topologiji grafov. Iskanje vseh podgrafov
+\TODO{Notes: Splošni algoritmi, brez predpostavk topologiji grafov. Iskanje vseh podgrafov}
 
 
 
@@ -497,11 +519,11 @@ Notes: Splošni algoritmi, brez predpostavk topologiji grafov. Iskanje vseh podg
 
 	Velik del podanega algoritma se ukvarja s sestopanjem in obnavljanjem stanja pri sestopanju. Zato v \refalg{alg:ullmann3} podajamo še rekurzivno 
 	različico algoritma. V tej različici za sestopanje in obnavljanje stanja skrbi sama rekurzija in je potek algoritma bolj očiten. V vrsticah 1 in 2 je
-	inicializacija, le da sedaj potrebujemo manj spremenljivk. V vrstici 3 začnemo preiskovanje na globini 1. V vrstici 7 shranimo trenutno matriko $M$,
-	ki jo bomo obnavljali ob sestopanju (ponovno zaenkrat ignoriramo del v oglatih oklepajih). V vrstici 8 je zanka, ki preveri vse stolpce. Ko pridemo do
-	ustreznega (vrstica 9), vse ostale stolpce postavimo na 0 (vrstica 10), in označimo stolpec kot izbran (vrstica 11). Če smo v zadnji vrstici matrike $M$,
-	potem preverimo pogoj~\ref{eq:ullmann1} in če smo našli izomorfizem, shranimo trenutno matriko $M$ (vrstice 12-14). Če to ni zadnja vrstica, gremo
-	v naslednji korak (vrstica 16). Ob sestopanju obnovimo matriko $M$ in označimo trenutni stolpec kot neizbran (vrstica 17).
+	inicializacija, le da sedaj potrebujemo manj spremenljivk. V vrstici 3 začnemo preiskovanje na globini 1. V vrstici 6 shranimo trenutno matriko $M$,
+	ki jo bomo obnavljali ob sestopanju (ponovno zaenkrat ignoriramo del v oglatih oklepajih). V vrstici 7 je zanka, ki preveri vse stolpce. Ko pridemo do
+	ustreznega (vrstica 8), vse ostale stolpce postavimo na 0 (vrstica 9), in označimo stolpec kot izbran (vrstica 10). Če smo v zadnji vrstici matrike $M$,
+	potem preverimo pogoj~\ref{eq:ullmann1} in če smo našli izomorfizem, shranimo trenutno matriko $M$ (vrstice 11-13). Če to ni zadnja vrstica, gremo
+	v naslednji korak (vrstica 15). Ob sestopanju obnovimo matriko $M$ in označimo trenutni stolpec kot neizbran (vrstica 16).
 
 \begin{algorithm}
 \caption{Ullmannov algoritem - rekurzivna različica}
@@ -512,8 +534,9 @@ Notes: Splošni algoritmi, brez predpostavk topologiji grafov. Iskanje vseh podg
 	\State $M \gets M^0$
 	\For{$i $ in$ [1, n_p]$} $F_i \gets 0;$ \EndFor
 	\State $step(1)$
-	\Statex
-	\Procedure{step}{d}
+%	\Statex
+	\Subalg{\Call{step}{$d$}}
+%	\Procedure{step}{d}
 		\If { [\;!\,\Call{refine}{$M, P, T$} ] }
 		%\If{$[! \; refine(M, P, T)\; ]$}
 			\State \Return
@@ -533,7 +556,7 @@ Notes: Splošni algoritmi, brez predpostavk topologiji grafov. Iskanje vseh podg
 				\State $F_k \gets 0; M \gets M_d$
 			\EndIf
 		\EndFor
-	\EndProcedure
+%	\EndProcedure
 \end{algorithmic}
 \end{algorithm}
 
@@ -796,18 +819,24 @@ Notes: Splošni algoritmi, brez predpostavk topologiji grafov. Iskanje vseh podg
 
 
 \chapter{Subsee}
-	Notes: učinkovit za iskanje vseh podrafov. Samo za povezane grafe? Uporablja bisekcijo. Posebna predstavitev grafa, da algoritem najprej preveri bolj
-	goste dele -> hitro iskanje negativov. Posebno uporabno kjer je ciljni graf mnogo večji od vzorčnega (uporabno za web in socialna omrežja, geni,
-	proteini).
-	
+	\TODO{Notes: učinkovit za iskanje vseh podrafov. Samo za povezane grafe? Uporablja bisekcijo. Posebna predstavitev grafa, da algoritem najprej 
+	preveri bolj goste dele -$>$ hitro iskanje negativov. Posebno uporabno kjer je ciljni graf mnogo večji od vzorčnega (uporabno za web in socialna omrežja,
+	geni,	proteini).	
 	Bisekcija, išče v posameznih delih, če je minimalna, hitro preveri povezave med razrezi. Traverse history se generira samo enkrat, vzorčni graf se
-	kasneje ne uporablja več.
+	kasneje ne uporablja več.}
 
 	\section{Bisekcija grafa}
 	Algoritem Subsee med delovanjem razdeli graf na dve enako veliki množici (particiji) - naredi bisekcijo. Algoritem deluje hitreje, če je bisekcija 
 	minimalna, torej če je število povezav med obema deloma grafov minimalno. Soroden problem je problem minimalnega reza, le da pri njem ni 
 	pomembno število elementov v particijah. Problem minimalne bisekcije je NP-poln, vendar pravilnost algoritma Subsee ni odvisna od natančnosti
 	minimalne bisekcije, zato se uporabljajo hitre aproksimacijske metode.
+
+	Prva taka metoda je  algoritem ``črnih lukenj" (Black holes bisection). Začne s praznima particijama $B_1$ in $B_2$. Potem v vsako particijo izmenično
+	dodaja po eno vozlišče.
+	Vozlišče izbira med sosednjimi vozlišči trenutne particije. Torej v $B_1$ doda naključno vozlišče iz $V \setminus (B_1 \cup B_2)$, ki ima soseda v $B_1$.
+	Podobno tudi za drugo particijo. Če takega vozlišča ni, doda naključno še ne izbrano vozlišče. Algoritem temelji na dejstvu, da če sta particiji (``črni 
+	luknji") trenutno locirani na 	nasprotnih straneh minimalne bisekcije, bo več sosedov iz iste strani minimalne bisekcije in posledično večja verjetnost, da
+	dodamo ustrezno vozlišče. Psevdokoda je podana v~\refalg{alg:sub_bh}.
 
 \begin{algorithm}
 \caption{Bisekcija grafa - ``črne luknje"}
@@ -822,23 +851,29 @@ Notes: Splošni algoritmi, brez predpostavk topologiji grafov. Iskanje vseh podg
 		\State \Call{Add2Hole}{$2$}
 	\Until {$B_0 = \emptyset $}
 	
-	\Statex
-	
-	\Procedure{Add2Hole}{$i$}
-		\If {$B_0 = \emptyset$} \Return \EndIf
-		\State $E_0 \gets \{ (u,v): u \in B_i, v \in B_0 \}$
-		\If {$E_0 \not = \emptyset $}
-			\State \textbf{choose randomly} $e = (u,v) \in E_0: v \in B_0$
-		\Else
-			\State \textbf{choose randomly} $v \in B_0$
-		\EndIf
-		\State $B_i \gets B_i \cup \{ v \}$
-		\State $B_0 \gets B_0 \setminus \{ v \}$
-	\EndProcedure
+	\Subalg{\Call{Add2Hole}{$i$}}
+
+	\If {$B_0 = \emptyset$} \Return \EndIf
+	\State $E_0 \gets \{ (u,v): u \in B_i, v \in B_0 \}$
+	\If {$E_0 \not = \emptyset $}
+		\State \textbf{choose randomly} $e = (u,v) \in E_0: v \in B_0$
+	\Else
+		\State \textbf{choose randomly} $v \in B_0$
+	\EndIf
+	\State $B_i \gets B_i \cup \{ v \}$
+	\State $B_0 \gets B_0 \setminus \{ v \}$
 
 \end{algorithmic}
-
 \end{algorithm}
+
+	Druga metoda je požrešni algoritem. Ta začne z že obstoječo bisekcijo, ki pa je lahko kar rezultat prve metode, ter jo lokalno optimizira. Za vsako vozlišče
+	izračuna notranjo ceno $I(x)$, ki je število sosedov vozlišča $x$ znotraj iste particije, in zunanjo ceno $E(x)$, ki je število sosedov v drugi particiji. Potem
+	za vsak par $x \in B$, $y \in \bar B$ izračuna spremembo cene reza ob morebitni zamenjavi para: $gain = E(x) - I(x) + E(y)  - E(y) - 2w(x,y)$, kjer
+	$w(x,y) = 1$, če sta vozlišči povezani, in $w(x,y) = 0$ če vozlišči nista povezani ($w$ je korekcija morebitne medsebojne povezave - ta je zunanja in za
+	razliko od ostalih tudi po zamenjavi ostane zunanja). Algoritem nato menja pare vozlišč z največjo pridobitvijo, pri vsaki zamenjavi pa popravi $I(v')$ 
+	in $E(v')$ za vsakega soseda zamenjanega para. Ustavi se, ko ni več para z $gain > 0$.
+	
+
 
 
 
