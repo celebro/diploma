@@ -823,9 +823,19 @@
 	preveri bolj goste dele -$>$ hitro iskanje negativov. Posebno uporabno kjer je ciljni graf mnogo večji od vzorčnega (uporabno za web in socialna omrežja,
 	geni,	proteini).	
 	Bisekcija, išče v posameznih delih, če je minimalna, hitro preveri povezave med razrezi. Traverse history se generira samo enkrat, vzorčni graf se
-	kasneje ne uporablja več.}
+	kasneje ne uporablja več.
+	Princip deli in vladaj}
+
+	\begin{enumerate}
+		\item Zgeneriramo vse zgodovine prehodov za vzorčni graf (razdelek~\ref{sub:th})
+		\item Ciljni graf razbijemo z bisekcijo (aproksimacijski algoritem - razdelek~\ref{sub:bisect}).
+		\item Na vsaki povezavi med obema deloma bisekcije preverimo obstoj podgrafnega izomorfizma z uporabo zgodovin prehodov 
+			(razdelek~\ref{sub:search}).
+		\item Na vsakem delu bisekcije ponovimo postopek od koraka 2 naprej; končamo, ko je ima posamezen del bisekcije manj vozlišč kot vzorčni graf.
+	\end{enumerate}
 
 	\section{Bisekcija grafa}
+	\label{sub:bisect}
 	Algoritem Subsea med delovanjem razdeli graf na dve enako veliki množici (particiji) - naredi bisekcijo. Algoritem deluje hitreje, če je bisekcija 
 	minimalna, torej če je število povezav med obema deloma grafov minimalno. Soroden problem je problem minimalnega reza, le da pri njem ni 
 	pomembno število elementov v particijah. Problem minimalne bisekcije je NP-poln, vendar pravilnost algoritma Subsea ni odvisna od natančnosti
@@ -862,7 +872,6 @@
 	\EndIf
 	\State $B_i \gets B_i \cup \{ v \}$
 	\State $B_0 \gets B_0 \setminus \{ v \}$
-
 \end{algorithmic}
 \end{algorithm}
 
@@ -873,10 +882,144 @@
 	razliko od ostalih tudi po zamenjavi ostane zunanja). Algoritem nato menja pare vozlišč z največjo pridobitvijo, pri vsaki zamenjavi pa popravi $I(v')$ 
 	in $E(v')$ za vsakega soseda zamenjanega para. Ustavi se, ko ni več para z $gain > 0$.
 	
+	
+	
+	\section{Zgodovina prehoda}
+	\label{sub:th}
+	Algoritem Subsea med iskanjem podgrafnega izomorfizma ne uporablja vzorčnega grafa, ampak zgodovino prehoda. Ta enolično določa vrstni red
+	obiskovanja vozlišč. Motivacija za tak pristop je, da v fazi predprocesiranja določimo vrstni red preiskovanja, ki bi čim hitreje ugotovil, da izomorfizem
+	ni mogoč.
+	
+	Zaporedno številko označuje funkcija $d : V \to \mathbb{N}$. 
+	
+\begin{algorithm}
+\caption{Zgodovina prehoda (ang. Traverse history)}
+\label{alg:sub_th}
+\begin{algorithmic}[1]
+	\Require Graf $G = (V, E)$, začetni vozlišči $v_1, v_2 \in V$, da velja $(v_1, v_2) \in E$
+	\Ensure Zgodovina prehoda $H$ z začetkom v $v_1, v_2$
+
+	\ForAll {$v \in V$}
+		\State $d(v) \gets 0$
+	\EndFor
+	\State $vtime \gets 1$
+	\State \Call{Visit}{$v_1$}
+	\State \Return $H$
+
+
+	\Subalg{\Call{Visit}{$v$}}
+	\State $d(v) \gets vtime$
+	\State $H[vtime+\!+] = (l(v), \{0 < d(u_1) \leq \ldots \leq d(u_m) : u_1, \ldots, u_m \in N_G(v)\})$
+	\If {$v = v_1$}
+		\Call{Visit}{$v_2$}
+	\EndIf
+	\State $N_0 \gets \{ u \in N_G(v): d(u) = 0 \}$
+	\While {$N_0 \not = \emptyset$}
+		\State \textbf{choose} $w \in N_0$ with miminal \Call{EstimateNext}{$w, v$}
+		\If {$d(w) = 0$} 
+			\Call{Visit}{$w$}
+		\EndIf
+		\State $N_0 \gets N_0 \setminus \{w\}$
+	\EndWhile
+
+
+	\Subalg{\Call{EstimateNext}{$w, v$}}	
+	\State $S \gets \{w\}$
+	\State $len \gets 1$
+	\Repeat
+		\State $N_S \gets \cup_{z \in S}N_{G\, \setminus\,  (v,w)}(z)$
+		\State $p \gets | \{ y \in N_S: d(y) > 0 \} |$
+		\If {$p > 0$}
+			\Return $\langle len, -p \rangle$
+		\EndIf
+		\State $len+\!+$
+		\State $S \gets S \cup N_S$
+	\Until {$N_S \not = \emptyset$}
+	\State \Return $ \langle \infty, -|S| \rangle $
+\end{algorithmic}
+\end{algorithm}
 
 
 
+	\section{Iskanje izomorfnega podgrafa}
+	\label{sub:search}
+	
+\begin{algorithm}
+\caption{Iskanje izomorfnega podgrafa}
+\label{alg:sub_st}
+\begin{algorithmic}[1]
+	\Require Graf $G_t = (V_t, E_t)$, začetni vozlišči $v_1', v_2' \in V_t$, zgodovina prehoda $H$ grafa $G_p$, [ množica ``črnih" povezav $Black$ ]
+	\Ensure Vsi podgrafi [ ali inducirani podgrafi, ki ne vsebujejo ``črnih" povezav ] grafa $G_t$, ki so $(v_1 \to v_1', v_2 \to _v2')$-izomorfni z
+	 $G_p$ in sta $v_1, v_2$ začetni vozlišči $H$
+	 
+	 \ForAll {$v' \in V_t$}
+	 	\State $g(v') \gets 0$
+	\EndFor
+	\State $g(v_1') \gets 1$
+	\State $g(v_2') \gets 2$
+	\State \Return \Call{SearchVisit}{$\{ v_1', v_2' \}, \emptyset$}
 
+	
+	\Subalg{\Call{SearchVisit}{$V', E'$}}
+	\State $vtime \gets |V'|$
+	\State $v' \gets g^{-1}(vtime)$
+	\If {$H[vtime].N \not \subseteq \{ g(u') > 0: (v', u') \in E \}$ \textbf{or} $H[vtime].l \not = l(v')$}
+		\State \Return $false$
+	\EndIf
+	\If {[ $H[vtime].N \not = \{ g(u') > 0: (v', u') \in E \}$ \textbf{or} $H[vtime].l \not = l(v')$ ]}
+		\State \Return $false$
+	\EndIf
+	\State $E' \gets E' \cup \{ (u', v'): d(u') \in H[vtime].N \}$
+	\If {|H| = vtime}
+		\Return $\{ (V', E') \}$
+	\EndIf
+	%??
+	\State $L \gets \cap \{ N_{G_t}(u): u \in H[vtime + 1].N \}$
+	\State $S \gets \emptyset$
+	\For {$w \in L$}
+		\If {$g(w) = 0$ [ \textbf{and} $(v,w) \not \in ``Black"$ ]}
+			\State $g(w) \gets vtime$
+			\State $S \gets S \cup$ \Call{SearchVisit}{$V' \cup \{w\}, E'$}
+			\State $g(w) \gets 0$
+		\EndIf
+	\EndFor
+	\State \Return $S$
+\end{algorithmic}
+\end{algorithm}
+
+
+
+	\section {Celoten algoritem}
+
+\begin{algorithm}
+\caption{Glavni algoritem Subsea}
+\label{alg:sub_main}
+\begin{algorithmic}[1]
+	\Require Vzorčni graf $G_p = (V_p, E_p)$, ciljni graf $G_t = (V_t, E_t)$
+	\Ensure Vsi podgrafi [ ali inducirani podgrafi ] grafa $G_t$, ki so izomorfni grafu $G_p$
+	 \State $A \gets \emptyset$
+	 \For {$\langle v_1, v_2 \rangle \in V \times V$}
+	 	\State \textbf{run} \refalg{alg:sub_th} on $G, v_1, v_2 \to $ traverse history $H_{v_1, v_2}$
+	 	\State $A \gets A \cup \{ H_{v_1, v_2} \}$
+	 \EndFor
+	 \State \Call{SubIso}{$A,G_t$}
+
+	
+	\Subalg{\Call{SubIso}{$A, G_t$}}
+	\If {$|V_p| > |V_t|$}
+		\Return $\emptyset$
+	\EndIf
+	\State \textbf{run} \refalg{alg:sub_bh} on $G_t \to$ bisection $(B, \bar B)$
+	\For {$ (v_1, v_2) \in (B, \bar B)$}
+		\For {$H \in A$}
+			\State \textbf{run} \refalg{alg:sub_st} on $G_t, v_1, v_2, H \to $ set of subgraphs $S$
+			\State $G \gets G \setminus (v_1, v_2)$ [ $``Black" \gets ``Black" \cup (v_1, v_2)$ ]
+		\EndFor
+	\EndFor
+	\State \Return {$ S \cup \Call{SubIso}{G_t(B)} \cup \Call{SubIso}{G_t(\bar B)} $}
+			
+\end{algorithmic}
+\end{algorithm}
 
 
 \chapter{Eksperimentalna primerjava algoritmov}
