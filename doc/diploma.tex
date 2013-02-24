@@ -827,7 +827,7 @@
 	Princip deli in vladaj}
 
 	\begin{enumerate}
-		\item Zgeneriramo vse zgodovine prehodov za vzorčni graf (razdelek~\ref{sub:th})
+		\item Zgeneriramo vse zgodovine pregledov za vzorčni graf (razdelek~\ref{sub:th})
 		\item Ciljni graf razbijemo z bisekcijo (aproksimacijski algoritem - razdelek~\ref{sub:bisect}).
 		\item Na vsaki povezavi med obema deloma bisekcije preverimo obstoj podgrafnega izomorfizma z uporabo zgodovin prehodov 
 			(razdelek~\ref{sub:search}).
@@ -884,16 +884,17 @@
 	
 	
 	
-	\section{Zgodovina prehoda}
+	\section{Zgodovina pregleda grafa}
 	\label{sub:th}
-	Algoritem Subsea med iskanjem podgrafnega izomorfizma ne uporablja vzorčnega grafa, ampak zgodovino prehoda. Ta enolično določa vrstni red
+	Algoritem Subsea med iskanjem podgrafnega izomorfizma ne uporablja vzorčnega grafa, ampak zgodovino pregleda. Ta enolično določa vrstni red
 	obiskovanja vozlišč. Motivacija za tak pristop je, da v fazi predprocesiranja določimo vrstni red preiskovanja, ki bi čim hitreje ugotovil, da izomorfizem
 	ni mogoč.
 	
-	Zaporedno številko označuje funkcija $d : V \to \mathbb{N}$. 
+	Zaporedno številko obiskovanja označuje preslikava $d : V \to \mathbb{N}$. Za vsako vozlišče definiramo še $l_i = l(v): d(v) = i$ in $N_i = \{ d(u) < i:
+	u \in N_G(v) \, \wedge \, d(v) = i\}$.
 	
 \begin{algorithm}
-\caption{Zgodovina prehoda (ang. Traverse history)}
+\caption{Zgodovina pregleda grafa (ang. Traverse history)}
 \label{alg:sub_th}
 \begin{algorithmic}[1]
 	\Require Graf $G = (V, E)$, začetni vozlišči $v_1, v_2 \in V$, da velja $(v_1, v_2) \in E$
