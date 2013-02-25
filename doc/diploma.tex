@@ -886,12 +886,38 @@
 	
 	\section{Zgodovina pregleda grafa}
 	\label{sub:th}
+	\TODO{sliki?}
 	Algoritem Subsea med iskanjem podgrafnega izomorfizma ne uporablja vzorčnega grafa, ampak zgodovino pregleda. Ta enolično določa vrstni red
 	obiskovanja vozlišč. Motivacija za tak pristop je, da v fazi predprocesiranja določimo vrstni red preiskovanja, ki bi čim hitreje ugotovil, da izomorfizem
 	ni mogoč.
 	
-	Zaporedno številko obiskovanja označuje preslikava $d : V \to \mathbb{N}$. Za vsako vozlišče definiramo še $l_i = l(v): d(v) = i$ in $N_i = \{ d(u) < i:
-	u \in N_G(v) \, \wedge \, d(v) = i\}$.
+	Zaporedno številko obiskovanja označuje preslikava $d : V \to \mathbb{N}$. Za vsako vozlišče definiramo $l_i = l(v): d(v) = i$, ki je oznaka vozlišča,
+	ki smo ga obiskali kot $i$-tega zaporednega. Definiramo še $N_i = \{ d(u) < i: u \in N_G(v) \, \wedge \, d(v) = i\}$, ki za $i$-to vozlišče predstavlja
+	njegove sosede, ki smo jih že obiskali. Zgodovina pregleda grafa je zaporedje $\langle (l_1, N_1), (l_2, N_2), \ldots (l_{|V|}, N_{|V|})\rangle$. To
+	zaporedje bomo kasneje uporabili za preverjanje izomorfizma v ciljnem grafu. Vozlišča bomo preiskovali v vrstnem redu, ki ga določa zgodovina pregleda
+	v vzorčnem grafu. Za vsako obiskano vozlišče iz ciljnega grafa bomo preverili, če ustreza oznaki vozlišča iz zgodovine pregleda (ima enak $l_i$) in če
+	struktura trenutnega podgrafa ustreza strukturi vzorčnega grafa ($N_i$ vzorčnega grafa mora biti podmnožica $N_i$ ciljnega grafa, oziroma morata biti
+	množici enaki v primeru iskanja induciranega podgrafa).
+	
+	Psevdokoda algoritma, ki izračuna zgodovino pregleda z začetkom v dveh podanih vozliščih, je v~\refalg{alg:sub_th}. Deluje po principu preiskovanja
+	v globino, pri čemer naslednje vozlišče izbere na podlagi hevristike. V vrsticah \ref{line:th1}--\ref{line:th4} inicializiramo potrebne podatkovne strukture
+	in obiščemo prvo vozlišče. V vrstici \ref{line:th6} obiskanemu vozlišču določimo zaporedno številko. V vrstici \ref{line:th7} gradimo samo zgodovino
+	pregleda grafa. V vrstici \ref{line:th7} zagotovimo, da kot drugega obiščemo vozlišče $v_2$. Začetek na vozliščih $v_1, v_2$ je potreben, ker moramo 
+	zgenerirati zgodovino pregleda za vsako povezavo v vzorčnem grafu. V vrsticah \ref{line:th9}--\ref{line:th13} obiščemo vsa naslednja vozlišča. Kandidati
+	so sosedi trenutnega vozlišča (vrstica \ref{line:th9}). Vrstni red določa hevristika (vrstica \ref{line:th11}). Najbolšega kandidata rekurzivno obiščemo
+	(preiskovanje v globino, vrstica \ref{line:th12}) in odstranimo s seznama kandidatov (\ref{line:th13}).
+	
+	Hevristika daje prednost vozliščem, ki so tesno povezani z že pregledanimi vozlišči. Funkcija za izračun hevristike vrača par koordinat. Prva predstavlja
+	število korakov ki jih potrebujemo iz kandidata $w$ do poljubnega že pregledanega vozlišča, pri čemer jasno ne smemo uporabiti povezave $(v, w)$.
+	Druga koordinata predstavlja število že obiskanih vozlišč, ki jih s toliko koraki lahko dosežemo (to številko pomnožimo z $-1$). Med kandidati izberemo
+	tistega z minimalnim parom koordinat, torej tistega, ki potrebuje najmanj korakov (je najbližje že pregledanim vozliščem), med izenačenimi pa tistega,
+	preko katerega pridemo do največjega števila že obiskanih vozlišč.
+	Koordinati izračunamo s preiskovanjem v širino. Začnemo z množico, v kateri je samo kandidat $w$, dolžina poti pa je $1$ (vrstici \ref{line:th14} in
+	\ref{line:th15}). Nato v zanki opravljamo preiskovanje. V vrstici \ref{line:th17} izračunamo vse sosede trenutne množice $S$ (in ignoriramo omenjeno
+	povezavo $(w,v)$). V vrstici \ref{line:th18} preštejemo, koliko že pregledanih vozlišč smo dosegli. Če smo dosegli vsaj enega, vrnemo rezultat v
+	v vrstici \ref{line:th19}, drugače povečamo korak (vrstici \ref{line:th20} in \ref{line:th21}). Če ni več novih sosedov (vrstica \ref{line:th22}), pomeni,
+	da iz $w$ ni mogoče doseči že pregledanih vozlišč, razen preko $v$. Take kandidate bomo pregledali nazadnje, zato prvo koordinato nastavimo na 
+	$\infty$, drugo pa na velikost množice vozlišč, dosegljivih iz $w$.
 	
 \begin{algorithm}
 \caption{Zgodovina pregleda grafa (ang. Traverse history)}
@@ -900,43 +926,43 @@
 	\Require Graf $G = (V, E)$, začetni vozlišči $v_1, v_2 \in V$, da velja $(v_1, v_2) \in E$
 	\Ensure Zgodovina prehoda $H$ z začetkom v $v_1, v_2$
 
-	\ForAll {$v \in V$}
+	\ForAll {$v \in V$}			\label{line:th1}
 		\State $d(v) \gets 0$
 	\EndFor
 	\State $vtime \gets 1$
-	\State \Call{Visit}{$v_1$}
+	\State \Call{Visit}{$v_1$}		\label{line:th4}
 	\State \Return $H$
 
 
 	\Subalg{\Call{Visit}{$v$}}
-	\State $d(v) \gets vtime$
-	\State $H[vtime+\!+] = (l(v), \{0 < d(u_1) \leq \ldots \leq d(u_m) : u_1, \ldots, u_m \in N_G(v)\})$
+	\State $d(v) \gets vtime$ 		\label{line:th6}
+	\State $H[vtime+\!+] \gets (l(v), \{0 < d(u_1) \leq \ldots \leq d(u_m) : u_1, \ldots, u_m \in N_G(v)\})$ 	\label{line:th7}
 	\If {$v = v_1$}
-		\Call{Visit}{$v_2$}
+		\Call{Visit}{$v_2$}						\label{line:th8}
 	\EndIf
-	\State $N_0 \gets \{ u \in N_G(v): d(u) = 0 \}$
-	\While {$N_0 \not = \emptyset$}
-		\State \textbf{choose} $w \in N_0$ with miminal \Call{EstimateNext}{$w, v$}
+	\State $N_0 \gets \{ u \in N_G(v): d(u) = 0 \}$		\label{line:th9}
+	\While {$N_0 \not = \emptyset$}					\label{line:th10}
+		\State \textbf{choose} $w \in N_0$ with miminal \Call{EstimateNext}{$w, v$}		\label{line:th11}
 		\If {$d(w) = 0$} 
-			\Call{Visit}{$w$}
+			\Call{Visit}{$w$}					\label{line:th12}
 		\EndIf
-		\State $N_0 \gets N_0 \setminus \{w\}$
+		\State $N_0 \gets N_0 \setminus \{w\}$		\label{line:th13}
 	\EndWhile
 
 
-	\Subalg{\Call{EstimateNext}{$w, v$}}	
-	\State $S \gets \{w\}$
-	\State $len \gets 1$
+	\Subalg{\Call{EstimateNext}{$w, v$}}
+	\State $S \gets \{w\}$						\label{line:th14}
+	\State $len \gets 1$							\label{line:th15}
 	\Repeat
-		\State $N_S \gets \cup_{z \in S}N_{G\, \setminus\,  (v,w)}(z)$
-		\State $p \gets | \{ y \in N_S: d(y) > 0 \} |$
-		\If {$p > 0$}
+		\State $N_S \gets \cup_{z \in S}N_{G\, \setminus\,  (v,w)}(z)$	\label{line:th17}
+		\State $p \gets | \{ y \in N_S: d(y) > 0 \} |$					\label{line:th18}
+		\If {$p > 0$}										\label{line:th19}
 			\Return $\langle len, -p \rangle$
 		\EndIf
-		\State $len+\!+$
-		\State $S \gets S \cup N_S$
-	\Until {$N_S \not = \emptyset$}
-	\State \Return $ \langle \infty, -|S| \rangle $
+		\State $len+\!+$						\label{line:th20}
+		\State $S \gets S \cup N_S$			\label{line:th21}
+	\Until {$N_S \not = \emptyset$}				\label{line:th22}
+	\State \Return $ \langle \infty, |S| \rangle $	\label{line:th23}
 \end{algorithmic}
 \end{algorithm}
 
