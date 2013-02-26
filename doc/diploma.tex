@@ -795,8 +795,8 @@
 	vozlišča $n$ množici $T_p^-$ mora veljati \code{in\_p[n] > 0} in \code{core\_p[n] == null}.
 	
 	Omenjene vektorje si vsa stanja preiskovanja delijo. Velja namreč, da ob prehodu v novo stanje zapise v vektorjih samo dodajamo, oz. jim spreminjamo
-	vrednosti iz $null$ v neko pozitivno vrednost. Ob sestopanju jih lahko zato obnovimo. Vektorjema \code{core} spremenimo vsakemu samo eno vrednost in
-	si to vrednost zapomnimo. Pri ostalih vektorjih je ob spremembi pomembno samo, da imajo vrednost večjo od 0. Lahko jim damo vrednost, ki ustreza
+	vrednosti iz $null$ v neko pozitivno vrednost. Ob sestopanju jih lahko zato obnovimo. Vektorjema \code{core} spremenimo vsakemu samo eno vrednost 
+	in si to vrednost zapomnimo. Pri ostalih vektorjih je ob spremembi pomembno samo, da imajo vrednost večjo od 0. Lahko jim damo vrednost, ki ustreza
 	trenutni globini preiskovanja. Ob sestopanju izbrišemo vrednosti s trenutno globino. Pri tem tudi ni potreben obhod celotnega vektorja,
 	ampak je zadosti, da preverimo samo sosede izbranega para. Samo za ta vozlišča je namreč bila sprememba možna.
 	Tako ni potrebe po hranjenju kopije vektorja pri vsakem stanju. Ker velja $n_t \geq n_p$, je torej prostorska zahtevnost celotnega algoritma $O(n_t)$.
@@ -897,7 +897,8 @@
 	zaporedje bomo kasneje uporabili za preverjanje izomorfizma v ciljnem grafu. Vozlišča bomo preiskovali v vrstnem redu, ki ga določa zgodovina pregleda
 	v vzorčnem grafu. Za vsako obiskano vozlišče iz ciljnega grafa bomo preverili, če ustreza oznaki vozlišča iz zgodovine pregleda (ima enak $l_i$) in če
 	struktura trenutnega podgrafa ustreza strukturi vzorčnega grafa ($N_i$ vzorčnega grafa mora biti podmnožica $N_i$ ciljnega grafa, oziroma morata biti
-	množici enaki v primeru iskanja induciranega podgrafa).
+	množici enaki v primeru iskanja induciranega podgrafa). Če bi imeli usmerjene grafe, bi morali hraniti ločeni množici $N_i$ za vhodne in izhodne
+	povezave.
 	
 	Psevdokoda algoritma, ki izračuna zgodovino pregleda z začetkom v dveh podanih vozliščih, je v~\refalg{alg:sub_th}. Deluje po principu preiskovanja
 	v globino, pri čemer naslednje vozlišče izbere na podlagi hevristike. V vrsticah \ref{line:th1}--\ref{line:th4} inicializiramo potrebne podatkovne strukture
@@ -966,6 +967,7 @@
 \end{algorithmic}
 \end{algorithm}
 
+	\clearpage
 
 
 	\section{Iskanje izomorfnega podgrafa}
@@ -976,6 +978,13 @@
 	da se ju ne meša) in definiramo vrednosti v preslikavi za podani vozlišči. Tako omejimo preiskovanje v ciljnem grafu na samo tiste podgrafe, ki 
 	vsebujejo podano povezavo. V vrstici \ref{line:st5} je prvi klic rekurzivne funkcije, ki bo od sedaj naprej sledila vrstnemu redu preiskovanja iz podane
 	$H$.
+	
+	V funkcije $searchVisit$ naprej dobimo vrednost zadnje zaporedne številke iz $g$ in usrezno vozlišče (zadnje dodano vozlišče, vrstici \ref{line:st6}
+	in  \ref{line:st7}). Za to vozlišče v vrstici \ref{line:st8} preverimo, če ustreza vozlišču iz vzorčnega grafa z isto zaporedno številko, torej če je
+	dodajanje tega vozlišča ohranilo izomorfizem trenutno pregledanega dela grafa. Veljati mora, da so vsa vozlišča v trenutni $N_i$ iz zgodovine
+	pregleda $H$ vsebovana med pregledanimi sosedi dodanega vozlišča (primerjamo njihove preslikave iz $d$ oz.~$g$). Če to ne velja, ne podgrafnega
+	izomorfizma ni, zato sestopimo. Za primer iskanja induciranega podgrafa morata biti omenjeni množici enaki (vrstica  \ref{line:st10}). Pri usmerjenih
+	grafih pa bi ločeno preverjali množici vhodnih in izhodnih sosedov.
 	
 \begin{algorithm}
 \caption{Iskanje izomorfnega podgrafa}
@@ -994,13 +1003,13 @@
 
 	
 	\Subalg{\Call{SearchVisit}{$V', E'$}}
-	\State $vtime \gets |V'|$
-	\State $v' \gets g^{-1}(vtime)$
-	\If {$H[vtime].N \not \subseteq \{ g(u') > 0: (v', u') \in E \}$ \textbf{or} $H[vtime].l \not = l(v')$}
-		\State \Return $false$
+	\State $vtime \gets |V'|$				\label{line:st6}
+	\State $v' \gets g^{-1}(vtime)$			\label{line:st7}
+	\If {$H[vtime].N \not \subseteq \{ g(u') > 0: (v', u') \in E \}$ \textbf{or} $H[vtime].l \not = l(v')$}	\label{line:st8}
+		\State \Return $false$	
 	\EndIf
-	\If {[ $H[vtime].N \not = \{ g(u') > 0: (v', u') \in E \}$ \textbf{or} $H[vtime].l \not = l(v')$ ]}
-		\State \Return $false$
+	\If {[ $H[vtime].N \not = \{ g(u') > 0: (v', u') \in E \}$ \textbf{or} $H[vtime].l \not = l(v')$ ]}		\label{line:st10}
+		\State \Return $false$	
 	\EndIf
 	\State $E' \gets E' \cup \{ (u', v'): d(u') \in H[vtime].N \}$
 	\If {$|H| = vtime$}
