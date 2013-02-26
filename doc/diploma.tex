@@ -970,6 +970,12 @@
 
 	\section{Iskanje izomorfnega podgrafa}
 	\label{sub:search}
+	Ko imamo zgodovino pregleda za ciljni glaf, jo uporabimo pri iskanju podgrafnega izomorfizma. Psevdokoda algoritma je podana v~\refalg{alg:sub_st}.
+	Iskanje sprožimo nad konkretno povezavo v ciljnem grafu (glej razdelek~\ref{sub:subsea}). Deli v oglatih oklepajih veljajo za primer iskanja
+	induciranega podgrafa. V vrsticah \ref{line:st1}--\ref{line:st4} inicializiramo preslikavo $g$ (v ciljnem grafu uporabljamo oznako $g$ namesto $d$,
+	da se ju ne meša) in definiramo vrednosti v preslikavi za podani vozlišči. Tako omejimo preiskovanje v ciljnem grafu na samo tiste podgrafe, ki 
+	vsebujejo podano povezavo. V vrstici \ref{line:st5} je prvi klic rekurzivne funkcije, ki bo od sedaj naprej sledila vrstnemu redu preiskovanja iz podane
+	$H$.
 	
 \begin{algorithm}
 \caption{Iskanje izomorfnega podgrafa}
@@ -979,12 +985,12 @@
 	\Ensure Vsi podgrafi [ ali inducirani podgrafi, ki ne vsebujejo ``črnih" povezav ] grafa $G_t$, ki so $(v_1 \to v_1', v_2 \to _v2')$-izomorfni z
 	 $G_p$ in sta $v_1, v_2$ začetni vozlišči $H$
 	 
-	 \ForAll {$v' \in V_t$}
+	 \ForAll {$v' \in V_t$}		\label{line:st1}
 	 	\State $g(v') \gets 0$
 	\EndFor
 	\State $g(v_1') \gets 1$
-	\State $g(v_2') \gets 2$
-	\State \Return \Call{SearchVisit}{$\{ v_1', v_2' \}, \emptyset$}
+	\State $g(v_2') \gets 2$	\label{line:st4}
+	\State \Return \Call{SearchVisit}{$\{ v_1', v_2' \}, \emptyset$}	\label{line:st5}
 
 	
 	\Subalg{\Call{SearchVisit}{$V', E'$}}
@@ -997,7 +1003,7 @@
 		\State \Return $false$
 	\EndIf
 	\State $E' \gets E' \cup \{ (u', v'): d(u') \in H[vtime].N \}$
-	\If {|H| = vtime}
+	\If {$|H| = vtime$}
 		\Return $\{ (V', E') \}$
 	\EndIf
 	%??
@@ -1013,10 +1019,14 @@
 	\State \Return $S$
 \end{algorithmic}
 \end{algorithm}
-
+	
+	Ko smo našli izomorfizem, je $d_t^{-1}\circ d_p$
 
 
 	\section {Celoten algoritem}
+	\label{sub:subsea}
+	Algoritem za iskanje se požene za vsako povezavo 
+	med obema deloma bisekcije ciljnega grafa in za vse zgodovine pregleda vzorčnega grafa. 
 
 \begin{algorithm}
 \caption{Glavni algoritem Subsea}
