@@ -106,7 +106,7 @@
 
 
 % Referenciranje algoritma
-\newcommand{\refalg}[1]{(Alg. \ref{#1})}
+\newcommand{\refalg}[1]{(Alg.~\ref{#1})}
 
 \newcommand{\code}[1]{\mbox{\texttt{#1}}}
 
@@ -278,7 +278,7 @@
 
 
 \chapter{Uvod}
-\TODO{Notes: Splošni algoritmi, brez predpostavk topologiji grafov. Iskanje vseh podgrafov}
+\TODO{Notes: Splošni algoritmi, brez predpostavk topologiji grafov. Iskanje vseh podgrafov. Exact matching}
 
 
 
@@ -819,6 +819,7 @@
 
 
 \chapter{Subsea}
+	Algoritem Subsea~\cite{subsea} je najnovejši izmed predstavljenih algoritmov.
 	\TODO{Notes: učinkovit za iskanje vseh podrafov. Samo za povezane grafe? Uporablja bisekcijo. Posebna predstavitev grafa, da algoritem najprej 
 	preveri bolj goste dele -$>$ hitro iskanje negativov. Posebno uporabno kjer je ciljni graf mnogo večji od vzorčnega (uporabno za web in socialna omrežja,
 	geni,	proteini).	
@@ -1054,36 +1055,43 @@
 \end{algorithmic}
 \end{algorithm}
 	
-
+\clearpage
 
 
 	\section {Celoten algoritem}
 	\label{sub:subsea}
-	Algoritem za iskanje se požene za vsako povezavo 
-	med obema deloma bisekcije ciljnega grafa in za vse zgodovine pregleda vzorčnega grafa. 
-
+	V tem razdelku povežemo vse spoznane algoritme v celoto, kot je opisano na začetku tega poglavja. Psevdokoda je podana v~\refalg{alg:sub_main}.
+	V fazi pred-procesiranja za vsako povezavo zgeneriramo in si shranimo zgodovino pregleda vzorčnega grafa z začetkom v tej povezavi (vrstice
+	\ref{line:sub1}--\ref{line:sub4}). Pri tem uporabimo~\refalg{alg:sub_th}. Nato vstopimo v rekurzivni del. V vrstici \ref{line:sub7} z algoritmom za 
+	bisekcijo~\refalg{alg:sub_bh} razdelimo graf na dva dela. Nato preverimo vsako povezavo med obema deloma bisekcije. Tu vidimo, zakaj algoritem
+	deluje hitreje, če je povezav med particijama čim manjše, torej če je bisekcija čim bliže minimalni. Na posamezni povezavi poženemo algoritem
+	za iskanje podgrafnih izomorfizmov~\refalg{alg:sub_st} v kombinaciji z vsako generirano zgodovino pregleda (vrstica \ref{line:sub10}), s čimer najdemo
+	vse podgrafne izomorfizme, ki vsebujejo to povezavo. Zato lahko po končanem iskanju to povezavo odstranimo (oziromo jo označimo kot ``črno" v
+	primeru iskanja induciranih podgrafov). Ko preverimo vse povezave, kličemo algoritem rekurzivno nad posameznim delom bisekcije, torej nad problemom
+	s polovičnim ciljnim grafom. Algoritem se konča, ko je v ciljnem grafu manj vozlišč kot v vzorčnem (vrstica \ref{line:sub6}).
+	
 \begin{algorithm}
 \caption{Glavni algoritem Subsea}
 \label{alg:sub_main}
 \begin{algorithmic}[1]
 	\Require Vzorčni graf $G_p = (V_p, E_p)$, ciljni graf $G_t = (V_t, E_t)$
-	\Ensure Vsi podgrafi [ ali inducirani podgrafi ] grafa $G_t$, ki so izomorfni grafu $G_p$
-	 \State $A \gets \emptyset$
-	 \For {$\langle v_1, v_2 \rangle \in V \times V$}
-	 	\State \textbf{run} \refalg{alg:sub_th} on $G, v_1, v_2 \to $ traverse history $H_{v_1, v_2}$
-	 	\State $A \gets A \cup \{ H_{v_1, v_2} \}$
+	\Ensure Vsi podgrafi [ ali inducirani podgrafi ] grafa $G_t$, ki so izomorfni grafu $G_p$	
+	 \State $A \gets \emptyset$						\label{line:sub1}
+	 \For {$\langle v_1, v_2 \rangle \in V_p \times V_p: (v_1, v_2) \in E_p$}
+	 	\State \textbf{run} \refalg{alg:sub_th} on $G_p, v_1, v_2 \to $ traverse history $H_{v_1, v_2}$
+	 	\State $A \gets A \cup \{ H_{v_1, v_2} \}$		\label{line:sub4}
 	 \EndFor
 	 \State \Call{SubIso}{$A,G_t$}
 
 	
 	\Subalg{\Call{SubIso}{$A, G_t$}}
 	\If {$|V_p| > |V_t|$}
-		\Return $\emptyset$
+		\Return $\emptyset$			\label{line:sub6}
 	\EndIf
-	\State \textbf{run} \refalg{alg:sub_bh} on $G_t \to$ bisection $(B, \bar B)$
+	\State \textbf{run} \refalg{alg:sub_bh} on $G_t \to$ bisection $(B, \bar B)$		\label{line:sub7}
 	\For {$ (v_1, v_2) \in (B, \bar B)$}
 		\For {$H \in A$}
-			\State \textbf{run} \refalg{alg:sub_st} on $G_t, v_1, v_2, H \to $ set of subgraphs $S$
+			\State \textbf{run} \refalg{alg:sub_st} on $G_t, v_1, v_2, H \to $ set of subgraphs $S$	\label{line:sub10}
 			\State $G \gets G \setminus (v_1, v_2)$ [ $``Black" \gets ``Black" \cup (v_1, v_2)$ ]
 		\EndFor
 	\EndFor
@@ -1092,6 +1100,12 @@
 \end{algorithmic}
 \end{algorithm}
 
+	Algoritem Subsea največ prostora porabi za hranjenje vseh zgodovin pregleda vzorčnega grafa. Ker ustvarimo eno za vsako povezavo (pravzaprav dve:
+	eno za $H_{v_1, v_2}$ in drugo za $H_{v_2, v_1}$), jih je skupno $n_p^2$. Vsaka ima $n$ elementov, $N_i$ komponenta posameznega elementa (ki
+	vsebuje vse sosede) pa je lahko tudi velikosti $n$. Skupno torej $O(n_p^4)$. Iz česar vidimo, da je algoritem res specializiran za iskanje manjših 
+	vzorčnih grafov v velikih ciljnih. Algoritem, kot je opisan v izvirnem članku~\cite{subsea} sicer izloča zgodovine pregleda, ki predstavljajo avtomorfizem
+	vzorčnega grafa, kar nekoliko zmanjša potreben prostor, hkrati pa pospeši izvajanje algoritma. Za odkrivanje avtomorfizmov se uporabi 
+	kar~\refalg{alg:sub_st}.
 
 \chapter{Eksperimentalna primerjava algoritmov}
 	\section{}
