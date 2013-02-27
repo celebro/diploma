@@ -979,17 +979,37 @@
 	vsebujejo podano povezavo. V vrstici \ref{line:st5} je prvi klic rekurzivne funkcije, ki bo od sedaj naprej sledila vrstnemu redu preiskovanja iz podane
 	$H$.
 	
-	V funkcije $searchVisit$ naprej dobimo vrednost zadnje zaporedne številke iz $g$ in usrezno vozlišče (zadnje dodano vozlišče, vrstici \ref{line:st6}
+	V funkcije $searchVisit$ naprej dobimo vrednost zadnje zaporedne številke iz $g$ in ustrezno vozlišče (zadnje dodano vozlišče, vrstici \ref{line:st6}
 	in  \ref{line:st7}). Za to vozlišče v vrstici \ref{line:st8} preverimo, če ustreza vozlišču iz vzorčnega grafa z isto zaporedno številko, torej če je
 	dodajanje tega vozlišča ohranilo izomorfizem trenutno pregledanega dela grafa. Veljati mora, da so vsa vozlišča v trenutni $N_i$ iz zgodovine
 	pregleda $H$ vsebovana med pregledanimi sosedi dodanega vozlišča (primerjamo njihove preslikave iz $d$ oz.~$g$). Če to ne velja, ne podgrafnega
 	izomorfizma ni, zato sestopimo. Za primer iskanja induciranega podgrafa morata biti omenjeni množici enaki (vrstica  \ref{line:st10}). Pri usmerjenih
 	grafih pa bi ločeno preverjali množici vhodnih in izhodnih sosedov. V vrstici \ref{line:st12} v trenutni preiskani podgraf dodamo še povezave, ki
-	pridejo zaradi prej dodanega vozlišča. Povezave potrebujemo, da lahko vrnemo celoten izomorfen podgraf, ko smo ga našli (vrstica  \ref{line:st13}).
+	pripadajo prej dodanemu vozlišču. Povezave potrebujemo, da lahko vrnemo celoten izomorfen podgraf, ko smo ga našli (vrstica  \ref{line:st13}).
 	
 	V drugem delu funkcije $searchVisit$ najdemo in pregledamo vse kandidate za naslednje dodano vozlišče. Iz $H[vtime + 1].N$ vemo, s katerimi že 
 	pregledanimi vozlišči mora biti naslednje vozlišče povezano. Obratno torej velja, da so kandidati tista vozlišča, ki so sosednja vsem vozliščem iz 
-	$H[vtime + 1].N$ (vrstica \ref{line:st14}). V vrsticah \ref{line:st17}--\ref{line:st20} te kandidate preverimo. 
+	$H[vtime + 1].N$ (vrstica \ref{line:st14}). V vrsticah \ref{line:st17}--\ref{line:st20} te kandidate preverimo: če kandidat še ni bil obiskan, mu
+	v preslikavi $g$ določimo naslednjo zaporedno številko in obiščemo novo stanje. Ob vrnitvi razveljavimo spremembo v $g$.
+	
+	V vrstici \ref{line:st17} je še dodaten pogoj, ki mora veljati v primerju iskanja induciranih podgrafov. Kot bomo videli v naslednjem razdelku, med
+	procesom iskanja vseh podgrafnih izomorfizmov brišemo že obdelane povezave, s čimer preprečimo, da bi isti podgraf našli ponovno kasneje v
+	procesu iskanja. Pri induciranih podgrafih pa povezave ne smemo brisati, ampak jo	označimo kot ``črno" (primer, zakaj je to potrebno, je na 
+	sliki~\ref{pic_subsea_black}). Zato moramo pri kandidatu preveriti, da nima nobene ``črne" povezave na že pregledano vozlišče.
+	
+	\begin{figure}
+	\begin{center}
+	\includegraphics[width=12cm]{img/graph_subsea_black.png}
+	\end{center}
+	\caption{Demonstracija potrebe po ``črnih" robovih. Graf a) je vzorčni, b) pa ciljni. Ob obdelavi povezave $(1,2)$ najdemo inducirani izomorfen podgraf
+	$\langle 1, 2, 4\rangle$. Če povezavo odtranimo, bi kasneje lahko našli še izomorfen podgraf $\langle 1, 3, 2 \rangle$, kar bi bilo narobe -- ob 
+	odstranjeni povezavi $(1,2)$ ne bi mogli ugotoviti, da podgraf ni induciran. Kljub temu moramo povezavo nekako označiti, da ob obdelavi povezave 
+	$(2,4)$ ne bi ponovno našli grafa $\langle 1, 2, 4\rangle$.}
+	\label{pic_subsea_black}
+	\end{figure}
+	
+	Odkrite podgrafne izomorfizme hranimo v seznamu $S$. Preslikavo med vozlišči vzorčnega in ciljnega grafa opravimo s kompozitumom 
+	$d_t^{-1}\circ d_p$.
 	
 \begin{algorithm}
 \caption{Iskanje izomorfnega podgrafa}
@@ -1020,12 +1040,12 @@
 	\If {$|H| = vtime$}
 		\Return $\{ (V', E') \}$		\label{line:st13}
 	\EndIf
-	%??
 	\State $L \gets \cap \{ N_{G_t}(u): u \in H[vtime + 1].N \}$	\label{line:st14}
 	\State $S \gets \emptyset$		\label{line:st15}
 	\For {$w \in L$}
-		\If {$g(w) = 0$ [ \textbf{and} $(v,w) \not \in ``Black"$ ]}			\label{line:st17}
-			\State $g(w) \gets vtime$								\label{line:st18}
+%		\If {$g(w) = 0$ [ \textbf{and} $(v,w) \not \in ``Black"$ ]}			\label{line:st17}
+		\If {$g(w) = 0$ [ \textbf{and} $\forall v \in N_{G_t}(w): g(v) > 0 \Rightarrow (v,w) \not \in ``Black"$ ]}			\label{line:st17}
+			\State $g(w) \gets vtime + 1$								\label{line:st18}
 			\State $S \gets S \cup$ \Call{SearchVisit}{$V' \cup \{w\}, E'$}	\label{line:st19}
 			\State $g(w) \gets 0$									\label{line:st20}
 		\EndIf
@@ -1034,7 +1054,7 @@
 \end{algorithmic}
 \end{algorithm}
 	
-	Ko smo našli izomorfizem, je $d_t^{-1}\circ d_p$
+
 
 
 	\section {Celoten algoritem}
