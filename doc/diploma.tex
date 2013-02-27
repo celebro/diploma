@@ -984,7 +984,12 @@
 	dodajanje tega vozlišča ohranilo izomorfizem trenutno pregledanega dela grafa. Veljati mora, da so vsa vozlišča v trenutni $N_i$ iz zgodovine
 	pregleda $H$ vsebovana med pregledanimi sosedi dodanega vozlišča (primerjamo njihove preslikave iz $d$ oz.~$g$). Če to ne velja, ne podgrafnega
 	izomorfizma ni, zato sestopimo. Za primer iskanja induciranega podgrafa morata biti omenjeni množici enaki (vrstica  \ref{line:st10}). Pri usmerjenih
-	grafih pa bi ločeno preverjali množici vhodnih in izhodnih sosedov.
+	grafih pa bi ločeno preverjali množici vhodnih in izhodnih sosedov. V vrstici \ref{line:st12} v trenutni preiskani podgraf dodamo še povezave, ki
+	pridejo zaradi prej dodanega vozlišča. Povezave potrebujemo, da lahko vrnemo celoten izomorfen podgraf, ko smo ga našli (vrstica  \ref{line:st13}).
+	
+	V drugem delu funkcije $searchVisit$ najdemo in pregledamo vse kandidate za naslednje dodano vozlišče. Iz $H[vtime + 1].N$ vemo, s katerimi že 
+	pregledanimi vozlišči mora biti naslednje vozlišče povezano. Obratno torej velja, da so kandidati tista vozlišča, ki so sosednja vsem vozliščem iz 
+	$H[vtime + 1].N$ (vrstica \ref{line:st14}). V vrsticah \ref{line:st17}--\ref{line:st20} te kandidate preverimo. 
 	
 \begin{algorithm}
 \caption{Iskanje izomorfnega podgrafa}
@@ -1011,18 +1016,18 @@
 	\If {[ $H[vtime].N \not = \{ g(u') > 0: (v', u') \in E \}$ \textbf{or} $H[vtime].l \not = l(v')$ ]}		\label{line:st10}
 		\State \Return $false$	
 	\EndIf
-	\State $E' \gets E' \cup \{ (u', v'): d(u') \in H[vtime].N \}$
+	\State $E' \gets E' \cup \{ (u', v'): d(u') \in H[vtime].N \}$	\label{line:st12}
 	\If {$|H| = vtime$}
-		\Return $\{ (V', E') \}$
+		\Return $\{ (V', E') \}$		\label{line:st13}
 	\EndIf
 	%??
-	\State $L \gets \cap \{ N_{G_t}(u): u \in H[vtime + 1].N \}$
-	\State $S \gets \emptyset$
+	\State $L \gets \cap \{ N_{G_t}(u): u \in H[vtime + 1].N \}$	\label{line:st14}
+	\State $S \gets \emptyset$		\label{line:st15}
 	\For {$w \in L$}
-		\If {$g(w) = 0$ [ \textbf{and} $(v,w) \not \in ``Black"$ ]}
-			\State $g(w) \gets vtime$
-			\State $S \gets S \cup$ \Call{SearchVisit}{$V' \cup \{w\}, E'$}
-			\State $g(w) \gets 0$
+		\If {$g(w) = 0$ [ \textbf{and} $(v,w) \not \in ``Black"$ ]}			\label{line:st17}
+			\State $g(w) \gets vtime$								\label{line:st18}
+			\State $S \gets S \cup$ \Call{SearchVisit}{$V' \cup \{w\}, E'$}	\label{line:st19}
+			\State $g(w) \gets 0$									\label{line:st20}
 		\EndIf
 	\EndFor
 	\State \Return $S$
