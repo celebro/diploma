@@ -377,9 +377,11 @@
 
 
 \chapter{Ullmannov algoritem}
-\TODO{Intro.}
-
-
+	
+	Prvi algoritem za iskanje podgrafnih izomorfizmov je J. R. Ullmann predstavil leta 1976. Kljub starosti se algoritem še vedno množično uporablja
+	in je tudi najbolj znan. Celoten princip preiskovanja temelji na predstavitvi z matrikami. V osnovni verziji algoritem ne upošteva lokalne strukture
+	vzorčnega grafa, s čimer npr. druga dva opisana algoritma hitreje izločata neobetavne poti preiskovanja.
+	
 	\section{Predstavitev problema podgrafnega izomorfizma z matrikami}
 	V tem algoritmu predstavimo grafe in problem reševanja podgrafnih izomorfizmov z matrikami. Matriki $P = [p_{i,j}] : 1 \le i,j \le n_p $ in
 	$T = [t_{i,j}] = 1 \le i,j \le n_t$ sta matriki sosednosti grafov $G_p$ in $G_t$, kjer vrednost 1 v vrstici $i$ in stolpcu $j$ pomeni, 
@@ -581,7 +583,8 @@
 	Psevdokoda postopka je podana v~\refalg{alg:ullmann2}. Za vsak
 	združljiv par (vrstica 4) preverimo pogoj~(\ref{eq:ullmann3}) v vrstici 5. Če pogoj ni izpolnjen, označimo par kot nezdružljiv (vrstica 6). Poleg tega
 	označimo, da bo celoten postopek potrebno ponoviti ($fixpoint \gets false$). Ob spremembi v matriki $M$ preverimo še, če trenutna vrstica sedaj vsebuje
-	same 1 (vrstica 7). V tem primeru namreč izomorfizem ni več mogoč, zato vrnemo $false$ (vrstica 8). 
+	same 1 (vrstica 7). V tem primeru namreč izomorfizem ni več mogoč, zato vrnemo $false$ (vrstica 8). Za opisani postopek je Ullmann predlagal tudi
+	implementacijo z namenskim logičnim vezjem~\cite{ullmann}.
 
 	Podani algoritem je v \refalg{alg:ullmann1} in \refalg{alg:ullmann3} že vključen, klic funkcije $refine$ je v oglatih oklepajih, ki smo jih predhodno
 	ignorirali.
@@ -658,6 +661,8 @@
 
 
 \chapter{Algoritem VF2}
+
+	\TODO{intro. delna rešitev}
 
 	Cilj algoritma VF2 je zgraditi preslikavo $M = \{(n,m) \in N_p \times N_t\}$. Medtem ko Ullmannov algoritem generira in preveri vse možne preslikave
 	$M$, jih ta algoritem gradi postopoma. V vsakem stanju $s$ algoritma imamo parcialno preslikavo $M(s)$. Ta definira podgrafa $G_p(s) \subseteq G_p$ 
