@@ -278,7 +278,8 @@
 
 
 \chapter{Uvod}
-\TODO{Notes: Splošni algoritmi, brez predpostavk topologiji grafov. Iskanje vseh podgrafov. Exact matching}
+\TODO{Notes: Splošni algoritmi, brez predpostavk topologiji grafov. Iskanje vseh podgrafov. Exact matching. porabno za web in socialna omrežja,
+	geni,	proteini}
 
 
 
@@ -819,21 +820,18 @@
 
 
 \chapter{Subsea}
-	Algoritem Subsea~\cite{subsea} je najnovejši izmed predstavljenih algoritmov.
-	\TODO{Notes: učinkovit za iskanje vseh podrafov. Samo za povezane grafe? Uporablja bisekcijo. Posebna predstavitev grafa, da algoritem najprej 
-	preveri bolj goste dele -$>$ hitro iskanje negativov. Posebno uporabno kjer je ciljni graf mnogo večji od vzorčnega (uporabno za web in socialna omrežja,
-	geni,	proteini).	
-	Bisekcija, išče v posameznih delih, če je minimalna, hitro preveri povezave med razrezi. Traverse history se generira samo enkrat, vzorčni graf se
-	kasneje ne uporablja več.
-	Princip deli in vladaj}
-
+	Algoritem Subsea~\cite{subsea} je najnovejši izmed predstavljenih algoritmov. Deluje po principu deli in vladaj:
 	\begin{enumerate}
 		\item Zgeneriramo vse zgodovine pregledov za vzorčni graf (razdelek~\ref{sub:th})
 		\item Ciljni graf razbijemo z bisekcijo (aproksimacijski algoritem - razdelek~\ref{sub:bisect}).
-		\item Na vsaki povezavi med obema deloma bisekcije preverimo obstoj podgrafnega izomorfizma z uporabo zgodovin prehodov 
+		\item Na vsaki povezavi med obema deloma bisekcije preverimo obstoj podgrafnega izomorfizma z uporabo zgodovin pregledov 
 			(razdelek~\ref{sub:search}).
 		\item Na vsakem delu bisekcije ponovimo postopek od koraka 2 naprej; končamo, ko je ima posamezen del bisekcije manj vozlišč kot vzorčni graf.
 	\end{enumerate}
+	Pri samem iskanju uporabi hevristiko, ki poskuša čim hitreje najti negativne primere in končati iskanje v taki veji.
+	
+	Za razliko od prvih dveh algoritmov ima Subsea nekaj omejitev. Dobro deluje predvsem, če je vzorčni graf mnogo manjši od ciljnega, poleg tega
+	pa mora biti vzorčni graf povezan. Ker oboje drži za večino praktičnih problemov, omejitve niso posebno omejujoče.
 
 	\section{Bisekcija grafa}
 	\label{sub:bisect}
