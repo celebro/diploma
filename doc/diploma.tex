@@ -432,7 +432,8 @@
 	
 	Ullmannov algoritem v osnovi generira različne matrike $M$ in jih preverja s pogojem~(\ref{eq:ullmann1}). Vseh možnih matrik $M$ je
 	$\frac{n_t!}{(n_t-n_p)!}$ (ob upoštevanju pogoja za injektivnost: točno ena 1 v vrstici in največ ena 1 v stolpcu), kar je preveč za izčrpno preiskovanje.
-	Algoritem zato začne z pred-procesirano matriko $M^0$~(\ref{eq:ullmann2}), na vsakem koraku pa jo še dodatno omeji~(\ref{eq:ullmann3}).
+	Algoritem zato začne z pred-procesirano matriko $M^0$~(razdelek~\ref{eq:ullmann2}), na vsakem koraku pa jo še dodatno omeji
+	~(razdelek~\ref{eq:ullmann3}).
 	
 	
 	\section{Algoritem}
@@ -455,7 +456,7 @@
 	se preveri pogoj~(\ref{eq:ullmann1}).
 	
 	Algoritem je Ullmann v izvirnem članku~\cite{ullmann} opisal s stavki GOTO, zaradi česar je težje razumljiv. Tukaj ga podajamo v bolj pregledni obliki,
-	ki je popravljena in bolj podrobna različica algoritma v~\cite{zampelli-th}. Potrebujemo naslednje podatkovne strukture:
+	ki je popravljena in bolj podrobna različica algoritma iz~\cite{zampelli-th}. Potrebujemo naslednje podatkovne strukture:
 	\begin{itemize}
 		\item spremenljivko $d$, ki označuje trenutno globino v preiskovalnem drevesu
 		\item spremenljivko $k$, ki označuje trenutno izbrani stolpec
@@ -902,7 +903,7 @@
 	
 	\section{Zgodovina pregleda grafa}
 	\label{sub:th}
-	\TODO{sliki?}
+	%\TODO{sliki?}
 	Algoritem Subsea med iskanjem podgrafnega izomorfizma ne uporablja vzorčnega grafa, ampak zgodovino pregleda. Ta enolično določa vrstni red
 	obiskovanja vozlišč. Motivacija za tak pristop je, da v fazi predprocesiranja določimo vrstni red preiskovanja, ki bi čim hitreje ugotovil, da izomorfizem
 	ni mogoč.
@@ -1123,7 +1124,6 @@
 	kar~\refalg{alg:sub_st}.
 
 \chapter{Eksperimentalna primerjava algoritmov}
-	\section{}
 
 \chapter{Sklepne ugotovitve}
 
