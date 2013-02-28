@@ -279,7 +279,9 @@
 
 \chapter{Uvod}
 \TODO{Notes: Splošni algoritmi, brez predpostavk topologiji grafov. Iskanje vseh podgrafov. Exact matching. porabno za web in socialna omrežja,
-	geni,	proteini}
+	geni,	proteini. Constraint programing.
+	računalniški vid, procesiranje slik (src subsea
+	graph mining}
 
 
 
@@ -369,7 +371,15 @@
 	 $\bar A$ označimo z $e(A, \bar A) = \{(u,v) \in E \big| u \in A, v \not \in A\}$. Minimalna bisekcija  grafa G je rez, ki minimizira velikost reza 
 	$| e(A, \bar A) |$ po vseh množicah $A$ velikosti $\lceil | V | / 2 \rceil$.
 
-	\TODO{\section{NP-polnost}}	
+
+
+	\section{Zahtevnost problema}
+	Problem izomorfnega podgrafa spada v razred NP-polnih problemov~\cite{npcomplete}. Za dokaz NP-polnosti nanj prevedemo problem
+	iskanja polnega podgrafa (ang.~clique problem). Pri odločitveni verziji tega problema (ki je znano NP-poln) imamo podan graf $G$ in število $k$,
+	preverjamo pa obstoj polnega podgrafa s $k$ vozlišči (v polnem grafu obstaja povezava med vsakim parom vozlišč). Problem lahko rešimo z iskanjem
+	izomorfnega podgrafa tako, da zgeneriramo poln graf $H$ s $k$ vozlišči. Nato preverimo, če v $G$ obstaja podgraf, ki je izomorfen $H$. Ker
+	je problem iskanja polnega podgrafa NP-poln in smo ga s polinomsko pretvorbo prevedli na problem iskanja izomorfnega podgrafa, je tudi slednji
+	problem NP-poln.
 
 
 
@@ -704,7 +714,7 @@
 
 
 
-	\section{Izbira kandidatov $P(s)$}
+	\section{Izbira kandidatov}
 	\label{vf2:candidate}
 	
 	Množico kandidatov $P(s)$ izbiramo med neposrednimi sosedi podgrafov $G_p(s)$ in $G_t(s)$. Naj bosta $T_p^+(s)$ in $T_t^+(s)$ množici vozlišč iz
@@ -836,8 +846,9 @@
 	\end{enumerate}
 	Pri samem iskanju uporabi hevristiko, ki poskuša čim hitreje najti negativne primere in končati iskanje v taki veji.
 	
-	Za razliko od prvih dveh algoritmov ima Subsea nekaj omejitev. Dobro deluje predvsem, če je vzorčni graf mnogo manjši od ciljnega, poleg tega
-	pa mora biti vzorčni graf povezan. Ker oboje drži za večino praktičnih problemov, omejitve niso posebno omejujoče.
+	Zaradi faze predprocesiranja se najbolje obnese pri iskanju vseh instanc podgrafov. Za razliko od prvih dveh algoritmov ima Subsea nekaj omejitev. 
+	Dobro deluje predvsem, če je vzorčni graf mnogo manjši od ciljnega, poleg tega pa mora biti vzorčni graf povezan. Ker oboje drži za večino praktičnih
+	problemov, omejitve niso posebno omejujoče. 
 
 	\section{Bisekcija grafa}
 	\label{sub:bisect}
@@ -1143,12 +1154,15 @@
 		%\textit {Proc. Int. Conf Image Analysis and Processing}, 1999, str.~1372--1177.
 		\textit {Proceedings of the 10th International Conference on Image Analysis and Processing}, 1999, str.~1372--1177.
 	
+	\bibitem{npcomplete} M.~R.~Garey, D.~S.~Johnson, ``Computers and Intractability: A Guide to the Theory of NP-Completeness",
+		Freeman and Company, 1979.s
+	
 	\bibitem{subsea} V.~Lipets, N.~Vanetik, E.~Gudes, ``Subsea: an efficient heuristic aglorithm for subgraph isomorphism",
 		\textit {Data Mining and Knowledge Discovery}, št.~19, zv.~3, 2009, str.~320--350.
 
 	% Journal of the ACM, Vol. 23, No. 1. (January 1976), pp. 31-42
 	\bibitem{ullmann} J.~R.~Ullmann, ``An Algorithm for Subgraph Isomorphism",
-		\textit{Journal of the ACM}, št.~23, zv.~1, str.~31-42, 1976
+		\textit{Journal of the ACM}, št.~23, zv.~1, str.~31-42, 1976.
 
 	\bibitem{zampelli-th} S. Zamplelli, ``A constraint programming approcah to subgraph isomorphism", Doktorska disertacija, 
 	Universit\'{e} catholique de Louvain, D\'{e}partement d’Ing\'{e}nierie Informatique, Belgija, 2008.
