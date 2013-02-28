@@ -328,7 +328,7 @@
 	podgrafni izomorfizem lahko obstaja samo, če se ohranijo tudi ne-povezave.
 	
 	Pri reševanju problema izomorfnega podgrafa lahko ugotavljamo obstoj oz.~število podgrafnih izomorfizmov ali pa iščemo enega oz.~vse
-	podgrafne izomorfizme (preslikave $f$). Najtežja je generiranje vseh preslikav - to različico rešujejo opisani algoritmi. Dodatno lahko rešujemo
+	podgrafne izomorfizme (preslikave $f$). Najtežje je generiranje vseh preslikav - to različico rešujejo opisani algoritmi. Dodatno lahko rešujemo
 	problem še na usmerjenih ali neusmerjenih ter označenih ali neoznačenih grafih.
 
 
@@ -337,7 +337,7 @@
 	\includegraphics[width=15cm]{img/graph_sub_izomorph.png}
 	\end{center}
 	\caption{Med $a)$ in $c)$ obstaja induciran podgrafni izomorfizem z injektivno funkcijo $f = \{(a, 1), (b, 2), (c, 3)\}$. Med $b)$ in $c)$ obstaja
-	parcialen podgrafni izomorfizem z injektivno funkcijo $f = \{(A, 1), (B, 2), (C, 3)\}$.}
+	samo parcialen podgrafni izomorfizem z injektivno funkcijo $f = \{(A, 1), (B, 2), (C, 3)\}$.}
 	\label{pic_sub_iso}
 	\end{figure}
 
@@ -354,8 +354,8 @@
 	$N(S) = \{ n \in (V \setminus V_S) \big| \exists m \in V_S : \{n,m\} \in E \}$. 
 
 	V usmerjenem grafu je število povezav, ki imajo vozlišče $v$ za začetek
-	povezave, 	izstopna stopnja (angl.~out-degree) vozlišča. Označimo jo z $d^+(v)$.
-	Število povezav, ki imajo vozlišče $v$ za konec povezave, je vstopna stopnja (angl.~in-degree) vozlišča $v$. Označimo jo z $d^-(v)$.
+	povezave, 	izhodna stopnja (angl.~out-degree) vozlišča. Označimo jo z $d^+(v)$.
+	Število povezav, ki imajo vozlišče $v$ za konec povezave, je vhodna stopnja (angl.~in-degree) vozlišča $v$. Označimo jo z $d^-(v)$.
 	Množica naslednikov
 	$N^+(v) = \{u \in V \big| (v,u) \in E\}$
 	so končna vozlišča povezav, ki imajo za začetek povezave vozlišče $v$.
