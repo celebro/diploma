@@ -203,7 +203,7 @@
 	\end{itemize}
 	
 	\vspace{1cm}
-	\noindent V Ljubljani, dne \TODO{09.01.2012} \hspace{3cm} Podpis avtorja:
+	\noindent V Ljubljani, dne \TODO{28.02.2013} \hspace{3cm} Podpis avtorja:
 	
 	% prazna stran
 	\clearemptydoublepage
@@ -242,7 +242,7 @@
 	
 	\vspace{2cm}
 	\noindent{\large \textbf{Ključne besede:}}\\
-	graf
+	\TODO{graf}
 	
 	
 	% prazna stran
@@ -262,7 +262,7 @@
 	
 	\vspace{2cm}
 	\noindent{\large \textbf{Key words:}}\\
-	graph
+	\TODO{graph}
 	
 	% prazna stran
 	\clearemptydoublepage
@@ -278,10 +278,10 @@
 
 
 \chapter{Uvod}
-\TODO{Notes: Splošni algoritmi, brez predpostavk topologiji grafov. Iskanje vseh podgrafov. Exact matching. porabno za web in socialna omrežja,
-	geni,	proteini. Constraint programing.
-	računalniški vid, procesiranje slik (src subsea
-	graph mining}
+%\TODO{Notes: Splošni algoritmi, brez predpostavk topologiji grafov. Iskanje vseh podgrafov. Exact matching. porabno za web in socialna omrežja,
+%	geni,	proteini. Constraint programing.
+%	računalniški vid, procesiranje slik (src subsea
+%	graph mining}
 
 
 
@@ -289,12 +289,12 @@
 \chapter{Definicija problema}
 
 	\section{Graf}
-	Graf $G = \langle V, E \rangle$ je definiran z množico vozlišč $V$ (ang.~vertices) in množico povezav $E$ (ang.~edges). Povezava je par vozlišč: 
+	Graf $G = \langle V, E \rangle$ je definiran z množico vozlišč $V$ (angl.~vertices) in množico povezav $E$ (angl.~edges). Povezava je par vozlišč: 
 	$E \subseteq V \times V$.
-	Vozlišči, ki sta vsebovani v povezavi, sta sosednji (ang.~adjacent). Graf je lahko usmerjen (ang.~directed) ali neusmerjen
-	(ang.~undirected). V neusmerjenem
+	Vozlišči, ki sta vsebovani v povezavi, sta sosednji (angl.~adjacent). Graf je lahko usmerjen (angl.~directed) ali neusmerjen
+	(angl.~undirected). V neusmerjenem
 	grafu je ena povezava neurejen par vozlišč $u, v \in V$ in jo označimo z $\{u, v\}$. V usmerjenem grafu je povezava urejen par 
-	vozlišč $u, v \in V$, kjer je prvo vozlišče začetek (ang.~head), drugo pa konec (ang.~tail) povezave. Označimo jo z $(u, v)$.
+	vozlišč $u, v \in V$, kjer je prvo vozlišče začetek (angl.~head), drugo pa konec (angl.~tail) povezave. Označimo jo z $(u, v)$.
 	Graf z oznakami $G = (V, E, \alpha, \beta)$ sestavlja graf $(V, E)$, funkcija $\alpha: V \to \mathbb{N} $, ki pripisuje oznako
 	vozliščem in funkcija $\beta: E \rightarrow \mathbb{N}$, ki pripisuje oznako povezavam.
 
@@ -307,7 +307,7 @@
 
 	Grafa $G_p = \langle V_p, E_p \rangle $ in $G_t = \langle V_t, E_t \rangle$ sta izomorfna, če obstaja bijektivna preslikava $f: V_p \to V_t$ da velja: 
 	$(a,b) \in E_p \Leftrightarrow (f(a), f(b)) \in E_t;$
-	oznaka $p$ pomeni vzorčni (ang.~pattern) graf, oznaka $t$ pa ciljni (ang.~target) graf. V primeru grafa z oznakami, mora preslikovalna funkcija
+	oznaka $p$ pomeni vzorčni (angl.~pattern) graf, oznaka $t$ pa ciljni (angl.~target) graf. V primeru grafa z oznakami, mora preslikovalna funkcija
 	ohranjati oznake. Primer izomorfizma grafov je podan na sliki~\ref{pic_iso}.
 
 	\begin{figure}
@@ -348,23 +348,23 @@
 
 	Na tem mestu so zbrane pomožne definicije, ki jih uporabljamo pri opisih algoritmov za iskanje izomorfnih podgrafov.
 
-	V neusmerjenem grafu je število povezav, ki vsebujejo vozlišče $v$, stopnja (ang.~degree) vozlišča $v$. Označimo jo z $d(v)$. Množica vozlišč
+	V neusmerjenem grafu je število povezav, ki vsebujejo vozlišče $v$, stopnja (angl.~degree) vozlišča $v$. Označimo jo z $d(v)$. Množica vozlišč
 	$N(v) = \{u \in V \big| \{v, u\} \in E\}$ je množica sosedov vozlišča $v$. 
 	Množica sosednjih vozlišč podgrafa $S = (V_S, E_S)$ je definirana kot 
 	$N(S) = \{ n \in (V \setminus V_S) \big| \exists m \in V_S : \{n,m\} \in E \}$. 
 
 	V usmerjenem grafu je število povezav, ki imajo vozlišče $v$ za začetek
-	povezave, 	izstopna stopnja (ang.~out-degree) vozlišča. Označimo jo z $d^+(v)$.
-	Število povezav, ki imajo vozlišče $v$ za konec povezave, je vstopna stopnja (ang.~in-degree) vozlišča $v$. Označimo jo z $d^-(v)$.
+	povezave, 	izstopna stopnja (angl.~out-degree) vozlišča. Označimo jo z $d^+(v)$.
+	Število povezav, ki imajo vozlišče $v$ za konec povezave, je vstopna stopnja (angl.~in-degree) vozlišča $v$. Označimo jo z $d^-(v)$.
 	Množica naslednikov
 	$N^+(v) = \{u \in V \big| (v,u) \in E\}$
 	so končna vozlišča povezav, ki imajo za začetek povezave vozlišče $v$.
 	Množica predhodnikov 
 	$N^-(v) = \{u \in V \big| (u,v) \in E\}$
 	so začetna vozlišča povezav, ki imajo za konec povezave vozlišče $v$. 
-	Množica izhodnih sosedov (ang.~out-neighbors) podgrafa $S = (V_S, E_S)$ je definirana kot 
+	Množica izhodnih sosedov (angl.~out-neighbors) podgrafa $S = (V_S, E_S)$ je definirana kot 
 	$N^+(S) = \{ n \in (V \setminus V_S) \big| \exists m \in V_S : (m,n) \in E \}$.
-	Množica vhodnih sosedov (ang.~in-neighbors) podgrafa $S = (V_S, E_S)$ je definirana kot 
+	Množica vhodnih sosedov (angl.~in-neighbors) podgrafa $S = (V_S, E_S)$ je definirana kot 
 	$N^-(S) = \{ n \in (V \setminus V_S) \big| \exists m \in V_S : (n,m) \in E \}$.
 
 	Rez grafa $G$ je razdelitev vozlišč $V$ v dve disjunktni množici $(A, \bar A)$. Množico povezav, kjer je en konec povezave v $A$ in drugi v
@@ -375,7 +375,7 @@
 
 	\section{Zahtevnost problema}
 	Problem izomorfnega podgrafa spada v razred NP-polnih problemov~\cite{npcomplete}. Za dokaz NP-polnosti nanj prevedemo problem
-	iskanja polnega podgrafa (ang.~clique problem). Pri odločitveni verziji tega problema (ki je znano NP-poln) imamo podan graf $G$ in število $k$,
+	iskanja polnega podgrafa (angl.~clique problem). Pri odločitveni verziji tega problema (ki je znano NP-poln) imamo podan graf $G$ in število $k$,
 	preverjamo pa obstoj polnega podgrafa s $k$ vozlišči (v polnem grafu obstaja povezava med vsakim parom vozlišč). Problem lahko rešimo z iskanjem
 	izomorfnega podgrafa tako, da zgeneriramo poln graf $H$ s $k$ vozlišči. Nato preverimo, če v $G$ obstaja podgraf, ki je izomorfen $H$. Ker
 	je problem iskanja polnega podgrafa NP-poln in smo ga s polinomsko pretvorbo prevedli na problem iskanja izomorfnega podgrafa, je tudi slednji
@@ -937,7 +937,7 @@
 	$\infty$, drugo pa na velikost množice vozlišč, dosegljivih iz $w$.
 	
 \begin{algorithm}
-\caption{Zgodovina pregleda grafa (ang. Traverse history)}
+\caption{Zgodovina pregleda grafa (angl.~Traverse history)}
 \label{alg:sub_th}
 \begin{algorithmic}[1]
 	\Require Graf $G = (V, E)$, začetni vozlišči $v_1, v_2 \in V$, da velja $(v_1, v_2) \in E$
@@ -1164,7 +1164,7 @@
 	\bibitem{ullmann} J.~R.~Ullmann, ``An Algorithm for Subgraph Isomorphism",
 		\textit{Journal of the ACM}, št.~23, zv.~1, str.~31-42, 1976.
 
-	\bibitem{zampelli-th} S. Zamplelli, ``A constraint programming approcah to subgraph isomorphism", Doktorska disertacija, 
+	\bibitem{zampelli-th} S.~Zamplelli, ``A constraint programming approcah to subgraph isomorphism", Doktorska disertacija, 
 	Universit\'{e} catholique de Louvain, D\'{e}partement d’Ing\'{e}nierie Informatique, Belgija, 2008.
 
 \end{thebibliography}
