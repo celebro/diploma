@@ -102,7 +102,6 @@ int main(int argc, char* argv[]) {
 	State* state;
 
 	clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &start_t);
-	clock_t start = clock();
 
 	if (flags && FLAG_ALG_VF) {
 		state = new VF2SubState(graph_pattern, graph_target);
