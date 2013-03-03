@@ -79,8 +79,8 @@ int main(int argc, char* argv[]) {
 	timespec start_t;
 	timespec end_t;
 
-	a = "/home/celebro/data/fri/diploma/src/workspace/data/mivia/si2/rand/r001/100.A00";
-	b = "/home/celebro/data/fri/diploma/src/workspace/data/mivia/si2/rand/r001/100.B00";
+	a = "/home/celebro/data/fri/diploma/src/workspace/data/mivia/si2/rand/r001/200.A01";
+	b = "/home/celebro/data/fri/diploma/src/workspace/data/mivia/si2/rand/r001/200.B01";
 	flags = 1;
 
 	if (argc >= 4) {
@@ -117,7 +117,7 @@ int main(int argc, char* argv[]) {
 	double time_t = (diff_t.tv_sec * 1000000 + diff_t.tv_nsec/1000)/1000.0;
 
 	cout.precision(2);
-	printf("%.2f", time_t);
+	printf("[%i] %.2f", cnt, time_t);
 
 	delete(graph_pattern);
 	delete(graph_target);
