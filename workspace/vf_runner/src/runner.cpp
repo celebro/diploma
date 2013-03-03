@@ -59,14 +59,29 @@ bool match_printer_visitor(int n, node_id ni1[], node_id ni2[], void *usr_data)
 	return false;
 }
 
+timespec timespec_diff(timespec start, timespec end)
+{
+	timespec temp;
+	if ((end.tv_nsec-start.tv_nsec)<0) {
+		temp.tv_sec = end.tv_sec-start.tv_sec-1;
+		temp.tv_nsec = 1000000000+end.tv_nsec-start.tv_nsec;
+	} else {
+		temp.tv_sec = end.tv_sec-start.tv_sec;
+		temp.tv_nsec = end.tv_nsec-start.tv_nsec;
+	}
+	return temp;
+}
+
 int main(int argc, char* argv[]) {
 	char* a;
 	char* b;
 	int flags = 0;
+	timespec start_t;
+	timespec end_t;
 
-	a = "/home/celebro/data/fri/diploma/src/workspace/data/mivia/si2/rand/r001/si2_r001_m400.A00";
-	b = "/home/celebro/data/fri/diploma/src/workspace/data/mivia/si2/rand/r001/si2_r001_m400.B00";
-	flags = 0;
+	a = "/home/celebro/data/fri/diploma/src/workspace/data/mivia/si2/rand/r001/100.A00";
+	b = "/home/celebro/data/fri/diploma/src/workspace/data/mivia/si2/rand/r001/100.B00";
+	flags = 1;
 
 	if (argc >= 4) {
 		a = argv[1];
@@ -84,22 +99,26 @@ int main(int argc, char* argv[]) {
 	Graph* graph_pattern = readGraphBinary(a);
 	Graph* graph_target = readGraphBinary(b);
 
-
 	State* state;
+
+	clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &start_t);
 	clock_t start = clock();
 
 	if (flags && FLAG_ALG_VF) {
 		state = new VF2SubState(graph_pattern, graph_target);
-		cout << "vf ";
+		//cout << "vf ";
 	} else {
 		state = new UllSubState(graph_pattern, graph_target);
-		cout << "ull ";
+		//cout << "ull ";
 	}
-
 	int cnt = match(state, match_printer_visitor, NULL);
-	clock_t diff = (clock() - start);
-	int time = (int) (diff * 1000 / (double) CLOCKS_PER_SEC);
-	cout << "Found: " << cnt << " " << time << endl;
+
+	clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end_t);
+	timespec diff_t = timespec_diff(start_t, end_t);
+	double time_t = (diff_t.tv_sec * 1000000 + diff_t.tv_nsec/1000)/1000.0;
+
+	cout.precision(2);
+	printf("%.2f", time_t);
 
 	delete(graph_pattern);
 	delete(graph_target);

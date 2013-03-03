@@ -187,17 +187,40 @@ protected:
         }
 	}
 
+	timespec timespec_diff(timespec start, timespec end)
+	{
+		timespec temp;
+		if ((end.tv_nsec-start.tv_nsec)<0) {
+			temp.tv_sec = end.tv_sec-start.tv_sec-1;
+			temp.tv_nsec = 1000000000+end.tv_nsec-start.tv_nsec;
+		} else {
+			temp.tv_sec = end.tv_sec-start.tv_sec;
+			temp.tv_nsec = end.tv_nsec-start.tv_nsec;
+		}
+		return temp;
+	}
+
 public:
 	O(Digraph &g, Digraph &h): g(g), h(h), isoCount(0) {}
 
     void find(bool all) {
-		clock_t start = clock();
+    	timespec start_t;
+    	timespec end_t;
+
+    	clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &start_t);
+		//clock_t start = clock();
 		init();
         algorithm(all);
         done();
-        clock_t diff = (clock() - start);
-        int time = (int) (diff * 1000 / (double) CLOCKS_PER_SEC);
-        cout << isoCount << " " << time << endl;
+        //clock_t diff = (clock() - start);
+        //int time = (int) (diff * 1000 / (double) CLOCKS_PER_SEC);
+    	clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end_t);
+    	timespec diff_t = timespec_diff(start_t, end_t);
+    	double time_t = (diff_t.tv_sec * 1000000 + diff_t.tv_nsec/1000)/1000.0;
+
+        //cout << isoCount << " " << time << endl;
+    	cout.precision(2);
+    	printf("%.2f", time_t);
     }
 };
 

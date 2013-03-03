@@ -33,6 +33,8 @@ int main(int argc, char* argv[]) {
 
 //	a = "/Users/jure/Temp/graphs/si2/rand/r001/si2_r001_m1000.A00";
 //	b = "/Users/jure/Temp/graphs/si2/rand/r001/si2_r001_m1000.B00";
+	a = "/home/celebro/data/fri/diploma/src/workspace/data/mivia/si2/rand/r001/400.A00";
+	b = "/home/celebro/data/fri/diploma/src/workspace/data/mivia/si2/rand/r001/400.B00";
 
 	if (argc >= 3) {
 		a = argv[1];
@@ -54,7 +56,7 @@ int main(int argc, char* argv[]) {
 
 
 	O alg(g, h);
-	printf("%s ", basename(a));
+	//printf("%s ", basename(a));
 	alg.find(true);
 
 
