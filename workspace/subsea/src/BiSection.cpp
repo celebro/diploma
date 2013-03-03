@@ -6,6 +6,7 @@
 #include <time.h>
 #include <algorithm>
 #include <climits>
+#include <cstdio>
 #ifdef _DEBUG_MODE_
 	#include <iostream>
 #endif

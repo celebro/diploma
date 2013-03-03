@@ -1,5 +1,5 @@
 #include "MISFileCreator.h"
-
+#include <cstdio>
 
 ///////////////////////////////////////////////////////////////////////////////
 bool CMISFileCreator::WriteToFile(vector<CIsoSubGraph*>* G, string str)
