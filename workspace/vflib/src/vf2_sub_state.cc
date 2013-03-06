@@ -98,19 +98,19 @@ public:
 			Visit(first);
 		}
 
-		for (int node = 0; node < g->NodeCount(); node++) {
-			std::cout << node << " -- {";
-			for (int i = 0; i < g->InEdgeCount(node); i++) {
-				node_id n1 = g->GetInEdge(node, i);
-				std::cout << n1 << " ";
-			}
-			std::cout << "}" << std::endl;
-		}
+//		for (int node = 0; node < g->NodeCount(); node++) {
+//			std::cout << node << " -- {";
+//			for (int i = 0; i < g->InEdgeCount(node); i++) {
+//				node_id n1 = g->GetInEdge(node, i);
+//				std::cout << n1 << " ";
+//			}
+//			std::cout << "}" << std::endl;
+//		}
 
-		for (int i = 0; i < n; i++) {
-			std::cout << order[i] << " ";
-		}
-		std::cout << std::endl;
+//		for (int i = 0; i < n; i++) {
+//			std::cout << order[i] << " ";
+//		}
+//		std::cout << std::endl;
 
 		delete[] processed;
 		delete[] estimateProcessed;
@@ -230,9 +230,6 @@ public:
 		return e;
 	}
 
-
-
-	//std::sort(neighbors.begin(), neighbors.end(), nodeEstimateCompare);
 };
 
 
@@ -248,10 +245,9 @@ VF2SubState::VF2SubState(Graph *ag1, Graph *ag2, int sortHevristic) {
 	n1 = g1->NodeCount();
 	n2 = g2->NodeCount();
 
-	if (sortHevristic == 0) {
-		order = NULL;
-	}
-	else if (sortHevristic == 1) {
+	order = NULL;
+	hevristicOrder = NULL;
+	if (sortHevristic == 1) {
 		order = SortNodesByFrequency(ag1);
 	}
 	else if (sortHevristic == 2) {
@@ -353,65 +349,99 @@ VF2SubState::~VF2SubState() {
  * Returns false if no more pairs are available.
  -------------------------------------------------------------------------*/
 bool VF2SubState::NextPair(node_id *pn1, node_id *pn2, node_id prev_n1, node_id prev_n2) {
-	if (prev_n1 == NULL_NODE)
-		prev_n1 = 0;
-	if (prev_n2 == NULL_NODE)
-		prev_n2 = 0;
-	else
-		prev_n2++;
+	if (hevristicOrder != NULL) {
+		// USING HEVRISTIC
+		prev_n1 = hevristicOrder[core_len];
+		if (prev_n2 == NULL_NODE)
+			prev_n2 = 0;
+		else
+			prev_n2++;
 
-	if (t1both_len > core_len && t2both_len > core_len) {
-		while (prev_n1 < n1 && (core_1[prev_n1] != NULL_NODE || out_1[prev_n1] == 0 || in_1[prev_n1] == 0)) {
-			prev_n1++;
-			prev_n2 = 0;
+		if (out_1[prev_n1] != 0 && in_1[prev_n1] != 0) {
+			while (prev_n2 < n2 && (core_2[prev_n2] != NULL_NODE || out_2[prev_n2] == 0 || in_2[prev_n2] == 0)) {
+				prev_n2++;
+			}
+		} else if (out_1[prev_n1] != 0) {
+			while (prev_n2 < n2 && (core_2[prev_n2] != NULL_NODE || out_2[prev_n2] == 0)) {
+				prev_n2++;
+			}
+		} else if (in_1[prev_n1] != 0) {
+			while (prev_n2 < n2 && (core_2[prev_n2] != NULL_NODE || in_2[prev_n2] == 0)) {
+				prev_n2++;
+			}
+		} else {
+			while (prev_n2 < n2 && core_2[prev_n2] != NULL_NODE) {
+				prev_n2++;
+			}
 		}
-	} else if (t1out_len > core_len && t2out_len > core_len) {
-		while (prev_n1 < n1 && (core_1[prev_n1] != NULL_NODE || out_1[prev_n1] == 0)) {
-			prev_n1++;
-			prev_n2 = 0;
+
+		if (prev_n1 < n1 && prev_n2 < n2) {
+			*pn1 = prev_n1;
+			*pn2 = prev_n2;
+			return true;
 		}
-	} else if (t1in_len > core_len && t2in_len > core_len) {
-		while (prev_n1 < n1 && (core_1[prev_n1] != NULL_NODE || in_1[prev_n1] == 0)) {
-			prev_n1++;
-			prev_n2 = 0;
-		}
-	} else if (prev_n1 == 0 && order != NULL) {
-		int i = 0;
-		while (i < n1 && core_1[prev_n1 = order[i]] != NULL_NODE)
-			i++;
-		if (i == n1)
-			prev_n1 = n1;
+
 	} else {
-		while (prev_n1 < n1 && core_1[prev_n1] != NULL_NODE) {
-			prev_n1++;
+		// ORIGINAL VFLIB
+		if (prev_n1 == NULL_NODE)
+			prev_n1 = 0;
+		if (prev_n2 == NULL_NODE)
 			prev_n2 = 0;
+		else
+			prev_n2++;
+
+		if (t1both_len > core_len && t2both_len > core_len) {
+			while (prev_n1 < n1 && (core_1[prev_n1] != NULL_NODE || out_1[prev_n1] == 0 || in_1[prev_n1] == 0)) {
+				prev_n1++;
+				prev_n2 = 0;
+			}
+		} else if (t1out_len > core_len && t2out_len > core_len) {
+			while (prev_n1 < n1 && (core_1[prev_n1] != NULL_NODE || out_1[prev_n1] == 0)) {
+				prev_n1++;
+				prev_n2 = 0;
+			}
+		} else if (t1in_len > core_len && t2in_len > core_len) {
+			while (prev_n1 < n1 && (core_1[prev_n1] != NULL_NODE || in_1[prev_n1] == 0)) {
+				prev_n1++;
+				prev_n2 = 0;
+			}
+		} else if (prev_n1 == 0 && order != NULL) {
+			int i = 0;
+			while (i < n1 && core_1[prev_n1 = order[i]] != NULL_NODE)
+				i++;
+			if (i == n1)
+				prev_n1 = n1;
+		} else {
+			while (prev_n1 < n1 && core_1[prev_n1] != NULL_NODE) {
+				prev_n1++;
+				prev_n2 = 0;
+			}
+		}
+
+		if (t1both_len > core_len && t2both_len > core_len) {
+			while (prev_n2 < n2 && (core_2[prev_n2] != NULL_NODE || out_2[prev_n2] == 0 || in_2[prev_n2] == 0)) {
+				prev_n2++;
+			}
+		} else if (t1out_len > core_len && t2out_len > core_len) {
+			while (prev_n2 < n2 && (core_2[prev_n2] != NULL_NODE || out_2[prev_n2] == 0)) {
+				prev_n2++;
+			}
+		} else if (t1in_len > core_len && t2in_len > core_len) {
+			while (prev_n2 < n2 && (core_2[prev_n2] != NULL_NODE || in_2[prev_n2] == 0)) {
+				prev_n2++;
+			}
+		} else {
+			while (prev_n2 < n2 && core_2[prev_n2] != NULL_NODE) {
+				prev_n2++;
+			}
+		}
+
+		if (prev_n1 < n1 && prev_n2 < n2) {
+			*pn1 = prev_n1;
+			*pn2 = prev_n2;
+			return true;
 		}
 	}
-
-	if (t1both_len > core_len && t2both_len > core_len) {
-		while (prev_n2 < n2 && (core_2[prev_n2] != NULL_NODE || out_2[prev_n2] == 0 || in_2[prev_n2] == 0)) {
-			prev_n2++;
-		}
-	} else if (t1out_len > core_len && t2out_len > core_len) {
-		while (prev_n2 < n2 && (core_2[prev_n2] != NULL_NODE || out_2[prev_n2] == 0)) {
-			prev_n2++;
-		}
-	} else if (t1in_len > core_len && t2in_len > core_len) {
-		while (prev_n2 < n2 && (core_2[prev_n2] != NULL_NODE || in_2[prev_n2] == 0)) {
-			prev_n2++;
-		}
-	} else {
-		while (prev_n2 < n2 && core_2[prev_n2] != NULL_NODE) {
-			prev_n2++;
-		}
-	}
-
-	if (prev_n1 < n1 && prev_n2 < n2) {
-		*pn1 = prev_n1;
-		*pn2 = prev_n2;
-		return true;
-	}
-
 	return false;
 }
 
