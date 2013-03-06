@@ -39,6 +39,9 @@
 
 #include "search_traverse.cc"
 
+/*----------------------------------------------------------
+ * Methods of the class VF2SubState
+ ---------------------------------------------------------*/
 
 /*----------------------------------------------------------
  * VF2SubState::VF2SubState(g1, g2, sortNodes)
@@ -59,6 +62,9 @@ VF2SubState::VF2SubState(Graph *ag1, Graph *ag2, int sortHevristic) {
 	}
 	else if (sortHevristic == 2) {
 		SearchTraverse st;
+		hevristicOrder = st.SortNodesBySearchTraverse(ag1);
+	} else if (sortHevristic == 3) {
+		SearchTraverse2 st;
 		hevristicOrder = st.SortNodesBySearchTraverse(ag1);
 	}
 
