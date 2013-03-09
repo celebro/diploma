@@ -37,6 +37,7 @@
 \usepackage[nottoc]{tocbibind}	% prepreči številko za literaturo v kazalu
 \usepackage{amssymb}		% oznake za množice števil, npr. N za naravna števila
 
+
 %---------------------------------------------
 % psevdokoda
 \usepackage[chapter]{algorithm}
@@ -68,6 +69,47 @@
 	%\Statex\hspace*{-\algorithmicindent}\textbf{Algoritem \thealgorithm\, :: procedure} #1%
 	\Statex\hspace*{-\algorithmicindent}\textbf{procedure} #1%
 }
+
+
+
+%--------------------------------------------
+% koda
+\usepackage{listings} % source code
+\usepackage{courier} % courier font fot ttfamily
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\footnotesize\ttfamily,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=t,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single,                    % adds a frame around the code
+  keywordstyle=\color{blue},       % keyword style
+  language=C++,                 % the language of the code
+  morekeywords={*,...},            % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  %stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,                       % sets default tabsize to 2 spaces
+  %title=\lstname,                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+\renewcommand{\lstlistingname}{Algoritem}
+
+
 
 %---------------------------------------------
 
@@ -1150,11 +1192,37 @@
 \end{figure}
 
 
+\begin{figure}
+\begin{center}
+\includegraphics[width=15cm]{img/results2_si2.png}
+\end{center}
+\caption{Rezultati za grafe si2\_r001, si2\_r005 in si2\_r01}
+\label{pic_res2_si2}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=15cm]{img/results2_si4.png}
+\end{center}
+\caption{Rezultati za grafe si4\_r001, si4\_r005, si4\_r01}
+\label{pic_res2_si4}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=15cm]{img/results2_si6.png}
+\end{center}
+\caption{Rezultati za grafe si6\_r001, si6\_r005 in si6\_r01}
+\label{pic_res2_si5}
+\end{figure}
+
+
 
 
 \chapter{Sklepne ugotovitve}
 
 
+	
 \begin{thebibliography}{99}
 
 	%@article{LipetsVG09,
@@ -1195,6 +1263,227 @@
 	Universit\'{e} catholique de Louvain, D\'{e}partement d’Ing\'{e}nierie Informatique, Belgija, 2008.
 
 \end{thebibliography}
+
+
+\clearemptydoublepage
+\renewcommand{\baselinestretch}{1.0} % ustrezen razmik med vrsticami
+\appendix
+	\chapter {}
+	\label{appendix1}
+		\begin{lstlisting}[frame=tb, caption={Zgodovina pregleda grafa za algoritem VF2 (vflib)}, label={app_vf2+sub}]	
+#include <algorithm>
+#include <vector>
+#include <cstdio>
+#include <climits>
+#include <cstring>
+#include <iostream>
+#include "argraph.h"
+
+// This class calculates order as described in Subsea algorithm - 
+// depth first search and choose best with breadth first search
+class SearchTraverse {
+private:
+	int n;
+	node_id* order;
+	bool *processed;
+	bool *estimateProcessed;
+	int index;
+	Graph *g;
+
+	struct NodeEstimate {
+		node_id id;
+		int steps;
+		int size;
+	};
+
+	// a < b
+	bool nodeEstimateCompare(NodeEstimate a, NodeEstimate b) {
+		if (a.steps == b.steps) {
+			return a.size < b.size;
+		} else {
+			return a.steps < b.steps;
+		}
+	}
+
+	// Breadth first search
+	NodeEstimate getNodeEstimate(node_id start, node_id from) {
+		memset(estimateProcessed, 0, sizeof(bool) * n);
+		NodeEstimate e;
+		e.id = start;
+		e.steps = 1;
+		e.size = 0;
+		int total = 0;
+		std::vector<node_id> s;
+		std::vector<node_id> n;
+		s.push_back(start);
+		do {
+			int p = 0;
+			bool skippedEdge = false;
+			// Loop visited nodes
+			for (unsigned int idx = 0; idx < s.size(); idx++) {
+				// Loop node neighbors
+				for (int i = 0; i < g->InEdgeCount(s.at(idx)); i++) {
+					node_id n1 = g->GetInEdge(s.at(idx), i);
+					if (s.at(idx) == start && n1 == from && skippedEdge == false) {	// Do not use edge start->from
+						skippedEdge = true; // Only skip one edge
+						continue;
+					}
+					if (!estimateProcessed[n1]) { // Add to visited
+						n.push_back(n1);
+						estimateProcessed[n1] = true;
+						if (processed[n1])
+							p++;	// Count, if node is in goal
+					}
+				}
+				for (int i = 0; i < g->OutEdgeCount(s.at(idx)); i++) {
+					node_id n1 = g->GetOutEdge(s.at(idx), i);
+					if (s.at(idx) == start && n1 == from && skippedEdge == false) {
+						skippedEdge = true;
+						continue;
+					}
+					if (!estimateProcessed[n1]) {
+						n.push_back(n1);
+						estimateProcessed[n1] = true;
+						if (processed[n1])
+							p++;
+					}
+				}
+			}
+			if (p > 0) {
+				e.size = -p;
+				return e;
+			} else {
+				e.steps++;
+				total += n.size();
+				s.clear();
+				s.swap(n);
+			}
+		} while (s.size() > 0);
+		e.steps = 99999999;
+		e.size = total;
+		return e;
+	}
+
+	// Depth first visit, in best-first order
+	void Visit(node_id node) {
+		order[index++] = node;
+		processed[node] = true;
+		
+		// Find all non-processed neighbors of added node
+		std::vector<node_id> neighbors;
+		for (int i = 0; i < g->InEdgeCount(node); i++) {
+			node_id n1 = g->GetInEdge(node, i);
+			if (!processed[n1]) {
+				neighbors.push_back(n1);
+			}
+		}
+		for (int i = 0; i < g->OutEdgeCount(node); i++) {
+			node_id n1 = g->GetOutEdge(node, i);
+			if (!processed[n1]) {
+				neighbors.push_back(n1);
+			}
+		}
+
+		// Visit all neighbors in best-first order
+		while (neighbors.size() > 0) {
+			int bestNodeIdx = -1;
+			node_id bestNode = NULL_NODE;
+			NodeEstimate bestEstimate;
+
+			// Find best neighbor
+			for (unsigned int i = 0; i < neighbors.size(); i++) {
+				node_id n1 = neighbors.at(i);
+				if (!processed[n1]) {
+					NodeEstimate nEstiname = getNodeEstimate(n1, node);
+					if (bestNode == NULL_NODE || nodeEstimateCompare(nEstiname, bestEstimate)) {
+						bestNodeIdx = i;
+						bestNode = n1;
+						bestEstimate = nEstiname;
+					}
+				}
+			}
+
+			if (bestNode != NULL_NODE) {
+				Visit(bestNode);
+				// Remove visited neighbor
+				neighbors[bestNodeIdx] = neighbors[neighbors.size()-1];
+				neighbors.pop_back();
+			} else {
+				break;	// No more unvisited neighbors
+			}
+		}
+	}
+
+public:
+	node_id * SortNodesBySearchTraverse(Graph *g) {
+		n = g->NodeCount();
+		order = new node_id[n];
+		processed = new bool[n];
+		estimateProcessed = new bool[n];
+		index = 0;
+		this->g = g;
+		for (int i = 0; i < n; i++) {
+			order[i] = NULL_NODE;
+			processed[i] = false;
+		}
+		// Start with highest degree node (not part of Subsea)
+		while (index < n) {
+			int first = -1;
+			int firstEdgeCnt = -1;
+			for (int i = 0; i < n; i++) {
+				if (!processed[i] && g->EdgeCount(i) > firstEdgeCnt) {
+					first = i;
+					firstEdgeCnt = g->EdgeCount(i);
+				}
+			}
+			Visit(first);
+		}
+
+		delete[] processed;
+		delete[] estimateProcessed;
+		return order;
+	}
+};
+	\end{lstlisting}
+	
+\clearpage
+	\begin{lstlisting}[frame=tb, caption={Sprememba kode v knjižnici vflib za vključitev izboljšave algoritma VF2; \texttt{heuristicOrder} je vrnjena tabela iz	
+	algoritma~\ref{app_vf2+sub}}, label={app_vf2+sub1}]
+	bool VF2SubState::NextPair(node_id *pn1, node_id *pn2, node_id prev_n1, node_id prev_n2) {
+	prev_n1 = heuristicOrder[core_len];
+	if (prev_n2 == NULL_NODE)
+		prev_n2 = 0;
+	else
+		prev_n2++;
+
+	if (out_1[prev_n1] != 0 && in_1[prev_n1] != 0) {
+		while (prev_n2 < n2 && (core_2[prev_n2] != NULL_NODE || out_2[prev_n2] == 0 || in_2[prev_n2] == 0)) {
+			prev_n2++;
+		}
+	} else if (out_1[prev_n1] != 0) {
+		while (prev_n2 < n2 && (core_2[prev_n2] != NULL_NODE || out_2[prev_n2] == 0)) {
+			prev_n2++;
+		}
+	} else if (in_1[prev_n1] != 0) {
+		while (prev_n2 < n2 && (core_2[prev_n2] != NULL_NODE || in_2[prev_n2] == 0)) {
+			prev_n2++;
+		}
+	} else {
+		while (prev_n2 < n2 && core_2[prev_n2] != NULL_NODE) {
+			prev_n2++;
+		}
+	}
+
+	if (prev_n1 < n1 && prev_n2 < n2) {
+		*pn1 = prev_n1;
+		*pn2 = prev_n2;
+		return true;
+	}
+
+	return false;
+}
+	\end{lstlisting}
+
 
 \end{document}
 
