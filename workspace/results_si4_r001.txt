@@ -1,0 +1,1002 @@
+
+Running tests for data/mivia/si4/rand/r001/Fri Mar  8 08:43:53 CET 2013
+data/mivia/si4/rand/r001/20.A00;odcull=[6] 0.01;vf2_sub1=[6] 0.04;vf2=[6] 0.04
+data/mivia/si4/rand/r001/20.A01;odcull=[2] 0.01;vf2_sub1=[2] 0.04;vf2=[2] 0.03
+data/mivia/si4/rand/r001/20.A02;odcull=[36] 0.03;vf2_sub1=[36] 0.07;vf2=[36] 0.07
+data/mivia/si4/rand/r001/20.A03;odcull=[2] 0.01;vf2_sub1=[2] 0.05;vf2=[2] 0.03
+data/mivia/si4/rand/r001/20.A04;odcull=[12] 0.02;vf2_sub1=[12] 0.05;vf2=[12] 0.03
+data/mivia/si4/rand/r001/20.A05;odcull=[1800] 0.58;vf2_sub1=[1800] 1.74;vf2=[1800] 1.37
+data/mivia/si4/rand/r001/20.A06;odcull=[16] 0.02;vf2_sub1=[16] 0.05;vf2=[16] 0.05
+data/mivia/si4/rand/r001/20.A07;odcull=[30] 0.03;vf2_sub1=[30] 0.16;vf2=[30] 0.06
+data/mivia/si4/rand/r001/20.A08;odcull=[2] 0.01;vf2_sub1=[2] 0.04;vf2=[2] 0.03
+data/mivia/si4/rand/r001/20.A09;odcull=[24] 0.03;vf2_sub1=[24] 0.07;vf2=[24] 0.07
+data/mivia/si4/rand/r001/20.A10;odcull=[2] 0.01;vf2_sub1=[2] 0.03;vf2=[2] 0.03
+data/mivia/si4/rand/r001/20.A11;odcull=[12] 0.02;vf2_sub1=[12] 0.07;vf2=[12] 0.07
+data/mivia/si4/rand/r001/20.A12;odcull=[38] 0.04;vf2_sub1=[38] 0.13;vf2=[38] 0.11
+data/mivia/si4/rand/r001/20.A13;odcull=[12] 0.02;vf2_sub1=[12] 0.07;vf2=[12] 0.03
+data/mivia/si4/rand/r001/20.A14;odcull=[10] 0.02;vf2_sub1=[10] 0.06;vf2=[10] 0.06
+data/mivia/si4/rand/r001/20.A15;odcull=[8] 0.02;vf2_sub1=[8] 0.06;vf2=[8] 0.07
+data/mivia/si4/rand/r001/20.A16;odcull=[1] 0.01;vf2_sub1=[1] 0.03;vf2=[1] 0.02
+data/mivia/si4/rand/r001/20.A17;odcull=[4] 0.01;vf2_sub1=[4] 0.05;vf2=[4] 0.06
+data/mivia/si4/rand/r001/20.A18;odcull=[12] 0.02;vf2_sub1=[12] 0.08;vf2=[12] 0.07
+data/mivia/si4/rand/r001/20.A19;odcull=[4] 0.01;vf2_sub1=[4] 0.04;vf2=[4] 0.04
+data/mivia/si4/rand/r001/20.A20;odcull=[96] 0.05;vf2_sub1=[96] 0.19;vf2=[96] 0.15
+data/mivia/si4/rand/r001/20.A21;odcull=[1] 0.01;vf2_sub1=[1] 0.04;vf2=[1] 0.03
+data/mivia/si4/rand/r001/20.A22;odcull=[4] 0.02;vf2_sub1=[4] 0.15;vf2=[4] 0.05
+data/mivia/si4/rand/r001/20.A23;odcull=[156] 0.07;vf2_sub1=[156] 0.30;vf2=[156] 0.24
+data/mivia/si4/rand/r001/20.A24;odcull=[12] 0.03;vf2_sub1=[12] 0.07;vf2=[12] 0.04
+data/mivia/si4/rand/r001/20.A25;odcull=[18] 0.04;vf2_sub1=[18] 0.07;vf2=[18] 0.06
+data/mivia/si4/rand/r001/20.A26;odcull=[3] 0.01;vf2_sub1=[3] 0.04;vf2=[3] 0.03
+data/mivia/si4/rand/r001/20.A27;odcull=[16] 0.03;vf2_sub1=[16] 0.07;vf2=[16] 0.05
+data/mivia/si4/rand/r001/20.A28;odcull=[48] 0.03;vf2_sub1=[48] 0.16;vf2=[48] 0.15
+data/mivia/si4/rand/r001/20.A29;odcull=[4] 0.01;vf2_sub1=[4] 0.03;vf2=[4] 0.03
+data/mivia/si4/rand/r001/20.A30;odcull=[4] 0.01;vf2_sub1=[4] 0.04;vf2=[4] 0.05
+data/mivia/si4/rand/r001/20.A31;odcull=[2] 0.01;vf2_sub1=[2] 0.03;vf2=[2] 0.02
+data/mivia/si4/rand/r001/20.A32;odcull=[18] 0.02;vf2_sub1=[18] 0.08;vf2=[18] 0.07
+data/mivia/si4/rand/r001/20.A33;odcull=[9] 0.02;vf2_sub1=[9] 0.07;vf2=[9] 0.04
+data/mivia/si4/rand/r001/20.A34;odcull=[4] 0.01;vf2_sub1=[4] 0.05;vf2=[4] 0.04
+data/mivia/si4/rand/r001/20.A35;odcull=[14] 0.02;vf2_sub1=[14] 0.07;vf2=[14] 0.04
+data/mivia/si4/rand/r001/20.A36;odcull=[1] 0.01;vf2_sub1=[1] 0.03;vf2=[1] 0.03
+data/mivia/si4/rand/r001/20.A37;odcull=[12] 0.02;vf2_sub1=[12] 0.06;vf2=[12] 0.06
+data/mivia/si4/rand/r001/20.A38;odcull=[3] 0.01;vf2_sub1=[3] 0.03;vf2=[3] 0.03
+data/mivia/si4/rand/r001/20.A39;odcull=[48] 0.02;vf2_sub1=[48] 0.06;vf2=[48] 0.09
+data/mivia/si4/rand/r001/20.A40;odcull=[8] 0.02;vf2_sub1=[8] 0.06;vf2=[8] 0.04
+data/mivia/si4/rand/r001/20.A41;odcull=[16] 0.02;vf2_sub1=[16] 0.06;vf2=[16] 0.07
+data/mivia/si4/rand/r001/20.A42;odcull=[2] 0.01;vf2_sub1=[2] 0.04;vf2=[2] 0.03
+data/mivia/si4/rand/r001/20.A43;odcull=[4] 0.02;vf2_sub1=[4] 0.05;vf2=[4] 0.04
+data/mivia/si4/rand/r001/20.A44;odcull=[1] 0.01;vf2_sub1=[1] 0.03;vf2=[1] 0.03
+data/mivia/si4/rand/r001/20.A45;odcull=[8] 0.01;vf2_sub1=[8] 0.05;vf2=[8] 0.04
+data/mivia/si4/rand/r001/20.A46;odcull=[12] 0.02;vf2_sub1=[12] 0.09;vf2=[12] 0.07
+data/mivia/si4/rand/r001/20.A47;odcull=[36] 0.03;vf2_sub1=[36] 0.15;vf2=[36] 0.09
+data/mivia/si4/rand/r001/20.A48;odcull=[4] 0.02;vf2_sub1=[4] 0.06;vf2=[4] 0.04
+data/mivia/si4/rand/r001/20.A49;odcull=[2] 0.01;vf2_sub1=[2] 0.03;vf2=[2] 0.03
+data/mivia/si4/rand/r001/20.A50;odcull=[2] 0.02;vf2_sub1=[2] 0.05;vf2=[2] 0.03
+data/mivia/si4/rand/r001/20.A51;odcull=[12] 0.02;vf2_sub1=[12] 0.06;vf2=[12] 0.05
+data/mivia/si4/rand/r001/20.A52;odcull=[6] 0.02;vf2_sub1=[6] 0.05;vf2=[6] 0.05
+data/mivia/si4/rand/r001/20.A53;odcull=[1] 0.02;vf2_sub1=[1] 0.04;vf2=[1] 0.03
+data/mivia/si4/rand/r001/20.A54;odcull=[2] 0.01;vf2_sub1=[2] 0.05;vf2=[2] 0.03
+data/mivia/si4/rand/r001/20.A55;odcull=[2] 0.01;vf2_sub1=[2] 0.05;vf2=[2] 0.03
+data/mivia/si4/rand/r001/20.A56;odcull=[12] 0.02;vf2_sub1=[12] 0.07;vf2=[12] 0.04
+data/mivia/si4/rand/r001/20.A57;odcull=[56] 0.04;vf2_sub1=[56] 0.14;vf2=[56] 0.08
+data/mivia/si4/rand/r001/20.A58;odcull=[3] 0.02;vf2_sub1=[3] 0.09;vf2=[3] 0.03
+data/mivia/si4/rand/r001/20.A59;odcull=[8] 0.02;vf2_sub1=[8] 0.05;vf2=[8] 0.05
+data/mivia/si4/rand/r001/20.A60;odcull=[6] 0.01;vf2_sub1=[6] 0.04;vf2=[6] 0.02
+data/mivia/si4/rand/r001/20.A61;odcull=[2] 0.01;vf2_sub1=[2] 0.03;vf2=[2] 0.03
+data/mivia/si4/rand/r001/20.A62;odcull=[2] 0.01;vf2_sub1=[2] 0.03;vf2=[2] 0.03
+data/mivia/si4/rand/r001/20.A63;odcull=[16] 0.02;vf2_sub1=[16] 0.06;vf2=[16] 0.06
+data/mivia/si4/rand/r001/20.A64;odcull=[2] 0.01;vf2_sub1=[2] 0.04;vf2=[2] 0.03
+data/mivia/si4/rand/r001/20.A65;odcull=[8] 0.01;vf2_sub1=[8] 0.10;vf2=[8] 0.05
+data/mivia/si4/rand/r001/20.A66;odcull=[12] 0.02;vf2_sub1=[12] 0.07;vf2=[12] 0.07
+data/mivia/si4/rand/r001/20.A67;odcull=[2] 0.01;vf2_sub1=[2] 0.06;vf2=[2] 0.06
+data/mivia/si4/rand/r001/20.A68;odcull=[6] 0.02;vf2_sub1=[6] 0.06;vf2=[6] 0.04
+data/mivia/si4/rand/r001/20.A69;odcull=[48] 0.03;vf2_sub1=[48] 0.12;vf2=[48] 0.12
+data/mivia/si4/rand/r001/20.A70;odcull=[12] 0.02;vf2_sub1=[12] 0.05;vf2=[12] 0.06
+data/mivia/si4/rand/r001/20.A71;odcull=[2] 0.01;vf2_sub1=[2] 0.05;vf2=[2] 0.04
+data/mivia/si4/rand/r001/20.A72;odcull=[2] 0.01;vf2_sub1=[2] 0.06;vf2=[2] 0.05
+data/mivia/si4/rand/r001/20.A73;odcull=[6] 0.02;vf2_sub1=[6] 0.05;vf2=[6] 0.04
+data/mivia/si4/rand/r001/20.A74;odcull=[48] 0.04;vf2_sub1=[48] 0.14;vf2=[48] 0.10
+data/mivia/si4/rand/r001/20.A75;odcull=[24] 0.02;vf2_sub1=[24] 0.06;vf2=[24] 0.05
+data/mivia/si4/rand/r001/20.A76;odcull=[36] 0.03;vf2_sub1=[36] 0.13;vf2=[36] 0.06
+data/mivia/si4/rand/r001/20.A77;odcull=[2] 0.01;vf2_sub1=[2] 0.04;vf2=[2] 0.03
+data/mivia/si4/rand/r001/20.A78;odcull=[1] 0.01;vf2_sub1=[1] 0.06;vf2=[1] 0.02
+data/mivia/si4/rand/r001/20.A79;odcull=[14] 0.02;vf2_sub1=[14] 0.07;vf2=[14] 0.07
+data/mivia/si4/rand/r001/20.A80;odcull=[2] 0.01;vf2_sub1=[2] 0.03;vf2=[2] 0.02
+data/mivia/si4/rand/r001/20.A81;odcull=[8] 0.02;vf2_sub1=[8] 0.05;vf2=[8] 0.03
+data/mivia/si4/rand/r001/20.A82;odcull=[1] 0.01;vf2_sub1=[1] 0.03;vf2=[1] 0.02
+data/mivia/si4/rand/r001/20.A83;odcull=[2] 0.01;vf2_sub1=[2] 0.03;vf2=[2] 0.03
+data/mivia/si4/rand/r001/20.A84;odcull=[8] 0.01;vf2_sub1=[8] 0.05;vf2=[8] 0.04
+data/mivia/si4/rand/r001/20.A85;odcull=[16] 0.02;vf2_sub1=[16] 0.07;vf2=[16] 0.04
+data/mivia/si4/rand/r001/20.A86;odcull=[4] 0.02;vf2_sub1=[4] 0.04;vf2=[4] 0.03
+data/mivia/si4/rand/r001/20.A87;odcull=[24] 0.02;vf2_sub1=[24] 0.32;vf2=[24] 0.07
+data/mivia/si4/rand/r001/20.A88;odcull=[20] 0.03;vf2_sub1=[20] 0.07;vf2=[20] 0.07
+data/mivia/si4/rand/r001/20.A89;odcull=[4] 0.01;vf2_sub1=[4] 0.05;vf2=[4] 0.04
+data/mivia/si4/rand/r001/20.A90;odcull=[12] 0.02;vf2_sub1=[12] 0.08;vf2=[12] 0.04
+data/mivia/si4/rand/r001/20.A91;odcull=[12] 0.02;vf2_sub1=[12] 0.06;vf2=[12] 0.05
+data/mivia/si4/rand/r001/20.A92;odcull=[4] 0.02;vf2_sub1=[4] 0.05;vf2=[4] 0.05
+data/mivia/si4/rand/r001/20.A93;odcull=[2] 0.01;vf2_sub1=[2] 0.03;vf2=[2] 0.02
+data/mivia/si4/rand/r001/20.A94;odcull=[8] 0.03;vf2_sub1=[8] 0.06;vf2=[8] 0.09
+data/mivia/si4/rand/r001/20.A95;odcull=[6] 0.02;vf2_sub1=[6] 0.07;vf2=[6] 0.05
+data/mivia/si4/rand/r001/20.A96;odcull=[2] 0.02;vf2_sub1=[2] 0.04;vf2=[2] 0.04
+data/mivia/si4/rand/r001/20.A97;odcull=[2] 0.01;vf2_sub1=[2] 0.03;vf2=[2] 0.03
+data/mivia/si4/rand/r001/20.A98;odcull=[4] 0.01;vf2_sub1=[4] 0.04;vf2=[4] 0.04
+data/mivia/si4/rand/r001/20.A99;odcull=[24] 0.02;vf2_sub1=[24] 0.08;vf2=[24] 0.05
+data/mivia/si4/rand/r001/40.A00;odcull=[16] 0.05;vf2_sub1=[16] 0.32;vf2=[16] 0.10
+data/mivia/si4/rand/r001/40.A01;odcull=[2] 0.05;vf2_sub1=[2] 0.07;vf2=[2] 0.11
+data/mivia/si4/rand/r001/40.A02;odcull=[32] 0.07;vf2_sub1=[32] 0.23;vf2=[32] 0.24
+data/mivia/si4/rand/r001/40.A03;odcull=[12] 0.05;vf2_sub1=[12] 0.08;vf2=[12] 0.15
+data/mivia/si4/rand/r001/40.A04;odcull=[6] 0.04;vf2_sub1=[6] 0.07;vf2=[6] 0.15
+data/mivia/si4/rand/r001/40.A05;odcull=[12] 0.05;vf2_sub1=[12] 0.06;vf2=[12] 0.13
+data/mivia/si4/rand/r001/40.A06;odcull=[12] 0.04;vf2_sub1=[12] 0.07;vf2=[12] 0.08
+data/mivia/si4/rand/r001/40.A07;odcull=[384] 0.23;vf2_sub1=[384] 0.76;vf2=[384] 1.48
+data/mivia/si4/rand/r001/40.A08;odcull=[36] 0.06;vf2_sub1=[36] 0.10;vf2=[36] 0.14
+data/mivia/si4/rand/r001/40.A09;odcull=[36] 0.06;vf2_sub1=[36] 0.14;vf2=[36] 0.19
+data/mivia/si4/rand/r001/40.A10;odcull=[4] 0.05;vf2_sub1=[4] 0.16;vf2=[4] 0.15
+data/mivia/si4/rand/r001/40.A11;odcull=[8] 0.05;vf2_sub1=[8] 0.07;vf2=[8] 0.36
+data/mivia/si4/rand/r001/40.A12;odcull=[16] 0.05;vf2_sub1=[16] 0.20;vf2=[16] 0.13
+data/mivia/si4/rand/r001/40.A13;odcull=[8] 0.05;vf2_sub1=[8] 0.10;vf2=[8] 0.09
+data/mivia/si4/rand/r001/40.A14;odcull=[96] 0.10;vf2_sub1=[96] 0.56;vf2=[96] 0.36
+data/mivia/si4/rand/r001/40.A15;odcull=[2] 0.04;vf2_sub1=[2] 0.06;vf2=[2] 0.05
+data/mivia/si4/rand/r001/40.A16;odcull=[24] 0.05;vf2_sub1=[24] 0.10;vf2=[24] 0.11
+data/mivia/si4/rand/r001/40.A17;odcull=[6] 0.04;vf2_sub1=[6] 0.07;vf2=[6] 0.07
+data/mivia/si4/rand/r001/40.A18;odcull=[3] 0.04;vf2_sub1=[3] 0.07;vf2=[3] 0.06
+data/mivia/si4/rand/r001/40.A19;odcull=[2] 0.04;vf2_sub1=[2] 0.20;vf2=[2] 0.10
+data/mivia/si4/rand/r001/40.A20;odcull=[12] 0.07;vf2_sub1=[12] 0.47;vf2=[12] 0.23
+data/mivia/si4/rand/r001/40.A21;odcull=[36] 0.10;vf2_sub1=[36] 0.27;vf2=[36] 0.27
+data/mivia/si4/rand/r001/40.A22;odcull=[2] 0.06;vf2_sub1=[2] 0.06;vf2=[2] 0.11
+data/mivia/si4/rand/r001/40.A23;odcull=[16] 0.08;vf2_sub1=[16] 0.27;vf2=[16] 0.29
+data/mivia/si4/rand/r001/40.A24;odcull=[2] 0.04;vf2_sub1=[2] 0.32;vf2=[2] 0.12
+data/mivia/si4/rand/r001/40.A25;odcull=[8] 0.04;vf2_sub1=[8] 0.27;vf2=[8] 0.10
+data/mivia/si4/rand/r001/40.A26;odcull=[6] 0.05;vf2_sub1=[6] 0.19;vf2=[6] 0.18
+data/mivia/si4/rand/r001/40.A27;odcull=[16] 0.05;vf2_sub1=[16] 0.07;vf2=[16] 0.17
+data/mivia/si4/rand/r001/40.A28;odcull=[224] 0.20;vf2_sub1=[224] 0.67;vf2=[224] 0.56
+data/mivia/si4/rand/r001/40.A29;odcull=[6] 0.05;vf2_sub1=[6] 0.08;vf2=[6] 0.18
+data/mivia/si4/rand/r001/40.A30;odcull=[72] 0.10;vf2_sub1=[72] 0.38;vf2=[72] 0.42
+data/mivia/si4/rand/r001/40.A31;odcull=[10] 0.07;vf2_sub1=[10] 0.08;vf2=[10] 0.21
+data/mivia/si4/rand/r001/40.A32;odcull=[48] 0.07;vf2_sub1=[48] 0.43;vf2=[48] 0.21
+data/mivia/si4/rand/r001/40.A33;odcull=[108] 0.13;vf2_sub1=[108] 0.49;vf2=[108] 0.65
+data/mivia/si4/rand/r001/40.A34;odcull=[16] 0.08;vf2_sub1=[16] 0.33;vf2=[16] 0.28
+data/mivia/si4/rand/r001/40.A35;odcull=[6] 0.05;vf2_sub1=[6] 0.08;vf2=[6] 0.11
+data/mivia/si4/rand/r001/40.A36;odcull=[48] 0.09;vf2_sub1=[48] 0.88;vf2=[48] 0.20
+data/mivia/si4/rand/r001/40.A37;odcull=[9] 0.05;vf2_sub1=[9] 0.19;vf2=[9] 0.13
+data/mivia/si4/rand/r001/40.A38;odcull=[160] 0.38;vf2_sub1=[160] 1.87;vf2=[160] 0.82
+data/mivia/si4/rand/r001/40.A39;odcull=[60] 0.13;vf2_sub1=[60] 0.31;vf2=[60] 0.60
+data/mivia/si4/rand/r001/40.A40;odcull=[12] 0.04;vf2_sub1=[12] 0.12;vf2=[12] 0.11
+data/mivia/si4/rand/r001/40.A41;odcull=[24] 0.07;vf2_sub1=[24] 0.23;vf2=[24] 0.21
+data/mivia/si4/rand/r001/40.A42;odcull=[1] 0.04;vf2_sub1=[1] 0.05;vf2=[1] 0.05
+data/mivia/si4/rand/r001/40.A43;odcull=[720] 0.64;vf2_sub1=[720] 10.32;vf2=[720] 4.34
+data/mivia/si4/rand/r001/40.A44;odcull=[8] 0.05;vf2_sub1=[8] 0.10;vf2=[8] 0.11
+data/mivia/si4/rand/r001/40.A45;odcull=[1] 0.05;vf2_sub1=[1] 0.10;vf2=[1] 0.11
+data/mivia/si4/rand/r001/40.A46;odcull=[16] 0.05;vf2_sub1=[16] 0.13;vf2=[16] 0.15
+data/mivia/si4/rand/r001/40.A47;odcull=[288] 0.31;vf2_sub1=[288] 1.04;vf2=[288] 0.58
+data/mivia/si4/rand/r001/40.A48;odcull=[24] 0.07;vf2_sub1=[24] 0.33;vf2=[24] 0.18
+data/mivia/si4/rand/r001/40.A49;odcull=[48] 0.11;vf2_sub1=[48] 0.69;vf2=[48] 0.45
+data/mivia/si4/rand/r001/40.A50;odcull=[8] 0.06;vf2_sub1=[8] 0.44;vf2=[8] 0.16
+data/mivia/si4/rand/r001/40.A51;odcull=[4] 0.04;vf2_sub1=[4] 0.07;vf2=[4] 0.11
+data/mivia/si4/rand/r001/40.A52;odcull=[2] 0.05;vf2_sub1=[2] 0.05;vf2=[2] 0.07
+data/mivia/si4/rand/r001/40.A53;odcull=[12] 0.04;vf2_sub1=[12] 0.09;vf2=[12] 0.09
+data/mivia/si4/rand/r001/40.A54;odcull=[19008] 6.55;vf2_sub1=[19008] 17.37;vf2=[19008] 16.76
+data/mivia/si4/rand/r001/40.A55;odcull=[8] 0.04;vf2_sub1=[8] 0.09;vf2=[8] 0.12
+data/mivia/si4/rand/r001/40.A56;odcull=[8] 0.05;vf2_sub1=[8] 0.22;vf2=[8] 0.11
+data/mivia/si4/rand/r001/40.A57;odcull=[8] 0.04;vf2_sub1=[8] 0.07;vf2=[8] 0.09
+data/mivia/si4/rand/r001/40.A58;odcull=[80] 0.12;vf2_sub1=[80] 0.52;vf2=[80] 0.27
+data/mivia/si4/rand/r001/40.A59;odcull=[4] 0.04;vf2_sub1=[4] 0.06;vf2=[4] 0.07
+data/mivia/si4/rand/r001/40.A60;odcull=[144] 0.19;vf2_sub1=[144] 3.67;vf2=[144] 0.50
+data/mivia/si4/rand/r001/40.A61;odcull=[10] 0.05;vf2_sub1=[10] 0.10;vf2=[10] 0.11
+data/mivia/si4/rand/r001/40.A62;odcull=[48] 0.10;vf2_sub1=[48] 1.59;vf2=[48] 0.34
+data/mivia/si4/rand/r001/40.A63;odcull=[8] 0.05;vf2_sub1=[8] 0.12;vf2=[8] 0.19
+data/mivia/si4/rand/r001/40.A64;odcull=[6] 0.04;vf2_sub1=[6] 0.06;vf2=[6] 0.08
+data/mivia/si4/rand/r001/40.A65;odcull=[4] 0.04;vf2_sub1=[4] 0.07;vf2=[4] 0.07
+data/mivia/si4/rand/r001/40.A66;odcull=[80] 0.06;vf2_sub1=[80] 0.11;vf2=[80] 0.10
+data/mivia/si4/rand/r001/40.A67;odcull=[36] 0.06;vf2_sub1=[36] 0.19;vf2=[36] 0.15
+data/mivia/si4/rand/r001/40.A68;odcull=[24] 0.06;vf2_sub1=[24] 0.56;vf2=[24] 0.10
+data/mivia/si4/rand/r001/40.A69;odcull=[18] 0.06;vf2_sub1=[18] 0.38;vf2=[18] 0.14
+data/mivia/si4/rand/r001/40.A70;odcull=[16] 0.09;vf2_sub1=[16] 0.14;vf2=[16] 0.16
+data/mivia/si4/rand/r001/40.A71;odcull=[48] 0.07;vf2_sub1=[48] 0.13;vf2=[48] 0.16
+data/mivia/si4/rand/r001/40.A72;odcull=[4] 0.07;vf2_sub1=[4] 0.17;vf2=[4] 0.14
+data/mivia/si4/rand/r001/40.A73;odcull=[6] 0.06;vf2_sub1=[6] 0.10;vf2=[6] 0.16
+data/mivia/si4/rand/r001/40.A74;odcull=[12] 0.06;vf2_sub1=[12] 0.17;vf2=[12] 0.13
+data/mivia/si4/rand/r001/40.A75;odcull=[8] 0.05;vf2_sub1=[8] 0.14;vf2=[8] 0.11
+data/mivia/si4/rand/r001/40.A76;odcull=[192] 0.15;vf2_sub1=[192] 1.56;vf2=[192] 0.37
+data/mivia/si4/rand/r001/40.A77;odcull=[12] 0.07;vf2_sub1=[12] 0.20;vf2=[12] 0.12
+data/mivia/si4/rand/r001/40.A78;odcull=[16] 0.06;vf2_sub1=[16] 0.15;vf2=[16] 0.10
+data/mivia/si4/rand/r001/40.A79;odcull=[24] 0.06;vf2_sub1=[24] 0.18;vf2=[24] 0.09
+data/mivia/si4/rand/r001/40.A80;odcull=[8] 0.04;vf2_sub1=[8] 0.09;vf2=[8] 0.12
+data/mivia/si4/rand/r001/40.A81;odcull=[32] 0.05;vf2_sub1=[32] 0.16;vf2=[32] 0.21
+data/mivia/si4/rand/r001/40.A82;odcull=[3] 0.03;vf2_sub1=[3] 0.06;vf2=[3] 0.07
+data/mivia/si4/rand/r001/40.A83;odcull=[504] 0.45;vf2_sub1=[504] 6.62;vf2=[504] 7.11
+data/mivia/si4/rand/r001/40.A84;odcull=[24] 0.08;vf2_sub1=[24] 0.19;vf2=[24] 0.16
+data/mivia/si4/rand/r001/40.A85;odcull=[1] 0.04;vf2_sub1=[1] 0.07;vf2=[1] 0.07
+data/mivia/si4/rand/r001/40.A86;odcull=[48] 0.09;vf2_sub1=[48] 0.56;vf2=[48] 0.22
+data/mivia/si4/rand/r001/40.A87;odcull=[24] 0.05;vf2_sub1=[24] 0.30;vf2=[24] 0.13
+data/mivia/si4/rand/r001/40.A88;odcull=[4] 0.04;vf2_sub1=[4] 0.09;vf2=[4] 0.12
+data/mivia/si4/rand/r001/40.A89;odcull=[2] 0.04;vf2_sub1=[2] 0.06;vf2=[2] 0.10
+data/mivia/si4/rand/r001/40.A90;odcull=[2] 0.04;vf2_sub1=[2] 0.06;vf2=[2] 0.05
+data/mivia/si4/rand/r001/40.A91;odcull=[288] 0.24;vf2_sub1=[288] 1.55;vf2=[288] 0.99
+data/mivia/si4/rand/r001/40.A92;odcull=[312] 0.29;vf2_sub1=[312] 1.31;vf2=[312] 0.94
+data/mivia/si4/rand/r001/40.A93;odcull=[2] 0.06;vf2_sub1=[2] 0.15;vf2=[2] 0.15
+data/mivia/si4/rand/r001/40.A94;odcull=[744] 0.69;vf2_sub1=[744] 2.52;vf2=[744] 2.82
+data/mivia/si4/rand/r001/40.A95;odcull=[96] 0.09;vf2_sub1=[96] 0.72;vf2=[96] 0.17
+data/mivia/si4/rand/r001/40.A96;odcull=[76] 0.09;vf2_sub1=[76] 0.25;vf2=[76] 0.27
+data/mivia/si4/rand/r001/40.A97;odcull=[12] 0.04;vf2_sub1=[12] 0.34;vf2=[12] 0.07
+data/mivia/si4/rand/r001/40.A98;odcull=[96] 0.15;vf2_sub1=[96] 0.70;vf2=[96] 0.62
+data/mivia/si4/rand/r001/40.A99;odcull=[4] 0.04;vf2_sub1=[4] 0.11;vf2=[4] 0.06
+data/mivia/si4/rand/r001/60.A00;odcull=[2] 0.09;vf2_sub1=[2] 0.09;vf2=[2] 0.28
+data/mivia/si4/rand/r001/60.A01;odcull=[128] 0.16;vf2_sub1=[128] 0.61;vf2=[128] 0.47
+data/mivia/si4/rand/r001/60.A02;odcull=[6] 0.08;vf2_sub1=[6] 0.11;vf2=[6] 0.17
+data/mivia/si4/rand/r001/60.A03;odcull=[8] 0.11;vf2_sub1=[8] 0.17;vf2=[8] 0.22
+data/mivia/si4/rand/r001/60.A04;odcull=[3] 0.08;vf2_sub1=[3] 0.54;vf2=[3] 0.09
+data/mivia/si4/rand/r001/60.A05;odcull=[96] 0.13;vf2_sub1=[96] 0.68;vf2=[96] 0.19
+data/mivia/si4/rand/r001/60.A06;odcull=[288] 0.20;vf2_sub1=[288] 1.55;vf2=[288] 1.20
+data/mivia/si4/rand/r001/60.A07;odcull=[2] 0.10;vf2_sub1=[2] 0.12;vf2=[2] 0.42
+data/mivia/si4/rand/r001/60.A08;odcull=[96] 0.21;vf2_sub1=[96] 0.23;vf2=[96] 0.35
+data/mivia/si4/rand/r001/60.A09;odcull=[20] 0.12;vf2_sub1=[20] 0.19;vf2=[20] 0.26
+data/mivia/si4/rand/r001/60.A10;odcull=[24] 0.09;vf2_sub1=[24] 0.25;vf2=[24] 0.21
+data/mivia/si4/rand/r001/60.A11;odcull=[48] 0.17;vf2_sub1=[48] 0.71;vf2=[48] 0.67
+data/mivia/si4/rand/r001/60.A12;odcull=[144] 0.41;vf2_sub1=[144] 0.67;vf2=[144] 0.89
+data/mivia/si4/rand/r001/60.A13;odcull=[8] 0.11;vf2_sub1=[8] 0.34;vf2=[8] 0.43
+data/mivia/si4/rand/r001/60.A14;odcull=[80] 0.25;vf2_sub1=[80] 1.19;vf2=[80] 1.49
+data/mivia/si4/rand/r001/60.A15;odcull=[960] 1.26;vf2_sub1=[960] 5.36;vf2=[960] 6.50
+data/mivia/si4/rand/r001/60.A16;odcull=[48] 0.12;vf2_sub1=[48] 0.41;vf2=[48] 0.20
+data/mivia/si4/rand/r001/60.A17;odcull=[72] 0.14;vf2_sub1=[72] 0.25;vf2=[72] 0.65
+data/mivia/si4/rand/r001/60.A18;odcull=[18] 0.11;vf2_sub1=[18] 0.22;vf2=[18] 0.21
+data/mivia/si4/rand/r001/60.A19;odcull=[864] 1.51;vf2_sub1=[864] 3.78;vf2=[864] 3.00
+data/mivia/si4/rand/r001/60.A20;odcull=[2] 0.15;vf2_sub1=[2] 0.11;vf2=[2] 0.25
+data/mivia/si4/rand/r001/60.A21;odcull=[8] 0.12;vf2_sub1=[8] 0.11;vf2=[8] 0.34
+data/mivia/si4/rand/r001/60.A22;odcull=[240] 0.49;vf2_sub1=[240] 3.52;vf2=[240] 4.09
+data/mivia/si4/rand/r001/60.A23;odcull=[2304] 2.07;vf2_sub1=[2304] 13.86;vf2=[2304] 8.32
+data/mivia/si4/rand/r001/60.A24;odcull=[480] 0.79;vf2_sub1=[480] 10.41;vf2=[480] 2.18
+data/mivia/si4/rand/r001/60.A25;odcull=[96] 0.17;vf2_sub1=[96] 1.06;vf2=[96] 0.80
+data/mivia/si4/rand/r001/60.A26;odcull=[6] 0.11;vf2_sub1=[6] 0.21;vf2=[6] 0.30
+data/mivia/si4/rand/r001/60.A27;odcull=[480] 0.60;vf2_sub1=[480] 0.82;vf2=[480] 2.92
+data/mivia/si4/rand/r001/60.A28;odcull=[160] 0.39;vf2_sub1=[160] 1.64;vf2=[160] 2.06
+data/mivia/si4/rand/r001/60.A29;odcull=[12] 0.14;vf2_sub1=[12] 0.20;vf2=[12] 0.30
+data/mivia/si4/rand/r001/60.A30;odcull=[24] 0.11;vf2_sub1=[24] 0.81;vf2=[24] 0.33
+data/mivia/si4/rand/r001/60.A31;odcull=[432] 1.15;vf2_sub1=[432] 13.03;vf2=[432] 26.52
+data/mivia/si4/rand/r001/60.A32;odcull=[2] 0.09;vf2_sub1=[2] 0.13;vf2=[2] 0.16
+data/mivia/si4/rand/r001/60.A33;odcull=[3840] 3.54;vf2_sub1=[3840] 17.62;vf2=[3840] 13.40
+data/mivia/si4/rand/r001/60.A34;odcull=[12] 0.10;vf2_sub1=[12] 0.30;vf2=[12] 0.39
+data/mivia/si4/rand/r001/60.A35;odcull=[56] 0.12;vf2_sub1=[56] 0.87;vf2=[56] 0.19
+data/mivia/si4/rand/r001/60.A36;odcull=[204] 0.27;vf2_sub1=[204] 0.44;vf2=[204] 0.83
+data/mivia/si4/rand/r001/60.A37;odcull=[8] 0.09;vf2_sub1=[8] 0.17;vf2=[8] 0.20
+data/mivia/si4/rand/r001/60.A38;odcull=[4] 0.09;vf2_sub1=[4] 0.10;vf2=[4] 0.83
+data/mivia/si4/rand/r001/60.A39;odcull=[192] 0.20;vf2_sub1=[192] 0.31;vf2=[192] 0.47
+data/mivia/si4/rand/r001/60.A40;odcull=[16] 0.10;vf2_sub1=[16] 0.18;vf2=[16] 0.25
+data/mivia/si4/rand/r001/60.A41;odcull=[24] 0.16;vf2_sub1=[24] 0.41;vf2=[24] 12.94
+data/mivia/si4/rand/r001/60.A42;odcull=[2880] 4.26;vf2_sub1=[2880] 2.95;vf2=[2880] 19.01
+data/mivia/si4/rand/r001/60.A43;odcull=[4] 0.08;vf2_sub1=[4] 0.11;vf2=[4] 0.16
+data/mivia/si4/rand/r001/60.A44;odcull=[96] 0.22;vf2_sub1=[96] 1.14;vf2=[96] 0.43
+data/mivia/si4/rand/r001/60.A45;odcull=[48] 0.22;vf2_sub1=[48] 0.32;vf2=[48] 0.46
+data/mivia/si4/rand/r001/60.A46;odcull=[10] 0.13;vf2_sub1=[10] 0.13;vf2=[10] 0.64
+data/mivia/si4/rand/r001/60.A47;odcull=[352] 0.83;vf2_sub1=[352] 1.58;vf2=[352] 3.72
+data/mivia/si4/rand/r001/60.A48;odcull=[10] 0.11;vf2_sub1=[10] 0.33;vf2=[10] 0.18
+data/mivia/si4/rand/r001/60.A49;odcull=[12] 0.11;vf2_sub1=[12] 0.48;vf2=[12] 0.18
+data/mivia/si4/rand/r001/60.A50;odcull=[120] 0.17;vf2_sub1=[120] 0.58;vf2=[120] 0.53
+data/mivia/si4/rand/r001/60.A51;odcull=[2] 0.07;vf2_sub1=[2] 0.09;vf2=[2] 0.15
+data/mivia/si4/rand/r001/60.A52;odcull=[168] 0.23;vf2_sub1=[168] 0.59;vf2=[168] 0.42
+data/mivia/si4/rand/r001/60.A53;odcull=[64] 0.20;vf2_sub1=[64] 0.45;vf2=[64] 0.54
+data/mivia/si4/rand/r001/60.A54;odcull=[12] 0.09;vf2_sub1=[12] 0.19;vf2=[12] 0.19
+data/mivia/si4/rand/r001/60.A55;odcull=[4] 0.09;vf2_sub1=[4] 0.17;vf2=[4] 0.18
+data/mivia/si4/rand/r001/60.A56;odcull=[4] 0.09;vf2_sub1=[4] 0.09;vf2=[4] 0.18
+data/mivia/si4/rand/r001/60.A57;odcull=[3] 0.08;vf2_sub1=[3] 0.09;vf2=[3] 0.11
+data/mivia/si4/rand/r001/60.A58;odcull=[96] 0.22;vf2_sub1=[96] 0.59;vf2=[96] 0.48
+data/mivia/si4/rand/r001/60.A59;odcull=[188] 0.28;vf2_sub1=[188] 1.10;vf2=[188] 1.15
+data/mivia/si4/rand/r001/60.A60;odcull=[3] 0.10;vf2_sub1=[3] 0.14;vf2=[3] 0.42
+data/mivia/si4/rand/r001/60.A61;odcull=[4] 0.09;vf2_sub1=[4] 1.65;vf2=[4] 1.23
+data/mivia/si4/rand/r001/60.A62;odcull=[240] 0.31;vf2_sub1=[240] 0.28;vf2=[240] 1.48
+data/mivia/si4/rand/r001/60.A63;odcull=[24] 0.10;vf2_sub1=[24] 0.50;vf2=[24] 0.90
+data/mivia/si4/rand/r001/60.A64;odcull=[34] 0.14;vf2_sub1=[34] 1.07;vf2=[34] 0.41
+data/mivia/si4/rand/r001/60.A65;odcull=[80] 0.17;vf2_sub1=[80] 0.68;vf2=[80] 0.67
+data/mivia/si4/rand/r001/60.A66;odcull=[117] 0.29;vf2_sub1=[117] 1.39;vf2=[117] 0.63
+data/mivia/si4/rand/r001/60.A67;odcull=[2016] 1.30;vf2_sub1=[2016] 6.78;vf2=[2016] 10.91
+data/mivia/si4/rand/r001/60.A68;odcull=[8] 0.11;vf2_sub1=[8] 0.19;vf2=[8] 0.23
+data/mivia/si4/rand/r001/60.A69;odcull=[54] 0.27;vf2_sub1=[54] 0.39;vf2=[54] 1.46
+data/mivia/si4/rand/r001/60.A70;odcull=[12] 0.10;vf2_sub1=[12] 0.24;vf2=[12] 0.18
+data/mivia/si4/rand/r001/60.A71;odcull=[40] 0.12;vf2_sub1=[40] 0.16;vf2=[40] 1.04
+data/mivia/si4/rand/r001/60.A72;odcull=[64] 0.20;vf2_sub1=[64] 0.87;vf2=[64] 0.72
+data/mivia/si4/rand/r001/60.A73;odcull=[16] 0.19;vf2_sub1=[16] 0.15;vf2=[16] 1.24
+data/mivia/si4/rand/r001/60.A74;odcull=[4] 0.09;vf2_sub1=[4] 0.09;vf2=[4] 0.27
+data/mivia/si4/rand/r001/60.A75;odcull=[20] 0.12;vf2_sub1=[20] 0.20;vf2=[20] 0.50
+data/mivia/si4/rand/r001/60.A76;odcull=[72] 0.17;vf2_sub1=[72] 0.49;vf2=[72] 0.67
+data/mivia/si4/rand/r001/60.A77;odcull=[4] 0.09;vf2_sub1=[4] 0.13;vf2=[4] 0.14
+data/mivia/si4/rand/r001/60.A78;odcull=[24] 0.16;vf2_sub1=[24] 4.22;vf2=[24] 0.53
+data/mivia/si4/rand/r001/60.A79;odcull=[12] 0.09;vf2_sub1=[12] 0.22;vf2=[12] 0.17
+data/mivia/si4/rand/r001/60.A80;odcull=[48] 0.20;vf2_sub1=[48] 1.53;vf2=[48] 0.32
+data/mivia/si4/rand/r001/60.A81;odcull=[1296] 1.87;vf2_sub1=[1296] 10.09;vf2=[1296] 8.81
+data/mivia/si4/rand/r001/60.A82;odcull=[64] 0.17;vf2_sub1=[64] 1.32;vf2=[64] 0.44
+data/mivia/si4/rand/r001/60.A83;odcull=[48] 0.14;vf2_sub1=[48] 0.61;vf2=[48] 0.43
+data/mivia/si4/rand/r001/60.A84;odcull=[12] 0.11;vf2_sub1=[12] 0.21;vf2=[12] 0.32
+data/mivia/si4/rand/r001/60.A85;odcull=[108000] 77.43;vf2_sub1=[108000] 89.57;vf2=[108000] 233.00
+data/mivia/si4/rand/r001/60.A86;odcull=[8] 0.09;vf2_sub1=[8] 0.11;vf2=[8] 0.19
+data/mivia/si4/rand/r001/60.A87;odcull=[12] 0.09;vf2_sub1=[12] 0.37;vf2=[12] 0.19
+data/mivia/si4/rand/r001/60.A88;odcull=[144] 0.52;vf2_sub1=[144] 2.24;vf2=[144] 0.75
+data/mivia/si4/rand/r001/60.A89;odcull=[168] 0.20;vf2_sub1=[168] 0.33;vf2=[168] 0.65
+data/mivia/si4/rand/r001/60.A90;odcull=[32] 0.10;vf2_sub1=[32] 0.20;vf2=[32] 0.34
+data/mivia/si4/rand/r001/60.A91;odcull=[48] 0.11;vf2_sub1=[48] 0.32;vf2=[48] 0.26
+data/mivia/si4/rand/r001/60.A92;odcull=[4] 0.10;vf2_sub1=[4] 0.43;vf2=[4] 0.21
+data/mivia/si4/rand/r001/60.A93;odcull=[288] 0.28;vf2_sub1=[288] 0.45;vf2=[288] 0.85
+data/mivia/si4/rand/r001/60.A94;odcull=[15] 0.15;vf2_sub1=[15] 0.15;vf2=[15] 0.34
+data/mivia/si4/rand/r001/60.A95;odcull=[432] 0.59;vf2_sub1=[432] 1.18;vf2=[432] 6.73
+data/mivia/si4/rand/r001/60.A96;odcull=[12] 0.10;vf2_sub1=[12] 0.21;vf2=[12] 0.20
+data/mivia/si4/rand/r001/60.A97;odcull=[8] 0.12;vf2_sub1=[8] 0.27;vf2=[8] 0.31
+data/mivia/si4/rand/r001/60.A98;odcull=[1] 0.08;vf2_sub1=[1] 0.09;vf2=[1] 0.29
+data/mivia/si4/rand/r001/60.A99;odcull=[16] 0.09;vf2_sub1=[16] 0.13;vf2=[16] 0.21
+data/mivia/si4/rand/r001/80.A00;odcull=[1] 0.12;vf2_sub1=[1] 0.12;vf2=[1] 0.15
+data/mivia/si4/rand/r001/80.A01;odcull=[8] 0.15;vf2_sub1=[8] 0.19;vf2=[8] 0.70
+data/mivia/si4/rand/r001/80.A02;odcull=[4] 0.14;vf2_sub1=[4] 0.22;vf2=[4] 0.20
+data/mivia/si4/rand/r001/80.A03;odcull=[72] 0.23;vf2_sub1=[72] 0.61;vf2=[72] 0.95
+data/mivia/si4/rand/r001/80.A04;odcull=[4] 0.15;vf2_sub1=[4] 0.19;vf2=[4] 0.92
+data/mivia/si4/rand/r001/80.A05;odcull=[124] 0.37;vf2_sub1=[124] 0.29;vf2=[124] 0.98
+data/mivia/si4/rand/r001/80.A06;odcull=[8] 0.14;vf2_sub1=[8] 0.18;vf2=[8] 0.56
+data/mivia/si4/rand/r001/80.A07;odcull=[432] 0.77;vf2_sub1=[432] 12.61;vf2=[432] 3.19
+data/mivia/si4/rand/r001/80.A08;odcull=[16] 0.17;vf2_sub1=[16] 0.39;vf2=[16] 0.49
+data/mivia/si4/rand/r001/80.A09;odcull=[384] 0.71;vf2_sub1=[384] 2.67;vf2=[384] 1.95
+data/mivia/si4/rand/r001/80.A10;odcull=[48] 0.20;vf2_sub1=[48] 0.40;vf2=[48] 0.58
+data/mivia/si4/rand/r001/80.A11;odcull=[4] 0.14;vf2_sub1=[4] 0.15;vf2=[4] 0.42
+data/mivia/si4/rand/r001/80.A12;odcull=[48] 0.26;vf2_sub1=[48] 0.51;vf2=[48] 1.05
+data/mivia/si4/rand/r001/80.A13;odcull=[2] 0.17;vf2_sub1=[2] 0.14;vf2=[2] 0.62
+data/mivia/si4/rand/r001/80.A14;odcull=[376] 1.12;vf2_sub1=[376] 3.36;vf2=[376] 6.17
+data/mivia/si4/rand/r001/80.A15;odcull=[56] 0.27;vf2_sub1=[56] 0.25;vf2=[56] 0.50
+data/mivia/si4/rand/r001/80.A16;odcull=[576] 0.56;vf2_sub1=[576] 1.09;vf2=[576] 2.86
+data/mivia/si4/rand/r001/80.A17;odcull=[16] 0.19;vf2_sub1=[16] 0.21;vf2=[16] 0.69
+data/mivia/si4/rand/r001/80.A18;odcull=[32] 0.21;vf2_sub1=[32] 2.68;vf2=[32] 0.60
+data/mivia/si4/rand/r001/80.A19;odcull=[2] 0.15;vf2_sub1=[2] 0.18;vf2=[2] 0.25
+data/mivia/si4/rand/r001/80.A20;odcull=[96] 0.22;vf2_sub1=[96] 1.48;vf2=[96] 0.77
+data/mivia/si4/rand/r001/80.A21;odcull=[20] 0.19;vf2_sub1=[20] 0.57;vf2=[20] 0.58
+data/mivia/si4/rand/r001/80.A22;odcull=[4] 0.14;vf2_sub1=[4] 0.22;vf2=[4] 1.17
+data/mivia/si4/rand/r001/80.A23;odcull=[80] 0.30;vf2_sub1=[80] 0.73;vf2=[80] 1.50
+data/mivia/si4/rand/r001/80.A24;odcull=[72] 0.21;vf2_sub1=[72] 0.46;vf2=[72] 0.49
+data/mivia/si4/rand/r001/80.A25;odcull=[72] 0.30;vf2_sub1=[72] 1.03;vf2=[72] 1.58
+data/mivia/si4/rand/r001/80.A26;odcull=[16] 0.19;vf2_sub1=[16] 1.52;vf2=[16] 0.98
+data/mivia/si4/rand/r001/80.A27;odcull=[4] 0.16;vf2_sub1=[4] 0.27;vf2=[4] 0.93
+data/mivia/si4/rand/r001/80.A28;odcull=[40] 0.59;vf2_sub1=[40] 1.08;vf2=[40] 7.49
+data/mivia/si4/rand/r001/80.A29;odcull=[48] 0.28;vf2_sub1=[48] 0.34;vf2=[48] 7.30
+data/mivia/si4/rand/r001/80.A30;odcull=[768] 1.16;vf2_sub1=[768] 1.97;vf2=[768] 2.62
+data/mivia/si4/rand/r001/80.A31;odcull=[2] 0.15;vf2_sub1=[2] 0.16;vf2=[2] 0.34
+data/mivia/si4/rand/r001/80.A32;odcull=[168] 0.41;vf2_sub1=[168] 2.38;vf2=[168] 3.79
+data/mivia/si4/rand/r001/80.A33;odcull=[32] 0.19;vf2_sub1=[32] 0.40;vf2=[32] 1.64
+data/mivia/si4/rand/r001/80.A34;odcull=[4] 0.14;vf2_sub1=[4] 0.17;vf2=[4] 0.15
+data/mivia/si4/rand/r001/80.A35;odcull=[216] 0.27;vf2_sub1=[216] 0.41;vf2=[216] 0.53
+data/mivia/si4/rand/r001/80.A36;odcull=[72] 0.22;vf2_sub1=[72] 0.34;vf2=[72] 3.85
+data/mivia/si4/rand/r001/80.A37;odcull=[240] 0.71;vf2_sub1=[240] 12.95;vf2=[240] 3.54
+data/mivia/si4/rand/r001/80.A38;odcull=[16] 0.23;vf2_sub1=[16] 0.40;vf2=[16] 0.43
+data/mivia/si4/rand/r001/80.A39;odcull=[56] 0.23;vf2_sub1=[56] 1.03;vf2=[56] 2.36
+data/mivia/si4/rand/r001/80.A40;odcull=[240] 0.94;vf2_sub1=[240] 1.28;vf2=[240] 2.29
+data/mivia/si4/rand/r001/80.A41;odcull=[96] 0.38;vf2_sub1=[96] 3.44;vf2=[96] 1.18
+data/mivia/si4/rand/r001/80.A42;odcull=[384] 1.35;vf2_sub1=[384] 7.76;vf2=[384] 4.75
+data/mivia/si4/rand/r001/80.A43;odcull=[8] 0.22;vf2_sub1=[8] 0.14;vf2=[8] 0.64
+data/mivia/si4/rand/r001/80.A44;odcull=[8] 0.15;vf2_sub1=[8] 0.16;vf2=[8] 0.68
+data/mivia/si4/rand/r001/80.A45;odcull=[48] 0.20;vf2_sub1=[48] 0.64;vf2=[48] 1.14
+data/mivia/si4/rand/r001/80.A46;odcull=[576] 0.64;vf2_sub1=[576] 2.82;vf2=[576] 1.97
+data/mivia/si4/rand/r001/80.A47;odcull=[144] 0.60;vf2_sub1=[144] 0.72;vf2=[144] 2.69
+data/mivia/si4/rand/r001/80.A48;odcull=[48] 0.23;vf2_sub1=[48] 0.61;vf2=[48] 0.42
+data/mivia/si4/rand/r001/80.A49;odcull=[4] 0.20;vf2_sub1=[4] 0.15;vf2=[4] 0.25
+data/mivia/si4/rand/r001/80.A50;odcull=[648] 1.76;vf2_sub1=[648] 12.13;vf2=[648] 5.72
+data/mivia/si4/rand/r001/80.A51;odcull=[192] 0.56;vf2_sub1=[192] 3.31;vf2=[192] 3.58
+data/mivia/si4/rand/r001/80.A52;odcull=[96] 0.29;vf2_sub1=[96] 0.61;vf2=[96] 2.98
+data/mivia/si4/rand/r001/80.A53;odcull=[80] 0.23;vf2_sub1=[80] 4.67;vf2=[80] 1.48
+data/mivia/si4/rand/r001/80.A54;odcull=[6] 0.14;vf2_sub1=[6] 0.14;vf2=[6] 0.47
+data/mivia/si4/rand/r001/80.A55;odcull=[24] 0.20;vf2_sub1=[24] 0.42;vf2=[24] 0.35
+data/mivia/si4/rand/r001/80.A56;odcull=[328704] 684.60;vf2_sub1=[328704] 1361.71;vf2=[328704] 1595.18
+data/mivia/si4/rand/r001/80.A57;odcull=[24] 0.24;vf2_sub1=[24] 0.20;vf2=[24] 0.76
+data/mivia/si4/rand/r001/80.A58;odcull=[2] 0.15;vf2_sub1=[2] 0.32;vf2=[2] 0.15
+data/mivia/si4/rand/r001/80.A59;odcull=[88] 0.34;vf2_sub1=[88] 3.07;vf2=[88] 1.75
+data/mivia/si4/rand/r001/80.A60;odcull=[12] 0.15;vf2_sub1=[12] 0.22;vf2=[12] 0.20
+data/mivia/si4/rand/r001/80.A61;odcull=[168] 1.66;vf2_sub1=[168] 4.77;vf2=[168] 8.15
+data/mivia/si4/rand/r001/80.A62;odcull=[8] 0.16;vf2_sub1=[8] 0.15;vf2=[8] 0.16
+data/mivia/si4/rand/r001/80.A63;odcull=[12] 0.18;vf2_sub1=[12] 0.22;vf2=[12] 0.46
+data/mivia/si4/rand/r001/80.A64;odcull=[12] 0.17;vf2_sub1=[12] 0.61;vf2=[12] 0.20
+data/mivia/si4/rand/r001/80.A65;odcull=[48] 0.25;vf2_sub1=[48] 13.47;vf2=[48] 2.35
+data/mivia/si4/rand/r001/80.A66;odcull=[32] 0.28;vf2_sub1=[32] 0.31;vf2=[32] 0.91
+data/mivia/si4/rand/r001/80.A67;odcull=[8] 0.32;vf2_sub1=[8] 0.41;vf2=[8] 0.42
+data/mivia/si4/rand/r001/80.A68;odcull=[104] 0.25;vf2_sub1=[104] 0.79;vf2=[104] 0.69
+data/mivia/si4/rand/r001/80.A69;odcull=[72] 0.49;vf2_sub1=[72] 1.39;vf2=[72] 2.25
+data/mivia/si4/rand/r001/80.A70;odcull=[112] 0.35;vf2_sub1=[112] 0.73;vf2=[112] 1.17
+data/mivia/si4/rand/r001/80.A71;odcull=[12] 0.17;vf2_sub1=[12] 0.43;vf2=[12] 0.86
+data/mivia/si4/rand/r001/80.A72;odcull=[176] 0.41;vf2_sub1=[176] 1.48;vf2=[176] 1.52
+data/mivia/si4/rand/r001/80.A73;odcull=[32] 0.27;vf2_sub1=[32] 0.78;vf2=[32] 0.79
+data/mivia/si4/rand/r001/80.A74;odcull=[8] 0.17;vf2_sub1=[8] 0.24;vf2=[8] 0.61
+data/mivia/si4/rand/r001/80.A75;odcull=[16] 0.16;vf2_sub1=[16] 0.30;vf2=[16] 0.51
+data/mivia/si4/rand/r001/80.A76;odcull=[12] 0.15;vf2_sub1=[12] 0.23;vf2=[12] 0.61
+data/mivia/si4/rand/r001/80.A77;odcull=[336] 0.84;vf2_sub1=[336] 5.24;vf2=[336] 4.40
+data/mivia/si4/rand/r001/80.A78;odcull=[2] 0.14;vf2_sub1=[2] 0.16;vf2=[2] 0.43
+data/mivia/si4/rand/r001/80.A79;odcull=[48] 0.20;vf2_sub1=[48] 0.38;vf2=[48] 1.70
+data/mivia/si4/rand/r001/80.A80;odcull=[128] 0.30;vf2_sub1=[128] 0.89;vf2=[128] 0.65
+data/mivia/si4/rand/r001/80.A81;odcull=[16] 0.18;vf2_sub1=[16] 0.19;vf2=[16] 1.32
+data/mivia/si4/rand/r001/80.A82;odcull=[36] 0.26;vf2_sub1=[36] 0.45;vf2=[36] 0.88
+data/mivia/si4/rand/r001/80.A83;odcull=[24] 0.23;vf2_sub1=[24] 0.67;vf2=[24] 0.88
+data/mivia/si4/rand/r001/80.A84;odcull=[32] 0.18;vf2_sub1=[32] 0.37;vf2=[32] 0.69
+data/mivia/si4/rand/r001/80.A85;odcull=[288] 0.53;vf2_sub1=[288] 4.40;vf2=[288] 3.52
+data/mivia/si4/rand/r001/80.A86;odcull=[80] 0.33;vf2_sub1=[80] 1.81;vf2=[80] 1.75
+data/mivia/si4/rand/r001/80.A87;odcull=[32] 0.17;vf2_sub1=[32] 0.36;vf2=[32] 0.53
+data/mivia/si4/rand/r001/80.A88;odcull=[36] 0.33;vf2_sub1=[36] 1.59;vf2=[36] 2.26
+data/mivia/si4/rand/r001/80.A89;odcull=[2880] 8.40;vf2_sub1=[2880] 9.34;vf2=[2880] 23.59
+data/mivia/si4/rand/r001/80.A90;odcull=[4] 0.19;vf2_sub1=[4] 0.16;vf2=[4] 0.66
+data/mivia/si4/rand/r001/80.A91;odcull=[360] 0.51;vf2_sub1=[360] 1.63;vf2=[360] 4.17
+data/mivia/si4/rand/r001/80.A92;odcull=[64] 0.27;vf2_sub1=[64] 0.61;vf2=[64] 2.03
+data/mivia/si4/rand/r001/80.A93;odcull=[24] 0.23;vf2_sub1=[24] 0.76;vf2=[24] 19.02
+data/mivia/si4/rand/r001/80.A94;odcull=[2] 0.15;vf2_sub1=[2] 0.12;vf2=[2] 0.48
+data/mivia/si4/rand/r001/80.A95;odcull=[42] 0.22;vf2_sub1=[42] 0.56;vf2=[42] 0.47
+data/mivia/si4/rand/r001/80.A96;odcull=[336] 1.13;vf2_sub1=[336] 2.35;vf2=[336] 3.96
+data/mivia/si4/rand/r001/80.A97;odcull=[138] 0.32;vf2_sub1=[138] 1.51;vf2=[138] 1.44
+data/mivia/si4/rand/r001/80.A98;odcull=[72] 0.21;vf2_sub1=[72] 0.41;vf2=[72] 0.73
+data/mivia/si4/rand/r001/80.A99;odcull=[28] 0.18;vf2_sub1=[28] 0.20;vf2=[28] 0.30
+data/mivia/si4/rand/r001/100.A00;odcull=[24] 0.28;vf2_sub1=[24] 0.52;vf2=[24] 1.00
+data/mivia/si4/rand/r001/100.A01;odcull=[24] 0.26;vf2_sub1=[24] 0.80;vf2=[24] 1.48
+data/mivia/si4/rand/r001/100.A02;odcull=[384] 1.14;vf2_sub1=[384] 4.54;vf2=[384] 8.78
+data/mivia/si4/rand/r001/100.A03;odcull=[216] 0.63;vf2_sub1=[216] 5.20;vf2=[216] 2.58
+data/mivia/si4/rand/r001/100.A04;odcull=[16] 0.38;vf2_sub1=[16] 0.31;vf2=[16] 1.38
+data/mivia/si4/rand/r001/100.A05;odcull=[6] 0.26;vf2_sub1=[6] 0.40;vf2=[6] 1.42
+data/mivia/si4/rand/r001/100.A06;odcull=[24] 0.27;vf2_sub1=[24] 2.42;vf2=[24] 0.77
+data/mivia/si4/rand/r001/100.A07;odcull=[160] 0.50;vf2_sub1=[160] 2.15;vf2=[160] 3.64
+data/mivia/si4/rand/r001/100.A08;odcull=[12] 0.28;vf2_sub1=[12] 0.66;vf2=[12] 1.45
+data/mivia/si4/rand/r001/100.A09;odcull=[96] 0.79;vf2_sub1=[96] 1.23;vf2=[96] 3.30
+data/mivia/si4/rand/r001/100.A10;odcull=[60] 0.49;vf2_sub1=[60] 0.84;vf2=[60] 0.97
+data/mivia/si4/rand/r001/100.A11;odcull=[12] 0.20;vf2_sub1=[12] 0.21;vf2=[12] 0.43
+data/mivia/si4/rand/r001/100.A12;odcull=[128] 0.48;vf2_sub1=[128] 4.94;vf2=[128] 2.66
+data/mivia/si4/rand/r001/100.A13;odcull=[224] 0.54;vf2_sub1=[224] 1.21;vf2=[224] 6.00
+data/mivia/si4/rand/r001/100.A14;odcull=[24] 0.28;vf2_sub1=[24] 0.26;vf2=[24] 0.24
+data/mivia/si4/rand/r001/100.A15;odcull=[80] 0.42;vf2_sub1=[80] 0.75;vf2=[80] 0.65
+data/mivia/si4/rand/r001/100.A16;odcull=[2304] 2.55;vf2_sub1=[2304] 9.33;vf2=[2304] 8.96
+data/mivia/si4/rand/r001/100.A17;odcull=[128] 0.45;vf2_sub1=[128] 2.44;vf2=[128] 1.46
+data/mivia/si4/rand/r001/100.A18;odcull=[4] 0.25;vf2_sub1=[4] 0.46;vf2=[4] 2.27
+data/mivia/si4/rand/r001/100.A19;odcull=[192] 0.37;vf2_sub1=[192] 5.58;vf2=[192] 1.84
+data/mivia/si4/rand/r001/100.A20;odcull=[4] 0.22;vf2_sub1=[4] 0.24;vf2=[4] 0.59
+data/mivia/si4/rand/r001/100.A21;odcull=[168] 0.53;vf2_sub1=[168] 0.43;vf2=[168] 1.50
+data/mivia/si4/rand/r001/100.A22;odcull=[12] 0.23;vf2_sub1=[12] 0.43;vf2=[12] 0.73
+data/mivia/si4/rand/r001/100.A23;odcull=[12] 0.21;vf2_sub1=[12] 0.41;vf2=[12] 1.33
+data/mivia/si4/rand/r001/100.A24;odcull=[576] 1.55;vf2_sub1=[576] 2.67;vf2=[576] 16.66
+data/mivia/si4/rand/r001/100.A25;odcull=[48] 0.29;vf2_sub1=[48] 1.69;vf2=[48] 1.23
+data/mivia/si4/rand/r001/100.A26;odcull=[32] 0.29;vf2_sub1=[32] 0.60;vf2=[32] 1.26
+data/mivia/si4/rand/r001/100.A27;odcull=[12] 0.33;vf2_sub1=[12] 0.20;vf2=[12] 1.05
+data/mivia/si4/rand/r001/100.A28;odcull=[32] 0.35;vf2_sub1=[32] 2.13;vf2=[32] 0.37
+data/mivia/si4/rand/r001/100.A29;odcull=[84] 0.39;vf2_sub1=[84] 1.38;vf2=[84] 2.79
+data/mivia/si4/rand/r001/100.A30;odcull=[10] 0.27;vf2_sub1=[10] 0.56;vf2=[10] 0.57
+data/mivia/si4/rand/r001/100.A31;odcull=[12] 0.23;vf2_sub1=[12] 0.34;vf2=[12] 1.57
+data/mivia/si4/rand/r001/100.A32;odcull=[8] 0.25;vf2_sub1=[8] 0.37;vf2=[8] 0.63
+data/mivia/si4/rand/r001/100.A33;odcull=[18] 0.34;vf2_sub1=[18] 0.56;vf2=[18] 0.88
+data/mivia/si4/rand/r001/100.A34;odcull=[24] 0.39;vf2_sub1=[24] 0.80;vf2=[24] 3.39
+data/mivia/si4/rand/r001/100.A35;odcull=[16] 0.25;vf2_sub1=[16] 0.59;vf2=[16] 1.50
+data/mivia/si4/rand/r001/100.A36;odcull=[16] 0.23;vf2_sub1=[16] 0.47;vf2=[16] 1.22
+data/mivia/si4/rand/r001/100.A37;odcull=[4] 0.25;vf2_sub1=[4] 0.18;vf2=[4] 0.50
+data/mivia/si4/rand/r001/100.A38;odcull=[72] 0.41;vf2_sub1=[72] 0.60;vf2=[72] 2.10
+data/mivia/si4/rand/r001/100.A39;odcull=[1152] 1.78;vf2_sub1=[1152] 10.77;vf2=[1152] 18.41
+data/mivia/si4/rand/r001/100.A40;odcull=[24] 0.39;vf2_sub1=[24] 0.48;vf2=[24] 2.21
+data/mivia/si4/rand/r001/100.A41;odcull=[4] 0.19;vf2_sub1=[4] 0.25;vf2=[4] 0.17
+data/mivia/si4/rand/r001/100.A42;odcull=[24] 0.35;vf2_sub1=[24] 0.62;vf2=[24] 0.73
+data/mivia/si4/rand/r001/100.A43;odcull=[576] 2.44;vf2_sub1=[576] 4.07;vf2=[576] 11.54
+data/mivia/si4/rand/r001/100.A44;odcull=[4] 0.25;vf2_sub1=[4] 0.27;vf2=[4] 0.81
+data/mivia/si4/rand/r001/100.A45;odcull=[18] 0.23;vf2_sub1=[18] 0.46;vf2=[18] 0.86
+data/mivia/si4/rand/r001/100.A46;odcull=[24] 0.26;vf2_sub1=[24] 0.32;vf2=[24] 0.48
+data/mivia/si4/rand/r001/100.A47;odcull=[16] 0.22;vf2_sub1=[16] 0.39;vf2=[16] 2.39
+data/mivia/si4/rand/r001/100.A48;odcull=[16] 0.27;vf2_sub1=[16] 0.34;vf2=[16] 0.58
+data/mivia/si4/rand/r001/100.A49;odcull=[6] 0.28;vf2_sub1=[6] 0.37;vf2=[6] 1.16
+data/mivia/si4/rand/r001/100.A50;odcull=[48] 0.33;vf2_sub1=[48] 0.48;vf2=[48] 2.33
+data/mivia/si4/rand/r001/100.A51;odcull=[96] 0.38;vf2_sub1=[96] 9.05;vf2=[96] 1.26
+data/mivia/si4/rand/r001/100.A52;odcull=[5] 0.23;vf2_sub1=[5] 0.24;vf2=[5] 1.35
+data/mivia/si4/rand/r001/100.A53;odcull=[8] 0.20;vf2_sub1=[8] 0.20;vf2=[8] 0.64
+data/mivia/si4/rand/r001/100.A54;odcull=[24] 0.23;vf2_sub1=[24] 0.40;vf2=[24] 0.52
+data/mivia/si4/rand/r001/100.A55;odcull=[2] 0.20;vf2_sub1=[2] 0.17;vf2=[2] 0.28
+data/mivia/si4/rand/r001/100.A56;odcull=[36] 0.35;vf2_sub1=[36] 0.42;vf2=[36] 1.34
+data/mivia/si4/rand/r001/100.A57;odcull=[160] 1.22;vf2_sub1=[160] 2.60;vf2=[160] 5.42
+data/mivia/si4/rand/r001/100.A58;odcull=[432] 1.30;vf2_sub1=[432] 4.39;vf2=[432] 24.83
+data/mivia/si4/rand/r001/100.A59;odcull=[24] 0.31;vf2_sub1=[24] 1.24;vf2=[24] 1.42
+data/mivia/si4/rand/r001/100.A60;odcull=[16] 0.29;vf2_sub1=[16] 5.55;vf2=[16] 1.49
+data/mivia/si4/rand/r001/100.A61;odcull=[64] 0.49;vf2_sub1=[64] 0.93;vf2=[64] 1.79
+data/mivia/si4/rand/r001/100.A62;odcull=[48] 0.29;vf2_sub1=[48] 0.89;vf2=[48] 1.54
+data/mivia/si4/rand/r001/100.A63;odcull=[96] 0.66;vf2_sub1=[96] 2.29;vf2=[96] 5.25
+data/mivia/si4/rand/r001/100.A64;odcull=[64] 0.41;vf2_sub1=[64] 1.50;vf2=[64] 4.47
+data/mivia/si4/rand/r001/100.A65;odcull=[14] 0.26;vf2_sub1=[14] 0.38;vf2=[14] 0.45
+data/mivia/si4/rand/r001/100.A66;odcull=[16] 0.33;vf2_sub1=[16] 0.56;vf2=[16] 3.27
+data/mivia/si4/rand/r001/100.A67;odcull=[384] 0.79;vf2_sub1=[384] 3.31;vf2=[384] 2.21
+data/mivia/si4/rand/r001/100.A68;odcull=[24] 0.27;vf2_sub1=[24] 0.33;vf2=[24] 1.46
+data/mivia/si4/rand/r001/100.A69;odcull=[4] 0.25;vf2_sub1=[4] 0.26;vf2=[4] 0.72
+data/mivia/si4/rand/r001/100.A70;odcull=[64] 0.39;vf2_sub1=[64] 0.54;vf2=[64] 2.14
+data/mivia/si4/rand/r001/100.A71;odcull=[20] 0.30;vf2_sub1=[20] 0.41;vf2=[20] 0.66
+data/mivia/si4/rand/r001/100.A72;odcull=[192] 0.60;vf2_sub1=[192] 1.07;vf2=[192] 2.91
+data/mivia/si4/rand/r001/100.A73;odcull=[8] 0.27;vf2_sub1=[8] 0.35;vf2=[8] 0.47
+data/mivia/si4/rand/r001/100.A74;odcull=[32] 0.34;vf2_sub1=[32] 0.80;vf2=[32] 1.69
+data/mivia/si4/rand/r001/100.A75;odcull=[864] 1.22;vf2_sub1=[864] 1.61;vf2=[864] 18.53
+data/mivia/si4/rand/r001/100.A76;odcull=[16] 0.26;vf2_sub1=[16] 0.52;vf2=[16] 0.84
+data/mivia/si4/rand/r001/100.A77;odcull=[8] 0.31;vf2_sub1=[8] 0.58;vf2=[8] 11.05
+data/mivia/si4/rand/r001/100.A78;odcull=[108] 0.56;vf2_sub1=[108] 1.11;vf2=[108] 3.86
+data/mivia/si4/rand/r001/100.A79;odcull=[576] 1.01;vf2_sub1=[576] 71.30;vf2=[576] 6.70
+data/mivia/si4/rand/r001/100.A80;odcull=[18] 0.30;vf2_sub1=[18] 0.36;vf2=[18] 2.12
+data/mivia/si4/rand/r001/100.A81;odcull=[224] 1.05;vf2_sub1=[224] 2.48;vf2=[224] 7.30
+data/mivia/si4/rand/r001/100.A82;odcull=[4] 0.23;vf2_sub1=[4] 0.26;vf2=[4] 2.45
+data/mivia/si4/rand/r001/100.A83;odcull=[12] 0.28;vf2_sub1=[12] 0.30;vf2=[12] 1.57
+data/mivia/si4/rand/r001/100.A84;odcull=[12] 0.22;vf2_sub1=[12] 0.25;vf2=[12] 0.52
+data/mivia/si4/rand/r001/100.A85;odcull=[32] 0.31;vf2_sub1=[32] 1.37;vf2=[32] 4.41
+data/mivia/si4/rand/r001/100.A86;odcull=[40] 0.29;vf2_sub1=[40] 0.75;vf2=[40] 0.81
+data/mivia/si4/rand/r001/100.A87;odcull=[60] 0.34;vf2_sub1=[60] 0.84;vf2=[60] 1.51
+data/mivia/si4/rand/r001/100.A88;odcull=[12] 0.34;vf2_sub1=[12] 0.23;vf2=[12] 2.80
+data/mivia/si4/rand/r001/100.A89;odcull=[24] 0.36;vf2_sub1=[24] 0.32;vf2=[24] 6.30
+data/mivia/si4/rand/r001/100.A90;odcull=[12] 0.24;vf2_sub1=[12] 0.45;vf2=[12] 1.50
+data/mivia/si4/rand/r001/100.A91;odcull=[32] 0.31;vf2_sub1=[32] 0.70;vf2=[32] 6.76
+data/mivia/si4/rand/r001/100.A92;odcull=[8] 0.35;vf2_sub1=[8] 0.55;vf2=[8] 1.95
+data/mivia/si4/rand/r001/100.A93;odcull=[24] 0.32;vf2_sub1=[24] 0.66;vf2=[24] 3.01
+data/mivia/si4/rand/r001/100.A94;odcull=[32] 0.29;vf2_sub1=[32] 0.74;vf2=[32] 0.92
+data/mivia/si4/rand/r001/100.A95;odcull=[576] 0.66;vf2_sub1=[576] 4.36;vf2=[576] 8.97
+data/mivia/si4/rand/r001/100.A96;odcull=[108] 0.40;vf2_sub1=[108] 1.89;vf2=[108] 1.47
+data/mivia/si4/rand/r001/100.A97;odcull=[16] 0.67;vf2_sub1=[16] 0.65;vf2=[16] 3.49
+data/mivia/si4/rand/r001/100.A98;odcull=[288] 1.52;vf2_sub1=[288] 13.43;vf2=[288] 11.52
+data/mivia/si4/rand/r001/100.A99;odcull=[12] 0.26;vf2_sub1=[12] 0.69;vf2=[12] 0.70
+data/mivia/si4/rand/r001/200.A00;odcull=[12] 1.26;vf2_sub1=[12] 6.21;vf2=[12] 7.67
+data/mivia/si4/rand/r001/200.A01;odcull=[1728] 12.90;vf2_sub1=[1728] 22.72;vf2=[1728] 67.98
+data/mivia/si4/rand/r001/200.A02;odcull=[48] 1.20;vf2_sub1=[48] 1.42;vf2=[48] 25.89
+data/mivia/si4/rand/r001/200.A03;odcull=[48] 1.50;vf2_sub1=[48] 1.89;vf2=[48] 205.21
+data/mivia/si4/rand/r001/200.A04;odcull=[6] 1.17;vf2_sub1=[6] 1.64;vf2=[6] 405.87
+data/mivia/si4/rand/r001/200.A05;odcull=[64] 1.27;vf2_sub1=[64] 2.15;vf2=[64] 491.40
+data/mivia/si4/rand/r001/200.A06;odcull=[2] 0.97;vf2_sub1=[2] 1.03;vf2=[2] 3.36
+data/mivia/si4/rand/r001/200.A07;odcull=[288] 1.99;vf2_sub1=[288] 11.22;vf2=[288] 23.52
+data/mivia/si4/rand/r001/200.A08;odcull=[32] 1.07;vf2_sub1=[32] 3.41;vf2=[32] 271.40
+data/mivia/si4/rand/r001/200.A09;odcull=[10] 1.23;vf2_sub1=[10] 2.34;vf2=[10] 9.24
+data/mivia/si4/rand/r001/200.A10;odcull=[48] 1.72;vf2_sub1=[48] 2.63;vf2=[48] 98.64
+data/mivia/si4/rand/r001/200.A11;odcull=[32] 1.72;vf2_sub1=[32] 2.39;vf2=[32] 680.83
+data/mivia/si4/rand/r001/200.A12;odcull=[16] 1.00;vf2_sub1=[16] 1.19;vf2=[16] 30.89
+data/mivia/si4/rand/r001/200.A13;odcull=[48] 1.11;vf2_sub1=[48] 8.10;vf2=[48] 37.97
+data/mivia/si4/rand/r001/200.A14;odcull=[96] 1.21;vf2_sub1=[96] 3.27;vf2=[96] 116.86
+data/mivia/si4/rand/r001/200.A15;odcull=[48] 1.96;vf2_sub1=[48] 3.83;vf2=[48] 21.73
+data/mivia/si4/rand/r001/200.A16;odcull=[24192] 29.59;vf2_sub1=[24192] 404.22;vf2=[24192] 211.08
+data/mivia/si4/rand/r001/200.A17;odcull=[32] 1.72;vf2_sub1=[32] 3.17;vf2=[32] 11.62
+data/mivia/si4/rand/r001/200.A18;odcull=[2] 0.98;vf2_sub1=[2] 0.91;vf2=[2] 4.23
+data/mivia/si4/rand/r001/200.A19;odcull=[8] 1.28;vf2_sub1=[8] 2.23;vf2=[8] 13.62
+data/mivia/si4/rand/r001/200.A20;odcull=[16] 1.16;vf2_sub1=[16] 2.44;vf2=[16] 9.61
+data/mivia/si4/rand/r001/200.A21;odcull=[84] 1.53;vf2_sub1=[84] 4.72;vf2=[84] 36.26
+data/mivia/si4/rand/r001/200.A22;odcull=[288] 4.21;vf2_sub1=[288] 19.26;vf2=[288] 233.75
+data/mivia/si4/rand/r001/200.A23;odcull=[648] 2.83;vf2_sub1=[648] 12.96;vf2=[648] 82.32
+data/mivia/si4/rand/r001/200.A24;odcull=[20] 1.42;vf2_sub1=[20] 4.84;vf2=[20] 9.46
+data/mivia/si4/rand/r001/200.A25;odcull=[2] 1.02;vf2_sub1=[2] 0.66;vf2=[2] 5.47
+data/mivia/si4/rand/r001/200.A26;odcull=[160] 1.75;vf2_sub1=[160] 3.19;vf2=[160] 10.87
+data/mivia/si4/rand/r001/200.A27;odcull=[32] 2.10;vf2_sub1=[32] 2.06;vf2=[32] 37.22
+data/mivia/si4/rand/r001/200.A28;odcull=[64] 1.75;vf2_sub1=[64] 12.06;vf2=[64] 203.36
+data/mivia/si4/rand/r001/200.A29;odcull=[16] 1.02;vf2_sub1=[16] 2.06;vf2=[16] 15.09
+data/mivia/si4/rand/r001/200.A30;odcull=[24] 1.35;vf2_sub1=[24] 3.13;vf2=[24] 2808.51
+data/mivia/si4/rand/r001/200.A31;odcull=[432] 2.07;vf2_sub1=[432] 4.54;vf2=[432] 249.93
+data/mivia/si4/rand/r001/200.A32;odcull=[2592] 27.24;vf2_sub1=[2592] 68.65;vf2=[2592] 1322.65
+data/mivia/si4/rand/r001/200.A33;odcull=[16] 1.14;vf2_sub1=[16] 1.38;vf2=[16] 46.52
+data/mivia/si4/rand/r001/200.A34;odcull=[24] 1.18;vf2_sub1=[24] 1.28;vf2=[24] 37.48
+data/mivia/si4/rand/r001/200.A35;odcull=[16] 1.23;vf2_sub1=[16] 1.90;vf2=[16] 6.93
+data/mivia/si4/rand/r001/200.A36;odcull=[1024] 12.16;vf2_sub1=[1024] 22.91;vf2=[1024] 74.16
+data/mivia/si4/rand/r001/200.A37;odcull=[16] 1.01;vf2_sub1=[16] 2.30;vf2=[16] 4.34
+data/mivia/si4/rand/r001/200.A38;odcull=[96] 2.28;vf2_sub1=[96] 4.23;vf2=[96] 8.13
+data/mivia/si4/rand/r001/200.A39;odcull=[8] 1.04;vf2_sub1=[8] 1.83;vf2=[8] 2.08
+data/mivia/si4/rand/r001/200.A40;odcull=[6] 1.31;vf2_sub1=[6] 1.87;vf2=[6] 211.09
+data/mivia/si4/rand/r001/200.A41;odcull=[1] 1.03;vf2_sub1=[1] 0.66;vf2=[1] 34.25
+data/mivia/si4/rand/r001/200.A42;odcull=[96] 1.22;vf2_sub1=[96] 6.57;vf2=[96] 51.73
+data/mivia/si4/rand/r001/200.A43;odcull=[24] 1.23;vf2_sub1=[24] 3.48;vf2=[24] 31.45
+data/mivia/si4/rand/r001/200.A44;odcull=[6] 0.92;vf2_sub1=[6] 0.89;vf2=[6] 2.04
+data/mivia/si4/rand/r001/200.A45;odcull=[1248] 3.27;vf2_sub1=[1248] 38.33;vf2=[1248] 288.92
+data/mivia/si4/rand/r001/200.A46;odcull=[4] 1.02;vf2_sub1=[4] 0.66;vf2=[4] 8.41
+data/mivia/si4/rand/r001/200.A47;odcull=[8] 1.34;vf2_sub1=[8] 2.78;vf2=[8] 5.22
+data/mivia/si4/rand/r001/200.A48;odcull=[896] 6.39;vf2_sub1=[896] 41.39;vf2=[896] 145.74
+data/mivia/si4/rand/r001/200.A49;odcull=[128] 1.52;vf2_sub1=[128] 5.24;vf2=[128] 23.51
+data/mivia/si4/rand/r001/200.A50;odcull=[4] 1.20;vf2_sub1=[4] 1.23;vf2=[4] 44.67
+data/mivia/si4/rand/r001/200.A51;odcull=[2] 1.01;vf2_sub1=[2] 0.73;vf2=[2] 4.88
+data/mivia/si4/rand/r001/200.A52;odcull=[48] 1.75;vf2_sub1=[48] 9.37;vf2=[48] 115.45
+data/mivia/si4/rand/r001/200.A53;odcull=[60] 2.28;vf2_sub1=[60] 1.93;vf2=[60] 25.90
+data/mivia/si4/rand/r001/200.A54;odcull=[72] 1.61;vf2_sub1=[72] 11.55;vf2=[72] 121.29
+data/mivia/si4/rand/r001/200.A55;odcull=[24] 0.99;vf2_sub1=[24] 1.26;vf2=[24] 8.96
+data/mivia/si4/rand/r001/200.A56;odcull=[8] 1.10;vf2_sub1=[8] 1.42;vf2=[8] 3.65
+data/mivia/si4/rand/r001/200.A57;odcull=[42] 1.33;vf2_sub1=[42] 2.13;vf2=[42] 58.19
+data/mivia/si4/rand/r001/200.A58;odcull=[16] 1.45;vf2_sub1=[16] 1.35;vf2=[16] 24.12
+data/mivia/si4/rand/r001/200.A59;odcull=[640] 2.44;vf2_sub1=[640] 7.35;vf2=[640] 262.43
+data/mivia/si4/rand/r001/200.A60;odcull=[3] 1.46;vf2_sub1=[3] 0.68;vf2=[3] 136.07
+data/mivia/si4/rand/r001/200.A61;odcull=[24] 1.82;vf2_sub1=[24] 1.85;vf2=[24] 34.14
+data/mivia/si4/rand/r001/200.A62;odcull=[4] 1.06;vf2_sub1=[4] 1.24;vf2=[4] 61.95
+data/mivia/si4/rand/r001/200.A63;odcull=[4] 1.39;vf2_sub1=[4] 0.66;vf2=[4] 10.81
+data/mivia/si4/rand/r001/200.A64;odcull=[6] 1.10;vf2_sub1=[6] 1.00;vf2=[6] 4.50
+data/mivia/si4/rand/r001/200.A65;odcull=[32] 1.22;vf2_sub1=[32] 1.88;vf2=[32] 27.78
+data/mivia/si4/rand/r001/200.A66;odcull=[4] 1.30;vf2_sub1=[4] 1.98;vf2=[4] 99.59
+data/mivia/si4/rand/r001/200.A67;odcull=[24] 1.10;vf2_sub1=[24] 2.73;vf2=[24] 19.39
+data/mivia/si4/rand/r001/200.A68;odcull=[256] 2.09;vf2_sub1=[256] 7.91;vf2=[256] 19.97
+data/mivia/si4/rand/r001/200.A69;odcull=[8] 1.56;vf2_sub1=[8] 1.22;vf2=[8] 438.54
+data/mivia/si4/rand/r001/200.A70;odcull=[8] 1.17;vf2_sub1=[8] 2.77;vf2=[8] 65.47
+data/mivia/si4/rand/r001/200.A71;odcull=[48] 1.75;vf2_sub1=[48] 3.38;vf2=[48] 9.02
+data/mivia/si4/rand/r001/200.A72;odcull=[468] 2.22;vf2_sub1=[468] 23.18;vf2=[468] 136.24
+data/mivia/si4/rand/r001/200.A73;odcull=[64] 1.18;vf2_sub1=[64] 5.78;vf2=[64] 9.50
+data/mivia/si4/rand/r001/200.A74;odcull=[6] 1.31;vf2_sub1=[6] 1.45;vf2=[6] 20.28
+data/mivia/si4/rand/r001/200.A75;odcull=[16] 1.14;vf2_sub1=[16] 1.37;vf2=[16] 26.13
+data/mivia/si4/rand/r001/200.A76;odcull=[64] 1.17;vf2_sub1=[64] 2.67;vf2=[64] 4.76
+data/mivia/si4/rand/r001/200.A77;odcull=[192] 2.01;vf2_sub1=[192] 6.64;vf2=[192] 14.65
+data/mivia/si4/rand/r001/200.A78;odcull=[128] 6.87;vf2_sub1=[128] 5.45;vf2=[128] 341.46
+data/mivia/si4/rand/r001/200.A79;odcull=[24] 2.48;vf2_sub1=[24] 4.27;vf2=[24] 154.61
+data/mivia/si4/rand/r001/200.A80;odcull=[168] 2.79;vf2_sub1=[168] 21.77;vf2=[168] 23.66
+data/mivia/si4/rand/r001/200.A81;odcull=[64] 1.78;vf2_sub1=[64] 3.59;vf2=[64] 8.10
+data/mivia/si4/rand/r001/200.A82;odcull=[16] 1.07;vf2_sub1=[16] 1.26;vf2=[16] 14.62
+data/mivia/si4/rand/r001/200.A83;odcull=[1] 1.26;vf2_sub1=[1] 0.84;vf2=[1] 3.78
+data/mivia/si4/rand/r001/200.A84;odcull=[12] 1.12;vf2_sub1=[12] 1.75;vf2=[12] 120.14
+data/mivia/si4/rand/r001/200.A85;odcull=[36] 1.17;vf2_sub1=[36] 3.76;vf2=[36] 42.24
+data/mivia/si4/rand/r001/200.A86;odcull=[4096] 13.85;vf2_sub1=[4096] 32.19;vf2=[4096] 226.09
+data/mivia/si4/rand/r001/200.A87;odcull=[12] 1.28;vf2_sub1=[12] 2.44;vf2=[12] 15.45
+data/mivia/si4/rand/r001/200.A88;odcull=[32] 1.02;vf2_sub1=[32] 3.00;vf2=[32] 34.77
+data/mivia/si4/rand/r001/200.A89;odcull=[24] 1.15;vf2_sub1=[24] 1.32;vf2=[24] 12.64
+data/mivia/si4/rand/r001/200.A90;odcull=[48] 1.14;vf2_sub1=[48] 5.97;vf2=[48] 8.07
+data/mivia/si4/rand/r001/200.A91;odcull=[88] 5.05;vf2_sub1=[88] 5.83;vf2=[88] 587.57
+data/mivia/si4/rand/r001/200.A92;odcull=[216] 1.51;vf2_sub1=[216] 2.75;vf2=[216] 30.07
+data/mivia/si4/rand/r001/200.A93;odcull=[5880] 17.38;vf2_sub1=[5880] 82.40;vf2=[5880] 896.32
+data/mivia/si4/rand/r001/200.A94;odcull=[16] 1.19;vf2_sub1=[16] 2.98;vf2=[16] 280.77
+data/mivia/si4/rand/r001/200.A95;odcull=[24] 1.78;vf2_sub1=[24] 4.07;vf2=[24] 25.02
+data/mivia/si4/rand/r001/200.A96;odcull=[192] 1.81;vf2_sub1=[192] 6.26;vf2=[192] 83.51
+data/mivia/si4/rand/r001/200.A97;odcull=[8] 1.30;vf2_sub1=[8] 2.03;vf2=[8] 5.95
+data/mivia/si4/rand/r001/200.A98;odcull=[24] 1.54;vf2_sub1=[24] 1.72;vf2=[24] 44.14
+data/mivia/si4/rand/r001/200.A99;odcull=[140] 1.79;vf2_sub1=[140] 3.21;vf2=[140] 84.86
+data/mivia/si4/rand/r001/400.A00;odcull=[1] 22.80;vf2_sub1=[1] 2.92;vf2=[1] 23.67
+data/mivia/si4/rand/r001/400.A01;odcull=[1] 26.05;vf2_sub1=[1] 2.92;vf2=[1] 1368.29
+data/mivia/si4/rand/r001/400.A02;odcull=[2] 8.36;vf2_sub1=[2] 3.87;vf2=[2] 396.69
+data/mivia/si4/rand/r001/400.A03;odcull=[4] 32.91;vf2_sub1=[4] 4.80;vf2=
+data/mivia/si4/rand/r001/400.A04;odcull=[2] 25.36;vf2_sub1=[2] 2.61;vf2=[2] 187.24
+data/mivia/si4/rand/r001/400.A05;odcull=[32] 22.34;vf2_sub1=[32] 4.47;vf2=[32] 4263.06
+data/mivia/si4/rand/r001/400.A06;odcull=[2] 7.30;vf2_sub1=[2] 2.60;vf2=
+data/mivia/si4/rand/r001/400.A07;odcull=[2] 10.10;vf2_sub1=[2] 3.41;vf2=[2] 18272.19
+data/mivia/si4/rand/r001/400.A08;odcull=[2] 25.65;vf2_sub1=[2] 3.26;vf2=[2] 13259.23
+data/mivia/si4/rand/r001/400.A09;odcull=[6] 7.85;vf2_sub1=[6] 12.57;vf2=[6] 16983.00
+data/mivia/si4/rand/r001/400.A10;odcull=[4] 20.45;vf2_sub1=[4] 3.88;vf2=[4] 491.55
+data/mivia/si4/rand/r001/400.A11;odcull=[8] 12.85;vf2_sub1=[8] 3.17;vf2=[8] 92.48
+data/mivia/si4/rand/r001/400.A12;odcull=[1] 26.89;vf2_sub1=[1] 4.11;vf2=[1] 352.21
+data/mivia/si4/rand/r001/400.A13;odcull=[1] 7.86;vf2_sub1=[1] 3.62;vf2=[1] 6.27
+data/mivia/si4/rand/r001/400.A14;odcull=[1] 40.07;vf2_sub1=[1] 30.57;vf2=[1] 949.90
+data/mivia/si4/rand/r001/400.A15;odcull=[1] 20.41;vf2_sub1=[1] 2.72;vf2=[1] 1388.41
+data/mivia/si4/rand/r001/400.A16;odcull=[2] 6.13;vf2_sub1=[2] 3.17;vf2=[2] 8.56
+data/mivia/si4/rand/r001/400.A17;odcull=[4] 36.36;vf2_sub1=[4] 9.44;vf2=[4] 295.31
+data/mivia/si4/rand/r001/400.A18;odcull=[10] 25.80;vf2_sub1=[10] 6.98;vf2=[10] 1223.19
+data/mivia/si4/rand/r001/400.A19;odcull=[2] 14.40;vf2_sub1=[2] 2.47;vf2=[2] 3178.90
+data/mivia/si4/rand/r001/400.A20;odcull=[4] 23.66;vf2_sub1=[4] 2.49;vf2=[4] 708.99
+data/mivia/si4/rand/r001/400.A21;odcull=[1] 13.73;vf2_sub1=[1] 4.72;vf2=[1] 19.09
+data/mivia/si4/rand/r001/400.A22;odcull=[4] 21.02;vf2_sub1=[4] 3.15;vf2=[4] 387.79
+data/mivia/si4/rand/r001/400.A23;odcull=[1] 39.57;vf2_sub1=[1] 2.68;vf2=
+data/mivia/si4/rand/r001/400.A24;odcull=[1] 38.33;vf2_sub1=[1] 2.83;vf2=[1] 49.41
+data/mivia/si4/rand/r001/400.A25;odcull=[1] 22.24;vf2_sub1=[1] 2.90;vf2=[1] 23.96
+data/mivia/si4/rand/r001/400.A26;odcull=[1] 21.70;vf2_sub1=[1] 5.96;vf2=[1] 78.30
+data/mivia/si4/rand/r001/400.A27;odcull=[6] 6.82;vf2_sub1=[6] 4.29;vf2=[6] 1048.36
+data/mivia/si4/rand/r001/400.A28;odcull=[1] 20.08;vf2_sub1=[1] 3.56;vf2=[1] 60.55
+data/mivia/si4/rand/r001/400.A29;odcull=[1] 16.11;vf2_sub1=[1] 2.45;vf2=[1] 6.66
+data/mivia/si4/rand/r001/400.A30;odcull=[24] 36.92;vf2_sub1=[24] 12.66;vf2=[24] 29.21
+data/mivia/si4/rand/r001/400.A31;odcull=[2] 7.14;vf2_sub1=[2] 2.44;vf2=[2] 1826.20
+data/mivia/si4/rand/r001/400.A32;odcull=[4] 6.15;vf2_sub1=[4] 3.91;vf2=[4] 62.82
+data/mivia/si4/rand/r001/400.A33;odcull=[12] 13.35;vf2_sub1=[12] 7.28;vf2=[12] 50.60
+data/mivia/si4/rand/r001/400.A34;odcull=[2] 8.99;vf2_sub1=[2] 3.73;vf2=[2] 25.22
+data/mivia/si4/rand/r001/400.A35;odcull=[2] 25.91;vf2_sub1=[2] 4.21;vf2=[2] 14203.99
+data/mivia/si4/rand/r001/400.A36;odcull=[2] 7.23;vf2_sub1=[2] 2.43;vf2=[2] 206.94
+data/mivia/si4/rand/r001/400.A37;odcull=[1] 8.28;vf2_sub1=[1] 2.24;vf2=[1] 104.25
+data/mivia/si4/rand/r001/400.A38;odcull=[2] 25.19;vf2_sub1=[2] 2.49;vf2=[2] 187.00
+data/mivia/si4/rand/r001/400.A39;odcull=[4] 8.57;vf2_sub1=[4] 3.13;vf2=[4] 276.45
+data/mivia/si4/rand/r001/400.A40;odcull=[8] 7.27;vf2_sub1=[8] 3.38;vf2=[8] 24.40
+data/mivia/si4/rand/r001/400.A41;odcull=[4] 19.66;vf2_sub1=[4] 3.21;vf2=[4] 258.63
+data/mivia/si4/rand/r001/400.A42;odcull=[2] 44.36;vf2_sub1=[2] 3.15;vf2=[2] 5911.76
+data/mivia/si4/rand/r001/400.A43;odcull=[1] 25.99;vf2_sub1=[1] 17.20;vf2=[1] 27981.53
+data/mivia/si4/rand/r001/400.A44;odcull=[2] 6.30;vf2_sub1=[2] 2.36;vf2=[2] 12.79
+data/mivia/si4/rand/r001/400.A45;odcull=[16] 5.01;vf2_sub1=[16] 4.99;vf2=[16] 12.93
+data/mivia/si4/rand/r001/400.A46;odcull=[8] 12.89;vf2_sub1=[8] 6.50;vf2=[8] 2075.85
+data/mivia/si4/rand/r001/400.A47;odcull=[2] 7.32;vf2_sub1=[2] 2.31;vf2=[2] 5263.37
+data/mivia/si4/rand/r001/400.A48;odcull=[12] 39.38;vf2_sub1=[12] 4.10;vf2=[12] 54.03
+data/mivia/si4/rand/r001/400.A49;odcull=[2] 24.61;vf2_sub1=[2] 3.50;vf2=[2] 46.56
+data/mivia/si4/rand/r001/400.A50;odcull=[4] 35.84;vf2_sub1=[4] 5.58;vf2=[4] 246.41
+data/mivia/si4/rand/r001/400.A51;odcull=[4] 16.72;vf2_sub1=[4] 5.06;vf2=[4] 123.45
+data/mivia/si4/rand/r001/400.A52;odcull=[1] 14.55;vf2_sub1=[1] 4.63;vf2=[1] 148.81
+data/mivia/si4/rand/r001/400.A53;odcull=[1] 20.46;vf2_sub1=[1] 2.44;vf2=[1] 168.34
+data/mivia/si4/rand/r001/400.A54;odcull=[2] 17.01;vf2_sub1=[2] 3.44;vf2=[2] 421.62
+data/mivia/si4/rand/r001/400.A55;odcull=[1] 20.99;vf2_sub1=[1] 3.65;vf2=[1] 16754.53
+data/mivia/si4/rand/r001/400.A56;odcull=[2] 30.64;vf2_sub1=[2] 5.06;vf2=[2] 33.07
+data/mivia/si4/rand/r001/400.A57;odcull=[2] 23.60;vf2_sub1=[2] 3.00;vf2=[2] 397.73
+data/mivia/si4/rand/r001/400.A58;odcull=[1] 8.10;vf2_sub1=[1] 2.68;vf2=[1] 14.48
+data/mivia/si4/rand/r001/400.A59;odcull=[1] 8.54;vf2_sub1=[1] 2.32;vf2=[1] 11.70
+data/mivia/si4/rand/r001/400.A60;odcull=[16] 25.13;vf2_sub1=[16] 6.88;vf2=[16] 198.13
+data/mivia/si4/rand/r001/400.A61;odcull=[4] 11.25;vf2_sub1=[4] 4.93;vf2=[4] 392.76
+data/mivia/si4/rand/r001/400.A62;odcull=[24] 42.85;vf2_sub1=[24] 5.02;vf2=[24] 510.19
+data/mivia/si4/rand/r001/400.A63;odcull=[24] 7.91;vf2_sub1=[24] 3.70;vf2=[24] 4386.96
+data/mivia/si4/rand/r001/400.A64;odcull=[8] 7.04;vf2_sub1=[8] 3.56;vf2=[8] 427.20
+data/mivia/si4/rand/r001/400.A65;odcull=[2] 16.24;vf2_sub1=[2] 2.50;vf2=[2] 142.51
+data/mivia/si4/rand/r001/400.A66;odcull=[12] 37.31;vf2_sub1=[12] 5.88;vf2=[12] 576.43
+data/mivia/si4/rand/r001/400.A67;odcull=[4] 26.42;vf2_sub1=[4] 4.56;vf2=[4] 11919.09
+data/mivia/si4/rand/r001/400.A68;odcull=[2] 26.74;vf2_sub1=[2] 3.42;vf2=[2] 1025.30
+data/mivia/si4/rand/r001/400.A69;odcull=[2] 27.35;vf2_sub1=[2] 2.53;vf2=[2] 116.72
+data/mivia/si4/rand/r001/400.A70;odcull=[2] 35.16;vf2_sub1=[2] 5.16;vf2=[2] 76.95
+data/mivia/si4/rand/r001/400.A71;odcull=[4] 16.95;vf2_sub1=[4] 7.29;vf2=[4] 23538.97
+data/mivia/si4/rand/r001/400.A72;odcull=[1] 9.82;vf2_sub1=[1] 2.53;vf2=[1] 1606.22
+data/mivia/si4/rand/r001/400.A73;odcull=[1] 34.90;vf2_sub1=[1] 2.91;vf2=[1] 4151.56
+data/mivia/si4/rand/r001/400.A74;odcull=[2] 29.36;vf2_sub1=[2] 4.14;vf2=[2] 277.53
+data/mivia/si4/rand/r001/400.A75;odcull=[4] 22.25;vf2_sub1=[4] 2.50;vf2=[4] 64.47
+data/mivia/si4/rand/r001/400.A76;odcull=[2] 20.37;vf2_sub1=[2] 2.78;vf2=[2] 23173.90
+data/mivia/si4/rand/r001/400.A77;odcull=[4] 46.20;vf2_sub1=[4] 5.55;vf2=[4] 25693.86
+data/mivia/si4/rand/r001/400.A78;odcull=[4] 20.34;vf2_sub1=[4] 3.73;vf2=[4] 489.08
+data/mivia/si4/rand/r001/400.A79;odcull=[1] 25.59;vf2_sub1=[1] 2.94;vf2=[1] 34517.66
+data/mivia/si4/rand/r001/400.A80;odcull=[2] 8.86;vf2_sub1=[2] 2.48;vf2=[2] 27021.66
+data/mivia/si4/rand/r001/400.A81;odcull=[1] 39.54;vf2_sub1=[1] 30.19;vf2=[1] 944.73
+data/mivia/si4/rand/r001/400.A82;odcull=[1] 16.46;vf2_sub1=[1] 8.46;vf2=[1] 418.75
+data/mivia/si4/rand/r001/400.A83;odcull=[16] 5.92;vf2_sub1=[16] 3.34;vf2=[16] 88.09
+data/mivia/si4/rand/r001/400.A84;odcull=[16] 24.80;vf2_sub1=[16] 4.88;vf2=[16] 4453.91
+data/mivia/si4/rand/r001/400.A85;odcull=[2] 45.50;vf2_sub1=[2] 10.82;vf2=[2] 25384.44
+data/mivia/si4/rand/r001/400.A86;odcull=[8] 7.23;vf2_sub1=[8] 3.56;vf2=[8] 427.12
+data/mivia/si4/rand/r001/400.A87;odcull=[4] 29.18;vf2_sub1=[4] 2.96;vf2=[4] 1341.09
+data/mivia/si4/rand/r001/400.A88;odcull=[2] 22.23;vf2_sub1=[2] 4.68;vf2=
+data/mivia/si4/rand/r001/400.A89;odcull=[16] 23.26;vf2_sub1=[16] 14.47;vf2=[16] 5707.33
+data/mivia/si4/rand/r001/400.A90;odcull=[16] 32.64;vf2_sub1=[16] 7.42;vf2=[16] 35.43
+data/mivia/si4/rand/r001/400.A91;odcull=[2] 8.97;vf2_sub1=[2] 2.78;vf2=[2] 26.57
+data/mivia/si4/rand/r001/400.A92;odcull=[1] 27.82;vf2_sub1=[1] 3.59;vf2=[1] 34.36
+data/mivia/si4/rand/r001/400.A93;odcull=[2] 11.02;vf2_sub1=[2] 3.56;vf2=[2] 25.88
+data/mivia/si4/rand/r001/400.A94;odcull=[4] 25.46;vf2_sub1=[4] 4.95;vf2=
+data/mivia/si4/rand/r001/400.A95;odcull=[4] 26.31;vf2_sub1=[4] 3.28;vf2=[4] 13.20
+data/mivia/si4/rand/r001/400.A96;odcull=[4] 36.58;vf2_sub1=[4] 9.43;vf2=[4] 292.65
+data/mivia/si4/rand/r001/400.A97;odcull=[1] 8.61;vf2_sub1=[1] 3.10;vf2=[1] 95.42
+data/mivia/si4/rand/r001/400.A98;odcull=[24] 36.66;vf2_sub1=[24] 12.61;vf2=[24] 29.34
+data/mivia/si4/rand/r001/400.A99;odcull=[4] 19.66;vf2_sub1=[4] 5.05;vf2=[4] 35.04
+data/mivia/si4/rand/r001/600.A00;odcull=[2] 52.98;vf2_sub1=[2] 9.26;vf2=
+data/mivia/si4/rand/r001/600.A01;odcull=[1] 75.82;vf2_sub1=[1] 5.90;vf2=
+data/mivia/si4/rand/r001/600.A02;odcull=[2] 55.68;vf2_sub1=[2] 6.55;vf2=[2] 1321.12
+data/mivia/si4/rand/r001/600.A03;odcull=[1] 47.37;vf2_sub1=[1] 5.64;vf2=[1] 16107.78
+data/mivia/si4/rand/r001/600.A04;odcull=[1] 41.74;vf2_sub1=[1] 6.22;vf2=
+data/mivia/si4/rand/r001/600.A05;odcull=[1] 49.63;vf2_sub1=[1] 7.65;vf2=
+data/mivia/si4/rand/r001/600.A06;odcull=[2] 47.90;vf2_sub1=[2] 7.75;vf2=[2] 1407.92
+data/mivia/si4/rand/r001/600.A07;odcull=[1] 57.93;vf2_sub1=[1] 6.07;vf2=[1] 6773.80
+data/mivia/si4/rand/r001/600.A08;odcull=[1] 72.60;vf2_sub1=[1] 12.70;vf2=[1] 2790.12
+data/mivia/si4/rand/r001/600.A09;odcull=[1] 106.68;vf2_sub1=[1] 15.57;vf2=
+data/mivia/si4/rand/r001/600.A10;odcull=[8] 32.59;vf2_sub1=[8] 6.23;vf2=[8] 10610.98
+data/mivia/si4/rand/r001/600.A11;odcull=[1] 58.50;vf2_sub1=[1] 6.09;vf2=
+data/mivia/si4/rand/r001/600.A12;odcull=[1] 56.76;vf2_sub1=[1] 6.94;vf2=[1] 155.73
+data/mivia/si4/rand/r001/600.A13;odcull=[1] 59.27;vf2_sub1=[1] 6.36;vf2=[1] 1296.44
+data/mivia/si4/rand/r001/600.A14;odcull=[1] 133.44;vf2_sub1=[1] 38.05;vf2=[1] 2761.61
+data/mivia/si4/rand/r001/600.A15;odcull=[1] 47.94;vf2_sub1=[1] 8.77;vf2=[1] 3855.23
+data/mivia/si4/rand/r001/600.A16;odcull=[1] 61.37;vf2_sub1=[1] 7.67;vf2=[1] 27235.79
+data/mivia/si4/rand/r001/600.A17;odcull=[1] 64.61;vf2_sub1=[1] 7.03;vf2=[1] 1080.16
+data/mivia/si4/rand/r001/600.A18;odcull=[1] 54.45;vf2_sub1=[1] 6.57;vf2=[1] 424.26
+data/mivia/si4/rand/r001/600.A19;odcull=[1] 73.08;vf2_sub1=[1] 10.76;vf2=
+data/mivia/si4/rand/r001/600.A20;odcull=[1] 58.11;vf2_sub1=[1] 6.37;vf2=
+data/mivia/si4/rand/r001/600.A21;odcull=[1] 62.38;vf2_sub1=[1] 6.43;vf2=[1] 10042.74
+data/mivia/si4/rand/r001/600.A22;odcull=[1] 601.19;vf2_sub1=[1] 24.51;vf2=[1] 55822.07
+data/mivia/si4/rand/r001/600.A23;odcull=[1] 47.87;vf2_sub1=[1] 5.67;vf2=[1] 6491.31
+data/mivia/si4/rand/r001/600.A24;odcull=[1] 69.49;vf2_sub1=[1] 16.40;vf2=[1] 4565.92
+data/mivia/si4/rand/r001/600.A25;odcull=[2] 87.94;vf2_sub1=[2] 10.74;vf2=[2] 1186.53
+data/mivia/si4/rand/r001/600.A26;odcull=[1] 87.16;vf2_sub1=[1] 31.88;vf2=
+data/mivia/si4/rand/r001/600.A27;odcull=[1] 88.21;vf2_sub1=[1] 10.04;vf2=[1] 55912.15
+data/mivia/si4/rand/r001/600.A28;odcull=[1] 51.23;vf2_sub1=[1] 5.60;vf2=[1] 39.74
+data/mivia/si4/rand/r001/600.A29;odcull=[1] 47.49;vf2_sub1=[1] 6.46;vf2=
+data/mivia/si4/rand/r001/600.A30;odcull=[2] 42.58;vf2_sub1=[2] 6.13;vf2=[2] 299.50
+data/mivia/si4/rand/r001/600.A31;odcull=[1] 64.71;vf2_sub1=[1] 7.99;vf2=[1] 21.48
+data/mivia/si4/rand/r001/600.A32;odcull=[1] 26.19;vf2_sub1=[1] 5.40;vf2=[1] 54.11
+data/mivia/si4/rand/r001/600.A33;odcull=[4] 62.61;vf2_sub1=[4] 7.24;vf2=[4] 1986.22
+data/mivia/si4/rand/r001/600.A34;odcull=[1] 62.28;vf2_sub1=[1] 8.83;vf2=[1] 3373.12
+data/mivia/si4/rand/r001/600.A35;odcull=[1] 56.65;vf2_sub1=[1] 6.98;vf2=[1] 6705.52
+data/mivia/si4/rand/r001/600.A36;odcull=[2] 67.00;vf2_sub1=[2] 6.64;vf2=
+data/mivia/si4/rand/r001/600.A37;odcull=[1] 52.62;vf2_sub1=[1] 6.56;vf2=[1] 8716.34
+data/mivia/si4/rand/r001/600.A38;odcull=[1] 51.61;vf2_sub1=[1] 7.85;vf2=[1] 79.79
+data/mivia/si4/rand/r001/600.A39;odcull=[1] 72.85;vf2_sub1=[1] 7.67;vf2=[1] 1655.36
+data/mivia/si4/rand/r001/600.A40;odcull=[1] 144.51;vf2_sub1=[1] 16.50;vf2=[1] 36730.91
+data/mivia/si4/rand/r001/600.A41;odcull=[1] 44.33;vf2_sub1=[1] 6.43;vf2=[1] 6709.23
+data/mivia/si4/rand/r001/600.A42;odcull=[1] 58.42;vf2_sub1=[1] 6.39;vf2=[1] 45610.13
+data/mivia/si4/rand/r001/600.A43;odcull=[2] 159.50;vf2_sub1=[2] 32.07;vf2=[2] 51770.74
+data/mivia/si4/rand/r001/600.A44;odcull=[1] 41.40;vf2_sub1=[1] 6.79;vf2=
+data/mivia/si4/rand/r001/600.A45;odcull=[1] 59.72;vf2_sub1=[1] 12.95;vf2=[1] 42.55
+data/mivia/si4/rand/r001/600.A46;odcull=[1] 142.49;vf2_sub1=[1] 12.37;vf2=[1] 3658.65
+data/mivia/si4/rand/r001/600.A47;odcull=[1] 62.62;vf2_sub1=[1] 6.78;vf2=[1] 62.54
+data/mivia/si4/rand/r001/600.A48;odcull=[1] 81.08;vf2_sub1=[1] 26.63;vf2=[1] 121.00
+data/mivia/si4/rand/r001/600.A49;odcull=[1] 56.66;vf2_sub1=[1] 6.80;vf2=[1] 1377.09
+data/mivia/si4/rand/r001/600.A50;odcull=[2] 52.29;vf2_sub1=[2] 5.81;vf2=[2] 131.95
+data/mivia/si4/rand/r001/600.A51;odcull=[1] 71.71;vf2_sub1=[1] 6.69;vf2=[1] 5608.24
+data/mivia/si4/rand/r001/600.A52;odcull=[1] 51.51;vf2_sub1=[1] 5.84;vf2=[1] 32893.50
+data/mivia/si4/rand/r001/600.A53;odcull=[1] 138.06;vf2_sub1=[1] 7.13;vf2=[1] 49.44
+data/mivia/si4/rand/r001/600.A54;odcull=[1] 44.85;vf2_sub1=[1] 5.50;vf2=
+data/mivia/si4/rand/r001/600.A55;odcull=[3] 43.59;vf2_sub1=[3] 7.25;vf2=[3] 2479.58
+data/mivia/si4/rand/r001/600.A56;odcull=[2] 60.06;vf2_sub1=[2] 7.09;vf2=[2] 6204.05
+data/mivia/si4/rand/r001/600.A57;odcull=[1] 85.77;vf2_sub1=[1] 11.87;vf2=
+data/mivia/si4/rand/r001/600.A58;odcull=[1] 68.86;vf2_sub1=[1] 6.61;vf2=[1] 34.45
+data/mivia/si4/rand/r001/600.A59;odcull=[1] 88.10;vf2_sub1=[1] 5.32;vf2=[1] 4354.24
+data/mivia/si4/rand/r001/600.A60;odcull=[1] 97.59;vf2_sub1=[1] 20.51;vf2=
+data/mivia/si4/rand/r001/600.A61;odcull=[1] 49.05;vf2_sub1=[1] 6.59;vf2=
+data/mivia/si4/rand/r001/600.A62;odcull=[1] 44.57;vf2_sub1=[1] 5.57;vf2=[1] 19004.82
+data/mivia/si4/rand/r001/600.A63;odcull=[1] 45.90;vf2_sub1=[1] 5.43;vf2=
+data/mivia/si4/rand/r001/600.A64;odcull=[1] 55.35;vf2_sub1=[1] 7.11;vf2=[1] 4462.93
+data/mivia/si4/rand/r001/600.A65;odcull=[1] 74.16;vf2_sub1=[1] 7.91;vf2=[1] 973.95
+data/mivia/si4/rand/r001/600.A66;odcull=[1] 52.78;vf2_sub1=[1] 6.08;vf2=[1] 2003.29
+data/mivia/si4/rand/r001/600.A67;odcull=[1] 67.01;vf2_sub1=[1] 5.58;vf2=
+data/mivia/si4/rand/r001/600.A68;odcull=[1] 47.60;vf2_sub1=[1] 5.94;vf2=
+data/mivia/si4/rand/r001/600.A69;odcull=[1] 194.36;vf2_sub1=[1] 11.23;vf2=[1] 31.12
+data/mivia/si4/rand/r001/600.A70;odcull=[1] 64.52;vf2_sub1=[1] 5.51;vf2=[1] 2332.24
+data/mivia/si4/rand/r001/600.A71;odcull=[1] 127.76;vf2_sub1=[1] 19.24;vf2=[1] 10031.66
+data/mivia/si4/rand/r001/600.A72;odcull=[1] 50.19;vf2_sub1=[1] 6.01;vf2=[1] 3036.93
+data/mivia/si4/rand/r001/600.A73;odcull=[1] 69.97;vf2_sub1=[1] 7.88;vf2=[1] 822.30
+data/mivia/si4/rand/r001/600.A74;odcull=[1] 40.98;vf2_sub1=[1] 6.20;vf2=[1] 31.67
+data/mivia/si4/rand/r001/600.A75;odcull=[1] 37.41;vf2_sub1=[1] 5.48;vf2=[1] 55.68
+data/mivia/si4/rand/r001/600.A76;odcull=[1] 120.60;vf2_sub1=[1] 22.70;vf2=[1] 14874.12
+data/mivia/si4/rand/r001/600.A77;odcull=[1] 65.51;vf2_sub1=[1] 19.75;vf2=
+data/mivia/si4/rand/r001/600.A78;odcull=[1] 59.53;vf2_sub1=[1] 6.47;vf2=[1] 224.24
+data/mivia/si4/rand/r001/600.A79;odcull=[1] 81.66;vf2_sub1=[1] 18.14;vf2=[1] 10.48
+data/mivia/si4/rand/r001/600.A80;odcull=[1] 131.54;vf2_sub1=[1] 89.79;vf2=[1] 69.77
+data/mivia/si4/rand/r001/600.A81;odcull=[1] 47.38;vf2_sub1=[1] 6.60;vf2=[1] 343.64
+data/mivia/si4/rand/r001/600.A82;odcull=[2] 49.83;vf2_sub1=[2] 7.23;vf2=[2] 23.83
+data/mivia/si4/rand/r001/600.A83;odcull=[1] 88.88;vf2_sub1=[1] 38.82;vf2=[1] 43.34
+data/mivia/si4/rand/r001/600.A84;odcull=[1] 73.38;vf2_sub1=[1] 18.18;vf2=[1] 78.01
+data/mivia/si4/rand/r001/600.A85;odcull=[1] 111.26;vf2_sub1=[1] 100.01;vf2=
+data/mivia/si4/rand/r001/600.A86;odcull=[1] 71.74;vf2_sub1=[1] 11.18;vf2=
+data/mivia/si4/rand/r001/600.A87;odcull=[1] 46.52;vf2_sub1=[1] 6.45;vf2=[1] 969.88
+data/mivia/si4/rand/r001/600.A88;odcull=[1] 58.47;vf2_sub1=[1] 9.20;vf2=
+data/mivia/si4/rand/r001/600.A89;odcull=[2] 66.90;vf2_sub1=[2] 7.26;vf2=[2] 780.88
+data/mivia/si4/rand/r001/600.A90;odcull=[1] 51.33;vf2_sub1=[1] 8.88;vf2=
+data/mivia/si4/rand/r001/600.A91;odcull=[1] 45.58;vf2_sub1=[1] 7.17;vf2=[1] 268.97
+data/mivia/si4/rand/r001/600.A92;odcull=[1] 42.65;vf2_sub1=[1] 8.25;vf2=[1] 1305.26
+data/mivia/si4/rand/r001/600.A93;odcull=[3] 44.51;vf2_sub1=[3] 7.32;vf2=
+data/mivia/si4/rand/r001/600.A94;odcull=[1] 42.13;vf2_sub1=[1] 5.82;vf2=[1] 3241.15
+data/mivia/si4/rand/r001/600.A95;odcull=[1] 39.57;vf2_sub1=[1] 5.68;vf2=[1] 226.25
+data/mivia/si4/rand/r001/600.A96;odcull=[1] 48.95;vf2_sub1=[1] 5.96;vf2=[1] 41.72
+data/mivia/si4/rand/r001/600.A97;odcull=[1] 45.97;vf2_sub1=[1] 16.90;vf2=[1] 4979.40
+data/mivia/si4/rand/r001/600.A98;odcull=[1] 126.82;vf2_sub1=[1] 20.70;vf2=[1] 12686.21
+data/mivia/si4/rand/r001/600.A99;odcull=[2] 76.61;vf2_sub1=[2] 8.54;vf2=
+data/mivia/si4/rand/r001/800.A00;odcull=[1] 114.35;vf2_sub1=[1] 14.92;vf2=[1] 9585.20
+data/mivia/si4/rand/r001/800.A01;odcull=[1] 172.90;vf2_sub1=[1] 10.94;vf2=[1] 3771.05
+data/mivia/si4/rand/r001/800.A02;odcull=[1] 1505.81;vf2_sub1=[1] 436.55;vf2=
+data/mivia/si4/rand/r001/800.A03;odcull=[1] 96.14;vf2_sub1=[1] 16.36;vf2=[1] 6956.09
+data/mivia/si4/rand/r001/800.A04;odcull=[1] 173.62;vf2_sub1=[1] 59.86;vf2=[1] 849.27
+data/mivia/si4/rand/r001/800.A05;odcull=[1] 326.33;vf2_sub1=[1] 14.53;vf2=[1] 64.66
+data/mivia/si4/rand/r001/800.A06;odcull=[1] 98.59;vf2_sub1=[1] 13.35;vf2=[1] 62.47
+data/mivia/si4/rand/r001/800.A07;odcull=[1] 397.33;vf2_sub1=[1] 74.51;vf2=
+data/mivia/si4/rand/r001/800.A08;odcull=[1] 82.22;vf2_sub1=[1] 10.04;vf2=
+data/mivia/si4/rand/r001/800.A09;odcull=[1] 176.24;vf2_sub1=[1] 19.14;vf2=[1] 2025.95
+data/mivia/si4/rand/r001/800.A10;odcull=[1] 106.76;vf2_sub1=[1] 11.03;vf2=[1] 414.72
+data/mivia/si4/rand/r001/800.A11;odcull=[1] 96.24;vf2_sub1=[1] 19.77;vf2=
+data/mivia/si4/rand/r001/800.A12;odcull=[1] 112.30;vf2_sub1=[1] 10.49;vf2=[1] 1965.46
+data/mivia/si4/rand/r001/800.A13;odcull=[1] 133.88;vf2_sub1=[1] 12.39;vf2=
+data/mivia/si4/rand/r001/800.A14;odcull=[1] 100.39;vf2_sub1=[1] 10.57;vf2=[1] 376.56
+data/mivia/si4/rand/r001/800.A15;odcull=[1] 596.73;vf2_sub1=[1] 64.43;vf2=[1] 80.43
+data/mivia/si4/rand/r001/800.A16;odcull=[1] 92.88;vf2_sub1=[1] 14.44;vf2=[1] 3405.95
+data/mivia/si4/rand/r001/800.A17;odcull=[1] 279.86;vf2_sub1=[1] 93.08;vf2=
+data/mivia/si4/rand/r001/800.A18;odcull=[1] 119.03;vf2_sub1=[1] 14.49;vf2=[1] 6142.76
+data/mivia/si4/rand/r001/800.A19;odcull=[1] 134.73;vf2_sub1=[1] 77.68;vf2=[1] 4508.78
+data/mivia/si4/rand/r001/800.A20;odcull=[1] 87.47;vf2_sub1=[1] 15.55;vf2=[1] 31288.77
+data/mivia/si4/rand/r001/800.A21;odcull=[1] 94.75;vf2_sub1=[1] 14.27;vf2=[1] 43349.01
+data/mivia/si4/rand/r001/800.A22;odcull=[1] 261.36;vf2_sub1=[1] 16.49;vf2=[1] 16.03
+data/mivia/si4/rand/r001/800.A23;odcull=[1] 516.87;vf2_sub1=[1] 21.56;vf2=
+data/mivia/si4/rand/r001/800.A24;odcull=[2] 128.67;vf2_sub1=[2] 15.38;vf2=[2] 25382.87
+data/mivia/si4/rand/r001/800.A25;odcull=[1] 160.57;vf2_sub1=[1] 24.72;vf2=
+data/mivia/si4/rand/r001/800.A26;odcull=[1] 101.07;vf2_sub1=[1] 36.98;vf2=[1] 66.33
+data/mivia/si4/rand/r001/800.A27;odcull=[1] 246.19;vf2_sub1=[1] 18.47;vf2=[1] 4090.55
+data/mivia/si4/rand/r001/800.A28;odcull=[1] 191.55;vf2_sub1=[1] 24.77;vf2=
+data/mivia/si4/rand/r001/800.A29;odcull=[1] 113.18;vf2_sub1=[1] 12.49;vf2=[1] 468.16
+data/mivia/si4/rand/r001/800.A30;odcull=[1] 188.37;vf2_sub1=[1] 16.20;vf2=[1] 33.45
+data/mivia/si4/rand/r001/800.A31;odcull=[1] 110.31;vf2_sub1=[1] 86.12;vf2=
+data/mivia/si4/rand/r001/800.A32;odcull=[1] 224.31;vf2_sub1=[1] 54.26;vf2=
+data/mivia/si4/rand/r001/800.A33;odcull=[1] 127.85;vf2_sub1=[1] 15.98;vf2=[1] 124.45
+data/mivia/si4/rand/r001/800.A34;odcull=[1] 77.15;vf2_sub1=[1] 10.04;vf2=[1] 648.07
+data/mivia/si4/rand/r001/800.A35;odcull=[1] 77.39;vf2_sub1=[1] 10.96;vf2=
+data/mivia/si4/rand/r001/800.A36;odcull=[1] 100.60;vf2_sub1=[1] 14.42;vf2=[1] 5441.47
+data/mivia/si4/rand/r001/800.A37;odcull=[1] 71.99;vf2_sub1=[1] 10.17;vf2=
+data/mivia/si4/rand/r001/800.A38;odcull=[1] 171.99;vf2_sub1=[1] 16.89;vf2=[1] 5501.41
+data/mivia/si4/rand/r001/800.A39;odcull=[1] 84.49;vf2_sub1=[1] 11.01;vf2=[1] 9261.83
+data/mivia/si4/rand/r001/800.A40;odcull=[1] 151.21;vf2_sub1=[1] 17.00;vf2=[1] 18928.55
+data/mivia/si4/rand/r001/800.A41;odcull=[1] 234.58;vf2_sub1=[1] 16.55;vf2=[1] 3922.99
+data/mivia/si4/rand/r001/800.A42;odcull=[1] 381.66;vf2_sub1=[1] 104.13;vf2=[1] 8957.26
+data/mivia/si4/rand/r001/800.A43;odcull=[1] 92.71;vf2_sub1=[1] 14.07;vf2=
+data/mivia/si4/rand/r001/800.A44;odcull=[1] 241.50;vf2_sub1=[1] 16.93;vf2=[1] 18.19
+data/mivia/si4/rand/r001/800.A45;odcull=[1] 101.14;vf2_sub1=[1] 12.42;vf2=
+data/mivia/si4/rand/r001/800.A46;odcull=[1] 133.09;vf2_sub1=[1] 16.39;vf2=[1] 1539.46
+data/mivia/si4/rand/r001/800.A47;odcull=[1] 125.42;vf2_sub1=[1] 24.06;vf2=[1] 140.00
+data/mivia/si4/rand/r001/800.A48;odcull=[1] 105.60;vf2_sub1=[1] 15.13;vf2=
+data/mivia/si4/rand/r001/800.A49;odcull=[1] 138.55;vf2_sub1=[1] 11.51;vf2=[1] 7929.23
+data/mivia/si4/rand/r001/800.A50;odcull=[1] 76.80;vf2_sub1=[1] 11.65;vf2=[1] 206.12
+data/mivia/si4/rand/r001/800.A51;odcull=[1] 114.16;vf2_sub1=[1] 14.62;vf2=[1] 14.06
+data/mivia/si4/rand/r001/800.A52;odcull=[1] 77.35;vf2_sub1=[1] 11.16;vf2=[1] 33.68
+data/mivia/si4/rand/r001/800.A53;odcull=[1] 359.88;vf2_sub1=[1] 116.60;vf2=[1] 648.53
+data/mivia/si4/rand/r001/800.A54;odcull=[1] 900.51;vf2_sub1=[1] 30.88;vf2=[1] 6553.71
+data/mivia/si4/rand/r001/800.A55;odcull=[1] 87.24;vf2_sub1=[1] 10.96;vf2=[1] 8670.47
+data/mivia/si4/rand/r001/800.A56;odcull=[1] 218.35;vf2_sub1=[1] 16.92;vf2=[1] 39390.87
+data/mivia/si4/rand/r001/800.A57;odcull=[1] 123.85;vf2_sub1=[1] 21.03;vf2=[1] 260.39
+data/mivia/si4/rand/r001/800.A58;odcull=[1] 97.84;vf2_sub1=[1] 11.84;vf2=[1] 92.33
+data/mivia/si4/rand/r001/800.A59;odcull=[1] 107.41;vf2_sub1=[1] 15.23;vf2=
+data/mivia/si4/rand/r001/800.A60;odcull=[1] 101.36;vf2_sub1=[1] 11.09;vf2=
+data/mivia/si4/rand/r001/800.A61;odcull=[1] 91.87;vf2_sub1=[1] 11.50;vf2=
+data/mivia/si4/rand/r001/800.A62;odcull=[1] 84.88;vf2_sub1=[1] 10.72;vf2=
+data/mivia/si4/rand/r001/800.A63;odcull=[1] 386.52;vf2_sub1=[1] 16.81;vf2=
+data/mivia/si4/rand/r001/800.A64;odcull=[1] 124.36;vf2_sub1=[1] 12.85;vf2=[1] 1518.47
+data/mivia/si4/rand/r001/800.A65;odcull=[1] 114.43;vf2_sub1=[1] 12.40;vf2=
+data/mivia/si4/rand/r001/800.A66;odcull=[1] 86.69;vf2_sub1=[1] 14.99;vf2=[1] 945.44
+data/mivia/si4/rand/r001/800.A67;odcull=[1] 61.12;vf2_sub1=[1] 11.38;vf2=[1] 5788.68
+data/mivia/si4/rand/r001/800.A68;odcull=[1] 73.26;vf2_sub1=[1] 10.11;vf2=[1] 40.01
+data/mivia/si4/rand/r001/800.A69;odcull=[1] 100.95;vf2_sub1=[1] 20.91;vf2=
+data/mivia/si4/rand/r001/800.A70;odcull=[1] 254.03;vf2_sub1=[1] 56.50;vf2=[1] 260.68
+data/mivia/si4/rand/r001/800.A71;odcull=[1] 87.70;vf2_sub1=[1] 25.57;vf2=[1] 5889.40
+data/mivia/si4/rand/r001/800.A72;odcull=[1] 84.25;vf2_sub1=[1] 11.46;vf2=[1] 10004.55
+data/mivia/si4/rand/r001/800.A73;odcull=[1] 88.57;vf2_sub1=[1] 11.36;vf2=[1] 1314.80
+data/mivia/si4/rand/r001/800.A74;odcull=[1] 105.34;vf2_sub1=[1] 16.99;vf2=[1] 32.40
+data/mivia/si4/rand/r001/800.A75;odcull=[1] 94.84;vf2_sub1=[1] 13.23;vf2=[1] 57250.33
+data/mivia/si4/rand/r001/800.A76;odcull=[1] 179.04;vf2_sub1=[1] 23.66;vf2=[1] 1279.38
+data/mivia/si4/rand/r001/800.A77;odcull=[1] 244.69;vf2_sub1=[1] 443.91;vf2=[1] 139.26
+data/mivia/si4/rand/r001/800.A78;odcull=[1] 139.63;vf2_sub1=[1] 12.03;vf2=[1] 512.44
+data/mivia/si4/rand/r001/800.A79;odcull=[1] 131.32;vf2_sub1=[1] 34.15;vf2=[1] 54.06
+data/mivia/si4/rand/r001/800.A80;odcull=[1] 227.95;vf2_sub1=[1] 70.79;vf2=[1] 3003.41
+data/mivia/si4/rand/r001/800.A81;odcull=[1] 111.44;vf2_sub1=[1] 14.56;vf2=[1] 34522.09
+data/mivia/si4/rand/r001/800.A82;odcull=[1] 306.66;vf2_sub1=[1] 23.66;vf2=
+data/mivia/si4/rand/r001/800.A83;odcull=[1] 148.76;vf2_sub1=[1] 24.11;vf2=
+data/mivia/si4/rand/r001/800.A84;odcull=[1] 109.54;vf2_sub1=[1] 15.30;vf2=[1] 58952.69
+data/mivia/si4/rand/r001/800.A85;odcull=[1] 112.78;vf2_sub1=[1] 49.20;vf2=
+data/mivia/si4/rand/r001/800.A86;odcull=[1] 96.66;vf2_sub1=[1] 14.73;vf2=[1] 448.43
+data/mivia/si4/rand/r001/800.A87;odcull=[1] 84.37;vf2_sub1=[1] 13.13;vf2=[1] 545.55
+data/mivia/si4/rand/r001/800.A88;odcull=[1] 270.80;vf2_sub1=[1] 49.35;vf2=[1] 28752.12
+data/mivia/si4/rand/r001/800.A89;odcull=[1] 295.12;vf2_sub1=[1] 27.07;vf2=
+data/mivia/si4/rand/r001/800.A90;odcull=[1] 116.41;vf2_sub1=[1] 16.41;vf2=[1] 22388.76
+data/mivia/si4/rand/r001/800.A91;odcull=[1] 147.88;vf2_sub1=[1] 14.08;vf2=[1] 178.38
+data/mivia/si4/rand/r001/800.A92;odcull=[1] 156.32;vf2_sub1=[1] 89.91;vf2=[1] 59.13
+data/mivia/si4/rand/r001/800.A93;odcull=[1] 162.51;vf2_sub1=[1] 40.24;vf2=[1] 16713.98
+data/mivia/si4/rand/r001/800.A94;odcull=[1] 324.87;vf2_sub1=[1] 19.92;vf2=
+data/mivia/si4/rand/r001/800.A95;odcull=[1] 231.63;vf2_sub1=[1] 29.92;vf2=
+data/mivia/si4/rand/r001/800.A96;odcull=[1] 279.89;vf2_sub1=[1] 18.16;vf2=[1] 749.75
+data/mivia/si4/rand/r001/800.A97;odcull=[1] 119.95;vf2_sub1=[1] 19.61;vf2=[1] 375.21
+data/mivia/si4/rand/r001/800.A98;odcull=[1] 153.66;vf2_sub1=[1] 27.74;vf2=
+data/mivia/si4/rand/r001/800.A99;odcull=[1] 300.03;vf2_sub1=[1] 18.61;vf2=[1] 47169.82
+data/mivia/si4/rand/r001/1000.A00;odcull=[1] 253.07;vf2_sub1=[1] 32.55;vf2=[1] 1221.21
+data/mivia/si4/rand/r001/1000.A01;odcull=[1] 265.70;vf2_sub1=[1] 19.74;vf2=[1] 17809.71
+data/mivia/si4/rand/r001/1000.A02;odcull=[1] 597.34;vf2_sub1=[1] 55.34;vf2=
+data/mivia/si4/rand/r001/1000.A03;odcull=[1] 220.18;vf2_sub1=[1] 19.56;vf2=
+data/mivia/si4/rand/r001/1000.A04;odcull=[1] 536.08;vf2_sub1=[1] 53.43;vf2=
+data/mivia/si4/rand/r001/1000.A05;odcull=[1] 208.08;vf2_sub1=[1] 47.09;vf2=
+data/mivia/si4/rand/r001/1000.A06;odcull=[1] 183.15;vf2_sub1=[1] 36.23;vf2=[1] 42001.17
+data/mivia/si4/rand/r001/1000.A07;odcull=[1] 177.66;vf2_sub1=[1] 22.77;vf2=[1] 49488.91
+data/mivia/si4/rand/r001/1000.A08;odcull=[1] 788.34;vf2_sub1=[1] 50.80;vf2=
+data/mivia/si4/rand/r001/1000.A09;odcull=[1] 243.52;vf2_sub1=[1] 18.63;vf2=[1] 10875.00
+data/mivia/si4/rand/r001/1000.A10;odcull=[1] 239.64;vf2_sub1=[1] 50.05;vf2=
+data/mivia/si4/rand/r001/1000.A11;odcull=[1] 406.64;vf2_sub1=[1] 25.16;vf2=[1] 84.33
+data/mivia/si4/rand/r001/1000.A12;odcull=[1] 588.53;vf2_sub1=[1] 103.88;vf2=
+data/mivia/si4/rand/r001/1000.A13;odcull=[1] 449.77;vf2_sub1=[1] 29.90;vf2=
+data/mivia/si4/rand/r001/1000.A14;odcull=[1] 1406.34;vf2_sub1=[1] 36.68;vf2=[1] 56953.36
+data/mivia/si4/rand/r001/1000.A15;odcull=[1] 163.92;vf2_sub1=[1] 24.68;vf2=[1] 89.99
+data/mivia/si4/rand/r001/1000.A16;odcull=[1] 202.67;vf2_sub1=[1] 30.68;vf2=[1] 317.99
+data/mivia/si4/rand/r001/1000.A17;odcull=[1] 229.31;vf2_sub1=[1] 18.32;vf2=[1] 9993.31
+data/mivia/si4/rand/r001/1000.A18;odcull=[1] 492.60;vf2_sub1=[1] 46.16;vf2=
+data/mivia/si4/rand/r001/1000.A19;odcull=[1] 141.01;vf2_sub1=[1] 24.39;vf2=[1] 24.19
+data/mivia/si4/rand/r001/1000.A20;odcull=[1] 172.91;vf2_sub1=[1] 19.02;vf2=[1] 1449.05
+data/mivia/si4/rand/r001/1000.A21;odcull=[1] 466.77;vf2_sub1=[1] 23.18;vf2=[1] 82.62
+data/mivia/si4/rand/r001/1000.A22;odcull=[1] 179.49;vf2_sub1=[1] 37.80;vf2=
+data/mivia/si4/rand/r001/1000.A23;odcull=[1] 252.76;vf2_sub1=[1] 23.88;vf2=[1] 58.42
+data/mivia/si4/rand/r001/1000.A24;odcull=[1] 201.98;vf2_sub1=[1] 51.60;vf2=[1] 9516.60
+data/mivia/si4/rand/r001/1000.A25;odcull=[1] 295.58;vf2_sub1=[1] 39.80;vf2=
+data/mivia/si4/rand/r001/1000.A26;odcull=[1] 163.28;vf2_sub1=[1] 18.01;vf2=
+data/mivia/si4/rand/r001/1000.A27;odcull=[1] 1157.01;vf2_sub1=[1] 430.82;vf2=[1] 568.12
+data/mivia/si4/rand/r001/1000.A28;odcull=[1] 149.95;vf2_sub1=[1] 24.92;vf2=
+data/mivia/si4/rand/r001/1000.A29;odcull=[1] 200.69;vf2_sub1=[1] 24.02;vf2=
+data/mivia/si4/rand/r001/1000.A30;odcull=[1] 145.81;vf2_sub1=[1] 42.98;vf2=[1] 42.87
+data/mivia/si4/rand/r001/1000.A31;odcull=[1] 542.72;vf2_sub1=[1] 93.21;vf2=[1] 3618.29
+data/mivia/si4/rand/r001/1000.A32;odcull=[1] 258.97;vf2_sub1=[1] 78.52;vf2=[1] 11542.99
+data/mivia/si4/rand/r001/1000.A33;odcull=[1] 804.89;vf2_sub1=[1] 27.91;vf2=[1] 1290.51
+data/mivia/si4/rand/r001/1000.A34;odcull=[1] 772.30;vf2_sub1=[1] 34.52;vf2=[1] 13066.86
+data/mivia/si4/rand/r001/1000.A35;odcull=[1] 707.19;vf2_sub1=[1] 78.42;vf2=
+data/mivia/si4/rand/r001/1000.A36;odcull=[1] 164.87;vf2_sub1=[1] 20.25;vf2=[1] 41214.01
+data/mivia/si4/rand/r001/1000.A37;odcull=[1] 391.03;vf2_sub1=[1] 34.05;vf2=
+data/mivia/si4/rand/r001/1000.A38;odcull=[1] 239.74;vf2_sub1=[1] 32.55;vf2=[1] 13679.86
+data/mivia/si4/rand/r001/1000.A39;odcull=[1] 156.79;vf2_sub1=[1] 17.69;vf2=[1] 336.54
+data/mivia/si4/rand/r001/1000.A40;odcull=[1] 162.08;vf2_sub1=[1] 20.68;vf2=[1] 9598.90
+data/mivia/si4/rand/r001/1000.A41;odcull=[1] 162.55;vf2_sub1=[1] 25.61;vf2=[1] 41867.15
+data/mivia/si4/rand/r001/1000.A42;odcull=[1] 312.44;vf2_sub1=[1] 23.14;vf2=[1] 2666.57
+data/mivia/si4/rand/r001/1000.A43;odcull=[1] 291.55;vf2_sub1=[1] 23.28;vf2=
+data/mivia/si4/rand/r001/1000.A44;odcull=[1] 264.87;vf2_sub1=[1] 27.70;vf2=[1] 33911.93
+data/mivia/si4/rand/r001/1000.A45;odcull=[1] 2603.43;vf2_sub1=[1] 260.88;vf2=
+data/mivia/si4/rand/r001/1000.A46;odcull=[1] 243.55;vf2_sub1=[1] 26.77;vf2=
+data/mivia/si4/rand/r001/1000.A47;odcull=[1] 237.97;vf2_sub1=[1] 44.96;vf2=[1] 26.33
+data/mivia/si4/rand/r001/1000.A48;odcull=[1] 1159.66;vf2_sub1=[1] 374.33;vf2=[1] 332.19
+data/mivia/si4/rand/r001/1000.A49;odcull=[1] 253.58;vf2_sub1=[1] 19.04;vf2=
+data/mivia/si4/rand/r001/1000.A50;odcull=[1] 175.41;vf2_sub1=[1] 20.33;vf2=
+data/mivia/si4/rand/r001/1000.A51;odcull=[1] 159.01;vf2_sub1=[1] 22.43;vf2=[1] 2970.04
+data/mivia/si4/rand/r001/1000.A52;odcull=[1] 152.66;vf2_sub1=[1] 17.27;vf2=
+data/mivia/si4/rand/r001/1000.A53;odcull=[1] 290.53;vf2_sub1=[1] 36.02;vf2=[1] 445.00
+data/mivia/si4/rand/r001/1000.A54;odcull=[1] 416.01;vf2_sub1=[1] 27.51;vf2=[1] 1516.26
+data/mivia/si4/rand/r001/1000.A55;odcull=[1] 209.80;vf2_sub1=[1] 31.93;vf2=[1] 10844.03
+data/mivia/si4/rand/r001/1000.A56;odcull=[1] 191.57;vf2_sub1=[1] 26.68;vf2=[1] 21138.69
+data/mivia/si4/rand/r001/1000.A57;odcull=[1] 171.59;vf2_sub1=[1] 24.57;vf2=
+data/mivia/si4/rand/r001/1000.A58;odcull=[1] 477.56;vf2_sub1=[1] 31.54;vf2=[1] 122.17
+data/mivia/si4/rand/r001/1000.A59;odcull=[1] 128.27;vf2_sub1=[1] 26.71;vf2=[1] 107.36
+data/mivia/si4/rand/r001/1000.A60;odcull=[1] 287.50;vf2_sub1=[1] 37.25;vf2=[1] 93.36
+data/mivia/si4/rand/r001/1000.A61;odcull=[1] 583.61;vf2_sub1=[1] 109.35;vf2=[1] 724.12
+data/mivia/si4/rand/r001/1000.A62;odcull=[1] 276.07;vf2_sub1=[1] 58.25;vf2=[1] 29999.96
+data/mivia/si4/rand/r001/1000.A63;odcull=[1] 666.98;vf2_sub1=[1] 74.00;vf2=
+data/mivia/si4/rand/r001/1000.A64;odcull=[1] 142.67;vf2_sub1=[1] 20.91;vf2=[1] 28428.19
+data/mivia/si4/rand/r001/1000.A65;odcull=[1] 528.76;vf2_sub1=[1] 37.82;vf2=[1] 26.76
+data/mivia/si4/rand/r001/1000.A66;odcull=[1] 1546.79;vf2_sub1=[1] 124.61;vf2=[1] 13018.48
+data/mivia/si4/rand/r001/1000.A67;odcull=[1] 370.31;vf2_sub1=[1] 32.61;vf2=
+data/mivia/si4/rand/r001/1000.A68;odcull=[1] 174.12;vf2_sub1=[1] 23.30;vf2=[1] 6801.38
+data/mivia/si4/rand/r001/1000.A69;odcull=[1] 724.26;vf2_sub1=[1] 26.84;vf2=
+data/mivia/si4/rand/r001/1000.A70;odcull=[1] 724.14;vf2_sub1=[1] 82.28;vf2=
+data/mivia/si4/rand/r001/1000.A71;odcull=[1] 235.17;vf2_sub1=[1] 49.69;vf2=
+data/mivia/si4/rand/r001/1000.A72;odcull=[1] 652.54;vf2_sub1=[1] 27.46;vf2=
+data/mivia/si4/rand/r001/1000.A73;odcull=[1] 155.85;vf2_sub1=[1] 18.11;vf2=[1] 1391.46
+data/mivia/si4/rand/r001/1000.A74;odcull=[1] 386.98;vf2_sub1=[1] 29.73;vf2=[1] 9238.32
+data/mivia/si4/rand/r001/1000.A75;odcull=[1] 209.69;vf2_sub1=[1] 21.29;vf2=
+data/mivia/si4/rand/r001/1000.A76;odcull=[1] 244.79;vf2_sub1=[1] 37.74;vf2=[1] 6203.49
+data/mivia/si4/rand/r001/1000.A77;odcull=[1] 714.28;vf2_sub1=[1] 34.75;vf2=[1] 25784.27
+data/mivia/si4/rand/r001/1000.A78;odcull=[1] 179.25;vf2_sub1=[1] 25.85;vf2=
+data/mivia/si4/rand/r001/1000.A79;odcull=[1] 183.59;vf2_sub1=[1] 21.89;vf2=[1] 2027.49
+data/mivia/si4/rand/r001/1000.A80;odcull=[1] 186.69;vf2_sub1=[1] 21.20;vf2=[1] 741.16
+data/mivia/si4/rand/r001/1000.A81;odcull=[1] 335.57;vf2_sub1=[1] 21.64;vf2=[1] 65.81
+data/mivia/si4/rand/r001/1000.A82;odcull=[1] 278.62;vf2_sub1=[1] 29.63;vf2=
+data/mivia/si4/rand/r001/1000.A83;odcull=[1] 562.12;vf2_sub1=[1] 50.99;vf2=[1] 97.68
+data/mivia/si4/rand/r001/1000.A84;odcull=[1] 200.80;vf2_sub1=[1] 44.00;vf2=
+data/mivia/si4/rand/r001/1000.A85;odcull=[1] 185.34;vf2_sub1=[1] 39.87;vf2=[1] 937.80
+data/mivia/si4/rand/r001/1000.A86;odcull=[1] 248.90;vf2_sub1=[1] 93.36;vf2=[1] 30662.26
+data/mivia/si4/rand/r001/1000.A87;odcull=[1] 163.99;vf2_sub1=[1] 25.33;vf2=
+data/mivia/si4/rand/r001/1000.A88;odcull=[1] 173.21;vf2_sub1=[1] 26.50;vf2=
+data/mivia/si4/rand/r001/1000.A89;odcull=[1] 418.24;vf2_sub1=[1] 41.14;vf2=
+data/mivia/si4/rand/r001/1000.A90;odcull=[1] 333.38;vf2_sub1=[1] 29.64;vf2=
+data/mivia/si4/rand/r001/1000.A91;odcull=[1] 911.08;vf2_sub1=[1] 424.54;vf2=[1] 653.88
+data/mivia/si4/rand/r001/1000.A92;odcull=[1] 587.50;vf2_sub1=[1] 24.56;vf2=[1] 263.03
+data/mivia/si4/rand/r001/1000.A93;odcull=[1] 155.82;vf2_sub1=[1] 42.77;vf2=[1] 141.66
+data/mivia/si4/rand/r001/1000.A94;odcull=[1] 183.32;vf2_sub1=[1] 22.07;vf2=
+data/mivia/si4/rand/r001/1000.A95;odcull=[1] 441.41;vf2_sub1=[1] 45.74;vf2=
+data/mivia/si4/rand/r001/1000.A96;odcull=[1] 213.31;vf2_sub1=[1] 21.50;vf2=
+data/mivia/si4/rand/r001/1000.A97;odcull=[1] 127.35;vf2_sub1=[1] 56.82;vf2=[1] 17036.38
+data/mivia/si4/rand/r001/1000.A98;odcull=[1] 205.15;vf2_sub1=[1] 43.06;vf2=[1] 3182.82
+data/mivia/si4/rand/r001/1000.A99;odcull=[1] 187.35;vf2_sub1=[1] 18.45;vf2=

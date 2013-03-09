@@ -1,0 +1,9 @@
+Running si2_r001 Thu Mar  7 19:14:47 CET 2013
+Running si2_r005 Fri Mar  8 00:03:59 CET 2013
+Running si2_r01 Fri Mar  8 02:34:03 CET 2013
+Running si4_r001 Fri Mar  8 08:43:53 CET 2013
+Running si4_r005 Fri Mar  8 11:01:20 CET 2013
+Running si4_r01 Fri Mar  8 12:03:09 CET 2013
+Running si6_r001 Fri Mar  8 17:22:38 CET 2013
+Running si6_r005 Fri Mar  8 18:35:37 CET 2013
+Running si6_r01 Fri Mar  8 18:55:57 CET 2013
