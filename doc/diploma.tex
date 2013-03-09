@@ -1167,6 +1167,41 @@
 
 \chapter{Eksperimentalna primerjava algoritmov}
 
+
+
+	% štetje vseh podgrafnih izomorfizmov
+	% database link and description
+	
+	% vflib link
+
+	Avtorji članka o algoritmu Subsea so na spletu objavili implementacico tega algoritma 
+	(\href{http://www.cs.bgu.ac.il/~orlovn/links/SubseaProj30_11_06/}{http://www.cs.bgu.ac.il/$\sim$orlovn/links/SubseaProj30\_11\_06/}). Vendar ta
+	implementacija ne deluje pravilno, saj celo za isti testni premer vrača različne rezultate (torej različno število vseh podgrafnih izomorfizmov). Zaradi
+	kompleksnosti algoritma pa bi ga bilo težko implementirati v celoti. Namesto tega smo iz algoritma vzeli idejo zgodovine preiskovanja 
+	(razdelek~\ref{sub:th}) in jo uporabili
+	v algoritmu VF2. Slednji namreč pri izbiranju naslednjega vozlišča za preiskovanje ne izkorišča zgradbe preiskovanega grafa. Kot smo opisali v 
+	razdelku~\ref{vf2:candidate}, algoritem med ne-preiskanimi sosedi že preiskanih vozlišč izbere prvo vozlišče oz.~tistega z najmanjšim indeksom (pri tem 
+	sicer upošteva še pripadnost množicam $T^+$ in $T^-$). Naša ideja pa je namesto arbitrarnega vrstnega reda uporabiti vrstni red, ki ga 
+	izračuna~\refalg{alg:sub_th}. Motivacije je enaka kot pri algoritmu Subsea: najprej preveriti bolj skoncentrirane dele vzorčnega grafa, da bi s tem čim
+	hitreje odkrili neobetavne veje preiskovanja. Opisani algoritem za zgodovino pregleda začne z podanima vozliščema, ker algoritem Subsea zahteva 
+	izračun zgodovine pregleda za vsako povezavo. Pri izboljšavi algoritma VF2 te zahteve ni, zato začnemo z vozliščem z največjo stopnjo.
+	
+	Naša implementacija algoritma za izračun zgodovine pregleda je v dodatku~\ref{app_vf2+sub}. Napisana je v jeziku C++ in je namenjena vključitvi v
+	izvorno kodo programske knjižnice vflib, tako smo zagotovili nepristransko primerjavo z obstoječim algoritmom VF2. Razred \texttt{SearchTraverse} ima
+	javno metodo \texttt{Sort\-Nodes\-By\-Search\-Traverse}. Ta sprejme
+	kazalec na graf (uporablja se graf iz knjižnice vflib), vrne pa urejeno tabelo vozlišč. Za integracijo izboljšave je v konstruktorju razreda za algoritem VF2
+	(datoteka \texttt{vf2\_sub\_state.cc}) potrebno klicati omenjeno metodo in shraniti tabelo vozlišč. Potem je v isti datoteki potrebno popraviti metodo
+	\texttt{NextPair}, da upošteva izračunani vrstni red vozlišč. Vozlišče iz vzorčnega grafa dobi neposredno iz tabele izračunanega vrstnega reda 
+	preiskovanja, za indeks v tabeli uporabi trenutno globino preiskovanja (spremenljivka \texttt{core\_len} v obstoječi implementaciji). Za to vozlišče preveri
+	pripadnost množicam $T^+$ in $T^-$, da lahko vozlišča iz ciljnega grafa izbira v isti množici. Popravljena metoda je v dodatku~\ref{app_vf2+sub1}.
+	
+	\section{Baza testnih grafov}
+	Algoritme smo testirali na bazi naključno generiranih grafov.
+	
+	\section{Rezultati}
+	
+	
+
 \begin{figure}
 \begin{center}
 \includegraphics[width=15cm]{img/results_si2.png}
@@ -1248,19 +1283,23 @@
 	\bibitem{vf2_2} L.~Cordella, P.~Foggia, C.~Sansome, M.~Vento, ``Performance evaluation of the VF graph matching algorithm",
 		%\textit {Proc. Int. Conf Image Analysis and Processing}, 1999, str.~1372--1177.
 		\textit {Proceedings of the 10th International Conference on Image Analysis and Processing}, 1999, str.~1372--1177.
-	
+
+	\bibitem{database} P.~Foggia, C.~Sansone, M.~Vento, ``A Database of Graphs for Isomorphism and Sub-Graph Isomorphism Benchmarking",
+		\textit{CoRR}, 2001, str.~176--187
+		
 	\bibitem{npcomplete} M.~R.~Garey, D.~S.~Johnson, ``Computers and Intractability: A Guide to the Theory of NP-Completeness",
-		Freeman and Company, 1979.s
+		Freeman and Company, 1979.
 	
 	\bibitem{subsea} V.~Lipets, N.~Vanetik, E.~Gudes, ``Subsea: an efficient heuristic aglorithm for subgraph isomorphism",
 		\textit {Data Mining and Knowledge Discovery}, št.~19, zv.~3, 2009, str.~320--350.
 
 	% Journal of the ACM, Vol. 23, No. 1. (January 1976), pp. 31-42
 	\bibitem{ullmann} J.~R.~Ullmann, ``An Algorithm for Subgraph Isomorphism",
-		\textit{Journal of the ACM}, št.~23, zv.~1, str.~31-42, 1976.
+		\textit{Journal of the ACM}, št.~23, zv.~1, 1976, str.~31--42.
 
 	\bibitem{zampelli-th} S.~Zamplelli, ``A constraint programming approcah to subgraph isomorphism", Doktorska disertacija, 
 	Universit\'{e} catholique de Louvain, D\'{e}partement d’Ing\'{e}nierie Informatique, Belgija, 2008.
+	
 
 \end{thebibliography}
 
@@ -1268,7 +1307,7 @@
 \clearemptydoublepage
 \renewcommand{\baselinestretch}{1.0} % ustrezen razmik med vrsticami
 \appendix
-	\chapter {}
+	\chapter {Implementacija izboljšave algoritma VF2}
 	\label{appendix1}
 		\begin{lstlisting}[frame=tb, caption={Zgodovina pregleda grafa za algoritem VF2 (vflib)}, label={app_vf2+sub}]	
 #include <algorithm>
@@ -1402,7 +1441,6 @@ private:
 					}
 				}
 			}
-
 			if (bestNode != NULL_NODE) {
 				Visit(bestNode);
 				// Remove visited neighbor
@@ -1438,7 +1476,6 @@ public:
 			}
 			Visit(first);
 		}
-
 		delete[] processed;
 		delete[] estimateProcessed;
 		return order;
