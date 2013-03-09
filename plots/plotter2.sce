@@ -32,7 +32,7 @@ function []=process_result(filename, s1, s2, s3, s4)
     a.font_size = fontS;
     a.x_label.font_size=fontS;
     a.y_label.font_size=fontS;
-    a.margins = [0.15, 0.05, 0.125, 0.125]
+    a.margins = [0.15, 0.05, 0.125, 0.15]
     
     subplot(s1,s2,s4)
     plot("ln",[1:N]/N*60,x);
@@ -42,7 +42,7 @@ function []=process_result(filename, s1, s2, s3, s4)
     a.font_size = fontS;
     a.x_label.font_size=fontS;
     a.y_label.font_size=fontS;
-    a.margins = [0.15, 0.05, 0.125, 0.125]
+    a.margins = [0.15, 0.05, 0.125, 0.15]
     a.log_flags="ln";// (l=) log scale on y axis
 
     legend(['ullmann', 'vf2+subsea', 'vf2'], 4);
@@ -57,33 +57,38 @@ clf();
 f = gcf();
 f.figure_size=[1100, 1500]
 f.background=-2;
-process_result("diploma/data/results_si2_r001.txt", 3, 2, 1, 2)
-process_result("diploma/data/results_si2_r005.txt", 3, 2, 3, 4)
-process_result("diploma/data/results_si2_r01.txt", 3, 2, 5, 6)
+process_result("data/results_si2_r001.txt", 3, 2, 1, 2)
+process_result("data/results_si2_r005.txt", 3, 2, 3, 4)
+process_result("data/results_si2_r01.txt", 3, 2, 5, 6)
 f.figure_size=[1100, 1500];
-xs2png(f,"diploma/si2");
-xs2pdf(f,"diploma/si2");
+xs2png(f,"results_si2");
+xs2pdf(f,"results_si2");
     
     
-//
-//figure(4)
-//process_result("diploma/data/results_si4_r001.txt")
-//figure(5)
-//process_result("diploma/data/results_si4_r005.txt")
-//figure(6)
-//process_result("diploma/data/results_si4_r01.txt")
-//
-//figure(7)
-//process_result("diploma/data/results_si6_r001.txt")
-//figure(8)
-//process_result("diploma/data/results_si6_r005.txt")
-//figure(9)
-//process_result("diploma/data/results_si6_r01.txt")
+figure(2)
+clf();
+f = gcf();
+f.figure_size=[1100, 1500]
+f.background=-2;
+process_result("data/results_si4_r001.txt", 3, 2, 1, 2)
+process_result("data/results_si4_r005.txt", 3, 2, 3, 4)
+process_result("data/results_si4_r01.txt", 3, 2, 5, 6)
+f.figure_size=[1100, 1500];
+xs2png(f,"results_si4");
+xs2pdf(f,"results_si4");
+
+figure(3)
+clf();
+f = gcf();
+f.figure_size=[1100, 1500]
+f.background=-2;
+process_result("data/results_si6_r001.txt", 3, 2, 1, 2)
+process_result("data/results_si6_r005.txt", 3, 2, 3, 4)
+process_result("data/results_si6_r01.txt", 3, 2, 5, 6)
+f.figure_size=[1100, 1500];
+xs2png(f,"results_si6");
+xs2pdf(f,"results_si6");
 
 
-
-//M = csvRead()
-
-//subplot(3,3,1);
 
 
