@@ -19,7 +19,9 @@
 #include <match.h>
 using namespace std;
 
-const int FLAG_ALG_VF = 1 << 0;
+const int FLAG_ALG_VF = 		1 << 0;
+const int FLAG_ALG_VF_SUB1 = 	1 << 1;
+const int FLAG_ALG_VF_SUB2 = 	1 << 2;
 
 bool fileexists(const char *filename) {
   ifstream ifile(filename);
@@ -79,20 +81,27 @@ int main(int argc, char* argv[]) {
 	timespec start_t;
 	timespec end_t;
 
-	a = "/home/celebro/data/fri/diploma/src/workspace/data/mivia/si2/rand/r001/200.A01";
-	b = "/home/celebro/data/fri/diploma/src/workspace/data/mivia/si2/rand/r001/200.B01";
-	flags = 1;
+	a = "/home/celebro/data/fri/diploma/src/workspace/data/mivia/si2/rand/r01/800.A11";
+	b = "/home/celebro/data/fri/diploma/src/workspace/data/mivia/si2/rand/r01/800.B11";
+	flags = 0
+			| FLAG_ALG_VF
+			| FLAG_ALG_VF_SUB1
+			| FLAG_ALG_VF_SUB2
+			;
 
 	if (argc >= 4) {
 		a = argv[1];
 		b = argv[2];
 		flags = atoi(argv[3]);
+	} else {
+		cerr << "Using hardcoded graphs" << endl;
 	}
 
 	if (!fileexists(a) || !fileexists(b)) {
 		cerr << "One of the files not found." << endl;
 		return 1;
 	}
+	//cout << endl << "#########" << flags << "############" << endl;
 
 	cout.flush();
 
@@ -101,23 +110,48 @@ int main(int argc, char* argv[]) {
 
 	State* state;
 
-	clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &start_t);
+	if (flags & FLAG_ALG_VF_SUB1) {
+		clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &start_t);
 
-	if (flags && FLAG_ALG_VF) {
-		state = new VF2SubState(graph_pattern, graph_target);
-		//cout << "vf ";
-	} else {
-		state = new UllSubState(graph_pattern, graph_target);
-		//cout << "ull ";
+		state = new VF2SubState(graph_pattern, graph_target, 2);
+		//cout << "VF_sub1 ";
+		int cnt = match(state, match_printer_visitor, NULL);
+
+		clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end_t);
+		timespec diff_t = timespec_diff(start_t, end_t);
+		double time_t = (diff_t.tv_sec * 1000000 + diff_t.tv_nsec/1000)/1000.0;
+		printf("[%i] %.2f", cnt, time_t);
+		delete state;
 	}
-	int cnt = match(state, match_printer_visitor, NULL);
 
-	clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end_t);
-	timespec diff_t = timespec_diff(start_t, end_t);
-	double time_t = (diff_t.tv_sec * 1000000 + diff_t.tv_nsec/1000)/1000.0;
+	if (flags & FLAG_ALG_VF_SUB2) {
+		clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &start_t);
 
-	cout.precision(2);
-	printf("[%i] %.2f", cnt, time_t);
+		state = new VF2SubState(graph_pattern, graph_target, 3);
+		//cout << "VF_sub2 ";
+		int cnt = match(state, match_printer_visitor, NULL);
+
+		clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end_t);
+		timespec diff_t = timespec_diff(start_t, end_t);
+		double time_t = (diff_t.tv_sec * 1000000 + diff_t.tv_nsec/1000)/1000.0;
+		printf("[%i] %.2f", cnt, time_t);
+		delete state;
+
+	}
+
+	if (flags & FLAG_ALG_VF) {
+		clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &start_t);
+
+		state = new VF2SubState(graph_pattern, graph_target);
+		//cout << "VF ";
+		int cnt = match(state, match_printer_visitor, NULL);
+
+		clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end_t);
+		timespec diff_t = timespec_diff(start_t, end_t);
+		double time_t = (diff_t.tv_sec * 1000000 + diff_t.tv_nsec/1000)/1000.0;
+		printf("[%i] %.2f", cnt, time_t);
+		delete state;
+	}
 
 	delete(graph_pattern);
 	delete(graph_target);

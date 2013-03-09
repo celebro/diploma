@@ -9,16 +9,16 @@
 # 
 # Optimization flags
 #
-OPTFLAGS= -O6
-# OPTFLAGS=
+OPTFLAGS= -O3
+#OPTFLAGS= -O0
 
 #
 # Debugging flags. -g adds debugging info
 # Defining NDEBUG turns assertions off.
 # -pg adds profiling info 
 # 
-DEBUGFLAGS= -g 
-# DEBUGFLAGS=
+# DEBUGFLAGS= -g 
+DEBUGFLAGS=
 # DEBUGFLAGS= -DNDEBUG=1
 # DEBUGFLAGS= -g -pg
 
