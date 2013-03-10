@@ -36,6 +36,7 @@
 \usepackage[hmarginratio=3:2]{geometry}	% obrne razmerja marginov
 \usepackage[nottoc]{tocbibind}	% prepreči številko za literaturo v kazalu
 \usepackage{amssymb}		% oznake za množice števil, npr. N za naravna števila
+\usepackage{ctable} 		% for \specialrule command, thick horizontal line
 
 
 %---------------------------------------------
@@ -1167,7 +1168,7 @@
 
 \chapter{Eksperimentalna primerjava algoritmov}
 
-
+	\TODO{vf in ullmann}
 
 	% štetje vseh podgrafnih izomorfizmov
 	% database link and description
@@ -1176,7 +1177,7 @@
 	% vflib link
 
 	Avtorji članka o algoritmu Subsea so na spletu objavili implementacico tega algoritma 
-	(\url{http://www.cs.bgu.ac.il/~orlovn/links/SubseaProj30_11_06/}). Vendar ta
+	(\href{http://www.cs.bgu.ac.il/~orlovn/links/SubseaProj30\_11\_06/}{http://www.cs.bgu.ac.il/$\sim$orlovn/links/SubseaProj30\_11\_06/}). Vendar ta
 	implementacija ne deluje pravilno, saj celo za isti testni premer vrača različne rezultate (torej različno število vseh podgrafnih izomorfizmov). Zaradi
 	kompleksnosti algoritma pa bi ga bilo težko implementirati v celoti. Namesto tega smo iz algoritma vzeli idejo zgodovine preiskovanja 
 	(razdelek~\ref{sub:th}) in jo uporabili
@@ -1209,14 +1210,55 @@
 	80, 100, 200, 400, 600, 800 in 1000 vozlišč.
 	
 	\section{Rezultati}
+	Algoritme smo poganjali na računalniku s procesorjem Intel Core2 Duo P8600 2.4 GHz in operacijskim sistemom Linux. Vsa koda je bila napisana v
+	programskem jeziku C++ in prevedena s parameterom -O3. Čas izvajanja na posameznem testnem primeru smo omejili na 60 sekund. Rezultati so
+	podani v grafični obliki na slikah~\ref{pic_res_si2}--\ref{pic_res2_si6}. Grafi na slikah~\ref{pic_res_si2}--\ref{pic_res_si6} predstavljajo število rešenih
+	primerov v odvisnosti od časa izvajanja algoritma, torej koliko primerov je algoritem uspel rešiti v določenem času. Algoritem je boljši, če ima večjo
+	površino pod krivuljo. Opazimo, da sta si na manjših vzorčnih grafih in na grafih z manj povezavami izboljšani Ullmannov algoritem in izboljšani algoritem
+	VF2 enakovredna, oba pa sta boljša od osnovnega algoritma VF2. Ko pa se vzorčni graf povečuje in dobiva več povezav, izboljšani algoritem VF2 prehiti
+	tudi izboljšanega Ulmannovega. Grafi na desni polovici imajo os x v logaritemskem merilu, da se bolje vidi obnašanje algoritmov pri majhnih časih
+	izvajanja.
 	
+	Grafi na slikah~\ref{pic_res2_si2}--\ref{pic_res2_si6} predstavljajo povprečen čas izvajanja algoritma v odvisnosti od velikosti problema, kjer so
+	razlike med algoritmi bolj očitne. Grafi na desni polovici imajo v logaritemskem merilu obe osi, da so vidni rezultati za vsako velikost grafov posebej.
+	Vidimo, da je na grafih z malo vozlišči boljši izboljšan Ullmannov algoritem, VF2 in izboljšani VF2 pa sta si enakovredna. Slednje je razumljivo, saj 
+	gre v osnovi za isti algoritem. S povečevanjem števila vozlišč je izboljšani Ullmannov algoritem še vedno boljši od VF2, izboljšani VF2 pa se najprej
+	približa izboljšanemu Ullmannovenu in ga na koncu prehiti. Podobno kot pri prvih treh slikah lahko ugotovimo, da s povečevanjem števila povezav
+	in povečevanjem relativne velikosti vzorčnega grafa izboljšani algoritem VF2 hitreje pridobiva prednost; npr.~pri si6\_r01 je izboljšani Ullmannov
+	algoritem hitrejši samo pri grafih z 20 vozlišči. Kot je bilo že omenjeno, smo izvajanje posameznega testa omejili na 60 sekund. V računanju 
+	povprečnega časa izvajanje smo za testne primere, ki jih algoritmi niso končali upoštevali čas 60 sekund. Že s to omejitvijo sta izboljšani Ullmannov
+	algoritem in izboljšanji algoritem VF2 vsaj za velikostni razred hitrejša od osnovnega algoritma VF2 in pri večjih grafih še izboljšani VF2 za velikostni
+	razred hitrejši od izboljšanega Ullmannovega algoritma. Ob daljšem času poganjanja algoritmov bi bila prednost pred osnovnim algoritmov VF2 še večja.
+	To se na grafih vidi kot negativen drugi odvod krivulje za osnovni algoritem VF2, ker je navzgor omejena z vrednostjo 60 sekund.
 	
+
+	\begin{table}
+	\small
+	\begin{tabular}{|c|c|c|c|c|c|c|c|c|}\hline
+	Grafi	& \multicolumn{3}{|c|}{\% rešenih primerov}	& \multicolumn{3}{|c|}{celoten čas [min]}
+	& \multicolumn{2}{|c|}{faktor pohitritve (VF2)} \\\hline
+				& Ull+	& VF2+	& VF2	& Ull+	& VF2+	& VF2	& Ull+	& VF2+	\\\hline
+	si2\_r001 		& 99,6	& 100,0	& 76,3	& 12,4	& 6,7		& 269,6	& 22		& 40		\\\hline
+	si2\_r005 		& 99,9	& 100,0	& 91,4	& 8,1		& 7,4		& 134,0	& 17		& 18		\\\hline
+	si2\_r01 		& 95,5	& 99,9	& 79,4	& 103,4	& 16,4	& 249,5	& 2		& 15		\\\hline
+	si4\_r001 		& 100,0	& 100,0	& 89,8	& 1,1		& 0,2		& 135,7	& 123	& 678	\\\hline
+	si4\_r005 		& 100,0	& 100,0	& 97,0	& 5,0		& 1,3		& 54,9	& 11		& 42		\\\hline
+	si4\_r01 		& 98,1	& 100,0	& 79,8	& 68,0	& 6,3		& 244,5	& 4		& 38		\\\hline
+	si6\_r001 		& 100,0	& 100,0	& 95,7	& 1,1		& 0,1		& 71,3	& 65		& 713	\\\hline
+	si6\_r005 		& 100,0	& 100,0	& 100,0	& 5,2		& 0,6		& 13,8	& 3		& 23		\\\hline
+	si6\_r01 		& 99,2	& 100,0	& 81,5	& 65,8	& 3,5		& 220,4	& 3		& 62		\\\specialrule{.1em}{.05em}{.05em}
+	skupno 		& 99,14	& 99,98	& 87,88	& 270	& 42		& 1393	& 5		& 35		\\\hline
+	\end{tabular}
+	\end{table}
+
+
+
 
 \begin{figure}
 \begin{center}
 \includegraphics[width=15cm]{img/results_si2.png}
 \end{center}
-\caption{Rezultati za grafe si2\_r001, si2\_r005 in si2\_r01}
+\caption{Število rešenih primerov za grafe tipov  si2\_r001, si2\_r005 in si2\_r01.}
 \label{pic_res_si2}
 \end{figure}
 
@@ -1224,7 +1266,7 @@
 \begin{center}
 \includegraphics[width=15cm]{img/results_si4.png}
 \end{center}
-\caption{Rezultati za grafe si4\_r001, si4\_r005, si4\_r01}
+\caption{Število rešenih primerov za grafe tipov si4\_r001, si4\_r005, si4\_r01.}
 \label{pic_res_si4}
 \end{figure}
 
@@ -1232,8 +1274,8 @@
 \begin{center}
 \includegraphics[width=15cm]{img/results_si6.png}
 \end{center}
-\caption{Rezultati za grafe si6\_r001, si6\_r005 in si6\_r01}
-\label{pic_res_si5}
+\caption{Število rešenih primerov za grafe tipov si6\_r001, si6\_r005 in si6\_r01.}
+\label{pic_res_si6}
 \end{figure}
 
 
@@ -1241,7 +1283,7 @@
 \begin{center}
 \includegraphics[width=15cm]{img/results2_si2.png}
 \end{center}
-\caption{Rezultati za grafe si2\_r001, si2\_r005 in si2\_r01}
+\caption{Povprečen čas reševanja za grafe tipov si2\_r001, si2\_r005 in si2\_r01.}
 \label{pic_res2_si2}
 \end{figure}
 
@@ -1249,7 +1291,7 @@
 \begin{center}
 \includegraphics[width=15cm]{img/results2_si4.png}
 \end{center}
-\caption{Rezultati za grafe si4\_r001, si4\_r005, si4\_r01}
+\caption{Povprečen čas reševanja za grafe tipov si4\_r001, si4\_r005, si4\_r01.}
 \label{pic_res2_si4}
 \end{figure}
 
@@ -1257,15 +1299,15 @@
 \begin{center}
 \includegraphics[width=15cm]{img/results2_si6.png}
 \end{center}
-\caption{Rezultati za grafe si6\_r001, si6\_r005 in si6\_r01}
-\label{pic_res2_si5}
+\caption{Povprečen čas reševanja za grafe tipov si6\_r001, si6\_r005 in si6\_r01.}
+\label{pic_res2_si6}
 \end{figure}
 
 
 
 
 \chapter{Sklepne ugotovitve}
-
+% future work
 
 	
 \begin{thebibliography}{99}
