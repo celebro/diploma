@@ -38,7 +38,6 @@
 \usepackage{amssymb}		% oznake za množice števil, npr. N za naravna števila
 \usepackage{ctable} 		% for \specialrule command, thick horizontal line
 
-
 %---------------------------------------------
 % psevdokoda
 \usepackage[chapter]{algorithm}
@@ -1212,31 +1211,39 @@
 	\section{Rezultati}
 	Algoritme smo poganjali na računalniku s procesorjem Intel Core2 Duo P8600 2.4 GHz in operacijskim sistemom Linux. Vsa koda je bila napisana v
 	programskem jeziku C++ in prevedena s parameterom -O3. Čas izvajanja na posameznem testnem primeru smo omejili na 60 sekund. Rezultati so
-	podani v grafični obliki na slikah~\ref{pic_res_si2}--\ref{pic_res2_si6}. Grafi na slikah~\ref{pic_res_si2}--\ref{pic_res_si6} predstavljajo število rešenih
+	podani v grafični obliki na slikah~\ref{pic_res_si2}--\ref{pic_res2_si6}.
+	
+	Grafi na slikah~\ref{pic_res_si2}--\ref{pic_res_si6} predstavljajo število rešenih
 	primerov v odvisnosti od časa izvajanja algoritma, torej koliko primerov je algoritem uspel rešiti v določenem času. Algoritem je boljši, če ima večjo
 	površino pod krivuljo. Opazimo, da sta si na manjših vzorčnih grafih in na grafih z manj povezavami izboljšani Ullmannov algoritem in izboljšani algoritem
 	VF2 enakovredna, oba pa sta boljša od osnovnega algoritma VF2. Ko pa se vzorčni graf povečuje in dobiva več povezav, izboljšani algoritem VF2 prehiti
-	tudi izboljšanega Ulmannovega. Grafi na desni polovici imajo os x v logaritemskem merilu, da se bolje vidi obnašanje algoritmov pri majhnih časih
+	tudi izboljšanega Ulmannovega. Grafi na desni polovici imajo os $x$ v logaritemskem merilu, da se bolje vidi obnašanje algoritmov pri majhnih časih
 	izvajanja.
 	
-	Grafi na slikah~\ref{pic_res2_si2}--\ref{pic_res2_si6} predstavljajo povprečen čas izvajanja algoritma v odvisnosti od velikosti problema, kjer so
+	Grafi na slikah~\ref{pic_res2_si2}--\ref{pic_res2_si6} predstavljajo povprečen čas izvajanja algoritma v odvisnosti od velikosti problema, tu so
 	razlike med algoritmi bolj očitne. Grafi na desni polovici imajo v logaritemskem merilu obe osi, da so vidni rezultati za vsako velikost grafov posebej.
 	Vidimo, da je na grafih z malo vozlišči boljši izboljšan Ullmannov algoritem, VF2 in izboljšani VF2 pa sta si enakovredna. Slednje je razumljivo, saj 
-	gre v osnovi za isti algoritem. S povečevanjem števila vozlišč je izboljšani Ullmannov algoritem še vedno boljši od VF2, izboljšani VF2 pa se najprej
+	gre v osnovi za isti algoritem; na majhnih grafih je pohitritev majhna, ker ni bolj gostih delov grafa, izračun vrstnega reda pa vzame nekaj časa.	
+	S povečevanjem števila vozlišč je izboljšani Ullmannov algoritem še vedno boljši od VF2, izboljšani VF2 pa se najprej
 	približa izboljšanemu Ullmannovenu in ga na koncu prehiti. Podobno kot pri prvih treh slikah lahko ugotovimo, da s povečevanjem števila povezav
 	in povečevanjem relativne velikosti vzorčnega grafa izboljšani algoritem VF2 hitreje pridobiva prednost; npr.~pri si6\_r01 je izboljšani Ullmannov
-	algoritem hitrejši samo pri grafih z 20 vozlišči. Kot je bilo že omenjeno, smo izvajanje posameznega testa omejili na 60 sekund. V računanju 
-	povprečnega časa izvajanje smo za testne primere, ki jih algoritmi niso končali upoštevali čas 60 sekund. Že s to omejitvijo sta izboljšani Ullmannov
+	algoritem hitrejši samo pri grafih z 20 vozlišči. 
+	
+	Kot je bilo že omenjeno, smo izvajanje posameznega testa omejili na 60 sekund. V računanju 
+	povprečnega časa izvajanje smo za testne primere, ki jih algoritmi niso končali, upoštevali čas 60 sekund. Že s to omejitvijo sta izboljšani Ullmannov
 	algoritem in izboljšanji algoritem VF2 vsaj za velikostni razred hitrejša od osnovnega algoritma VF2 in pri večjih grafih še izboljšani VF2 za velikostni
 	razred hitrejši od izboljšanega Ullmannovega algoritma. Ob daljšem času poganjanja algoritmov bi bila prednost pred osnovnim algoritmov VF2 še večja.
-	To se na grafih vidi kot negativen drugi odvod krivulje za osnovni algoritem VF2, ker je navzgor omejena z vrednostjo 60 sekund.
+	To se na grafih vidi kot negativen drugi odvod krivulje za osnovni algoritem VF2, ker je navzgor omejena z vrednostjo 60 sekund. Časi izvajanja 
+	algoritmov po posameznih množicah so podani v tabeli~\ref{table:res1}.
 	
-
 	\begin{table}
 	\small
-	\begin{tabular}{|c|c|c|c|c|c|c|c|c|}\hline
-	Grafi	& \multicolumn{3}{|c|}{\% rešenih primerov}	& \multicolumn{3}{|c|}{celoten čas [min]}
-	& \multicolumn{2}{|c|}{faktor pohitritve (VF2)} \\\hline
+	\centering
+	\caption{Časi trajanja izvajanja algoritmov po posameznih množicah testov. Ull+ pomeni izboljšan Ullmannov algoritem, VF2+ pa izboljšan algoritem VF2.}
+	\label{table:res1}
+	\begin{tabular}{|c|c|c|c|c|c|c|>{\centering}p{1.5cm}|c|}\hline
+	Grafi & \multicolumn{3}{c|}{Rešeni primeri (\%)}	& \multicolumn{3}{c|}{Celoten čas (min)}
+	& \multicolumn{2}{c|}{\begin{tabular}[x]{@{}c@{}}Faktor pohitritve\\ (v primerjavi z VF2)\end{tabular}} \\\hline
 				& Ull+	& VF2+	& VF2	& Ull+	& VF2+	& VF2	& Ull+	& VF2+	\\\hline
 	si2\_r001 		& 99,6	& 100,0	& 76,3	& 12,4	& 6,7		& 269,6	& 22		& 40		\\\hline
 	si2\_r005 		& 99,9	& 100,0	& 91,4	& 8,1		& 7,4		& 134,0	& 17		& 18		\\\hline
@@ -1246,12 +1253,10 @@
 	si4\_r01 		& 98,1	& 100,0	& 79,8	& 68,0	& 6,3		& 244,5	& 4		& 38		\\\hline
 	si6\_r001 		& 100,0	& 100,0	& 95,7	& 1,1		& 0,1		& 71,3	& 65		& 713	\\\hline
 	si6\_r005 		& 100,0	& 100,0	& 100,0	& 5,2		& 0,6		& 13,8	& 3		& 23		\\\hline
-	si6\_r01 		& 99,2	& 100,0	& 81,5	& 65,8	& 3,5		& 220,4	& 3		& 62		\\\specialrule{.1em}{.05em}{.05em}
-	skupno 		& 99,14	& 99,98	& 87,88	& 270	& 42		& 1393	& 5		& 35		\\\hline
+	si6\_r01 		& 99,2	& 100,0	& 81,5	& 65,8	& 3,5		& 220,4	& 3		& 63		\\\specialrule{.1em}{.05em}{.05em}
+	skupno 		& 99,14	& 99,98	& 87,88	& 270,1	& 42,5	& 1393	& 5		& 32		\\\hline
 	\end{tabular}
 	\end{table}
-
-
 
 
 \begin{figure}
@@ -1344,6 +1349,9 @@
 	
 	\bibitem{subsea} V.~Lipets, N.~Vanetik, E.~Gudes, ``Subsea: an efficient heuristic aglorithm for subgraph isomorphism",
 		\textit {Data Mining and Knowledge Discovery}, št.~19, zv.~3, 2009, str.~320--350.
+
+	\bibitem{ull+} J. Mihelič, U. Čibej, ``Izboljšave Ullmannovega algoritma za problem iskanja podgrafnih izomorfizmov",
+		\textit{Zbornik enaindvajsete mednarodne Elektrotehniške in računalniške konference ERK}, 2012
 
 	% Journal of the ACM, Vol. 23, No. 1. (January 1976), pp. 31-42
 	\bibitem{ullmann} J.~R.~Ullmann, ``An Algorithm for Subgraph Isomorphism",
