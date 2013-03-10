@@ -677,7 +677,9 @@
 
 
 	\section{Izboljšave}
-	\TODO{Ref.}
+	\label{ull_imp}
+	Ullmannov algoritem je v testih pokazal slabše rezultate od kasneje razvitih algoritmov \cite{vf2_2}. Leta 2012 pa sta Jurij Mihelič in Uroš Čibej predlagala
+	več možnih izboljšav algoritma \cite{ull+}.
 	
 	V \refalg{alg:ullmann1} obiskujemo vozlišča iz vzorčnega grafa po vrsti, glede na sam zapis grafa z matriko. Drugačen vrsti red obiskovanja lahko
 	pohitri algoritem, če čim hitreje ustavi preiskovanje poddreves, ki nimajo rešitve. Nekaj možnih hevristik:
@@ -1165,15 +1167,16 @@
 	vzorčnega grafa, kar nekoliko zmanjša potreben prostor, hkrati pa pospeši izvajanje algoritma. Za odkrivanje avtomorfizmov se uporabi 
 	kar~\refalg{alg:sub_st}.
 
+
+
+
 \chapter{Eksperimentalna primerjava algoritmov}
 
-	\TODO{vf in ullmann}
-
-	% štetje vseh podgrafnih izomorfizmov
-	% database link and description
-	% usmerjeni, induciran podgrafni izomorfizem
-	
-	% vflib link
+	Delovanje algoritmov smo preizkusili na 9000 primerih. Iskali smo število vseh induciranih podgrafnih izomorfizmov v usmerjenih grafih. Implementacija
+	algoritma VF2 je dostopna na spletu (\href{http://mivia.unisa.it/datasets/graph-database/vflib-graph-matching-library-version-2-0/}
+	{http://mivia.unisa.it/datasets/graph-database/{\allowbreak}vflib-graph-matching-library-version-2-0/}). Za osnoven Ullmannov algoritem je že bilo
+	pokazano, da ni konkurenčen z algoritmom VF2~\cite{vf2_2}, zato smo primerjali implementacijo Jurija Miheliča in Uroša Čibeja z opisanimi izboljšavami
+	iz razdelka~\ref{ull_imp}.
 
 	Avtorji članka o algoritmu Subsea so na spletu objavili implementacico tega algoritma 
 	(\href{http://www.cs.bgu.ac.il/~orlovn/links/SubseaProj30\_11\_06/}{http://www.cs.bgu.ac.il/$\sim$orlovn/links/SubseaProj30\_11\_06/}). Vendar ta
@@ -1196,10 +1199,12 @@
 	preiskovanja, za indeks v tabeli uporabi trenutno globino preiskovanja (spremenljivka \texttt{core\_len} v obstoječi implementaciji). Za to vozlišče preveri
 	pripadnost množicam $T^+$ in $T^-$, da lahko vozlišča iz ciljnega grafa izbira v isti množici. Popravljena metoda je v dodatku~\ref{app_vf2+sub1}.
 	
+	
 	\section{Baza testnih grafov}
 	Algoritme smo testirali na bazi generiranih grafov~\cite{database}, ki so jo ustvarili avtorji algoritma VF2. Dostopna je na internetnem naslovu
-	\href{http://mivia.unisa.it/datasets/graph-database/browse-db/}{http://mivia.unisa.it/\-datasets/\-graph-database/browse-db/}. Celotna baza vsebuje 	
-	$72.800$ parov grafov (po en vzorčni in
+	\href{http://mivia.unisa.it/datasets/graph-database/browse-db/}
+	{http://mivia.unisa.it/{\allowbreak}datasets/{\allowbreak}graph-database/browse-db/}. Celotna baza vsebuje 	
+	$72.800$ parov usmerjenih grafov (po en vzorčni in
 	en testni graf) namenjenih testiranju algoritmov za iskanje izomorfnih grafov in podgrafov. Omejili smo se na naključno generirane grafe brez posebne
 	strukture, ki jih je 9.000 parov. Ti se najprej ločijo po relativni velikosti vzorčnega grafa glede na ciljni graf. Oznake $si2$, $si4$ in $si6$ predstavljajo
 	teste za iskanje podgrafnih izomorfizmov v velikosti 20 \%, 40 \% in 60 \% ciljnega grafa. Nadaljnje se testi ločijo po številu povezav. Oznake $r001$,
@@ -1207,7 +1212,8 @@
 	bo v grafu skupno $\eta N (N-1)$ povezav. V primeru da je število povezav premajhno, da bi bil nastali graf povezan, se dodaja povezave, dokler graf ni 
 	povezan. Opisane delitve razbijejo testne primere v devet množic s 1000. V vsaki množici je po 100 primerov testov, ki imajo v ciljnem grafu 20, 40, 60, 	
 	80, 100, 200, 400, 600, 800 in 1000 vozlišč.
-	
+
+		
 	\section{Rezultati}
 	Algoritme smo poganjali na računalniku s procesorjem Intel Core2 Duo P8600 2.4 GHz in operacijskim sistemom Linux. Vsa koda je bila napisana v
 	programskem jeziku C++ in prevedena s parameterom -O3. Čas izvajanja na posameznem testnem primeru smo omejili na 60 sekund. Rezultati so
@@ -1229,7 +1235,7 @@
 	in povečevanjem relativne velikosti vzorčnega grafa izboljšani algoritem VF2 hitreje pridobiva prednost; npr.~pri si6\_r01 je izboljšani Ullmannov
 	algoritem hitrejši samo pri grafih z 20 vozlišči. 
 	
-	Kot je bilo že omenjeno, smo izvajanje posameznega testa omejili na 60 sekund. V računanju 
+	Kot je že bilo omenjeno, smo izvajanje posameznega testa omejili na 60 sekund. V računanju 
 	povprečnega časa izvajanje smo za testne primere, ki jih algoritmi niso končali, upoštevali čas 60 sekund. Že s to omejitvijo sta izboljšani Ullmannov
 	algoritem in izboljšanji algoritem VF2 vsaj za velikostni razred hitrejša od osnovnega algoritma VF2 in pri večjih grafih še izboljšani VF2 za velikostni
 	razred hitrejši od izboljšanega Ullmannovega algoritma. Ob daljšem času poganjanja algoritmov bi bila prednost pred osnovnim algoritmov VF2 še večja.
@@ -1312,58 +1318,24 @@
 
 
 \chapter{Sklepne ugotovitve}
-% future work
+
+	V delu smo primerjali tri algoritme za iskanje izomorfnih podgrafov in jih preizkusili na bazi 9000 parov grafov. Na manjših testnih primerih je najhitrejši
+	izboljšani Ullmannov algoritem, kar ima praktično vrednost npr. pri iskanju na kemijskih grafih -- ti so običajno majhni, iskati pa je potrebno v velikih
+	bazah grafov. Na večjih grafih in na grafih z več povezavami je boljši algoritem, ki smo ga ustvarili sami kot kombinacijo algoritma VF2
+	in algoritma Subsea. Oba izboljšana algoritma sta vsaj za velikostni red hitrejša od obstoječega VF2, ki je trenutno najbolj uporabljan algoritem v praksi.
+	
+	Naslednji korak bi bila implementacija celotnega algoritma Subsea. Preveriti je potrebno, če se tudi celoten algoritem obnaša podobno kot hibrid med
+	VF2 in Subsea. Lahko bi poskusili tudi obratno od naše izboljšave, torej da bi v algoritmu Subsea uporabili dele algoritma VF2. Konkretno bi lahko v
+	fazi iskanja uporabili preverjanje kandidatov iz VF2 (opisano v razdelku~\ref{vf2:feasible}). Subsea namreč preverja samo kandidatove že preiskane
+	sosede, VF2 pa z relativno majhnim vplivom na čas računanja preveri tudi neobiskane sosede. Preverili bi lahko tudi možnost vzporednega računanja
+	opisanih algoritmov.
+
+	Algoritme bi morali preizkusiti tudi na več testnih primerih. Najprej na preostalih grafih iz uporabljene baze grafov, potem pa še na realnih grafih iz
+	prakse kot so npr. proteinih in socialna omrežja.
+% praktični potencial
+
 
 	
-\begin{thebibliography}{99}
-
-	%@article{LipetsVG09,
-	%  title = {Subsea: an efficient heuristic algorithm for subgraph isomorphism},
-	%  author = {Vladimir Lipets and Natalia Vanetik and Ehud Gudes},
-	%  year = {2009},
-	%  doi = {http://dx.doi.org/10.1007/s10618-009-0132-7},
-	%  researchr = {http://researchr.org/publication/LipetsVG09},
-	%  cites = {0},
-	%  citedby = {0},
-	%  journal = {Data Min. Knowl. Discov.},
-	%  volume = {19}, %številka?
-	%  number = {3}, % zvezek?
-	%  pages = {320-350},
-	%}
-
-	\bibitem{vf2} L.~Cordella, P.~Foggia, C.~Sansome, M.~Vento, ``A (Sub)Graph Isomorphism Algorithm for Matching Large Graphs",
-		\textit {IEEE Trans. Pattern Analysis and Machine Intelligence}, št.~26, zv.~10, 2004, str.~1367--1372.
-		
-	\bibitem{vf2_3} L.~Cordella, P.~Foggia, C.~Sansome, M.~Vento, ``An improved algorithm for matching large graphs",
-		\textit {3rd IAPR-TC15 Workshop on Graph-based Representations in Pattern Recognition, Cuen}, 2001, str.~149--159.
-		
-	\bibitem{vf2_2} L.~Cordella, P.~Foggia, C.~Sansome, M.~Vento, ``Performance evaluation of the VF graph matching algorithm",
-		%\textit {Proc. Int. Conf Image Analysis and Processing}, 1999, str.~1372--1177.
-		\textit {Proceedings of the 10th International Conference on Image Analysis and Processing}, 1999, str.~1372--1177.
-
-	\bibitem{database} P.~Foggia, C.~Sansone, M.~Vento, ``A Database of Graphs for Isomorphism and Sub-Graph Isomorphism Benchmarking",
-		\textit{CoRR}, 2001, str.~176--187
-		
-	\bibitem{npcomplete} M.~R.~Garey, D.~S.~Johnson, ``Computers and Intractability: A Guide to the Theory of NP-Completeness",
-		Freeman and Company, 1979.
-	
-	\bibitem{subsea} V.~Lipets, N.~Vanetik, E.~Gudes, ``Subsea: an efficient heuristic aglorithm for subgraph isomorphism",
-		\textit {Data Mining and Knowledge Discovery}, št.~19, zv.~3, 2009, str.~320--350.
-
-	\bibitem{ull+} J. Mihelič, U. Čibej, ``Izboljšave Ullmannovega algoritma za problem iskanja podgrafnih izomorfizmov",
-		\textit{Zbornik enaindvajsete mednarodne Elektrotehniške in računalniške konference ERK}, 2012
-
-	% Journal of the ACM, Vol. 23, No. 1. (January 1976), pp. 31-42
-	\bibitem{ullmann} J.~R.~Ullmann, ``An Algorithm for Subgraph Isomorphism",
-		\textit{Journal of the ACM}, št.~23, zv.~1, 1976, str.~31--42.
-
-	\bibitem{zampelli-th} S.~Zamplelli, ``A constraint programming approcah to subgraph isomorphism", Doktorska disertacija, 
-	Universit\'{e} catholique de Louvain, D\'{e}partement d’Ing\'{e}nierie Informatique, Belgija, 2008.
-	
-
-\end{thebibliography}
-
-
 \clearemptydoublepage
 \renewcommand{\baselinestretch}{1.0} % ustrezen razmik med vrsticami
 \appendix
@@ -1580,6 +1552,68 @@ public:
 	return false;
 }
 	\end{lstlisting}
+
+
+\begin{thebibliography}{99}
+
+	%@article{LipetsVG09,
+	%  title = {Subsea: an efficient heuristic algorithm for subgraph isomorphism},
+	%  author = {Vladimir Lipets and Natalia Vanetik and Ehud Gudes},
+	%  year = {2009},
+	%  doi = {http://dx.doi.org/10.1007/s10618-009-0132-7},
+	%  researchr = {http://researchr.org/publication/LipetsVG09},
+	%  cites = {0},
+	%  citedby = {0},
+	%  journal = {Data Min. Knowl. Discov.},
+	%  volume = {19}, %številka?
+	%  number = {3}, % zvezek?
+	%  pages = {320-350},
+	%}
+
+%@article{doi:10.1142/S0218001404003228,
+%author = {CONTE, D. and FOGGIA, P. and SANSONE, C. and VENTO, M.},
+%title = {THIRTY YEARS OF GRAPH MATCHING IN PATTERN RECOGNITION},
+%journal = {International Journal of Pattern Recognition and Artificial Intelligence},
+%volume = {18},
+%number = {03},
+%pages = {265-298},
+%year = {2004},
+%doi = {10.1142/S0218001404003228},
+
+	\bibitem{thirtyyears} D.~Conte, P.~Foggia, C.~Sansone, M.~Vento, ``Thirty Years Of Graph Matching In Pattern Recognition",
+		\textit{International Journal of Pattern Recognition and Artificial Intelligence}, št.~18, zv.~3, 2004, str.~265--298
+
+	\bibitem{vf2} L.~Cordella, P.~Foggia, C.~Sansone, M.~Vento, ``A (Sub)Graph Isomorphism Algorithm for Matching Large Graphs",
+		\textit {IEEE Trans. Pattern Analysis and Machine Intelligence}, št.~26, zv.~10, 2004, str.~1367--1372.
+		
+	\bibitem{vf2_3} L.~Cordella, P.~Foggia, C.~Sansone, M.~Vento, ``An improved algorithm for matching large graphs",
+		\textit {3rd IAPR-TC15 Workshop on Graph-based Representations in Pattern Recognition, Cuen}, 2001, str.~149--159.
+		
+	\bibitem{vf2_2} L.~Cordella, P.~Foggia, C.~Sansone, M.~Vento, ``Performance evaluation of the VF graph matching algorithm",
+		%\textit {Proc. Int. Conf Image Analysis and Processing}, 1999, str.~1372--1177.
+		\textit {Proceedings of the 10th International Conference on Image Analysis and Processing}, 1999, str.~1372--1177.
+
+	\bibitem{database} P.~Foggia, C.~Sansone, M.~Vento, ``A Database of Graphs for Isomorphism and Sub-Graph Isomorphism Benchmarking",
+		\textit{CoRR}, 2001, str.~176--187
+		
+	\bibitem{npcomplete} M.~R.~Garey, D.~S.~Johnson, ``Computers and Intractability: A Guide to the Theory of NP-Completeness",
+		Freeman and Company, 1979.
+	
+	\bibitem{subsea} V.~Lipets, N.~Vanetik, E.~Gudes, ``Subsea: an efficient heuristic aglorithm for subgraph isomorphism",
+		\textit {Data Mining and Knowledge Discovery}, št.~19, zv.~3, 2009, str.~320--350.
+
+	\bibitem{ull+} J. Mihelič, U. Čibej, ``Izboljšave Ullmannovega algoritma za problem iskanja podgrafnih izomorfizmov",
+		\textit{Zbornik enaindvajsete mednarodne Elektrotehniške in računalniške konference ERK}, 2012
+
+	% Journal of the ACM, Vol. 23, No. 1. (January 1976), pp. 31-42
+	\bibitem{ullmann} J.~R.~Ullmann, ``An Algorithm for Subgraph Isomorphism",
+		\textit{Journal of the ACM}, št.~23, zv.~1, 1976, str.~31--42.
+
+	\bibitem{zampelli-th} S.~Zamplelli, ``A constraint programming approcah to subgraph isomorphism", Doktorska disertacija, 
+	Universit\'{e} catholique de Louvain, D\'{e}partement d’Ing\'{e}nierie Informatique, Belgija, 2008.
+	
+
+\end{thebibliography}
 
 
 \end{document}
