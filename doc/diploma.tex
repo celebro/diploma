@@ -1321,7 +1321,7 @@
 
 	V delu smo primerjali tri algoritme za iskanje izomorfnih podgrafov in jih preizkusili na bazi 9000 parov grafov. Na manjših testnih primerih je najhitrejši
 	izboljšani Ullmannov algoritem, kar ima praktično vrednost npr. pri iskanju na kemijskih grafih -- ti so običajno majhni, iskati pa je potrebno v velikih
-	bazah grafov. Na večjih grafih in na grafih z več povezavami je boljši algoritem, ki smo ga ustvarili sami kot kombinacijo algoritma VF2
+	bazah grafov~\cite{chem}. Na večjih grafih in na grafih z več povezavami je boljši algoritem, ki smo ga ustvarili sami kot kombinacijo algoritma VF2
 	in algoritma Subsea. Oba izboljšana algoritma sta vsaj za velikostni red hitrejša od obstoječega VF2, ki je trenutno najbolj uporabljan algoritem v praksi.
 	
 	Naslednji korak bi bila implementacija celotnega algoritma Subsea. Preveriti je potrebno, če se tudi celoten algoritem obnaša podobno kot hibrid med
@@ -1592,6 +1592,9 @@ public:
 	\bibitem{vf2_2} L.~Cordella, P.~Foggia, C.~Sansone, M.~Vento, ``Performance evaluation of the VF graph matching algorithm",
 		%\textit {Proc. Int. Conf Image Analysis and Processing}, 1999, str.~1372--1177.
 		\textit {Proceedings of the 10th International Conference on Image Analysis and Processing}, 1999, str.~1372--1177.
+
+	\bibitem{chem} H.~C.~Ehrlich, M.~Rarey, ``Systematic benchmark of substructure search in molecular graphs - From Ullmann to VF2",
+		\textit{Journal of Cheminformatics}, št.~4, zv.~1, 2012
 
 	\bibitem{database} P.~Foggia, C.~Sansone, M.~Vento, ``A Database of Graphs for Isomorphism and Sub-Graph Isomorphism Benchmarking",
 		\textit{CoRR}, 2001, str.~176--187
