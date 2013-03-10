@@ -245,7 +245,7 @@
 	\end{itemize}
 	
 	\vspace{1cm}
-	\noindent V Ljubljani, dne \TODO{28.02.2013} \hspace{3cm} Podpis avtorja:
+	\noindent V Ljubljani, dne 10.03.2013 \hspace{3cm} Podpis avtorja:
 	
 	% prazna stran
 	\clearemptydoublepage
@@ -256,8 +256,11 @@
 	%---------------------------------------------
 	% zahvala
 	\thispagestyle{empty}\mbox{}\vfill\null\it%
-	\TODO {Na tem mestu zapišite, komu se zahvaljujete za izdelavo diplomske naloge. Pazite, da ne
-	boste koga pozabili. Utegnil vam bo zameriti. Temu se da izogniti tako, da pozabite na celo zahvalo.}
+	Zahvaljujem se mentorju prof.~dr.~Borutu Robiču in asistentu dr.~Urošu Čibeju za nasvete in napotke pri izdelavi diplomske naloge.
+	
+	\vspace{1cm}
+	
+	Še posebej se zahvaljujem moji zaročenki Blanki za veliko mero spodbude in razumevanja ter staršem za podporo skozi vsa leta študija.
 	\rm\normalfont
 	
 	% prazna stran
@@ -279,12 +282,18 @@
 	%---------------------------------------------
 	% povzetek 
 	\chapter*{Povzetek}
-	\TODO{V vzorcu je predstavljen postopek priprave diplomskega dela z uporabo okolja \LaTeX.
-	Vaš povzetek mora sicer vsebovati približno 100 besed, ta tukaj je odločno prekratek.}
+	V diplomski nalogi smo predstavili problem iskanja izomorfnih podgrafov. To je ena najbolj osnovnih operacij nad grafih in je NP-poln problem.
+	Podrobno smo opisali Ullmannov algoritem in algoritem VF2, ki sta najbolj uporabljana algoritma na tem področju, ter nov algoritem Subsea. Algoritem
+	VF2 smo izboljšali z idejami iz algoritma Subsea. Izboljšavo smo implementirali v programskem jeziku C++ in dobljeni algoritem eksperimentalno 
+	primerjali z navadnim algoritmom VF2 iz programske knjižnice vflib in izboljšanim Ullmannovim algoritmom. Delovanje smo preizkusili na bazi 9000
+	naključno generiranih parov testnih grafov. Ugotovili smo, da je izboljšan Ullmannov algoritem za faktor 5, izboljšan algoritem VF2 pa za faktor 30 hitrejši
+	od navadnega VF2. Pri majhnih grafih je najhitrejši izboljšan Ullmannov algoritem, pri večjih grafih in grafih z več povezavami pa je hitrejši naš izboljšan
+	algoritem VF2.
+
 	
 	\vspace{2cm}
 	\noindent{\large \textbf{Ključne besede:}}\\
-	\TODO{graf}
+	graf, podgraf, izomorfizem, algoritem
 	
 	
 	% prazna stran
@@ -298,13 +307,19 @@
 	% abstract
 	\selectlanguage{english}
 	\chapter*{Abstract}
-	\TODO{This sample document presents an approach to typesetting your BSc thesis using \LaTeX. A 
-	proper abstract should contain around 100 words which makes this one way too short.}
+	This thesis describes the problem of finding subgraph isomorphism. This is one of the most basic operations performed on graphs and is an NP-complete
+	problem. We describe in detail the Ullmann algorithm and VF2 algorithm, the most commonly used and state-of-the art algorithms in this field, and a new 
+	algorithm called Subsea. We improved the VF2 algorithm using some principles from Subsea. The improvement was implemented in C++ and then
+	compared against VF2 algorithm implementation from the program library vflib and an implementation of improved Ullmann algorithm. We tested the
+	algorithms on a database of 9000 pairs of randomly generated graphs. In compariton to the VF2 algorithm the results show a speedup factor of at least 5 	
+	for the improved version of Ullmann algorithm and a speedup factor of at least 30 for the improved version of VF2 algorithm. The improved version of
+	Ullmann algorithm was the fastest algorithm for small graphs, while for large graphs and graphs with many connections out improved version of VF2 
+	algorithm proved the fastest.
 	\selectlanguage{slovene}
 	
 	\vspace{2cm}
 	\noindent{\large \textbf{Key words:}}\\
-	\TODO{graph}
+	graph, subgraph, isomorphism, algorithm
 	
 	% prazna stran
 	\clearemptydoublepage
@@ -458,13 +473,14 @@
 		\end{equation}
 	Matrika $M$ je injektivna, če je v vsaki vrstici natanko ena 1 in v vsakem stolpcu največ ena 1. Samo preslikavo lahko lahko zapišemo v matrični obliki:
 		\begin{equation}
-			C = [c_{i,j}] = M(MT)^T
+			%C = [c_{i,j}] = M(MT)^T
+			C = [c_{i,j}] = (M(MT)^T)^T
 		\end{equation}
-		\TODO{
-		$$%\begin{equation}
-			\text{mogoce tako, zaradi usmerjenih grafov? } C = [c_{i,j}] = (M(MT)^T)^T
-		$$%\end{equation}
-		}
+		%\TODO{
+		%$$%\begin{equation}
+			%\text{mogoce tako, zaradi usmerjenih grafov? } C = [c_{i,j}] = (M(MT)^T)^T
+		%$$%\end{equation}
+		%}
 	$M$ predstavlja podgrafni izomorfizem iz $G_p$ v $G_t$, če je dobljena matrika C enaka matriki sosednosti P:
 		\begin{equation}
 			\label{eq:ullmann1}
@@ -1174,7 +1190,8 @@
 
 	Delovanje algoritmov smo preizkusili na 9000 primerih. Iskali smo število vseh induciranih podgrafnih izomorfizmov v usmerjenih grafih. Implementacija
 	algoritma VF2 je dostopna na spletu (\href{http://mivia.unisa.it/datasets/graph-database/vflib-graph-matching-library-version-2-0/}
-	{http://mivia.unisa.it/datasets/graph-database/{\allowbreak}vflib-graph-matching-library-version-2-0/}). Za osnoven Ullmannov algoritem je že bilo
+	{http://mivia.unisa.it/datasets/graph-database/{\allowbreak}vflib-graph-matching-library-version-2-0/}) v obliki programske knjižnice vflib. Za osnoven
+	Ullmannov algoritem je že bilo
 	pokazano, da ni konkurenčen z algoritmom VF2~\cite{vf2_2}, zato smo primerjali implementacijo Jurija Miheliča in Uroša Čibeja z opisanimi izboljšavami
 	iz razdelka~\ref{ull_imp}.
 
