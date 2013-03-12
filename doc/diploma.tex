@@ -351,25 +351,27 @@ aplikacijah.
 
 Zlasti v računalniškem vidu se uporabljajo neeksaktni algoritmi, ki iščejo približke vzorcev in se ukvarjajo
 s podobnostjo in razdaljami med grafi, vendar se rešitve takih algoritmov ne približajo iskanju
-eksaktnega ujemanja. Obstajajo tudi variante iskanja v grafih s specifičnimi lastnostmi, npr. v drevesih, grafih z omejeno stopnjo, planarnih grafih in drugi. Nekateri od teh specifičnih problemov so rešljivi tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov NP-poln problem. 
+eksaktnega ujemanja. Obstajajo tudi variante iskanja v grafih s specifičnimi lastnostmi, npr. v drevesih, grafih z omejeno stopnjo, planarnih grafih in drugih. Nekateri od teh specifičnih problemov so rešljivi tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov NP-poln problem. 
 
- 
+ Prvi algoritem, ki je omejil prostor preiskovanja v primerjavi s pregledovanjem vseh možnih stanj
+ je bil Ullmannov algoritem~\cite{ullmann}. Kljub starosti je še vedno eden najbolj znanih in
+ precej uporabljanih algoritmov. Kasnejši algoritem VF2~\cite{vf2, vf2_3, vf2_2} bolje izkorišča
+ informacije o že pregledan delu grafa in danes velja za \textit{de facto} standard na splošnem iskanju
+ podgrafnih izomorfizmov. Opravljen je bil tudi poskus polinomskega iskanja~\cite{poly}; če imamo
+ fiksno bazo grafov, lahko iz njih generiramo odločitveno drevo, samo iskanje pa ima časovno zahtevnost
+ $O(n^4)$. Vendar ima odločitveno drevo eksponentno velikost glede na število vozlišč in je metoda
+ uporabna samo za zelo majhne grafe (nekaj 10 vozlišč), ko potrebujemo zelo hitro iskanje. Algoritem
+ LAD rešuje problem na principu programiranja z omejitvami~\cite{alldiff, zampelli-th}. Novejši algoritmi
+ QuickSI,  GADDI, GraphQL in SPath so bili pred kratkim primerjani v članku~\cite{indepth}. Algoritem
+ Subsea~\cite{subsea} je še eden novejših in naj bi bil primeren zlasti za iskanje majhnih vzorcev v zelo
+ velikih grafih.
   
-Specialni algoritmi za grafe s posebnimi lastnostmi: drevesa, planarni grafi, grafi z
-omejeno stopnjo, za določene primere so tudi polinomski, Mi opisujemo eksaktne algoritme za splošne grafe. 
-Prvi ki je močno zmanjšal prostor preiskovanje je bil Ullmannov algoritem cite. Algoritem VF2 state of the art.
-
-%\TODO{Notes: Splošni algoritmi, brez predpostavk topologiji grafov. Iskanje vseh podgrafov. Exact matching.
-% Constraint programing.
-%	
-
-\cite{poly} Baza ciljnih grafov predprocesirana, zgenerira se odločitveno drevo, drevo je lahko eksponentno veliko glede na št vozlišč. $O(n^4)$ Uporabno za majhne grafe, kjer pričakujemo hitre odyivne ;ase. res majhne grafe!!
-
-\cite{zampelli-th}
-\cite{alldiff}  algoritem LAD, programiranje z omejitvami, filtriranje
-
-subsea išče vse ponovitve manjšega grafa v večjem grafu - novejše potreba , splet, proteini
-
+ V tem delu opisujemo in primerjamo eksaktne algoritme za splošne grafe. Omejili smo se na Ullmannov
+ algoritem, algoritem VF2 in algoritem Subsea. Prva dva sta klasična algoritma in preverimo možnost
+ njunega izboljšanja, tretji algoritem pa kaže veliko praktično uporabnost v sodobnih problemih iskanja
+ vseh podgrafnih izomorfizmih pri majhnih vzorcih in velikih ciljnih grafih.
+  
+  
 
 
 \chapter{Definicija problema}
