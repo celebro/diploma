@@ -335,11 +335,35 @@
 
 
 \chapter{Uvod}
-%\TODO{Notes: Splošni algoritmi, brez predpostavk topologiji grafov. Iskanje vseh podgrafov. Exact matching. porabno za web in socialna omrežja,
-%	geni,	proteini. Constraint programing.
-%	računalniški vid, procesiranje slik (src subsea
-%	graph mining}
+Grafi se na veliko področjih uporabljajo za predstavitev različnih informacij. Ena najosnovneših 
+operacij nad grafi je iskanje in prepoznavanje vzorcev. Najbolj splošna oblika je za dani vzorec poiskati
+ujemanje v večjem grafu -- poiskati izomorfen podgraf. 
 
+Uporaba iskanja podgrafov sega na različna področja. V računalniškem vidu npr. opravimo 
+dekompozicijo slike, razmerja med posameznimi deli pa predstavimo z grafi. Vzorci predstavljajo
+dekompozicije znanih objektov, ki jih z iskanjem lahko prepoznavamo v sliki~\cite{vf2}. V kemiji iščemo
+pojavitve posameznih kemijskih struktur v večjih molekulah~\cite{chem}, kar je primer iskanja po sicer
+majhnih grafih a v obširnih zbirkah grafov. Primera takih podatkovnih baz sta SMARTS in ZINK. V
+biologiji lahko iščemo kombinacije proteinov v proteinskih interakcijskih mrežah, ki lahko vsebujejo več
+tisoč vozlišč~\cite{subsea}, primeri takih baz so DIP, BioGRID, STRING in ConsensusPathDB. Novejši
+problemi se podatkovno rudarjenje na spletnih in socialnih omrežjih, in uporaba v CAD aplikacijah.
+
+ 
+
+  Primerjava in iskanje grafov. Algoritmi za eksaktno primerjanje grafov / podobnost med grafi in razdalje med grafi - rešitve se ne približajo iskanju eksaktnih izomorfizmov. Specialni algoritmi za grafe s posebnimi lastnostmi: drevesa, planarni grafi, grafi z
+omejeno stopnjo, za določene primere so tudi polinomski, Mi opisujemo eksaktne algoritme za splošne grafe. 
+Prvi ki je močno zmanjšal prostor preiskovanje je bil Ullmannov algoritem cite. Algoritem VF2 state of the art.
+
+%\TODO{Notes: Splošni algoritmi, brez predpostavk topologiji grafov. Iskanje vseh podgrafov. Exact matching.
+% Constraint programing.
+%	
+
+\cite{poly} Baza ciljnih grafov predprocesirana, zgenerira se odločitveno drevo, drevo je lahko eksponentno veliko glede na št vozlišč. $O(n^4)$ Uporabno za majhne grafe, kjer pričakujemo hitre odyivne ;ase. res majhne grafe!!
+
+\cite{zampelli-th}
+\cite{alldiff}  algoritem LAD, programiranje z omejitvami, filtriranje
+
+subsea išče vse ponovitve manjšega grafa v večjem grafu - novejše potreba , splet, proteini
 
 
 
@@ -1619,11 +1643,20 @@ public:
 	\bibitem{npcomplete} M.~R.~Garey, D.~S.~Johnson, ``Computers and Intractability: A Guide to the Theory of NP-Completeness",
 		Freeman and Company, 1979.
 	
+	\bibitem{indepth}J.~Lee, W.~Han, R.~Kasperovics, J.~Lee, ``An In-depth Comparison of Subgraph Isomorphism Algorithms in Graph Databases"
+		\textit{Proceedings of the VLDB Endowment (PVLDB)}, št.~6, zv.2, 2012, str. 133--144
+	
 	\bibitem{subsea} V.~Lipets, N.~Vanetik, E.~Gudes, ``Subsea: an efficient heuristic aglorithm for subgraph isomorphism",
-		\textit {Data Mining and Knowledge Discovery}, št.~19, zv.~3, 2009, str.~320--350.
+		\textit{Data Mining and Knowledge Discovery}, št.~19, zv.~3, 2009, str.~320--350.
+
+	\bibitem{poly} B.~T.~Messmer, H.~Bunke, ``Subgraph isomorphism detection in polynomial time on preprocessed model graphs",
+		\textit{Recent Developments in Computer Vision}, 1996, str.~373--382
 
 	\bibitem{ull+} J. Mihelič, U. Čibej, ``Izboljšave Ullmannovega algoritma za problem iskanja podgrafnih izomorfizmov",
 		\textit{Zbornik enaindvajsete mednarodne Elektrotehniške in računalniške konference ERK}, 2012
+
+	\bibitem{alldiff} C.~Solnon, ``AllDifferent-based filtering for subgraph isomorphism",
+		\textit{Artificial Intelligence}, št.~174, zv.~12--13, 2010, str.~850--864
 
 	% Journal of the ACM, Vol. 23, No. 1. (January 1976), pp. 31-42
 	\bibitem{ullmann} J.~R.~Ullmann, ``An Algorithm for Subgraph Isomorphism",
