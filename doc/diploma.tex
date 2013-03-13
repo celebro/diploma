@@ -862,7 +862,7 @@ tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov
 	\section{Izračun združljivosti kandidatov}
 	\label{vf2:feasible}
 
-	Pri preverjanju posameznega para $(n,m)$ iz $P(s)$ upoštevamo pet pravil. Z enačbama ~\ref{eq:vf2r1} in \ref{eq:vf2r2} preverimo, da bo razširjena
+	Pri preverjanju posameznega para $(n,m)$ iz $P(s)$ upoštevamo pet pravil. Z ena\-čbama ~\ref{eq:vf2r1} in \ref{eq:vf2r2} preverimo, če bo razširjena
 	parcialna preslikava še vedno predstavljala izomorfizem obdelanih podgrafov. Vsak sosed vozlišča iz vzorčnega grafa v parcialni preslikavi se mora
 	preslikati v soseda vozlišča iz ciljnega grafa. Pogoj ločimo za vhodne in izhodne sosede. V oglatih oklepajih je zapisan
 	še obratni pogoj, ki mora veljati pri iskanju induciranega podgrafa.
@@ -883,8 +883,8 @@ tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov
 	
 	Ta pogoj je zadosten za pravilno preiskovanje, z dodatnimi pogoji pa dodatno skrčimo prostor preiskovanja. Preverjamo število sosedov v posameznih 
 	množicah.  Prejšnji enačbi že preverjata sosede iz množice $M(s)$. Z enačbama~\ref{eq:vf2r3} in \ref{eq:vf2r4} preverjamo število sosedov v
-	množici $T(s)$. Posebej preverimo za $T^-(s)$ in $T^+(s)$ ter za vhodne in izhodne sosede. Število sosedov mora v vzorčen grafu biti manjše ali
-	enako število sosedov v ciljnem grafu.
+	množici $T(s)$. Posebej preverimo za $T^-(s)$ in $T^+(s)$ ter za vhodne in izhodne sosede. Število sosedov mora biti v vzorčnem grafu manjše ali
+	enako številu sosedov v ciljnem grafu.
 	\begin{equation}
 	\label{eq:vf2r3}
 	\begin{array}{rcl}
@@ -924,57 +924,58 @@ tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov
 	pozitivna, če velja $n \in T_p^- \; \vee \; n \in M_p(s)$, drugače je $null$. Podobno so definirane tudi ostale množice. Za ekskluzivno pripadnost
 	vozlišča $n$ množici $T_p^-$ mora veljati \code{in\_p[n] > 0} in \code{core\_p[n] == null}.
 	
-	Omenjene vektorje si vsa stanja preiskovanja delijo. Velja namreč, da ob prehodu v novo stanje zapise v vektorjih samo dodajamo, oz. jim spreminjamo
-	vrednosti iz $null$ v neko pozitivno vrednost. Ob sestopanju jih lahko zato obnovimo. Vektorjema \code{core} spremenimo vsakemu samo eno vrednost 
-	in si to vrednost zapomnimo. Pri ostalih vektorjih je ob spremembi pomembno samo, da imajo vrednost večjo od 0. Lahko jim damo vrednost, ki ustreza
-	trenutni globini preiskovanja. Ob sestopanju izbrišemo vrednosti s trenutno globino. Pri tem tudi ni potreben obhod celotnega vektorja,
+	Omenjene vektorje si vsa stanja preiskovanja delijo. Velja namreč, da ob prehodu v novo stanje zapise v vektorjih samo dodajamo oz. jim spreminjamo
+	vrednosti iz $null$ v neko pozitivno vrednost. Ob sestopanju jih lahko zato obnovimo.  Obema vektorjema \code{core} spremenimo vsakemu samo eno
+	vrednost in si to vrednost zapomnimo. Pri ostalih vektorjih je ob spremembi pomembno samo, da imajo vrednost večjo od 0. Lahko jim damo vrednost,
+	ki ustreza trenutni globini preiskovanja. Ob sestopanju izbrišemo vrednosti s trenutno globino. Pri tem tudi ni potreben obhod celotnega vektorja,
 	ampak je zadosti, da preverimo samo sosede izbranega para. Samo za ta vozlišča je namreč bila sprememba možna.
 	Tako ni potrebe po hranjenju kopije vektorja pri vsakem stanju. Ker velja $n_t \geq n_p$, je torej prostorska zahtevnost celotnega algoritma $O(n_t)$.
 	
-	V najslabšem primeru bo algoritem moral zgenerirati vse možna stanja, ki jih je reda $n!$. Vsako stanje mora izračunati tri stvari:
+	V najslabšem primeru bo algoritem moral zgenerirati vse možna stanja, ki jih je reda $n_p!$. Vsako stanje mora narediti troje:
 	\begin{itemize}
-	\item Preveri, če držijo pravila iz razdelka~\ref{vf2:feasible}. To je možno narediti z enim prehodom po vseh sosedih izbranega para, vse
-	potrebne operacije pa se zaradi izbranih podatkovnih struktur izvedejo v konstantnem času. Časovna zahtevnost tega dela je torej $O(d_p(n) + d_t(m))$.
-	\item Izračuna nove množice $T_p^-$, $T_p^+$, $T_t^-$, $T_t^+$. Tudi to lahko opravimo z enim prehodom po vseh sosedih, nastavljamo vrednost
-	na tistih indeksih, ki vrednosti še nimajo. Časovna zahtevnost je isto $O(d_p(n) + d_t(m))$.
-	\item Generiramo množico parov, ki so kandidati za vključitev v $M(s)$. Iz vzorčnega grafa vzamemo prvi element, ki v ustreznem vektorju (\code{in\_p},
-	\code{out\_p}) še nima vrednosti. V množico dodamo še vse elemente iz komplementarne množice, te dobimo z enim prehodom ustreznega vektorja.
+	\item Preveriti, če držijo pravila iz razdelka~\ref{vf2:feasible}. To je možno narediti z enim prehodom po vseh sosedih izbranega para, vse
+	potrebne operacije pa se zaradi izbranih podatkovnih struktur izvedejo v konstantnem času. Časovna zahtevnost tega dela je torej $O(d_p(n) + d_t(m))$,
+	kjer sta $n$ in $m$ izbran par.
+	\item Izračunati nove množice $T_p^-$, $T_p^+$, $T_t^-$, $T_t^+$. Tudi to lahko opravi z enim prehodom po vseh sosedih -- nastavlja vrednost
+	na tistih indeksih, ki vrednosti še nimajo. Časovna zahtevnost je ravno tako $O(d_p(n) + d_t(m))$.
+	\item Generirati množico parov, ki so kandidati za vključitev v $M(s)$. Iz vzorčnega grafa vzame prvi element, ki v ustreznem vektorju (\code{in\_p},
+	\code{out\_p}) še nima vrednosti. V množico doda še vse elemente iz komplementarne množice, ki jih dobi z enim prehodom ustreznega vektorja.
 	Časovna zahtevnost je torej $O(n_t)$
 	\end{itemize}
-	Skupna časovna zahtevnost je zato $O(n!n)$
+	Ker sta $d_p$ in $d_t$ navzgor omejena z $n_t$, je skupna časovna zahtevnost $O(n_p!n_t)$
 
 
 
 
 
 
-\chapter{Subsea}
+\chapter{Algoritem Subsea}
 	Algoritem Subsea~\cite{subsea} je najnovejši izmed predstavljenih algoritmov. Deluje po principu deli in vladaj:
 	\begin{enumerate}
-		\item Zgeneriramo vse zgodovine pregledov za vzorčni graf (razdelek~\ref{sub:th})
+		\item Generiramo vse zgodovine pregledov za vzorčni graf (razdelek~\ref{sub:th}).
 		\item Ciljni graf razbijemo z bisekcijo (aproksimacijski algoritem - razdelek~\ref{sub:bisect}).
 		\item Na vsaki povezavi med obema deloma bisekcije preverimo obstoj podgrafnega izomorfizma z uporabo zgodovin pregledov 
 			(razdelek~\ref{sub:search}).
-		\item Na vsakem delu bisekcije ponovimo postopek od koraka 2 naprej; končamo, ko je ima posamezen del bisekcije manj vozlišč kot vzorčni graf.
+		\item Na vsakem delu bisekcije ponovimo postopek od koraka 2 naprej; končamo, ko ima posamezen del bisekcije manj vozlišč kot vzorčni graf.
 	\end{enumerate}
 	Pri samem iskanju uporabi hevristiko, ki poskuša čim hitreje najti negativne primere in končati iskanje v taki veji.
 	
-	Zaradi faze predprocesiranja se najbolje obnese pri iskanju vseh instanc podgrafov. Za razliko od prvih dveh algoritmov ima Subsea nekaj omejitev. 
+	Zaradi predprocesiranja se najbolje obnese pri iskanju vseh primerkov podgrafov. Za razliko od prvih dveh algoritmov ima Subsea nekaj omejitev. 
 	Dobro deluje predvsem, če je vzorčni graf mnogo manjši od ciljnega, poleg tega pa mora biti vzorčni graf povezan. Ker oboje drži za večino praktičnih
 	problemov, omejitve niso posebno omejujoče. 
 
 	\section{Bisekcija grafa}
 	\label{sub:bisect}
-	Algoritem Subsea med delovanjem razdeli graf na dve enako veliki množici (particiji) - naredi bisekcijo. Algoritem deluje hitreje, če je bisekcija 
+	Algoritem Subsea med delovanjem razdeli graf na dve enako veliki množici (particiji) -- naredi bisekcijo. Algoritem deluje hitreje, če je bisekcija 
 	minimalna, torej če je število povezav med obema deloma grafov minimalno. Soroden problem je problem minimalnega reza, le da pri njem ni 
-	pomembno število elementov v particijah. Problem minimalne bisekcije je NP-poln, vendar pravilnost algoritma Subsea ni odvisna od natančnosti
+	pomembno število elementov v particijah. Problem minimalne bisekcije je NP-težek, vendar pravilnost algoritma Subsea ni odvisna od natančnosti
 	minimalne bisekcije, zato se uporabljajo hitre aproksimacijske metode.
 
 	Prva taka metoda je  algoritem ``črnih lukenj" (Black holes bisection). Začne s praznima particijama $B_1$ in $B_2$. Potem v vsako particijo izmenično
 	dodaja po eno vozlišče.
 	Vozlišče izbira med sosednjimi vozlišči trenutne particije. Torej v $B_1$ doda naključno vozlišče iz $V \setminus (B_1 \cup B_2)$, ki ima soseda v $B_1$.
-	Podobno tudi za drugo particijo. Če takega vozlišča ni, doda naključno še ne izbrano vozlišče. Algoritem temelji na dejstvu, da če sta particiji (``črni 
-	luknji") trenutno locirani na 	nasprotnih straneh minimalne bisekcije, bo več sosedov iz iste strani minimalne bisekcije in posledično večja verjetnost, da
+	Podobno tudi za drugo particijo. Če takega vozlišča ni, doda naključno še ne izbrano vozlišče. Algoritem temelji na dejstvu, da, če sta particiji (``črni 
+	luknji") trenutno na nasprotnih straneh minimalne bisekcije, bo več sosedov z iste strani minimalne bisekcije in posledično večja verjetnost, da
 	dodamo ustrezno vozlišče. Psevdokoda je podana v~\refalg{alg:sub_bh}.
 
 \begin{algorithm}
@@ -1007,9 +1008,9 @@ tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov
 	Druga metoda je požrešni algoritem. Ta začne z že obstoječo bisekcijo, ki pa je lahko kar rezultat prve metode, ter jo lokalno optimizira. Za vsako vozlišče
 	izračuna notranjo ceno $I(x)$, ki je število sosedov vozlišča $x$ znotraj iste particije, in zunanjo ceno $E(x)$, ki je število sosedov v drugi particiji. Potem
 	za vsak par $x \in B$, $y \in \bar B$ izračuna spremembo cene reza ob morebitni zamenjavi para: $gain = E(x) - I(x) + E(y)  - E(y) - 2w(x,y)$, kjer
-	$w(x,y) = 1$, če sta vozlišči povezani, in $w(x,y) = 0$ če vozlišči nista povezani ($w$ je korekcija morebitne medsebojne povezave - ta je zunanja in za
-	razliko od ostalih tudi po zamenjavi ostane zunanja). Algoritem nato menja pare vozlišč z največjo pridobitvijo, pri vsaki zamenjavi pa popravi $I(v')$ 
-	in $E(v')$ za vsakega soseda zamenjanega para. Ustavi se, ko ni več para z $gain > 0$.
+	$w(x,y) = 1$, če sta vozlišči povezani, in $w(x,y) = 0$, če vozlišči nista povezani ($w$ je korekcija morebitne medsebojne povezave -- slednja je zunanja
+	in za razliko od ostalih ostane zunanja tudi po zamenjavi). Algoritem nato menja pare vozlišč z največjo pridobitvijo $gain$, pri vsaki zamenjavi pa
+	popravi $I(v')$ in $E(v')$ za vsakega soseda zamenjanega para. Ustavi se, ko ni več para z $gain > 0$.
 	
 	
 	
@@ -1020,12 +1021,12 @@ tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov
 	obiskovanja vozlišč. Motivacija za tak pristop je, da v fazi predprocesiranja določimo vrstni red preiskovanja, ki bi čim hitreje ugotovil, da izomorfizem
 	ni mogoč.
 	
-	Zaporedno številko obiskovanja označuje preslikava $d : V \to \mathbb{N}$. Za vsako vozlišče definiramo $l_i = l(v): d(v) = i$, ki je oznaka vozlišča,
-	ki smo ga obiskali kot $i$-tega zaporednega. Definiramo še $N_i = \{ d(u) < i: u \in N_G(v) \, \wedge \, d(v) = i\}$, ki za $i$-to vozlišče predstavlja
-	njegove sosede, ki smo jih že obiskali. Zgodovina pregleda grafa je zaporedje $\langle (l_1, N_1), (l_2, N_2), \ldots (l_{|V|}, N_{|V|})\rangle$. To
+	Zaporedno številko obiskovanja označuje preslikava $d : V \to \mathbb{N}$. Oznaka $l_i$ je oznaka tistega vozlišča, ki smo ga obiskali kot $i$-tega 
+	zaporednega, torej $l_i = l(v): d(v) = i$. Definiramo še $N_i = \{ d(u) < i: u \in N_G(v) \, \wedge \, d(v) = i\}$, ki za $i$-to vozlišče predstavlja
+	njegove sosede, ki smo jih že obiskali. Zgodovina pregleda grafa je zaporedje $\langle (l_1, N_1), (l_2, N_2), \,\ldots\, (l_{|V|}, N_{|V|})\rangle$. To
 	zaporedje bomo kasneje uporabili za preverjanje izomorfizma v ciljnem grafu. Vozlišča bomo preiskovali v vrstnem redu, ki ga določa zgodovina pregleda
 	v vzorčnem grafu. Za vsako obiskano vozlišče iz ciljnega grafa bomo preverili, če ustreza oznaki vozlišča iz zgodovine pregleda (ima enak $l_i$) in če
-	struktura trenutnega podgrafa ustreza strukturi vzorčnega grafa ($N_i$ vzorčnega grafa mora biti podmnožica $N_i$ ciljnega grafa, oziroma morata biti
+	struktura trenutnega podgrafa ustreza strukturi vzorčnega grafa ($N_i$ vzorčnega grafa mora biti podmnožica $N_i$ ciljnega grafa oziroma morata biti
 	množici enaki v primeru iskanja induciranega podgrafa). Če bi imeli usmerjene grafe, bi morali hraniti ločeni množici $N_i$ za vhodne in izhodne
 	povezave.
 	
@@ -1034,18 +1035,18 @@ tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov
 	in obiščemo prvo vozlišče. V vrstici \ref{line:th6} obiskanemu vozlišču določimo zaporedno številko. V vrstici \ref{line:th7} gradimo samo zgodovino
 	pregleda grafa. V vrstici \ref{line:th7} zagotovimo, da kot drugega obiščemo vozlišče $v_2$. Začetek na vozliščih $v_1, v_2$ je potreben, ker moramo 
 	zgenerirati zgodovino pregleda za vsako povezavo v vzorčnem grafu. V vrsticah \ref{line:th9}--\ref{line:th13} obiščemo vsa naslednja vozlišča. Kandidati
-	so sosedi trenutnega vozlišča (vrstica \ref{line:th9}). Vrstni red določa hevristika (vrstica \ref{line:th11}). Najbolšega kandidata rekurzivno obiščemo
+	so sosedi trenutnega vozlišča (vrstica \ref{line:th9}). Vrstni red določa hevristika (vrstica \ref{line:th11}). Najboljšega kandidata rekurzivno obiščemo
 	(preiskovanje v globino, vrstica \ref{line:th12}) in odstranimo s seznama kandidatov (\ref{line:th13}).
 	
 	Hevristika daje prednost vozliščem, ki so tesno povezani z že pregledanimi vozlišči. Funkcija za izračun hevristike vrača par koordinat. Prva predstavlja
-	število korakov ki jih potrebujemo iz kandidata $w$ do poljubnega že pregledanega vozlišča, pri čemer jasno ne smemo uporabiti povezave $(v, w)$.
-	Druga koordinata predstavlja število že obiskanih vozlišč, ki jih s toliko koraki lahko dosežemo (to številko pomnožimo z $-1$). Med kandidati izberemo
+	število korakov, ki jih potrebujemo iz kandidata $w$ do poljubnega že pregledanega vozlišča, pri čemer jasno ne smemo uporabiti povezave $(v, w)$.
+	Druga koordinata predstavlja število že obiskanih vozlišč, ki jih s toliko koraki lahko dosežemo (to število pomnožimo z $-1$). Med kandidati izberemo
 	tistega z minimalnim parom koordinat, torej tistega, ki potrebuje najmanj korakov (je najbližje že pregledanim vozliščem), med izenačenimi pa tistega,
 	preko katerega pridemo do največjega števila že obiskanih vozlišč.
 	Koordinati izračunamo s preiskovanjem v širino. Začnemo z množico, v kateri je samo kandidat $w$, dolžina poti pa je $1$ (vrstici \ref{line:th14} in
-	\ref{line:th15}). Nato v zanki opravljamo preiskovanje. V vrstici \ref{line:th17} izračunamo vse sosede trenutne množice $S$ (in ignoriramo omenjeno
-	povezavo $(w,v)$). V vrstici \ref{line:th18} preštejemo, koliko že pregledanih vozlišč smo dosegli. Če smo dosegli vsaj enega, vrnemo rezultat v
-	v vrstici \ref{line:th19}, drugače povečamo korak (vrstici \ref{line:th20} in \ref{line:th21}). Če ni več novih sosedov (vrstica \ref{line:th22}), pomeni,
+	\ref{line:th15}). Nato v zanki povečujemo globino. V vrstici \ref{line:th17} izračunamo vse sosede trenutne množice $S$ (in ignoriramo omenjeno
+	povezavo $(w,v)$). V vrstici \ref{line:th18} preštejemo, koliko že pregledanih vozlišč smo dosegli. Če smo dosegli vsaj eno, vrnemo rezultat
+	v vrstici \ref{line:th19}, sicer povečamo korak (vrstici \ref{line:th20} in \ref{line:th21}). Če ni več novih sosedov (vrstica \ref{line:th22}), pomeni,
 	da iz $w$ ni mogoče doseči že pregledanih vozlišč, razen preko $v$. Take kandidate bomo pregledali nazadnje, zato prvo koordinato nastavimo na 
 	$\infty$, drugo pa na velikost množice vozlišč, dosegljivih iz $w$.
 	
@@ -1101,17 +1102,17 @@ tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov
 
 	\section{Iskanje izomorfnega podgrafa}
 	\label{sub:search}
-	Ko imamo zgodovino pregleda za ciljni glaf, jo uporabimo pri iskanju podgrafnega izomorfizma. Psevdokoda algoritma je podana v~\refalg{alg:sub_st}.
+	Ko poznamo zgodovino pregleda za ciljni graf, jo uporabimo pri iskanju podgrafnega izomorfizma. Psevdokoda algoritma je podana v~\refalg{alg:sub_st}.
 	Iskanje sprožimo nad konkretno povezavo v ciljnem grafu (glej razdelek~\ref{sub:subsea}). Deli v oglatih oklepajih veljajo za primer iskanja
 	induciranega podgrafa. V vrsticah \ref{line:st1}--\ref{line:st4} inicializiramo preslikavo $g$ (v ciljnem grafu uporabljamo oznako $g$ namesto $d$,
 	da se ju ne meša) in definiramo vrednosti v preslikavi za podani vozlišči. Tako omejimo preiskovanje v ciljnem grafu na samo tiste podgrafe, ki 
 	vsebujejo podano povezavo. V vrstici \ref{line:st5} je prvi klic rekurzivne funkcije, ki bo od sedaj naprej sledila vrstnemu redu preiskovanja iz podane
 	$H$.
 	
-	V funkcije $searchVisit$ naprej dobimo vrednost zadnje zaporedne številke iz $g$ in ustrezno vozlišče (zadnje dodano vozlišče, vrstici \ref{line:st6}
+	V funkciji $searchVisit$ naprej dobimo vrednost zadnje zaporedne številke iz $g$ in ustrezno vozlišče (zadnje dodano vozlišče, vrstici \ref{line:st6}
 	in  \ref{line:st7}). Za to vozlišče v vrstici \ref{line:st8} preverimo, če ustreza vozlišču iz vzorčnega grafa z isto zaporedno številko, torej če je
 	dodajanje tega vozlišča ohranilo izomorfizem trenutno pregledanega dela grafa. Veljati mora, da so vsa vozlišča v trenutni $N_i$ iz zgodovine
-	pregleda $H$ vsebovana med pregledanimi sosedi dodanega vozlišča (primerjamo njihove preslikave iz $d$ oz.~$g$). Če to ne velja, ne podgrafnega
+	pregleda $H$ vsebovana med pregledanimi sosedi dodanega vozlišča (primerjamo njihove preslikave iz $d$ oz.~$g$). Če to ne velja, tudi podgrafnega
 	izomorfizma ni, zato sestopimo. Za primer iskanja induciranega podgrafa morata biti omenjeni množici enaki (vrstica  \ref{line:st10}). Pri usmerjenih
 	grafih pa bi ločeno preverjali množici vhodnih in izhodnih sosedov. V vrstici \ref{line:st12} v trenutni preiskani podgraf dodamo še povezave, ki
 	pripadajo prej dodanemu vozlišču. Povezave potrebujemo, da lahko vrnemo celoten izomorfen podgraf, ko smo ga našli (vrstica  \ref{line:st13}).
@@ -1121,18 +1122,18 @@ tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov
 	$H[vtime + 1].N$ (vrstica \ref{line:st14}). V vrsticah \ref{line:st17}--\ref{line:st20} te kandidate preverimo: če kandidat še ni bil obiskan, mu
 	v preslikavi $g$ določimo naslednjo zaporedno številko in obiščemo novo stanje. Ob vrnitvi razveljavimo spremembo v $g$.
 	
-	V vrstici \ref{line:st17} je še dodaten pogoj, ki mora veljati v primerju iskanja induciranih podgrafov. Kot bomo videli v naslednjem razdelku, med
-	procesom iskanja vseh podgrafnih izomorfizmov brišemo že obdelane povezave, s čimer preprečimo, da bi isti podgraf našli ponovno kasneje v
-	procesu iskanja. Pri induciranih podgrafih pa povezave ne smemo brisati, ampak jo	označimo kot ``črno" (primer, zakaj je to potrebno, je na 
+	V vrstici \ref{line:st17} je še dodaten pogoj, ki mora veljati v primeru iskanja induciranih podgrafov. Kot bomo videli v naslednjem razdelku, med
+	procesom iskanja vseh podgrafnih izomorfizmov brišemo že obdelane povezave, s čimer preprečimo, da bi kasneje v procesu iskanja ponovno našli 
+	isti podgraf. Pri induciranih podgrafih pa povezave ne smemo brisati, ampak jo označimo kot ``črno" (primer, zakaj je to potrebno, je na 
 	sliki~\ref{pic_subsea_black}). Zato moramo pri kandidatu preveriti, da nima nobene ``črne" povezave na že pregledano vozlišče.
 	
 	\begin{figure}
 	\begin{center}
 	\includegraphics[width=12cm]{img/graph_subsea_black.png}
 	\end{center}
-	\caption{Demonstracija potrebe po ``črnih" robovih. Graf a) je vzorčni, b) pa ciljni. Ob obdelavi povezave $(1,2)$ najdemo inducirani izomorfen podgraf
-	$\langle 1, 2, 4\rangle$. Če povezavo odtranimo, bi kasneje lahko našli še izomorfen podgraf $\langle 1, 3, 2 \rangle$, kar bi bilo narobe -- ob 
-	odstranjeni povezavi $(1,2)$ ne bi mogli ugotoviti, da podgraf ni induciran. Kljub temu moramo povezavo nekako označiti, da ob obdelavi povezave 
+	\caption{Prikaz potrebe po ``črnih" robovih. Graf a) je vzorčni, b) pa ciljni. Pri obdelavi povezave $(1,2)$ najdemo inducirani izomorfen podgraf
+	$\langle 1, 2, 4\rangle$. Če povezavo odstranimo, bi kasneje lahko našli še izomorfen podgraf $\langle 1, 3, 2 \rangle$, kar bi bilo narobe -- ob 
+	odstranjeni povezavi $(1,2)$ ne bi mogli ugotoviti, da podgraf ni induciran. Kljub temu moramo povezavo nekako označiti, da med obdelavo povezave 
 	$(2,4)$ ne bi ponovno našli grafa $\langle 1, 2, 4\rangle$.}
 	\label{pic_subsea_black}
 	\end{figure}
@@ -1189,12 +1190,12 @@ tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov
 	\section {Celoten algoritem}
 	\label{sub:subsea}
 	V tem razdelku povežemo vse spoznane algoritme v celoto, kot je opisano na začetku tega poglavja. Psevdokoda je podana v~\refalg{alg:sub_main}.
-	V fazi pred-procesiranja za vsako povezavo zgeneriramo in si shranimo zgodovino pregleda vzorčnega grafa z začetkom v tej povezavi (vrstice
+	V fazi predprocesiranja za vsako povezavo generiramo in shranimo zgodovino pregleda vzorčnega grafa z začetkom v tej povezavi (vrstice
 	\ref{line:sub1}--\ref{line:sub4}). Pri tem uporabimo~\refalg{alg:sub_th}. Nato vstopimo v rekurzivni del. V vrstici \ref{line:sub7} z algoritmom za 
 	bisekcijo~\refalg{alg:sub_bh} razdelimo graf na dva dela. Nato preverimo vsako povezavo med obema deloma bisekcije. Tu vidimo, zakaj algoritem
-	deluje hitreje, če je povezav med particijama čim manjše, torej če je bisekcija čim bliže minimalni. Na posamezni povezavi poženemo algoritem
+	deluje hitreje, če je število povezav med particijama čim manjše, torej če je bisekcija čim bliže minimalni. Na posamezni povezavi poženemo algoritem
 	za iskanje podgrafnih izomorfizmov~\refalg{alg:sub_st} v kombinaciji z vsako generirano zgodovino pregleda (vrstica \ref{line:sub10}), s čimer najdemo
-	vse podgrafne izomorfizme, ki vsebujejo to povezavo. Zato lahko po končanem iskanju to povezavo odstranimo (oziromo jo označimo kot ``črno" v
+	vse podgrafne izomorfizme, ki vsebujejo to povezavo. Zato lahko po končanem iskanju to povezavo odstranimo (oziroma jo označimo kot ``črno"~v
 	primeru iskanja induciranih podgrafov). Ko preverimo vse povezave, kličemo algoritem rekurzivno nad posameznim delom bisekcije, torej nad problemom
 	s polovičnim ciljnim grafom. Algoritem se konča, ko je v ciljnem grafu manj vozlišč kot v vzorčnem (vrstica \ref{line:sub6}).
 	
@@ -1231,8 +1232,8 @@ tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov
 	Algoritem Subsea največ prostora porabi za hranjenje vseh zgodovin pregleda vzorčnega grafa. Ker ustvarimo eno za vsako povezavo (pravzaprav dve:
 	eno za $H_{v_1, v_2}$ in drugo za $H_{v_2, v_1}$), jih je skupno $n_p^2$. Vsaka ima $n$ elementov, $N_i$ komponenta posameznega elementa (ki
 	vsebuje vse sosede) pa je lahko tudi velikosti $n$. Skupno torej $O(n_p^4)$. Iz česar vidimo, da je algoritem res specializiran za iskanje manjših 
-	vzorčnih grafov v velikih ciljnih. Algoritem, kot je opisan v izvirnem članku~\cite{subsea} sicer izloča zgodovine pregleda, ki predstavljajo avtomorfizem
-	vzorčnega grafa, kar nekoliko zmanjša potreben prostor, hkrati pa pospeši izvajanje algoritma. Za odkrivanje avtomorfizmov se uporabi 
+	vzorčnih grafov v velikih ciljnih grafih. Algoritem, kot je opisan v izvirnem članku~\cite{subsea} sicer izloča zgodovine pregleda, ki predstavljajo
+	avtomorfizem vzorčnega grafa, kar nekoliko zmanjša potreben prostor, hkrati pa pospeši izvajanje algoritma. Za odkrivanje avtomorfizmov se uporabi 
 	kar~\refalg{alg:sub_st}.
 
 
@@ -1242,20 +1243,20 @@ tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov
 
 	Delovanje algoritmov smo preizkusili na 9000 primerih. Iskali smo število vseh induciranih podgrafnih izomorfizmov v usmerjenih grafih. Implementacija
 	algoritma VF2 je dostopna na spletu (\href{http://mivia.unisa.it/datasets/graph-database/vflib-graph-matching-library-version-2-0/}
-	{http://mivia.unisa.it/datasets/graph-database/{\allowbreak}vflib-graph-matching-library-version-2-0/}) v obliki programske knjižnice vflib. Za osnoven
+	{http://mivia.unisa.it/datasets/graph-database/{\allowbreak}vflib-graph-matching-library-version-2-0/}) v obliki programske knjižnice vflib. Za osnovni
 	Ullmannov algoritem je že bilo
-	pokazano, da ni konkurenčen z algoritmom VF2~\cite{vf2_2}, zato smo primerjali implementacijo Jurija Miheliča in Uroša Čibeja z opisanimi izboljšavami
+	pokazano, da ne konkurira algoritmu VF2~\cite{vf2_2}, zato smo primerjali implementacijo Jurija Miheliča in Uroša Čibeja z opisanimi izboljšavami
 	iz razdelka~\ref{ull_imp}.
 
 	Avtorji članka o algoritmu Subsea so na spletu objavili implementacico tega algoritma 
 	(\href{http://www.cs.bgu.ac.il/~orlovn/links/SubseaProj30\_11\_06/}{http://www.cs.bgu.ac.il/$\sim$orlovn/links/SubseaProj30\_11\_06/}). Vendar ta
-	implementacija ne deluje pravilno, saj celo za isti testni premer vrača različne rezultate (torej različno število vseh podgrafnih izomorfizmov). Zaradi
-	kompleksnosti algoritma pa bi ga bilo težko implementirati v celoti. Namesto tega smo iz algoritma vzeli idejo zgodovine preiskovanja 
+	implementacija ne deluje pravilno, saj celo za isti testni primer vrača različne rezultate (torej različno število vseh podgrafnih izomorfizmov). Zaradi
+	kom\-pleksnosti algoritma pa bi ga bilo težko implementirati v celoti. Namesto tega smo iz algoritma vzeli idejo zgodovine preiskovanja 
 	(razdelek~\ref{sub:th}) in jo uporabili
 	v algoritmu VF2. Slednji namreč pri izbiranju naslednjega vozlišča za preiskovanje ne izkorišča zgradbe preiskovanega grafa. Kot smo opisali v 
 	razdelku~\ref{vf2:candidate}, algoritem med ne-preiskanimi sosedi že preiskanih vozlišč izbere prvo vozlišče oz.~tistega z najmanjšim indeksom (pri tem 
-	sicer upošteva še pripadnost množicam $T^+$ in $T^-$). Naša ideja pa je namesto arbitrarnega vrstnega reda uporabiti vrstni red, ki ga 
-	izračuna~\refalg{alg:sub_th}. Motivacije je enaka kot pri algoritmu Subsea: najprej preveriti bolj skoncentrirane dele vzorčnega grafa, da bi s tem čim
+	sicer upošteva še pripadnost množicam $T^+$ in $T^-$). Naša ideja pa je namesto poljubnega vrstnega reda uporabiti vrstni red, ki ga 
+	izračuna~\refalg{alg:sub_th}. Motivacija je enaka kot pri algoritmu Subsea: najprej preveriti bolj skoncentrirane dele vzorčnega grafa, da bi s tem čim
 	hitreje odkrili neobetavne veje preiskovanja. Opisani algoritem za zgodovino pregleda začne z podanima vozliščema, ker algoritem Subsea zahteva 
 	izračun zgodovine pregleda za vsako povezavo. Pri izboljšavi algoritma VF2 te zahteve ni, zato začnemo z vozliščem z največjo stopnjo.
 	
