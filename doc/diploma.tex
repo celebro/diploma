@@ -536,7 +536,7 @@ tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov
 	
 	\section{Algoritem}
 	Matriko $M$ generiramo postopoma, po korakih. V danem koraku nam vrednost $m_{i,j}^k$ pove, ali se vozlišče $i \in V_p$ lahko preslika 
-	v $j \in V_t$ (ima vrednost $1$) ali ne	(ima vrednost $0$). Izhajamo iz začetne matike $M^0$. V generiranju te matrike upoštevamo dejstvo, da
+	v $j \in V_t$ (ima vrednost $1$) ali ne	(ima vrednost $0$). Izhajamo iz začetne matrike $M^0$. Pri generiranju te matrike upoštevamo dejstvo, da
 	se lahko vozlišče $i$ preslika v $j$ samo, če je stopnja vozlišča v vzorčnem grafu manjša ali enaka stopnji vozlišča v ciljnem grafu:
 		\begin{equation}
 		\label{eq:ullmann2}
@@ -548,7 +548,7 @@ tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov
 		\end{equation}
 	Pri usmerjenih grafih mora pogoj  veljati tako za vhodno kot za izhodno stopnjo.
 	
-	V vsakem naslednjem koraku izberemo še neobiskano vrstico. V vrstici izberemo stolpec, ki ima vrednost 1 in še ni bil izbran v nobeni prejšnji vrstici.
+	V vsakem naslednjem koraku izberemo še neobiskano vrstico. V vrstici izberemo stolpec, ki ima vrednost 1 in še ni bil izbran v nobeni od prejšnjih vrstic.
 	Vse ostale vrednosti v vrstici postavimo na 0
 	in gremo v naslednji korak. Če stolpca z vrednostjo 1 v trenutni vrstici ni, se vrnemo v prejšnji korak in izberemo drug stolpec. Ko obdelamo vse vrstice,
 	se preveri pogoj~(\ref{eq:ullmann1}).
@@ -556,24 +556,24 @@ tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov
 	Algoritem je Ullmann v izvirnem članku~\cite{ullmann} opisal s stavki GOTO, zaradi česar je težje razumljiv. Tukaj ga podajamo v bolj pregledni obliki,
 	ki je popravljena in bolj podrobna različica algoritma iz~\cite{zampelli-th}. Potrebujemo naslednje podatkovne strukture:
 	\begin{itemize}
-		\item spremenljivko $d$, ki označuje trenutno globino v preiskovalnem drevesu
-		\item spremenljivko $k$, ki označuje trenutno izbrani stolpec
-		\item binaren vektor $F = <F_1, \ldots, F_i, \ldots,  F_{n_p} > $, v katerem z vrednostjo 1 na $i$-tem mestu označimo, 
-			da je bil stolpec $i$ že izbran, z njim zagotovimo injektivnost preslikave
-		\item vektor $H = < H_1, \ldots, H_d, \ldots, H_{n_p} > $, kjer $H_d = j$ pomeni, da je na globini $d$ izbran stolpec $j$ - od tu 
-			obnovimo spremenljivko $k$ pri sestopanju
-		\item matriko $M$, ki predstavlja trenutno matriko združljivih parov
-		\item vektor matrik $M_v = < M_1, \ldots, M_d, \ldots, M_{n_p} > $, kjer je matrika $M_d$ zadnja generirana matrika $M$ na globini $d$ - od
-			tu obnovimo matriko $M$ pri sestopanju
+		\item spremenljivko $d$, ki označuje trenutno globino v preiskovalnem drevesu;
+		\item spremenljivko $k$, ki označuje trenutno izbrani stolpec;
+		\item binaren vektor $F = \langle F_1, \,\ldots \, , F_i, \,\ldots \, ,  F_{n_p} \rangle $, v katerem z vrednostjo 1 na $i$-tem mestu označimo, 
+			da je bil stolpec $i$ že izbran -- z njim zagotovimo injektivnost preslikave;
+		\item vektor $H = \langle H_1, \,\ldots \, , H_d, \,\ldots \, , H_{n_p} \rangle $, kjer $H_d = j$ pomeni, da je na globini $d$ izbran stolpec $j$ --
+			od tu obnovimo spremenljivko $k$ pri sestopanju;
+		\item matriko $M$, ki predstavlja trenutno matriko združljivih parov;
+		\item vektor matrik $M_v = \langle M_1, \,\ldots \, , M_d, \,\ldots \, , M_{n_p} \rangle $, kjer je matrika $M_d$ zadnja generirana matrika $M$
+			na globini $d$ -- od tu obnovimo matriko $M$ pri sestopanju.
 	\end{itemize}
 
 	Prevdokoda algoritma je podana v \refalg{alg:ullmann1}. V vrsticah 1--2 inicializiramo vse spremenljivke -- začnemo z začetno matriko $M^0$, 
-	na globini 1 in brez izbranega stolpca. V vrstici 3 shranimo matriko $M$ za prvi korak - matriko vedno shranjujemo pred vstopom v naslednji korak. 	
-	Zanka v vrstici 4 še izteče, ko sestopimo iz obdelave prve vrstice, torej ko v prvi vrstici zmanjka neobiskanih stolpcev. V vrstici 5 poskrbimo, da 
+	na globini 1 in brez izbranega stolpca. V vrstici 3 shranimo matriko $M$ za prvi korak -- matriko vedno shranjujemo pred vstopom v naslednji korak. 	
+	Zanka v vrstici 4 se izteče, ko sestopimo iz obdelave prve vrstice, torej ko v prvi vrstici zmanjka neobiskanih stolpcev. V vrstici 5 poskrbimo, da 
 	algoritem sestopi, če ne najdemo ustreznega stolpca. V vrstici 6 preverimo, če v trenutni vrstici obstaja še neobiskan stolpec. Ta stolpec mora biti še
-	neizbran v trenutni vrstici ($j > k$), biti združljiv s trenutno vrstico ($m_{d,j} = 1$) in ne sme biti izbran v	katerem od prejšnjih korakov ($F_j=0$;
+	neizbran v trenutni vrstici ($j > k$), mora biti združljiv s trenutno vrstico ($m_{d,j} = 1$) in ne sme biti izbran v	katerem od prejšnjih korakov ($F_j=0$;
 	pogoj za injektivno preslikavo). Sama izbira stolpca poteka v vrsticah 8--10, ko vrednost $k$ postavimo na izbrani stolpec, v vrstici 7 pa preprečimo 
-	sestopanje, saj bomo v naslednji ponovitve zanke ali povečali globino ali pa ostali na isti globini.
+	sestopanje, saj bomo v naslednji ponovitvi zanke ali povečali globino ali pa ostali na isti globini.
 	V vrstici 11 postavimo vse neizbrane stolpce v vrstici na $0$, torej izbrani stolpec označimo tudi v matriki $M$. Pogoj v vrstici 12 zaenkrat ignorirajmo.
 	Če nismo prišli do dna preiskovalnega
 	drevesa (vrstica 13), gremo v naslednji korak (vrstica 14): shranimo zadnji izbrani stolpec na trenutni globini ($H_d \gets k$), stolpec označimo kot
@@ -592,8 +592,8 @@ tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov
 \begin{algorithmic}[1]
 	\Require Matriki sosednosti $P$ in $T$, začetna matrika $M^0$
 	\Ensure Vse $n_p \times n_t$ matrike $M$, ki predstavljajo preslikave podgrafnih izomorfizmov				
-	\State $M \gets M^0; d \gets 1; H_1 \gets 0; k \gets 0; backtract \gets true$								
-	\For{$i $ in$ [1, n_p]$} $F_i \gets 0;$ \EndFor													
+	\State $M \gets M^0; d \gets 1; H_1 \gets 0; k \gets 0; backtrac \gets true$								
+	\For{$i \in [1, n_p]$} $F_i \gets 0;$ \EndFor													
 	\State $M_1 \gets M^0$																	
 	\While{$d \not = 0$}																		
 		\State $backtrack \gets true$													
@@ -607,8 +607,8 @@ tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov
 				\If {$d < n_p$}																	
 					\State $H_d \gets k; F_k \gets 1; d \gets d+1; k \gets 0; M_d \gets M$
 				\Else																			
-					\If {$<$ condition(\ref{eq:ullmann1}) $>$}											
-						\State $<$ store $M$ $>$
+					\If {$\langle$condition(\ref{eq:ullmann1})$\rangle$}
+						\State $\langle$store $M$$\rangle$
 					\EndIf													
 					%\If{$\exists j : j > k \wedge m_{d,j} = 1 \wedge F_j = 0$}								
 						\State $M \gets M_d$		
@@ -619,7 +619,7 @@ tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov
 			\EndIf
 		\EndIf
 		
-		\If{$backtract$}																		
+		\If{$backtrac$}																		
 			\State $F_k \gets 0; d \gets d-1;$													
 			\If{$d > 0 $}																	
 				\State $M \gets M_d; k \gets H_d;$												
@@ -629,12 +629,12 @@ tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov
 \end{algorithmic}
 \end{algorithm}
 
-	Velik del podanega algoritma se ukvarja s sestopanjem in obnavljanjem stanja pri sestopanju. Zato v \refalg{alg:ullmann3} podajamo še rekurzivno 
-	različico algoritma. V tej različici za sestopanje in obnavljanje stanja skrbi sama rekurzija in je potek algoritma bolj očiten. V vrsticah 1 in 2 je
-	inicializacija, le da sedaj potrebujemo manj spremenljivk. V vrstici 3 začnemo preiskovanje na globini 1. V vrstici 6 shranimo trenutno matriko $M$,
+	Velik del algoritma se ukvarja s sestopanjem in obnavljanjem stanja pri sestopanju. Zato v \refalg{alg:ullmann3} podajamo še rekurzivno 
+	različico algoritma. V tej različici za sestopanje in obnavljanje stanja skrbi sam mehanizem rekurzija in je potek algoritma bolj očiten. V vrsticah 1 in 2 
+	je inicializacija, le da sedaj potrebujemo manj spremenljivk. V vrstici 3 začnemo preiskovanje na globini 1. V vrstici 6 shranimo trenutno matriko $M$,
 	ki jo bomo obnavljali ob sestopanju (ponovno zaenkrat ignoriramo del v oglatih oklepajih). V vrstici 7 je zanka, ki preveri vse stolpce. Ko pridemo do
-	ustreznega (vrstica 8), vse ostale stolpce postavimo na 0 (vrstica 9), in označimo stolpec kot izbran (vrstica 10). Če smo v zadnji vrstici matrike $M$,
-	potem preverimo pogoj~\ref{eq:ullmann1} in če smo našli izomorfizem, shranimo trenutno matriko $M$ (vrstice 11-13). Če to ni zadnja vrstica, gremo
+	ustreznega (vrstica 8), vse ostale stolpce postavimo na 0 (vrstica 9) in označimo stolpec kot izbran (vrstica 10). Če smo v zadnji vrstici matrike $M$,
+	potem preverimo pogoj~\ref{eq:ullmann1}, in če smo našli izomorfizem, shranimo trenutno matriko $M$ (vrstice 11--13). Če to ni zadnja vrstica, gremo
 	v naslednji korak (vrstica 15). Ob sestopanju obnovimo matriko $M$ in označimo trenutni stolpec kot neizbran (vrstica 16).
 
 \begin{algorithm}
@@ -644,7 +644,7 @@ tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov
 	\Require Matriki sosednosti $P$ in $T$, začetna matrika $M^0$
 	\Ensure Vse $n_p \times n_t$ matrike $M$, ki predstavljajo preslikave podgrafnih izomorfizmov				
 	\State $M \gets M^0$
-	\For{$i $ in$ [1, n_p]$} $F_i \gets 0;$ \EndFor
+	\For{$i \in [1, n_p]$} $F_i \gets 0;$ \EndFor
 	\State $step(1)$
 %	\Statex
 	\Subalg{\Call{step}{$d$}}
@@ -659,8 +659,8 @@ tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov
 				\State $\forall j \not = k : m_{d,j} \gets 0$
 				\State $F_k \gets 1$
 				\If{$d = n_p$}
-					\If {$<$ condition(\ref{eq:ullmann1}) $>$}
-						\State $<$ store $M$ $>$
+					\If {$\langle$condition(\ref{eq:ullmann1})$\rangle$}
+						\State $\langle$store $M$$\rangle$
 					\EndIf
 				\Else
 					\State \Call{step}{$d+1$}
