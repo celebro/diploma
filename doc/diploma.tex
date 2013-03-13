@@ -567,8 +567,9 @@ tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov
 			na globini $d$ -- od tu obnovimo matriko $M$ pri sestopanju.
 	\end{itemize}
 
-	Prevdokoda algoritma je podana v \refalg{alg:ullmann1}. V vrsticah 1--2 inicializiramo vse spremenljivke -- začnemo z začetno matriko $M^0$, 
-	na globini 1 in brez izbranega stolpca. V vrstici 3 shranimo matriko $M$ za prvi korak -- matriko vedno shranjujemo pred vstopom v naslednji korak. 	
+	Prevdokoda algoritma je podana v \refalg{alg:ullmann1}. V vrsticah 1--2 inicializiramo vse spremenljivke.
+	% -- začnemo z začetno matriko $M^0$, na globini 1 in brez izbranega stolpca. 
+	V vrstici 3 shranimo matriko $M$ za prvi korak -- matriko vedno shranjujemo pred vstopom v naslednji korak. 	
 	Zanka v vrstici 4 se izteče, ko sestopimo iz obdelave prve vrstice, torej ko v prvi vrstici zmanjka neobiskanih stolpcev. V vrstici 5 poskrbimo, da 
 	algoritem sestopi, če ne najdemo ustreznega stolpca. V vrstici 6 preverimo, če v trenutni vrstici obstaja še neobiskan stolpec. Ta stolpec mora biti še
 	neizbran v trenutni vrstici ($j > k$), mora biti združljiv s trenutno vrstico ($m_{d,j} = 1$) in ne sme biti izbran v	katerem od prejšnjih korakov ($F_j=0$;
@@ -592,7 +593,7 @@ tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov
 \begin{algorithmic}[1]
 	\Require Matriki sosednosti $P$ in $T$, začetna matrika $M^0$
 	\Ensure Vse $n_p \times n_t$ matrike $M$, ki predstavljajo preslikave podgrafnih izomorfizmov				
-	\State $M \gets M^0; d \gets 1; H_1 \gets 0; k \gets 0; backtrac \gets true$								
+	\State $M \gets M^0; d \gets 1; H_1 \gets 0; k \gets 0; backtrack \gets true$								
 	\For{$i \in [1, n_p]$} $F_i \gets 0;$ \EndFor													
 	\State $M_1 \gets M^0$																	
 	\While{$d \not = 0$}																		
@@ -619,7 +620,7 @@ tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov
 			\EndIf
 		\EndIf
 		
-		\If{$backtrac$}																		
+		\If{$backtrack$}																		
 			\State $F_k \gets 0; d \gets d-1;$													
 			\If{$d > 0 $}																	
 				\State $M \gets M_d; k \gets H_d;$												
@@ -629,7 +630,7 @@ tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov
 \end{algorithmic}
 \end{algorithm}
 
-	Velik del algoritma se ukvarja s sestopanjem in obnavljanjem stanja pri sestopanju. Zato v \refalg{alg:ullmann3} podajamo še rekurzivno 
+	Velik del algoritma se ukvarja s sestopanjem in obnavljanjem stanja pri sestopanju, zato v \refalg{alg:ullmann3} podajamo še rekurzivno 
 	različico algoritma. V tej različici za sestopanje in obnavljanje stanja skrbi sam mehanizem rekurzija in je potek algoritma bolj očiten. V vrsticah 1 in 2 
 	je inicializacija, le da sedaj potrebujemo manj spremenljivk. V vrstici 3 začnemo preiskovanje na globini 1. V vrstici 6 shranimo trenutno matriko $M$,
 	ki jo bomo obnavljali ob sestopanju (ponovno zaenkrat ignoriramo del v oglatih oklepajih). V vrstici 7 je zanka, ki preveri vse stolpce. Ko pridemo do
@@ -674,17 +675,25 @@ tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov
 
 
 	\section{Omejevanje prostora preiskovanja}
-	Ullmann je opazil, da lahko z dodatnim procesiranjem matrike $M$ na vsakem koraku dodatno omejimo prostor preiskovanja, torej da več 1 postavimo
-	na 0. Če se bo vozlišče $i$ v preslikalo v vozlišče $j$, potem se mora tudi vsako sosednje vozlišče vozlišča $i$ preslikati v eno od 
+	Ullmann je opazil, da lahko z dodatnim procesiranjem matrike $M$ na vsakem koraku dodatno omejimo prostor preiskovanja, torej da več vrednosti 1 
+	postavimo na 0. Če se bo vozlišče $i$ preslikalo v vozlišče $j$, potem se mora tudi vsako sosednje vozlišče vozlišča $i$ preslikati v eno od 
 	sosednjih vozlišč vozlišča $j$. Za vsak $m_{i,j} = 1$ preverimo pogoj:
-	\begin{equation}
+	
+	\begin{flalign}
 	\label{eq:ullmann3}
-	\begin{array}{rcl}
-	\forall x \in N_{p}(i) & \Rightarrow & \exists y \in N_t(j) \wedge m_{x,y} = 1
-	\\
-	\forall x \in [1, n_p] : p_{i,x} = 1 & \Rightarrow & \exists y \in [1, n_t] : t_{j,y} = 1 \wedge m_{x,y} = 1
-	\end{array}
-	\end{equation}
+		&&\forall x \in N_{p}(i) & \Rightarrow \exists y \in N_t(j) : m_{x,y} = 1 &\\
+	\nonumber \text{oz.} && \forall x \in [1, n_p] : p_{i,x} = 1 & \Rightarrow \exists y \in [1, n_t] : t_{j,y} = 1 \wedge m_{x,y} = 1&
+	\end{flalign}
+
+	
+%	\begin{equation}
+%	\label{eq:ullmann3}
+%	\begin{array}{llrcl}
+%	&\forall x \in N_{p}(i) & \Rightarrow & \exists y \in N_t(j) \wedge m_{x,y} = 1
+%	\\
+%	\text{oz.} &\forall x \in [1, n_p] : p_{i,x} = 1 & \Rightarrow & \exists y \in [1, n_t] : t_{j,y} = 1 \wedge m_{x,y} = 1
+%	\end{array}
+%	\end{equation}
 	Če pogoj ni izpolnjen, postavimo vrednost $m_{i,j}$ na 0. Vsaka sprememba v matriki lahko vpliva na pogoj pri ostalih vozliščih, zato postopek
 	ponavljamo, dokler pri pregledu celotne matrike ne naredimo nobene spremembe. Ta pogoj je hkrati tudi zadosten za preverjanje podgrafnega 
 	izomorfizma, zato lahko v algoritmih z njim nadomestimo pogoj~(\ref{eq:ullmann1}).
@@ -695,7 +704,7 @@ tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov
 	same 1 (vrstica 7). V tem primeru namreč izomorfizem ni več mogoč, zato vrnemo $false$ (vrstica 8). Za opisani postopek je Ullmann predlagal tudi
 	implementacijo z namenskim logičnim vezjem~\cite{ullmann}.
 
-	Podani algoritem je v \refalg{alg:ullmann1} in \refalg{alg:ullmann3} že vključen, klic funkcije $refine$ je v oglatih oklepajih, ki smo jih predhodno
+	Opisani algoritem je v \refalg{alg:ullmann1} in \refalg{alg:ullmann3} že vključen, klic funkcije $refine$ je v oglatih oklepajih, ki smo jih predhodno
 	ignorirali.
 
 %\begin{spacing}{1} 
@@ -724,12 +733,14 @@ tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov
 %\end{spacing}
 
 	\section {Časovna in prostorska zahtevnost}
-	Prostorska zahtevnost celotnega algoritma je $O(n_p^2 n_t)$. Na vsaki globini shranimo matriko $M$, ki je velikosti $n_p n_t$, maksimalna globina pa 
-	je $n_p$. Časovna kompleksnost funkcije $refine$ je $O(n_p n_t d_{max})$, kjer je $d_{max}$ največja možna stopnja vozlišča. Pogoj preverjamo za
+	Prostorska zahtevnost celotnega algoritma je $O(n_p^2 n_t)$. Na vsaki globini shranimo matriko $M$, ki je velikosti $n_p n_t$, maksimalna 
+	globina pa 
+	je $n_p$. Časovna kom\-pleksnost funkcije \textit{refine} je $O(n_p n_t d_{max})$, kjer je $d_{max}$ največja možna stopnja vozlišča. Pogoj 
+	preverjamo za
 	vsak	element matrike $M$, časovna zahtevnost pogoja pa je $d_{max}$, ker preverjamo samo sosede. Postopek preverjanja se sicer ponavlja do fiksne
 	točke, ampak vsaka ponovitev dodatno poreže preiskovalno drevo, zato je ena ponovitev najslabši primer. Celoten algoritem ima časovno zahtevnost
 	%$O(n_p! n_p n_t d_{max})$. 
-	$O(n! n^2 d_{max})$. V posamezni ponovitvi zanke je funkcija $refine$ najzahtevnejša, število ponovitev pa je reda $n!$.
+	$O(n_p! n_p n_t d_{max})$. V posamezni ponovitvi zanke je funkcija \textit{refine} najzahtevnejša, število ponovitev pa je reda $n!$.
 
 
 	\section{Izboljšave}
@@ -738,21 +749,21 @@ tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov
 	več možnih izboljšav algoritma \cite{ull+}.
 	
 	V \refalg{alg:ullmann1} obiskujemo vozlišča iz vzorčnega grafa po vrsti, glede na sam zapis grafa z matriko. Drugačen vrsti red obiskovanja lahko
-	pohitri algoritem, če čim hitreje ustavi preiskovanje poddreves, ki nimajo rešitve. Nekaj možnih hevristik:
+	pospeši algoritem, če čim hitreje ustavi preiskovanje poddreves, ki nimajo rešitve. Nekaj možnih hevristik:
 	\begin{itemize}
 	\item Najprej vozlišča z večjo stopnjo -- taka vozlišča imajo običajno manj kandidatov za preslikavo.
-	\item Preiskovanje v širino, znotraj iste globine pa po stopnji
+	\item Preiskovanje v širino, znotraj iste globine pa po stopnji.
 	\item Najboljši najprej -- začnemo z vozliščem z največjo stopnjo, v vsakem naslednjem koraku pa med sosedi že obiskanih vozlišč izberemo vozlišče z
 	največjo stopnjo.
 	\end{itemize}
 	
-	Omejevanje prostora iskanja s funkcijo $refine$ izkorišča dejstvo, da mora za vsakega soseda vozlišča $i$ obstajati združljiv sosed vozlišča $j$.
+	Omejevanje prostora iskanja s funkcijo \textit{refine} izkorišča dejstvo, da mora za vsakega soseda vozlišča $i$ obstajati združljiv sosed vozlišča $j$.
 	Podobno pa velja, če še $i$ preslika v $j$, potem sosedje vozlišča $i$ ne morejo biti združljivi z vozlišči, ki niso sosedje vozlišča $j$:
 	\begin{equation}
 	\label{eq:ullmann_imp1}
 	\forall x \in N_p(i) \;\; \forall y \not \in N_t(j) : m_{x,y} = 0
 	\end{equation}
-	Pri iskanju induciranega podgrafnega izomorfizma pa tudi v nasprotno smer:
+	Pri iskanju induciranega podgrafnega izomorfizma pa velja tudi v nasprotno smer:
 	\begin{equation}
 	\label{eq:ullmann_imp2}
 	\forall y \in N_t(j) \;\; \forall x \not \in N_p(i) : m_{x,y} = 0
