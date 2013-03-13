@@ -795,7 +795,7 @@ tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov
 	
 	Psevdokoda okvirnega poteka algoritma je podana v~\refalg{alg:vf2}. Algoritem je rekurziven in preiskuje z globino. Ob prvem klicu je $M(s_0)$ prazna.
 	V vrstici 2 preverimo,
-	če $M(s)$ že pokriva celoten vzorčni graf. Ker $M(s)$ po konstrukciji predstavlja izomorfizem, smo v tem primeru že našli pografni izomorfizem med
+	če $M(s)$ že pokriva celoten vzorčni graf. Ker $M(s)$ po konstrukciji predstavlja izomorfizem, smo v tem primeru že našli podgrafni izomorfizem med
 	$G_p$ in $G_t$, zato $M$ izpišemo. V vrstici 5 izračunamo vse možne kandidate za razširitev $M(s)$, kjer kandidate izbiramo med sosedi trenutnih
 	podgrafov. Podrobnejši opis je v razdelku~\ref{vf2:candidate}. V vrsticah 6--9 za vsak par preverimo, če je združljiv. Pri tem uporabljamo pravila, ki so
 	opisana v razdelku~\ref{vf2:feasible}. Če je par ustrezen, z njim razširimo $M(s)$ (s čimer dobimo $s'$) in rekurzivno kličemo algoritem nad novim
@@ -830,29 +830,30 @@ tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov
 	\label{vf2:candidate}
 	
 	Množico kandidatov $P(s)$ izbiramo med neposrednimi sosedi podgrafov $G_p(s)$ in $G_t(s)$. Naj bosta $T_p^+(s)$ in $T_t^+(s)$ množici vozlišč iz
-	$G_p$ in $G_t$ , ki še niso v preslikavi $M(s)$ in so izhodni sosedi katerega izmed vozlišč v $M(s)$. Podobno naj bosta $T_p^-(s)$ in $T_t^-(s)$ množici
-	vozlišč, ki še niso v preslikavi $M(s)$ ter imajo izhodne sosede v $M(s)$. V množico $P(s)$ sestavljajo pari $(n,m)$, kjer velja $n \in T_p^+(s) \wedge
+	$G_p$ in $G_t$, ki še niso v preslikavi $M(s)$ in so izhodni sosedi katerega izmed vozlišč v $M(s)$. Podobno naj bosta $T_p^-(s)$ in $T_t^-(s)$ množici
+	vozlišč, ki še niso v preslikavi $M(s)$ ter imajo izhodne sosede v $M(s)$. Množico $P(s)$ sestavljajo pari $(n,m)$, kjer velja $n \in T_p^+(s) \wedge
 	m \in T_t^+(s)$. Če takega para ni, se upoštevata množici $T_p^-$ in $T_t^-$. Če tudi takega para ni, upoštevamo vsa vozlišča, ki še niso v preslikavi
 	$M(s)$. Slednji primer se zgodi, če je graf sestavljen iz več nepovezanih delov in čisto na začetku, ko je $M(s)$ prazna. $P(s)$ torej postane ena od
 	naslednjih množic:
-	\begin{enumerate}
-	\item $T^+(s) = \{min\; N^+(M_p(s))\} \times N^+(M_t(s))$
-	\item $T^-(s) = \{min\; N^-(M_p(s))\} \times N^-(M_t(s))$\;\;\; če je $T^+(s)$ prazna
-	\item $P^d(s) = \{min\; (V_p \setminus (M_p(s) \cup T_p(s))) \}  \times (V_t \setminus (M_t(s) \cup T_t(s)) )$\;\;\; če je $T^-(s)$ prazna
-	\end{enumerate}
+	\begin{itemize}
+	\item $T^+(s) = \{min\; N^+(M_p(s))\} \times N^+(M_t(s))$;
+	\item $T^-(s) = \{min\; N^-(M_p(s))\} \times N^-(M_t(s))$, \, če je $T^+(s) = \emptyset$;
+	\item $P^d(s) = \{min\; (V_p \setminus (M_p(s) \cup T_p(s))) \}  \times (V_t \setminus (M_t(s) \cup T_t(s)) )$, \, če je $T^-(s) = \emptyset$.
+	\end{itemize}
 	
 	Primer opisanih množic je na sliki~\ref{pic_t_in_out}. Če bo algoritem iz trenutnega stanja prišel do konca (torej bo našel podgrafni izomorfizem), mora
-	obstajati preslikava za vsak element iz vzorčnega grafa. Zato je dovolj, da v parih, ki jih vstavimo v množico $P(s)$ nastopa samo eno vozlišče iz
-	vzorčnega grafa. Če algoritem ne bo našel podgrafnega izomorfizma z uporabo tega vozlišča, ga ne bo tudi z nobenim drugim. Zato iz vzorčnega grafa 
-	vzamemo vedno samo najmanjši element, kar predstavlja oznaka $min$ v enačbah. Na tak način se tudi izognemo generiranju enakih stanj. Podobno 
-	razmišljanje nas privede do zaključka, da lahko prekinemo trenutno pot preiskovanja, če je $T_t^+$ prazna, $T_p^+$ pa ne (in isto za $T_t^-$,
-	$T_p^-$). 	Omenimo še, da v sami implementaciji algoritma ni potrebe po eksplicitnem generiranju $P(s)$.
+	obstajati preslikava za vsak element iz vzorčnega grafa. Zato je dovolj, da v parih, ki jih vstavimo v množico $P(s)$, nastopa samo eno vozlišče iz
+	vzorčnega grafa. Če algoritem ne bo našel podgrafnega izomorfizma z uporabo tega vozlišča, ga ne bo niti z nobenim drugim. Zato iz vzorčnega grafa 
+	vzamemo vedno samo najmanjši element, kar v enačbah predstavlja oznaka $min$. Na tak način se tudi izognemo generiranju enakih stanj. Podobno 
+	razmišljanje nas privede do zaključka, da lahko prekinemo trenutno pot preiskovanja, če je velikost množice $T_t^+$ manjša od velikosti $T_p^+$
+	(in isto za $T_t^-$, $T_p^-$). Omenimo še, da v sami implementaciji algoritma ni potrebe po eksplicitnem generiranju $P(s)$, naslednji par izračunamo
+	na podlagi prejšnjega.
 	
 	\begin{figure}
 	\begin{center}
 	\includegraphics[width=8cm]{img/graph_t_in_out.png}
 	\end{center}
-	\caption{}
+	\caption{Primer razporeditve vozlišč po množicah med izvajanjem algoritma VF2.}
 	\label{pic_t_in_out}
 	\end{figure}
 
