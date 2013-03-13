@@ -392,10 +392,10 @@ tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov
 
 	\section{Podgrafni izomorfizem}
 	Graf $G' = \langle V', E' \rangle$ je podgraf danega grafa $G = \langle V, E \rangle$, če velja $V' \subseteq V \wedge E' \subseteq E$. 
-	Graf $G' = \langle V', E' \rangle$ je induciran podgraf danega grafa $G = \langle V, E \rangle$, če vsebuje vse povezave, katerih vozlišča so
-	v $V'$, oz. če velja $E' = E \cap (V' \times V')$.
+	Graf $G' = \langle V', E' \rangle$ je induciran podgraf danega grafa $G = \langle V, E \rangle$, če je podgraf grafa $G$ in vsebuje vse povezave iz $G$, 
+	pri katerih sta robni vozlišči v $V'$, oz. če velja $E' = E \cap (V' \times V')$.
 
-	Grafa $G_p = \langle V_p, E_p \rangle $ in $G_t = \langle V_t, E_t \rangle$ sta izomorfna, če obstaja bijektivna preslikava $f: V_p \to V_t$ da velja: 
+	Grafa $G_p = \langle V_p, E_p \rangle $ in $G_t = \langle V_t, E_t \rangle$ sta izomorfna, če obstaja bijektivna preslikava $f: V_p \to V_t$, da velja: 
 	$(a,b) \in E_p \Leftrightarrow (f(a), f(b)) \in E_t;$
 	oznaka $p$ pomeni vzorčni (angl.~pattern) graf, oznaka $t$ pa ciljni (angl.~target) graf. V primeru grafa z oznakami, mora preslikovalna funkcija
 	ohranjati oznake. Primer izomorfizma grafov je podan na sliki~\ref{pic_iso}.
@@ -417,8 +417,15 @@ tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov
 	izomorfizem, ker v vzorčnem grafu ni povezave $(B, C)$, medtem ko preslikavi teh vozlišč $(2, 3)$ tvorita povezavo v $c)$. Induciran 
 	podgrafni izomorfizem lahko obstaja samo, če se ohranijo tudi ne-povezave.
 	
-	Pri reševanju problema izomorfnega podgrafa lahko ugotavljamo obstoj oz.~število podgrafnih izomorfizmov ali pa iščemo enega oz.~vse
-	podgrafne izomorfizme (preslikave $f$). Najtežje je generiranje vseh preslikav - to različico rešujejo opisani algoritmi. Dodatno lahko rešujemo
+	\section{Problem izomorfnega podgrafa}
+	Obstajajo štiri različice problema izomorfnega podgrafa.
+	\begin{itemize}
+		\item{Odločitveni problem: ugotovi obstoj izomorfnega podgrafa.}
+		\item{Preštevalni problem: ugotovi število izomorfnih podgrafov.}
+		\item{Iskalni problem: poišči en izomorfen podgraf (preslikavo $f$).}
+		\item{Naštevalni problem: poišči vse izomorfne podgrafe (preslikave $f$).}
+	\end{itemize}
+	Najtežje je iskanje vseh možnih preslikav -- to različico rešujejo opisani algoritmi. Dodatno lahko rešujemo
 	problem še na usmerjenih ali neusmerjenih ter označenih ali neoznačenih grafih.
 
 
@@ -434,14 +441,12 @@ tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov
 
 
 	\section{Druge definicije}
-	%rabim gamma definicije?
-
 	Na tem mestu so zbrane pomožne definicije, ki jih uporabljamo pri opisih algoritmov za iskanje izomorfnih podgrafov.
 
 	V neusmerjenem grafu je število povezav, ki vsebujejo vozlišče $v$, stopnja (angl.~degree) vozlišča $v$. Označimo jo z $d(v)$. Množica vozlišč
 	$N(v) = \{u \in V \big| \{v, u\} \in E\}$ je množica sosedov vozlišča $v$. 
 	Množica sosednjih vozlišč podgrafa $S = (V_S, E_S)$ je definirana kot 
-	$N(S) = \{ n \in (V \setminus V_S) \big| \exists m \in V_S : \{n,m\} \in E \}$. 
+	$N(S) = \{ n \in V \setminus V_S \big| \exists m \in V_S : \{n,m\} \in E \}$. 
 
 	V usmerjenem grafu je število povezav, ki imajo vozlišče $v$ za začetek
 	povezave, 	izhodna stopnja (angl.~out-degree) vozlišča. Označimo jo z $d^+(v)$.
@@ -453,23 +458,23 @@ tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov
 	$N^-(v) = \{u \in V \big| (u,v) \in E\}$
 	so začetna vozlišča povezav, ki imajo za konec povezave vozlišče $v$. 
 	Množica izhodnih sosedov (angl.~out-neighbors) podgrafa $S = (V_S, E_S)$ je definirana kot 
-	$N^+(S) = \{ n \in (V \setminus V_S) \big| \exists m \in V_S : (m,n) \in E \}$.
+	$N^+(S) = \{ n \in V \setminus V_S \big| \exists m \in V_S : (m,n) \in E \}$.
 	Množica vhodnih sosedov (angl.~in-neighbors) podgrafa $S = (V_S, E_S)$ je definirana kot 
-	$N^-(S) = \{ n \in (V \setminus V_S) \big| \exists m \in V_S : (n,m) \in E \}$.
+	$N^-(S) = \{ n \in V \setminus V_S \big| \exists m \in V_S : (n,m) \in E \}$.
 
 	Rez grafa $G$ je razdelitev vozlišč $V$ v dve disjunktni množici $(A, \bar A)$. Množico povezav, kjer je en konec povezave v $A$ in drugi v
-	 $\bar A$ označimo z $e(A, \bar A) = \{(u,v) \in E \big| u \in A, v \not \in A\}$. Minimalna bisekcija  grafa G je rez, ki minimizira velikost reza 
+	 $\bar A$, označimo z $e(A, \bar A) = \{(u,v) \in E \big| u \in A, v \not \in A\}$. Minimalna bisekcija  grafa G je rez, ki minimizira velikost reza 
 	$| e(A, \bar A) |$ po vseh množicah $A$ velikosti $\lceil | V | / 2 \rceil$.
 
 
 
 	\section{Zahtevnost problema}
-	Problem izomorfnega podgrafa spada v razred NP-polnih problemov~\cite{npcomplete}. Za dokaz NP-polnosti nanj prevedemo problem
-	iskanja polnega podgrafa (angl.~clique problem). Pri odločitveni verziji tega problema (ki je znano NP-poln) imamo podan graf $G$ in število $k$,
-	preverjamo pa obstoj polnega podgrafa s $k$ vozlišči (v polnem grafu obstaja povezava med vsakim parom vozlišč). Problem lahko rešimo z iskanjem
-	izomorfnega podgrafa tako, da zgeneriramo poln graf $H$ s $k$ vozlišči. Nato preverimo, če v $G$ obstaja podgraf, ki je izomorfen $H$. Ker
-	je problem iskanja polnega podgrafa NP-poln in smo ga s polinomsko pretvorbo prevedli na problem iskanja izomorfnega podgrafa, je tudi slednji
-	problem NP-poln.
+	Odločitveni problem izomorfnega podgrafa spada v razred NP-polnih problemov~\cite{npcomplete}. Za dokaz NP-polnosti nanj prevedemo odločitveni
+	problem iskanja polnega podgrafa oz. klike (angl.~clique problem). Pri slednjem, ki je znano NP-poln, imamo podan graf $G$ in
+	število $k$, preverjamo pa obstoj polnega podgrafa s $k$ vozlišči (v polnem grafu obstaja povezava med vsakim parom vozlišč). Ta problem lahko rešimo 
+	z iskanjem izomorfnega podgrafa tako, da najprej generiramo poln graf $H$ s $k$ vozlišči, nato pa preverimo, če v $G$ obstaja podgraf, ki je izomorfen
+	$H$. Ker je problem iskanja polnega podgrafa NP-poln in smo ga v polinomskem času prevedli na problem iskanja izomorfnega podgrafa, je tudi 
+	slednji problem NP-poln.
 
 
 
