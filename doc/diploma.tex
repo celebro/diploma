@@ -483,15 +483,15 @@ tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov
 
 \chapter{Ullmannov algoritem}
 	
-	Prvi algoritem za iskanje podgrafnih izomorfizmov je J. R. Ullmann predstavil leta 1976. Kljub starosti se algoritem še vedno množično uporablja
+	Prvi algoritem za iskanje podgrafnih izomorfizmov je leta 1976 predstavil J. R. Ullmann. Kljub starosti se algoritem še vedno množično uporablja
 	in je tudi najbolj znan. Celoten princip preiskovanja temelji na predstavitvi z matrikami. V osnovni verziji algoritem ne upošteva lokalne strukture
 	vzorčnega grafa, s čimer npr. druga dva opisana algoritma hitreje izločata neobetavne poti preiskovanja.
 	
 	\section{Predstavitev problema podgrafnega izomorfizma z matrikami}
-	V tem algoritmu predstavimo grafe in problem reševanja podgrafnih izomorfizmov z matrikami. Matriki $P = [p_{i,j}] : 1 \le i,j \le n_p $ in
-	$T = [t_{i,j}] = 1 \le i,j \le n_t$ sta matriki sosednosti grafov $G_p$ in $G_t$, kjer vrednost 1 v vrstici $i$ in stolpcu $j$ pomeni, 
-	da v grafu obstaja povezava
-	iz $i$ v $j$:
+	%V tem algoritmu predstavimo grafe in problem reševanja podgrafnih izomorfizmov z matrikami. Matriki $P = [p_{i,j}] : 1 \le i,j \le n_p $ in
+	V tem algoritmu predstavimo grafe in problem reševanja podgrafnih izomorfizmov z matrikami. Matriki $P = [p_{i,j}] : i, j \in [1, n_p]$ in
+	$T = [t_{i,j}] : i, j \in [1, n_t]$ sta matriki sosednosti grafov $G_p$ in $G_t$, kjer vrednost 1 v vrstici $i$ in stolpcu $j$ pomeni, 
+	da v grafu obstaja povezava iz $i$ v $j$, na primer:
 		\begin{equation}
 		 	p_{i,j} = \left\{
 			\begin{array}{l l}
@@ -499,7 +499,7 @@ tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov
 			    0 & \text{sicer.}
 			\end{array} \right.
 		\end{equation}
-	Matrika $M = [m_{i,j}]: 1 \le i \le n_p \wedge 1 \le j \le n_t$ predstavlja preslikavo $f: V_p \to V_t$. Vrednost 1 v v vrstici $i$ in stolpcu $j$ 
+	Matrika $M = [m_{i,j}]:  i \in [1, n_p] \wedge j \in [1, n_t]$ predstavlja preslikavo $f: V_p \to V_t$. Vrednost 1 v vrstici $i$ in stolpcu $j$ 
 	pomeni preslikavo vozlišča
 	$i \in V_p$ v $j \in V_t$:
 		\begin{equation}
@@ -509,26 +509,28 @@ tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov
 			    0 & \text{sicer.}
 			\end{array} \right.
 		\end{equation}
-	Matrika $M$ je injektivna, če je v vsaki vrstici natanko ena 1 in v vsakem stolpcu največ ena 1. Samo preslikavo lahko lahko zapišemo v matrični obliki:
+	Matrika $M$ je injektivna, če je v vsaki vrstici natanko ena 1 in v vsakem stolpcu največ ena 1. Samo preslikavo $f: V_p \to V_t$ lahko zapišemo v
+	matrični obliki:
 		\begin{equation}
 			%C = [c_{i,j}] = M(MT)^T
-			C = [c_{i,j}] = (M(MT)^T)^T
+			C = [c_{i,j}] = (M(MT)^T)^T,
 		\end{equation}
 		%\TODO{
 		%$$%\begin{equation}
 			%\text{mogoce tako, zaradi usmerjenih grafov? } C = [c_{i,j}] = (M(MT)^T)^T
 		%$$%\end{equation}
 		%}
-	$M$ predstavlja podgrafni izomorfizem iz $G_p$ v $G_t$, če je dobljena matrika C enaka matriki sosednosti P:
+	kjer eksponent $T$ pomeni operacijo transponiranja matrike. $M$ predstavlja podgrafni izomorfizem iz $G_p$ v $G_t$, če je dobljena matrika $C$
+	enaka matriki sosednosti $P$:
 		\begin{equation}
 			\label{eq:ullmann1}
 			c_{i,j} = p_{i,j}\;\; \forall i,j \in [1, n_p]
 		\end{equation}	 
-	Podana enačba velja za inducirani izomorfizem, pri enostavnem izomorfizmu je pogoj $p_{i,j} \Rightarrow c_{i, j}$.
+	Podana enačba velja za inducirani izomorfizem, pri enostavnem izomorfizmu je pogoj v enačbi~\ref{eq:ullmann1} $p_{i,j} = 1 \Rightarrow c_{i, j} = 1$.
 	
-	Ullmannov algoritem v osnovi generira različne matrike $M$ in jih preverja s pogojem~(\ref{eq:ullmann1}). Vseh možnih matrik $M$ je
-	$\frac{n_t!}{(n_t-n_p)!}$ (ob upoštevanju pogoja za injektivnost: točno ena 1 v vrstici in največ ena 1 v stolpcu), kar je preveč za izčrpno preiskovanje.
-	Algoritem zato začne z pred-procesirano matriko $M^0$~(razdelek~\ref{eq:ullmann2}), na vsakem koraku pa jo še dodatno omeji
+	Ullmannov algoritem v bistvu generira različne matrike $M$ in jih preverja s pogojem~(\ref{eq:ullmann1}). Vseh možnih matrik $M$ je
+	$\frac{n_t!}{(n_t-n_p)!}$ (ob upoštevanju pogoja za injektivnost: natanko ena 1 v vrstici in največ ena 1 v stolpcu), kar je preveč za izčrpno preiskovanje.
+	Algoritem zato začne s pred-procesirano matriko $M^0$~(razdelek~\ref{eq:ullmann2}), na vsakem koraku pa jo še dodatno omeji
 	~(razdelek~\ref{eq:ullmann3}).
 	
 	
