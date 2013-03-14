@@ -341,6 +341,21 @@
 	\clearemptydoublepage
 
 
+%oznake strani
+\fancyhf{}
+\pagestyle{fancy}
+%\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\thechapter.\ #1}}{}}
+%\renewcommand{\sectionmark}[1]{\markright{\MakeUppercase{\thesection.\ #1}}}
+\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{Poglavje \thechapter:\ \ #1}}{}}
+\renewcommand{\sectionmark}[1]{\markright{\MakeUppercase{\thesection\ \ #1}}}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt} 
+
+\fancyhead[LE,RO]{\sl \thepage}
+\fancyhead[LO]{\sl \rightmark}
+\fancyhead[RE]{\sl \leftmark}
+%\pagestyle{plain}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1425,6 +1440,7 @@ tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov
 	
 \clearemptydoublepage
 \renewcommand{\baselinestretch}{1.0} % ustrezen razmik med vrsticami
+\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{Dodatek \thechapter:\ \ #1}}{}}
 \appendix
 	\chapter {Implementacija izboljšave algoritma VF2}
 	\label{appendix1}
