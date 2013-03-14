@@ -19,7 +19,8 @@
 \usepackage{fancyhdr}          % poskrbi, na primer, za glave strani
 \usepackage{amssymb}           % dodatni simboli
 \usepackage{amsmath}           % eqref, npr.
-
+\usepackage[absolute]{textpos}
+	
 \usepackage{color}		% barve
 
 \usepackage{hyphenat}
@@ -201,10 +202,25 @@
 
 	%---------------------------------------------
 	% stran 3 med uvodnimi listi
-	\noindent
-	\TODO{Namesto te strani {\bf vstavite} original izdane teme diplomskega 
-	dela s podpisom mentorja in dekana ter žigom fakultete, ki ga diplomant
-	dvigne v študent\-skem referatu,  preden odda izdelek v vezavo!}
+	%\noindent
+	%\TODO{Namesto te strani {\bf vstavite} original izdane teme diplomskega 
+	%dela s podpisom mentorja in dekana ter žigom fakultete, ki ga diplomant
+	%dvigne v študent\-skem referatu,  preden odda izdelek v vezavo!}
+	
+
+
+\newpage
+\thispagestyle{empty}
+\begin{textblock*}{\paperwidth}(0mm,0mm)
+   \noindent\includegraphics[width=\paperwidth,height=\paperheight]{img/title1.jpg}
+\end{textblock*}
+\mbox{}\newpage
+
+%	\begin{figure}
+%	\begin{center}
+%	\includegraphics[width=21cm]{img/title.jpg}
+%	\end{center}
+%	\end{figure}
 	
 	% prazna stran
 	\clearemptydoublepage
@@ -630,8 +646,8 @@ tudi v polinomskem času, na splošnih grafih pa je iskanje izomorfnih podgrafov
 \end{algorithmic}
 \end{algorithm}
 
-	Velik del algoritma se ukvarja s sestopanjem in obnavljanjem stanja pri sestopanju, zato v \refalg{alg:ullmann3} podajamo še rekurzivno 
-	različico algoritma. V tej različici za sestopanje in obnavljanje stanja skrbi sam mehanizem rekurzija in je potek algoritma bolj očiten. V vrsticah 1 in 2 
+	Velik del algoritma se ukvarja s sestopanjem in obnavljanjem stanja pri sestopanju, zato podajamo še rekurzivno različico algoritma 
+	\refalg{alg:ullmann3}. V tej različici za sestopanje in obnavljanje stanja skrbi sam mehanizem rekurzija in je potek algoritma bolj očiten. V vrsticah 1 in 2 
 	je inicializacija, le da sedaj potrebujemo manj spremenljivk. V vrstici 3 začnemo preiskovanje na globini 1. V vrstici 6 shranimo trenutno matriko $M$,
 	ki jo bomo obnavljali ob sestopanju (ponovno zaenkrat ignoriramo del v oglatih oklepajih). V vrstici 7 je zanka, ki preveri vse stolpce. Ko pridemo do
 	ustreznega (vrstica 8), vse ostale stolpce postavimo na 0 (vrstica 9) in označimo stolpec kot izbran (vrstica 10). Če smo v zadnji vrstici matrike $M$,
