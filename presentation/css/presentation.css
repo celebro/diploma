@@ -1,3 +1,20 @@
+.step {
+    width: 1200px;
+}
+
+svg {
+    position: relative;
+    width: 1500px;
+    height: 1000px;
+    left: -190px;
+}
+
+.nodeLabel {
+    pointer-events: none;
+    -webkit-transform: translate(-4px, 3px);
+    font-size: 15px;
+}
+
 h1 {
     font-size: 2.0em;
     text-transform: lowercase;
