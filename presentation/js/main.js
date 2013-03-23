@@ -3,31 +3,24 @@ data.nodeOriginX = 400;
 data.nodeOriginY = 400;
 
 function addNode(svg, node) {
-    svg.circle(data.nodeOriginX, data.nodeOriginY, 15,
+    svg.circle(data.nodeOriginX, data.nodeOriginY, 10,
         {fill: 'red', stroke:'black', strokeWidth: 1, class_: "node-" + node}); 
 }
 
 function addEdge(svg, node1, node2) {
     svg.line(data.nodeOriginX, data.nodeOriginY, data.nodeOriginX, data.nodeOriginY,
-        {stroke: "black", strokeWidth: 2, class_: "edge-" + node1 + "-" + node2 + " node1-" + node1 + " node2-" + node2});
+        {stroke: "black", strokeWidth: 1, class_: "edge-" + node1 + "-" + node2 + " node1-" + node1 + " node2-" + node2});
 }
 
 function moveNode(location, node, x, y) {
     var nodes = $(location).find(".node-" + node);
-    nodes.animate({svgCx: data.nodeOriginX + x, svgCy: data.nodeOriginY + y}, 2000);
+    nodes.animate({svgCx: data.nodeOriginX + x, svgCy: data.nodeOriginY + y},  { duration: 2000, queue: false });
     
     var lines1 = $(location).find(".node1-" + node);
     lines1.animate({svgX1: data.nodeOriginX + x, svgY1: data.nodeOriginY + y}, { duration: 2000, queue: false });
 
     var lines2 = $(location).find(".node2-" + node);
     lines2.animate({svgX2: data.nodeOriginX + x, svgY2: data.nodeOriginY + y}, { duration: 2000, queue: false });
-
-
-    //var nodes = location.find(".node-" + node);
-    //$(nodes).each(function() {
-        //var svg = $(this).svg("get");
-    //});
-    //nodes.animate({svgCx: data.nodeOriginX + x, svgCy: data.nodeOriginY + y}, 2000);
 }
 
 $(document).ready(function () {
@@ -104,7 +97,6 @@ $(document).ready(function () {
 
         calls[0] = function() {
             console.log("processing step 0");
-            var svg = loc.svg("get");
 
             moveNode(loc, "a", -100, -50);
             moveNode(loc, "b", 100, -40);
@@ -112,8 +104,7 @@ $(document).ready(function () {
 
         calls[1] = function() {
             console.log("processing step 1");
-            var svg = loc.svg("get");
-
+            
             moveNode(loc, "a", 100, 50);
             moveNode(loc, "b", 0, 0);
         }
@@ -121,5 +112,16 @@ $(document).ready(function () {
         $(this).data("calls", calls);
         calls[0]();
     });
+
+    $("circle")
+        .draggable()
+        .bind("mousedown", function(event, ui) {
+            // bring target to front
+            //$(event.target.parentElement).append(event.target);
+        })
+        .bind("drag", function(event, ui) {
+            event.target.setAttribute("cx", ui.position.left);
+            event.target.setAttribute("cy", ui.position.top);
+        });
 
 });
