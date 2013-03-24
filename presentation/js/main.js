@@ -268,50 +268,25 @@ $(document).ready(function () {
     $("#variations").each(function() {
         var calls = [];
         
-        calls[0] = function() {
-            
-        };
-
-        calls[1] = function() {
-            
-        };
+        calls[0] = function() {};
+        calls[1] = function() {};
 
         $(this).data("calls", calls);
         calls[0]();
     });
 
-    $("#testgraph").each(function() {
+    $("#algorithms").each(function() {
         var calls = [];
-        var loc = $(this).find(".graphContainer");
-        var svg = loc.svg(function(svg) {
-            addArrowDefs(svg);
-
-            addEdge(svg, "a", "b");
-
-            addNode(svg, "a", true);
-            addNode(svg, "b");
-        });
         
-
-        calls[0] = function() {
-            //console.log("processing step 0");
-
-            moveNode(loc, "a", -100, -50);
-            moveNode(loc, "b", 100, -40);
-        };
-
-        calls[1] = function() {
-            //console.log("processing step 1");
-            
-            moveNode(loc, "a", 100, 50);
-            moveNode(loc, "b", 0, 0);
-        };
-
-
+        calls[0] = function() {};
+        calls[1] = function() {};
 
         $(this).data("calls", calls);
         calls[0]();
     });
+   
+
+
 
     $("circle")
         .draggable({

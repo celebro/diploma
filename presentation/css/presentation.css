@@ -1,6 +1,6 @@
 .step {
     width: 1000px;
-    padding-left: 130px;
+    padding-left: 160px;
 }
 
 .step ul li:before {
@@ -88,7 +88,7 @@ h1 {
 
     top: 50%;
     -webkit-transform-origin: 0% 50%;
-    -webkit-transform: translate(-83px, 100%) rotate(-90deg);
+    -webkit-transform: translate(-103px, 100%) rotate(-90deg);
 }
 
 h2 {
@@ -118,6 +118,7 @@ h2 {
 }
 
 
+
 #title h4 {
     font-size: 20px;
     text-align: center;
@@ -144,7 +145,7 @@ h2 {
 
 #def .text1 {
     position: absolute;
-    top: -270px;
+    top: -240px;
 }
 
 #def .text2 {
@@ -152,17 +153,25 @@ h2 {
     top: 266px;
 }
 
+
+
 #variations.part1 .mark1 {
     font-weight: bold;
     -webkit-transition: font-weight 1s;
 }
 
-#testgraph .step1 .node1 {
-    -webkit-transform: translate(50px, 50px);
-    -webkit-transition: -webkit-transform 3s;
+
+
+#usage .centering {
+    padding-left: 80px;
 }
 
-#testgraph .step2 .node1 {
-    -webkit-transform: translate(0px, 50px);
-    -webkit-transition: -webkit-transform 3s;
+
+
+#algorithms .centering {
+    padding-left: 100px;
+}
+
+#algorithms.part1 .mark1 {
+    font-weight: bold;
 }
