@@ -1,6 +1,53 @@
 .step {
-    width: 1200px;
+    width: 1000px;
+    padding-left: 130px;
 }
+
+.step ul li:before {
+    content: "★";
+    text-shadow: 0 0 5px rgba(50,50,50,0.7);
+    color: transparent;
+    margin-right: 0.5em;
+}
+
+.step ul li.multiLine:before {
+    content: none;
+}
+
+.step ul li.multiLine {
+    padding-left: 1.5em;
+}
+
+.step ul li.extraPadding {
+    padding-left: 4em;
+}
+
+.step ul {
+    font-size: 28px;
+}
+
+sub {
+    font-size: 0.6em;
+}
+
+.stepWrapper {
+    padding: 40px;
+    padding-left: 250px;
+}
+
+.notes {
+    display: none;
+}
+
+
+
+.graphContainer {
+    position: absolute;
+    top: 50%;
+    -webkit-transform-origin: 0% 50%;
+    -webkit-transform: translate(0%, -50%);
+}
+
 
 svg {
     position: relative;
@@ -11,8 +58,23 @@ svg {
 
 .nodeLabel {
     pointer-events: none;
-    -webkit-transform: translate(-4px, 3px);
+    /*-webkit-transform: translate(-4px, 3px);*/
+    text-anchor: middle;
+    dominant-baseline: middle;
     font-size: 15px;
+}
+
+.edge {
+    marker-end: url("#Arrow");
+}
+
+.pattern {
+    fill: red;
+}
+
+.target {
+    fill: blue;
+    stroke: #888;
 }
 
 h1 {
@@ -21,24 +83,79 @@ h1 {
     color: transparent;
     text-shadow: 2px 2px 10px rgba(50,50,50,.8);
     position: absolute;
-    -webkit-transform-origin: 100% 100%;
-    -webkit-transform: translate(-100%, -100%) rotate(-90deg); 
+    /*-webkit-transform-origin: 100% 100%;
+    -webkit-transform: translate(-106%, -70%) rotate(-90deg);*/
+
+    top: 50%;
+    -webkit-transform-origin: 0% 50%;
+    -webkit-transform: translate(-83px, 100%) rotate(-90deg);
 }
 
 h2 {
-    font-size: 55px;
+    font-size: 50px;
     line-height: 72px;
     margin-top: 100px;
     text-align: center;
 }
 
-#title h3 {
-    padding-top: 120px;
-    line-height: 52px;
-    text-align: right;
-    font-size: 35px;
+.hide {
+    opacity: 0;
+    -webkit-transition: opacity 1s;
 }
 
+.show {
+    opacity: 1;
+    -webkit-transition: opacity 1s;
+}
+
+.step.presentOnly {
+    opacity: 0;
+}
+
+.step.presentOnly.present {
+    opacity: 1
+    -webkit-transition: opacity 1s;
+}
+
+
+#title h4 {
+    font-size: 20px;
+    text-align: center;
+}
+
+#title h3 {
+    line-height: 52px;
+    font-size: 30px;
+}
+
+#title h3:nth-child(3) {
+    padding-top: 0px;
+    /*padding-right: 100px;*/
+    text-align: center;
+}
+
+#title h3:nth-child(4) {
+    padding-top: 100px;
+    /*padding-right: 100px;*/
+    text-align: center;
+}
+
+
+
+#def .text1 {
+    position: absolute;
+    top: -270px;
+}
+
+#def .text2 {
+    position: absolute;
+    top: 266px;
+}
+
+#variations.part1 .mark1 {
+    font-weight: bold;
+    -webkit-transition: font-weight 1s;
+}
 
 #testgraph .step1 .node1 {
     -webkit-transform: translate(50px, 50px);

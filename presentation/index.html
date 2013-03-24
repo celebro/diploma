@@ -155,35 +155,69 @@
 
     -->
     <div id="title" class="step" data-x="-2500" data-y="-1500">
+        <h4>Univerza v Ljubljani</br>Fakulteta za računalništvo in informatiko</h4>
         <h2>Problem izomorfnega podgrafa</h2>
-        <h3>Avtor: Nejc Ramovš</br> Mentor: prof. dr. Borut Robič </h3>
+        <h3>Nejc Ramovš</h3>
+        <h3>Mentor: prof. dr. Borut Robič </h3>
+
+        <div class="notes">Pozdrav</div>
     </div>
 
 
+    <!--
+
+        Definitions screen
+
+    -->
     <div id="def" class="step" data-x="-1000" data-y="-1500">
-        <h1>Remember</h1>
-    
-        <h3>It is <b>not</b> a <b>3D engine</b></h3>
+           
+        <h1>definicija</h1>    
+        <ul class="text1">
+            <li><b>Vzorčni</b> graf G<sub>p</sub> = (V<sub>p</sub>, E<sub>p</sub>) in <b>ciljni</b> graf G<sub>t</sub> = (V<sub>t</sub>, E<sub>t</sub>)</li>
+            <li>Iščemo <b>preslikavo</b> &fnof;: V<sub>p</sub> &rarr; V<sub>t</sub>, da velja:</li>
+            <li class="multiLine extraPadding">(a, b) &isin; E<sub>p</sub> &rArr; (&fnof;(a), &fnof;(b)) &isin; E<sub>t</sub></li>
+        </ul>
+        <ul class="text2 hide">
+            <li>Pri <b>induciranem</b> podgrafnemm izomorfizmu</li>
+            <li class="multiLine extraPadding">(a, b) &isin; E<sub>p</sub> &hArr; (&fnof;(a), &fnof;(b)) &isin; E<sub>t</sub></li>
+        </ul>
+        <div class="graphContainer">
+        </div>
+    </div>
+
+    <!--
+
+        Usage screen
+
+    -->
+    <div id="variations" class="step presentOnly" data-x="-1000" data-y="-1500" data-z="2000" data-rotate-y="180">
+           
+        <h1>različice</h1>    
         <ul>
-            <li>there is <b>no single coordinate system</b></li>
-            <li>there is <b>no camera, light, etc.</b></li>
-            <li>complex scenes are <b>hard to maintain</b></li>
-            <li>there are <b>rendering order</b> issues</li>
-            <li><b>hardware accelerated</b> layers are not always good</li>
+            <li>Odločitveni problem: ugotovi obstoj izomorfnega podgrafa</li>
+            <li>Preštevalni problem: ugotovi število podgrafnih izomorfizmov</li>
+            <li>Iskalni problem: poišči en izomorfen podgraf</li>
+            <li class="mark1">Naštevalni problem: poišči vse izomorfne podgrafe</li>
         </ul>
     </div>
+
+
+
+
+
+
+
 
     <!--
 
         Testing svg graphs
         
     -->
+
+
+
     <div id="testgraph" class="step" data-x="0" data-y="-1500">
         <div class="graphContainer">
-            <!--<svg class="graphHolder" xmlns="http://www.w3.org/2000/svg" version="1.1">
-                <circle class="node1" cx="300" cy="300" r="15" stroke="black" stroke-width="2" fill="red" />
-                <line x1="0" y1="0" x2="200" y2="200" style="stroke:rgb(255,0,0);stroke-width:2"/>
-            </svg>-->
         </div>
     </div>
 
@@ -357,6 +391,7 @@
 -->
 
     <script src="js/impress.js"></script>
+    <script src="js/impressConsole.js"></script>
     <script src="js/jquery-1.9.1.min.js"></script>
     <script src="js/jquery-ui.js"></script>
     <script src="js/jquery.svg.min.js"></script>

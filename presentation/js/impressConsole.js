@@ -50,7 +50,7 @@
     };
     
     // The console object
-    var console = window.console = function (rootId) {
+    var consoleNotes = window.consoleNotes = function (rootId) {
 
         rootId = rootId || 'impress';
         
@@ -90,18 +90,18 @@
                 consoleWindow.document.getElementById('notes').innerHTML = newNotes;
 
                 // Set the views                
-                var baseURL = document.URL.substring(0, document.URL.search('#/'));
-                var slideSrc = baseURL + '#' + document.querySelector('.active').id;
-                var preSrc = baseURL + '#' + nextStep().id;
-                var slideView = consoleWindow.document.getElementById('slideView');
-                // Setting them when they are already set causes glithes in Firefox, so we check first:
-                if (slideView.src !== slideSrc) {
-                    slideView.src = slideSrc;
-                }
-                var preView = consoleWindow.document.getElementById('preView');
-                if (preView.src !== preSrc) {
-                    preView.src = preSrc;
-                }
+                // var baseURL = document.URL.substring(0, document.URL.search('#/'));
+                // var slideSrc = baseURL + '#' + document.querySelector('.active').id;
+                // var preSrc = baseURL + '#' + nextStep().id;
+                // var slideView = consoleWindow.document.getElementById('slideView');
+                // // Setting them when they are already set causes glithes in Firefox, so we check first:
+                // if (slideView.src !== slideSrc) {
+                //     slideView.src = slideSrc;
+                // }
+                // var preView = consoleWindow.document.getElementById('preView');
+                // if (preView.src !== preSrc) {
+                //     preView.src = preSrc;
+                // }
                 
                 consoleWindow.document.getElementById('status').innerHTML = '<span style="color: red">Moving</span>';
             }
@@ -227,7 +227,7 @@
                 // Add clock tick
                 consoleWindow.timerStart = new Date();
                 consoleWindow.timerReset = timerReset;
-                consoleWindow.clockInterval = setInterval('console("' + rootId + '").clockTick()', 1000 );
+                consoleWindow.clockInterval = setInterval('consoleNotes("' + rootId + '").clockTick()', 1000 );
                 
                 // keyboard navigation handlers
                 // 33: pg up, 37: left, 38: up
