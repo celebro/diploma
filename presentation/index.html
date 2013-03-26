@@ -154,7 +154,7 @@
         Title screen
 
     -->
-    <div id="title" class="step" data-x="-2500" data-y="-1500">
+    <div id="title" class="step" data-x="-1500" data-y="-1500">
         <h4>Univerza v Ljubljani</br>Fakulteta za računalništvo in informatiko</h4>
         <h2>Problem izomorfnega podgrafa</h2>
         <h3>Nejc Ramovš</h3>
@@ -169,7 +169,7 @@
         Definitions screen
 
     -->
-    <div id="def" class="step" data-x="-1000" data-y="-1500">
+    <div id="def" class="step" data-x="-0" data-y="-1500">
            
         <h1>definicija</h1>    
         <ul class="text1">
@@ -182,7 +182,7 @@
             <li>Pri <b>induciranem</b> podgrafnemm izomorfizmu</li>
             <li class="multiLine extraPadding">(a, b) &isin; E<sub>p</sub> &hArr; (&fnof;(a), &fnof;(b)) &isin; E<sub>t</sub></li>
         </ul>
-        <div class="graphContainer">
+        <div class="graphContainer directed">
         </div>
     </div>
 
@@ -191,7 +191,7 @@
         Problem variations
 
     -->
-    <div id="variations" class="step presentOnly" data-x="-1000" data-y="-1500" data-z="2000" data-rotate-y="180">
+    <div id="variations" class="step presentOnly" data-x="0" data-y="-1500" data-z="2000" data-rotate-y="180">
         <h1>različice</h1>    
         <ul>
             <li>Odločitveni problem: ugotovi obstoj izomorfnega</li>
@@ -208,7 +208,7 @@
         Problem usage
 
     -->
-    <div id="usage" class="step" data-x="500" data-y="-1500">
+    <div id="usage" class="step" data-x="1500" data-y="-1500">
         <div class="centering">
             <h1>uporaba</h1>
             <ul>
@@ -227,7 +227,7 @@
         Problem usage
 
     -->
-    <div id="algorithms" class="step" data-x="2000" data-y="-1500">
+    <div id="algorithms" class="step" data-x="3000" data-y="-1500">
         <div class="centering">
             <h1>algoritmi</h1>
             <ul>
@@ -237,6 +237,182 @@
                 <li>QuickSI, GADDI, GraphQL, SPath</li>
                 <li class="mark1">Subsea</li>
             </ul>
+        </div>
+    </div>
+
+    <!-- 
+        Ullmann algorithm
+     -->
+    <div id="ullmann1" class="step" data-x="-1500" data-y="-500">
+        <h1>Ullmann</h1>
+        <table class="table1">
+            <tr>
+                <td rowspan="5">P = </td>
+                <td></td>
+                <td class="dimmed">a</td>
+                <td class="dimmed">b</td>
+                <td class="dimmed">c</td>
+                <td class="dimmed">d</td>
+            </tr>
+            <tr>
+                <td class="dimmed">a</td>
+                <td class="border-left">0</td>
+                <td>0</td>
+                <td>1</td>
+                <td class="border-right">1</td>
+            </tr>
+            <tr>
+                <td class="dimmed">b</td>
+                <td class="border-left">0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="border-right">1</td>
+            </tr>
+            <tr>
+                <td class="dimmed">c</td>
+                <td class="border-left">1</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="border-right">1</td>
+            </tr>
+            <tr>
+                <td class="dimmed">d</td>
+                <td class="border-left">1</td>
+                <td>1</td>
+                <td>1</td>
+                <td class="border-right">0</td>
+            </tr>
+        </table>
+
+        <table class="table2">
+            <tr>
+                <td rowspan="7">T = </td>
+                <td></td>
+                <td class="dimmed">1</td>
+                <td class="dimmed">2</td>
+                <td class="dimmed">3</td>
+                <td class="dimmed">4</td>
+                <td class="dimmed">5</td>
+                <td class="dimmed">6</td>
+            </tr>
+            <tr>
+                <td class="dimmed">1</td>
+                <td class="border-left">0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>1</td>
+                <td>1</td>
+                <td class="border-right">0</td>
+            </tr>
+            <tr>
+                <td class="dimmed">2</td>
+                <td class="border-left">0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="border-right">1</td>
+            </tr>
+            <tr>
+                <td class="dimmed">3</td>
+                <td class="border-left">0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>1</td>
+                <td class="border-right">1</td>
+            </tr>
+            <tr>
+                <td class="dimmed">4</td>
+                <td class="border-left">1</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>1</td>
+                <td class="border-right">0</td>
+            </tr>
+            <tr>
+                <td class="dimmed">5</td>
+                <td class="border-left">1</td>
+                <td>0</td>
+                <td>1</td>
+                <td>1</td>
+                <td>0</td>
+                <td class="border-right">0</td>
+            </tr>
+            <tr>
+                <td class="dimmed">6</td>
+                <td class="border-left">0</td>
+                <td>1</td>
+                <td>0</td>
+                <td>1</td>
+                <td>0</td>
+                <td class="border-right">0</td>
+            </tr>
+        </table>
+
+        <ul class="text1">
+            <li>Preslikavo &fnof;: V<sub>p</sub> &rarr; V<sub>t</sub> predstavlja matrika M </li>
+            <li>Iščemo tako M, da velja: (M(MT)<sup>T</sup>)<sup>T</sup>) = P </li>
+            <li>M ima v vrstici točno eno 1</li>
+            <li>in v stolpcu največ eno 1</li>
+        </ul>
+
+        <table class="table3 hide">
+            <tr>
+                <td rowspan="5">M = </td>
+                <td></td>
+                <td class="dimmed">1</td>
+                <td class="dimmed">2</td>
+                <td class="dimmed">3</td>
+                <td class="dimmed">4</td>
+                <td class="dimmed">5</td>
+                <td class="dimmed">6</td>
+            </tr>
+            <tr>
+                <td class="dimmed">a</td>
+                <td class="border-left">1</td>
+                <td>0</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td class="border-right">1</td>
+            </tr>
+            <tr>
+                <td class="dimmed">b</td>
+                <td class="border-left">1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td class="border-right">1</td>
+            </tr>
+            <tr>
+                <td class="dimmed">c</td>
+                <td class="border-left">1</td>
+                <td>0</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td class="border-right">1</td>
+            </tr>
+            <tr>
+                <td class="dimmed">d</td>
+                <td class="border-left">0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>1</td>
+                <td class="border-right">0</td>
+            </tr>
+        </table>
+
+        <ul class="text2 hide">
+            Omejevanje prostora iskanja z <b>refine</b>
+            <li>x &isin; N<sub>p</sub>(i) &rArr; &exist; y &isin; N<sub>t</sub>(j) : m<sub>x,y</sub> = 1</li>
+        </ul>
+
+        <div class="graphContainer">
         </div>
     </div>
 
@@ -258,106 +434,7 @@
 
 
 
-    <!--
-        
-        This is an example of step element being scaled.
-        
-        Again, we use a `data-` attribute, this time it's `data-scale="4"`, so it means that this
-        element will be 4 times larger than the others.
-        From presentation and transitions point of view it means, that it will have to be scaled
-        down (4 times) to make it back to it's correct size.
-        
-    -->
-    <div id="title1" class="step" data-x="0" data-y="0" data-scale="4">
-        <span class="try">then you should try</span>
-        <h1>impress.js<sup>*</sup></h1>
-        <span class="footnote"><sup>*</sup> no rhyme intended</span>
-    </div>
 
-    <!--
-        
-        This element introduces rotation.
-        
-        Notation shouldn't be a surprise. We use `data-rotate="90"` attribute, meaning that this
-        element should be rotated by 90 degrees clockwise.
-        
-    -->
-    <div id="its" class="step" data-x="850" data-y="3000" data-rotate="90" data-scale="5">
-        <p>It's a <strong>presentation tool</strong> <br/>
-        inspired by the idea behind <a href="http://prezi.com">prezi.com</a> <br/>
-        and based on the <strong>power of CSS3 transforms and transitions</strong> in modern browsers.</p>
-    </div>
-
-    <div id="big" class="step" data-x="3500" data-y="2100" data-rotate="180" data-scale="6">
-        <p>visualize your <b>big</b> <span class="thoughts">thoughts</span></p>
-    </div>
-
-    <!--
-        
-        And now it gets really exciting! We move into third dimension!
-        
-        Along with `data-x` and `data-y`, you can define the position on third (Z) axis, with
-        `data-z`. In the example below we use `data-z="-3000"` meaning that element should be
-        positioned far away from us (by 3000px).
-        
-    -->
-    <div id="tiny" class="step" data-x="2825" data-y="2325" data-z="-3000" data-rotate="300" data-scale="1">
-        <p>and <b>tiny</b> ideas</p>
-    </div>
-
-    <!--
-        
-        This step here doesn't introduce anything new when it comes to data attributes, but you
-        should notice in the demo that some words of this text are being animated.
-        It's a very basic CSS transition that is applied to the elements when this step element is
-        reached.
-        
-        At the very beginning of the presentation all step elements are given the class of `future`.
-        It means that they haven't been visited yet.
-        
-        When the presentation moves to given step `future` is changed to `present` class name.
-        That's how animation on this step works - text moves when the step has `present` class.
-        
-        Finally when the step is left the `present` class is removed from the element and `past`
-        class is added.
-        
-        So basically every step element has one of three classes: `future`, `present` and `past`.
-        Only one current step has the `present` class.
-        
-    -->
-    <div id="ing" class="step" data-x="3500" data-y="-850" data-rotate="270" data-scale="6">
-        <p>by <b class="positioning">positioning</b>, <b class="rotating">rotating</b> and <b class="scaling">scaling</b> them on an infinite canvas</p>
-    </div>
-
-    <div id="imagination" class="step" data-x="6700" data-y="-300" data-scale="6">
-        <p>the only <b>limit</b> is your <b class="imagination">imagination</b></p>
-    </div>
-
-    <div id="source" class="step" data-x="6300" data-y="2000" data-rotate="20" data-scale="4">
-        <p>want to know more?</p>
-        <q><a href="http://github.com/bartaz/impress.js">use the source</a>, Luke!</q>
-    </div>
-
-    <div id="one-more-thing" class="step" data-x="6000" data-y="4000" data-scale="2">
-        <p>one more thing...</p>
-    </div>
-
-    <!--
-        
-        And the last one shows full power and flexibility of impress.js.
-        
-        You can not only position element in 3D, but also rotate it around any axis.
-        So this one here will get rotated by -40 degrees (40 degrees anticlockwise) around X axis and
-        10 degrees (clockwise) around Y axis.
-        
-        You can of course rotate it around Z axis with `data-rotate-z` - it has exactly the same effect
-        as `data-rotate` (these two are basically aliases).
-        
-    -->
-    <div id="its-in-3d" class="step" data-x="6200" data-y="4300" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
-        <p><span class="have">have</span> <span class="you">you</span> <span class="noticed">noticed</span> <span class="its">it's</span> <span class="in">in</span> <b>3D<sup>*</sup></b>?</p>
-        <span class="footnote">* beat that, prezi ;)</span>
-    </div>
 
     <!--
         
@@ -426,7 +503,7 @@
     <script src="js/jquery-1.9.1.min.js"></script>
     <script src="js/jquery-ui.js"></script>
     <script src="js/jquery.svg.min.js"></script>
-    <!--<script src="js/jquery.svgdom.min.js"></script>-->
+    <script src="js/jquery.svgdom.min.js"></script>
     <script src="js/jquery.svganim.min.js"></script>
     <script src="js/main.js"></script>
 

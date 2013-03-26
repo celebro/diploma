@@ -254,15 +254,16 @@ $(document).ready(function () {
             moveNode(loc, "5", -189, 81);
             moveNode(loc, "6", -82, 204);
             moveNode(loc, "7", -150, 147);
-            moveNode(loc, "a", -479, 22);
-            moveNode(loc, "b", -356, 25);
-            moveNode(loc, "c", -341, 157);
-            moveNode(loc, "d", -500, 158);
+            moveNode(loc, "a", -174, -29);
+            moveNode(loc, "b", 127, -73);
+            moveNode(loc, "c", -4, 14);
+            moveNode(loc, "d", 17, 143);
         };
 
         $(this).data("calls", calls);
         calls[0]();
     });
+
 
 
     $("#variations").each(function() {
@@ -275,6 +276,8 @@ $(document).ready(function () {
         calls[0]();
     });
 
+
+
     $("#algorithms").each(function() {
         var calls = [];
         
@@ -286,6 +289,137 @@ $(document).ready(function () {
     });
    
 
+
+$("#ullmann1").each(function() {
+        var calls = [];
+        var loc = $(this).find(".graphContainer");
+        var svg = loc.svg(function(svg) {
+            addArrowDefs(svg);
+
+            // Target
+            addEdge(svg, "1", "4", "target");
+            addEdge(svg, "1", "5", "target");
+            addEdge(svg, "2", "6", "target");
+            addEdge(svg, "3", "5", "target");
+            addEdge(svg, "3", "6", "target");
+            addEdge(svg, "4", "5", "target");
+            
+            addNode(svg, "1", "target");
+            addNode(svg, "2", "target");
+            addNode(svg, "3", "target");
+            addNode(svg, "4", "target");
+            addNode(svg, "5", "target");
+            addNode(svg, "6", "target");
+
+            // Pattern
+            addEdge(svg, "c", "a", "pattern");
+            addEdge(svg, "c", "d", "pattern");
+            addEdge(svg, "b", "d", "pattern");
+            addEdge(svg, "d", "a", "pattern");
+            
+            addNode(svg, "a", "pattern");
+            addNode(svg, "b", "pattern");
+            addNode(svg, "c", "pattern");
+            addNode(svg, "d", "pattern");
+
+        });
+        
+
+        calls[0] = function() {
+            data.duration = 2000;
+            moveNode(loc, "1", -46, -170);
+            moveNode(loc, "2", 22, -175);
+            moveNode(loc, "3", -14, -294);
+            moveNode(loc, "4", -144, -183);
+            moveNode(loc, "5", -98, -253);
+            moveNode(loc, "6", 85, -251);
+                        
+            moveNode(loc, "a", -467, -186);
+            moveNode(loc, "b", -425, -275);
+            moveNode(loc, "c", -563, -188);
+            moveNode(loc, "d", -526, -236);
+
+            $(".step.present .text1").removeClass("hide");
+            $(".step.present .table3").removeClass("show");
+
+            $(".step.present .text1").removeClass("hide");
+            $(".step.present .table3").removeClass("show");
+            $(".step.present circle").removeClass("dimmedNode")
+        };
+
+        calls[1] = function() {
+            data.duration = 2000;
+            $(".step.present .text1").addClass("hide");
+            $(".step.present .table3").addClass("show");
+            $(".step.present circle").addClass("dimmedNode")
+            
+            $(".step.present .table3 tr:nth-child(2) td:nth-child(2)").removeClass("highligth");
+            $(".step.present circle.node-a").addClass("dimmedNode");
+            $(".step.present circle.node-1").addClass("dimmedNode");
+        }
+
+        calls[2] = function() {
+            data.duration = 2000;
+            $(".step.present .table3 tr:nth-child(2) td:nth-child(2)").addClass("highligth");
+            $(".step.present circle.node-a").removeClass("dimmedNode");
+            $(".step.present circle.node-1").removeClass("dimmedNode");
+
+            $(".step.present .table3 tr:nth-child(3) td:nth-child(3)").removeClass("highligth");
+            $(".step.present circle.node-b").addClass("dimmedNode");
+            $(".step.present circle.node-2").addClass("dimmedNode");
+        }
+
+        calls[3] = function() {
+            data.duration = 2000;
+            $(".step.present .table3 tr:nth-child(3) td:nth-child(3)").addClass("highligth");
+            $(".step.present circle.node-b").removeClass("dimmedNode");
+            $(".step.present circle.node-2").removeClass("dimmedNode");
+
+            $(".step.present .table1").removeClass("hide");
+            $(".step.present .table2").removeClass("hide");
+            $(".step.present .text2").removeClass("show");
+        }
+
+        calls[4] = function() {
+            $(".step.present .table1").addClass("hide");
+            $(".step.present .table2").addClass("hide");
+            $(".step.present .text2").addClass("show");
+
+            $(".step.present .table3 tr:nth-child(4) td:nth-child(4)").removeClass("highligth2");
+            $(".step.present circle.node-c").css("fill", "").addClass("dimmedNode");
+            $(".step.present circle.node-3").css("fill", "").addClass("dimmedNode");
+        }
+
+        calls[5] = function() {
+
+            $(".step.present .table3 tr:nth-child(4) td:nth-child(4)").addClass("highligth2");
+            $(".step.present circle.node-c").css("fill", "#66ff00").removeClass("dimmedNode");
+            $(".step.present circle.node-3").css("fill", "#66ff00").removeClass("dimmedNode");
+
+            $(".step.present .table3 tr:nth-child(2) td:nth-child(1)").removeClass("highligth3");
+            $(".step.present .table3 tr:nth-child(5) td:nth-child(1)").removeClass("highligth3");
+            $(".step.present .table3 tr:nth-child(1) td:nth-child(7)").removeClass("highligth3");
+            $(".step.present .table3 tr:nth-child(1) td:nth-child(8)").removeClass("highligth3");
+            $(".step.present circle.node-d").css("fill", "").addClass("dimmedNode");
+            $(".step.present circle.node-a").css("fill", "");
+            $(".step.present circle.node-5").css("fill", "").addClass("dimmedNode");
+            $(".step.present circle.node-6").css("fill", "").addClass("dimmedNode");
+        }
+
+        calls[6] = function() {
+            $(".step.present .table3 tr:nth-child(2) td:nth-child(1)").addClass("highligth3");
+            $(".step.present .table3 tr:nth-child(5) td:nth-child(1)").addClass("highligth3");
+            $(".step.present .table3 tr:nth-child(1) td:nth-child(7)").addClass("highligth3");
+            $(".step.present .table3 tr:nth-child(1) td:nth-child(8)").addClass("highligth3");
+            $(".step.present circle.node-d").css("fill", "#ffb400").removeClass("dimmedNode");
+            $(".step.present circle.node-a").css("fill", "#ffb400");
+            $(".step.present circle.node-5").css("fill", "#ffb400").removeClass("dimmedNode");
+            $(".step.present circle.node-6").css("fill", "#ffb400").removeClass("dimmedNode");
+        }
+        
+        $(this).data("calls", calls);
+        calls[0]();
+    });
 
 
     $("circle")

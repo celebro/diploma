@@ -28,6 +28,12 @@
 
 sub {
     font-size: 0.6em;
+    vertical-align: bottom;
+}
+
+sup {
+    font-size: 0.6em;
+    vertical-align: top;
 }
 
 .stepWrapper {
@@ -64,7 +70,7 @@ svg {
     font-size: 15px;
 }
 
-.edge {
+.directed .edge {
     marker-end: url("#Arrow");
 }
 
@@ -174,4 +180,76 @@ h2 {
 
 #algorithms.part1 .mark1 {
     font-weight: bold;
+}
+
+
+
+#ullmann1 table {
+    font-size: 25px;
+}
+
+#ullmann1 td {
+    padding: 0px 4px 0px 4px;
+    line-height: 1;
+    vertical-align: middle;
+}
+
+#ullmann1 .table1 {
+    position: absolute;
+    top: -70px;
+    left: 120px;
+}
+
+#ullmann1 .table2 {
+    position: absolute;
+    top: -100px;
+    left: 600px;
+}
+
+#ullmann1 .text1 {
+    position: absolute;;
+    top: 150px;
+}
+
+#ullmann1 .table3 {
+    position: absolute;;
+    top: 150px;
+    left: 333px;
+}
+
+#ullmann1 .highligth {
+    color: red;
+}
+
+#ullmann1 .highligth2 {
+    color: #66ff00;
+}
+
+#ullmann1 .highligth3 {
+    color: #ffb400;
+}
+
+#ullmann1 .text2 {
+    position: absolute;
+    top: -40px;
+    left: 250px;
+}
+
+
+
+
+.border-left {
+    border-left: 1px solid black !important;
+}
+
+.border-right {
+    border-right: 1px solid !important;
+}
+
+.dimmed {
+    opacity: 0.5;
+}
+
+.dimmedNode {
+    opacity: 0.2;
 }
