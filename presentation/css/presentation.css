@@ -57,7 +57,7 @@ sup {
 
 svg {
     position: relative;
-    width: 1500px;
+    width: 1000px;
     height: 1000px;
     left: -190px;
 }
@@ -237,6 +237,28 @@ h2 {
 
 
 
+#vf2_1 h1 {
+
+}
+
+#vf2_1 .text1, #vf2_1 .text2, #vf2_1 .text3, #vf2_1 .text4, #vf2_1 .text5{
+    position: absolute;
+    top: -300px;
+}
+
+#vf2_1 .setTin {
+    opacity: 0.9;
+    fill: #95ec00;
+}
+
+#vf2_1 .setTout {
+    opacity: 0.9;
+    fill: #ff9200;
+}
+
+#vf2_1 .setTout.setTin {
+    fill: #ffe700;
+}
 
 .border-left {
     border-left: 1px solid black !important;

@@ -416,6 +416,50 @@
         </div>
     </div>
 
+    <!-- 
+        Improved Ullmann algorithm
+    -->
+    <div id="ullmann2" class="step" data-x="0" data-y="-500">
+        <h1>Ullmann +</h1>
+        <ul>
+            <b>Izboljšave</b> Ullmannovega algoritma
+            <li>Persistentna matrika zmanjša prostorsko zahtevnost</li>
+            <li class="multiLine extraPadding">iz O(n<sup>3</sup>) na O(n<sup>2</sup>)</li>
+            <li>Vrstni red obiskovanja</li>
+            <li class="multiLine extraPadding">Najprej sosedi že obiskanih, med njimi vozlišča z višjo stopnjo</li>
+            <li>Dodatna omejitev prostora preiskovanja po izbiri stolpca</li>
+            <li class="multiLine extraPadding">&forall;x &isin; N<sub>p</sub>(i) &forall;y &notin; N<sub>t</sub>(j) : m<sub>x,y</sub> = 0</li>
+        </ul>
+    </div>
+
+    <!-- 
+       VF2
+    -->
+    <div id="vf2_1" class="step" data-x="1500" data-y="-500">
+        <h1>VF2</h1>
+        <ul class="text1">
+            <li>Gradnja parcialna preslikave</li>
+        </ul>
+        <ul class="text2 hide">
+            <li>Izbira kandidatov</li>
+        </ul>
+        <ul class="text3 hide">
+            <li>Filtriranje kandidatov</li>
+            <li class="multiLine extraPadding">&forall;n' &isin; N<sub>p</sub><sup>+/-</sup>(n) &cap; M<sub>p</sub>(s) &exist;m' &isin; N<sub>t</sub><sup>+/-</sup>(m) : (n', m') &isin; M(s)</li>
+        </ul>
+        <ul class="text4 hide">
+            <li>Filtriranje kandidatov</li>
+            <li class="multiLine extraPadding">|N<sub>p</sub><sup>+/-</sup>(n) &cap; T<sub>p</sub><sup>+/-</sup>(s)| &le; |N<sub>t</sub><sup>+/-</sup>(n) &cap; T<sub>t</sub><sup>+/-</sup>(s)|</li>
+        </ul>
+        <ul class="text5 hide">
+            <li>Filtriranje kandidatov</li>
+            <li class="multiLine extraPadding">|N<sub>p</sub><sup>+/-</sup>(n) \ (M<sub>p</sub>(s) &cup; T<sub>p</sub><sup>+/-</sup>(s))| &le;
+                |N<sub>t</sub><sup>+/-</sup>(n) \ (M<sub>t</sub>(s) &cup; T<sub>t</sub><sup>+/-</sup>(s))|
+        </ul>
+        <div class="graphContainer directed">
+        </div>
+    </div>
+
 
 
 
@@ -451,7 +495,7 @@
         CSS transfrom docs: https://developer.mozilla.org/en/CSS/transform
         
     -->
-    <div id="overview" class="step" data-x="3000" data-y="1500" data-scale="10">
+    <div id="overview" class="step" data-x="700" data-y="0" data-scale="7">
     </div>
 
 </div>

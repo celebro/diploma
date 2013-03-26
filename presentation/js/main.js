@@ -21,7 +21,7 @@ function addNode(svg, node, className) {
         className = "";
     }
 
-    svg.circle(data.nodeOriginX, data.nodeOriginY, 10,
+    svg.circle(data.nodeOriginX, data.nodeOriginY, 15,
         {fill: 'red', stroke:'black', strokeWidth: 1, class_: className + " node-" + node, "data-label": node}); 
     svg.text(data.nodeOriginX, data.nodeOriginY, node, {class_: "nodeLabel label-" + node});
 }
@@ -35,18 +35,42 @@ function addEdge(svg, node1, node2, className) {
         {stroke: "black", strokeWidth: 1, class_: className + " edge edge-" + node1 + "-" + node2 + " node1-" + node1 + " node2-" + node2});
 }
 
-function moveNode(location, node, x, y) {
+function moveNode(location, node, x, y, sequence) {
+    var opts = { duration: data.duration, queue: false };
+    if (sequence) {
+        opts = { duration: data.duration, queue: true };
+        var pauseOpts = { duration: data.duration * 0.2, queue: true };
+    }
+
     var nodes = $(location).find(".node-" + node);
-    nodes.animate({svgCx: data.nodeOriginX + x, svgCy: data.nodeOriginY + y},  { duration: data.duration, queue: false });
-    
+    nodes.animate({svgCx: data.nodeOriginX + x, svgCy: data.nodeOriginY + y},  opts);
+    if (sequence) {
+        nodes.animate({svgCx: data.nodeOriginX + x, svgCy: data.nodeOriginY + y},  pauseOpts);
+    }
+
     var lines1 = $(location).find(".node1-" + node);
-    lines1.animate({svgX1: data.nodeOriginX + x, svgY1: data.nodeOriginY + y}, { duration: data.duration, queue: false });
+    lines1.animate({svgX1: data.nodeOriginX + x, svgY1: data.nodeOriginY + y}, opts);
+    if (sequence) {
+        lines1.animate({svgX1: data.nodeOriginX + x, svgY1: data.nodeOriginY + y}, pauseOpts);
+    }
 
     var lines2 = $(location).find(".node2-" + node);
-    lines2.animate({svgX2: data.nodeOriginX + x, svgY2: data.nodeOriginY + y}, { duration: data.duration, queue: false });
+    lines2.animate({svgX2: data.nodeOriginX + x, svgY2: data.nodeOriginY + y}, opts);
+    if (sequence) {
+        lines2.animate({svgX2: data.nodeOriginX + x, svgY2: data.nodeOriginY + y}, pauseOpts);
+    }
 
     var labels = $(location).find(".label-" + node);
-    labels.animate({svgX: data.nodeOriginX + x, svgY: data.nodeOriginY + y}, { duration: data.duration, queue: false });
+    labels.animate({svgX: data.nodeOriginX + x, svgY: data.nodeOriginY + y}, opts);
+    if (sequence) {
+        labels.animate({svgX: data.nodeOriginX + x, svgY: data.nodeOriginY + y}, pauseOpts);
+    }
+}
+
+function moveNode2Node(location, node1, node2, sequence) {
+    var x = $(location).find(".node-" + node2).attr("cx") - data.nodeOriginX;
+    var y = $(location).find(".node-" + node2).attr("cy") - data.nodeOriginY;
+    moveNode(location, node1, x, y, sequence);
 }
 
 function setNodePos(location, node, x, y) {
@@ -79,7 +103,7 @@ function printGraphPos() {
 
 function addArrowDefs(svg) {
     var defs = svg.defs();
-    var marker = svg.marker(defs, "Arrow", "10", "0.0", null, null, "auto", {style: "overflow:visible"});
+    var marker = svg.marker(defs, "Arrow", "15", "0.0", null, null, "auto", {style: "overflow:visible"});
     svg.path(marker, "M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z",
                 {transform: "scale(1.1) rotate(180) translate(1,0)"});
 }
@@ -101,7 +125,7 @@ $(document).ready(function () {
             if (calls && calls.length > step + 1) {
                 step = step + 1;
                 console.log("entered step " + step);
-                calls[step]();
+                calls[step](true);
                 data.duration = data.originalDuration;
                 $(this).removeClass("part" + (step-1));
                 $(this).addClass("part" + step);
@@ -420,6 +444,207 @@ $("#ullmann1").each(function() {
         $(this).data("calls", calls);
         calls[0]();
     });
+
+
+$("#vf2_1").each(function() {
+        var calls = [];
+        var loc = $(this).find(".graphContainer");
+        var svg = loc.svg(function(svg) {
+            addArrowDefs(svg);
+
+            addEdge(svg, "1", "2", "target");
+            addEdge(svg, "1", "3", "target");
+            addEdge(svg, "1", "4", "target");
+            addEdge(svg, "3", "5", "target");
+            addEdge(svg, "3", "6", "target");
+            addEdge(svg, "4", "2", "target");
+            addEdge(svg, "4", "3", "target");
+            addEdge(svg, "4", "6", "target");
+            addEdge(svg, "2", "8", "target");
+            addEdge(svg, "3", "8", "target");
+            addEdge(svg, "3", "9", "target");
+            addEdge(svg, "9", "5", "target");
+            addEdge(svg, "7", "2", "target");
+            addEdge(svg, "6", "7", "target");
+
+            addNode(svg, "1", "target");
+            addNode(svg, "2", "target");
+            addNode(svg, "3", "target");
+            addNode(svg, "4", "target");
+            addNode(svg, "5", "target");
+            addNode(svg, "6", "target");
+            addNode(svg, "7", "target");
+            addNode(svg, "8", "target");
+            addNode(svg, "9", "target");
+
+
+            // Pattern
+            addEdge(svg, "a", "b", "pattern");
+            addEdge(svg, "a", "c", "pattern");
+            addEdge(svg, "a", "d", "pattern");
+            addEdge(svg, "c", "e", "pattern");
+            addEdge(svg, "c", "f", "pattern");
+            addEdge(svg, "d", "b", "pattern");
+            addEdge(svg, "d", "c", "pattern");
+            addEdge(svg, "d", "f", "pattern");
+            
+            addNode(svg, "a", "pattern");
+            addNode(svg, "b", "pattern");
+            addNode(svg, "c", "pattern");
+            addNode(svg, "d", "pattern");
+            addNode(svg, "e", "pattern");
+            addNode(svg, "f", "pattern");
+
+        });
+        
+
+        calls[0] = function() {
+            data.duration = 1000;
+            moveNode(loc, "1", -566, 109);
+            moveNode(loc, "2", -396, 258);
+            moveNode(loc, "3", -189, -29);
+            moveNode(loc, "4", -277, 180);
+            moveNode(loc, "5", -11, 128);
+            moveNode(loc, "6", -116, 158);
+            moveNode(loc, "7", -234, 248);
+            moveNode(loc, "8", -341, 86);
+            moveNode(loc, "9", -6, 35);
+            moveNode(loc, "a", -462, -68);
+            moveNode(loc, "b", -510, -139);
+            moveNode(loc, "c", -232, -115);
+            moveNode(loc, "d", -351, -182);
+            moveNode(loc, "e", -84, -122);
+            moveNode(loc, "f", -182, -234);
+        };
+
+        calls[1] = function(next) {
+            data.duration = 500;
+            if (next) {
+                moveNode2Node(loc, "a", "1", true);
+                moveNode2Node(loc, "a", "2", true);
+                moveNode2Node(loc, "a", "3", true);
+                moveNode2Node(loc, "a", "4", true);
+                moveNode2Node(loc, "a", "5", true);
+                moveNode2Node(loc, "a", "6", true);
+                moveNode2Node(loc, "a", "7", true);
+                moveNode2Node(loc, "a", "8", true);
+                moveNode2Node(loc, "a", "9", true);
+                
+                data.duration = 2000;
+                moveNode2Node(loc, "a", "1", true);
+            } else {
+                moveNode2Node(loc, "a", "1", true);
+
+                moveNode(loc, "b", -510, -139);    
+            }
+        }
+
+        calls[2] = function(next) {
+            data.duration = 500;
+            if (next) {
+                moveNode2Node(loc, "b", "2", true);
+                moveNode2Node(loc, "b", "3", true);
+                
+                data.duration = 2000;
+                moveNode2Node(loc, "b", "2", true);
+            } else {
+                moveNode2Node(loc, "b", "2", true);
+
+                moveNode(loc, "d", -351, -182);    
+            }
+        }
+
+        calls[3] = function(next) {
+            data.duration = 500;
+            if (next) {
+                moveNode2Node(loc, "d", "3", true);
+                moveNode2Node(loc, "d", "4", true);
+                moveNode2Node(loc, "d", "7", true);
+                moveNode2Node(loc, "d", "8", true);
+
+                data.duration = 2000;
+                moveNode2Node(loc, "d", "3", true);
+            } else {
+                moveNode2Node(loc, "d", "3", true);
+
+                $(".step.present circle").removeClass("dimmedNode");
+                $(".step.present circle").removeClass("setTin");
+                $(".step.present circle").removeClass("setTout");
+                $(".step.present circle").removeClass("dimmedNode");
+                $(".step.present .text1").removeClass("hide");
+                $(".step.present .text2").removeClass("show");
+            }
+        }
+
+        calls[4] = function(next) {
+            moveNode(loc, "d", -351, -182);
+            $(".step.present circle").addClass("dimmedNode");
+            $(".step.present circle.node-a").removeClass("dimmedNode");
+            $(".step.present circle.node-b").removeClass("dimmedNode");
+            
+            $(".step.present circle.node-d").addClass("setTin setTout");
+            $(".step.present circle.node-c").addClass("setTin");
+            $(".step.present circle.node-3").addClass("setTin");
+            $(".step.present circle.node-4").addClass("setTin setTout");
+            $(".step.present circle.node-7").addClass("setTout");
+            $(".step.present circle.node-8").addClass("setTin");
+            
+            $(".step.present .text1").addClass("hide");
+            $(".step.present .text2").addClass("show");
+            $(".step.present .text3").removeClass("show");
+        }
+
+        calls[5] = function() {
+            $(".step.present .text2").removeClass("show");
+            $(".step.present .text3").addClass("show");
+            $(".step.present .text4").removeClass("show");
+        }
+
+        calls[6] = function() {
+            $(".step.present .text3").removeClass("show");
+            $(".step.present .text4").addClass("show");
+            $(".step.present .text5").removeClass("show");
+        }
+
+        calls[7] = function() {
+            $(".step.present .text4").removeClass("show");
+            $(".step.present .text5").addClass("show");
+            moveNode(loc, "c", -232, -115);
+            moveNode(loc, "d", -351, -182);
+            moveNode(loc, "e", -84, -122);
+            moveNode(loc, "f", -182, -234);
+
+            $(".step.present circle").addClass("dimmedNode");
+            $(".step.present circle.node-a").removeClass("dimmedNode");
+            $(".step.present circle.node-b").removeClass("dimmedNode");
+            
+            $(".step.present circle.node-d").addClass("setTin setTout");
+            $(".step.present circle.node-c").addClass("setTin");
+            $(".step.present circle.node-3").addClass("setTin");
+            $(".step.present circle.node-4").addClass("setTin setTout");
+            $(".step.present circle.node-7").addClass("setTout");
+            $(".step.present circle.node-8").addClass("setTin");
+        }
+        
+        calls[8] = function() {
+            data.duration = 2000;
+            $(".step.present .text5").removeClass("show");
+            moveNode2Node(loc, "c", "3");
+            moveNode2Node(loc, "d", "4");
+            moveNode2Node(loc, "e", "5");
+            moveNode2Node(loc, "f", "6");
+
+            setTimeout(function() {
+                $(".step.present circle").removeClass("dimmedNode");
+                $(".step.present circle").removeClass("setTin");
+                $(".step.present circle").removeClass("setTout");
+            }, 1000);
+        }
+        
+        $(this).data("calls", calls);
+        calls[0]();
+    });
+
 
 
     $("circle")
