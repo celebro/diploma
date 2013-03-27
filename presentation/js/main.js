@@ -1058,6 +1058,8 @@ $("#subsea2").each(function() {
                 $(".step.present circle.node-b").addClass("selectedNode");
                 $(".step.present circle.node-a").addClass("dimmedNode");
                 $(".step.present circle.node-a").addClass("dimmedNode");
+
+                $(".step.present .s3").removeClass("show");
             }
         }
 
@@ -1071,6 +1073,9 @@ $("#subsea2").each(function() {
             $(".step.present circle.node-a").removeClass("dimmedNode");
 
             $(".step.present circle.node-f").addClass("dimmedNode").removeClass("selectedNode");
+
+            $(".step.present .s3").addClass("show");
+            $(".step.present .s4").removeClass("show");
         }
 
         calls[6] = function(next) { // breadth search4
@@ -1078,11 +1083,16 @@ $("#subsea2").each(function() {
             $(".step.present circle.node-f").addClass("selectedNode").removeClass("dimmedNode");
 
             $(".step.present circle.node-e").addClass("dimmedNode").removeClass("selectedNode");
+
+            $(".step.present .s4").addClass("show");
+            $(".step.present .s5").removeClass("show");
         }
 
         calls[7] = function(next) { // breadth search5
             $(".step.present circle.node-f").removeClass("selectedNode");
             $(".step.present circle.node-e").addClass("selectedNode").removeClass("dimmedNode");
+
+            $(".step.present .s5").addClass("show");
         }
 
         calls[8] = function(next) { // breadth search5
@@ -1090,6 +1100,8 @@ $("#subsea2").each(function() {
             $(".step.present circle.node-e").removeClass("selectedNode");
 
             $(".step.present circle.node-d").removeClass("selectedNode").addClass("dimmedNode");
+
+            $(".step.present .s6").removeClass("show");
         }
 
         calls[9] = function(next) { // breadth search6
@@ -1097,6 +1109,9 @@ $("#subsea2").each(function() {
             $(".step.present circle.node-d").addClass("selectedNode").removeClass("dimmedNode");
 
             $(".step.present circle.node-i").removeClass("selectedNode").addClass("dimmedNode");
+            
+            $(".step.present .s6").addClass("show");
+            $(".step.present .s7").removeClass("show");
         }
 
         calls[10] = function(next) { // breadth search6
@@ -1104,6 +1119,9 @@ $("#subsea2").each(function() {
             $(".step.present circle.node-i").addClass("selectedNode").removeClass("dimmedNode");
 
             $(".step.present circle.node-c").removeClass("selectedNode").addClass("dimmedNode");
+
+            $(".step.present .s7").addClass("show");
+            $(".step.present .s8").removeClass("show");
         }
 
         calls[11] = function(next) { // breadth search6
@@ -1111,11 +1129,16 @@ $("#subsea2").each(function() {
             $(".step.present circle.node-c").addClass("selectedNode").removeClass("dimmedNode");
 
             $(".step.present circle.node-h").removeClass("selectedNode").addClass("dimmedNode");
+
+            $(".step.present .s8").addClass("show");
+            $(".step.present .s9").removeClass("show");
         }
 
         calls[12] = function(next) { // breadth search6
             $(".step.present circle.node-c").removeClass("selectedNode");
             $(".step.present circle.node-h").addClass("selectedNode").removeClass("dimmedNode");
+
+            $(".step.present .s9").addClass("show");
         }
 
 
