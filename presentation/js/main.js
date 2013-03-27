@@ -765,7 +765,7 @@ $("#ullmann1").each(function() {
         }
 
         calls[2] = function(next) { // black holes process
-            data.duration = 50;
+            data.duration = 500;
             if (next) {
                 moveNodeSeq(loc, "3", -363, 17);
                 moveNodeSeq(loc, "8", 10, 64);
@@ -817,6 +817,9 @@ $("#ullmann1").each(function() {
             $(".step.present circle.node-3").removeClass("dimmedNode");
             $(".step.present circle.node-8").removeClass("dimmedNode");
             $(".step.present .edge-1-2").removeClass("highlight");
+            $(".step.present .edge-3-2").removeClass("highlight2");
+            $(".step.present .edge-2-5").removeClass("highlight2");
+            $(".step.present .edge-4-5").removeClass("highlight2");
         };
 
         calls[4] = function() { // show edge
@@ -825,6 +828,9 @@ $("#ullmann1").each(function() {
             $(".step.present .text3").removeClass("show");
 
             $(".step.present .edge-1-2").addClass("highlight");
+            $(".step.present .edge-3-2").addClass("highlight2");
+            $(".step.present .edge-2-5").addClass("highlight2");
+            $(".step.present .edge-4-5").addClass("highlight2");
 
             moveNode(loc, "a", -340, -116);
             moveNode(loc, "b", -224, -197);
