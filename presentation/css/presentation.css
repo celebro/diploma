@@ -301,6 +301,19 @@ h2 {
 
 
 
+img.plot {
+    position: absolute;
+    width: 1000px;
+    top: -270px;
+    left: 0px;
+}
+
+
+
+#tests .title {
+    padding-top: 20px
+}
+
 .border-left {
     border-left: 1px solid black !important;
 }
