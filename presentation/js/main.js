@@ -926,6 +926,203 @@ $("#ullmann1").each(function() {
         calls[0]();
     });
 
+$("#subsea2").each(function() {
+        var calls = [];
+        var loc = $(this).find(".graphContainer");
+        var svg = loc.svg(function(svg) {
+            addArrowDefs(svg);
+
+            // pattern
+            
+            addEdge(svg, "a", "h", "pattern");
+            addEdge(svg, "b", "a", "pattern");
+            addEdge(svg, "b", "c", "pattern");
+            addEdge(svg, "b", "h", "pattern");
+            addEdge(svg, "b", "i", "pattern");
+            addEdge(svg, "d", "c", "pattern");
+            addEdge(svg, "e", "a", "pattern");
+            addEdge(svg, "e", "f", "pattern");
+            addEdge(svg, "f", "a", "pattern");
+            addEdge(svg, "f", "d", "pattern");
+            addEdge(svg, "g", "b", "pattern");
+            addEdge(svg, "g", "f", "pattern");
+            addEdge(svg, "i", "d", "pattern");
+
+            addNode(svg, "a", "pattern");
+            addNode(svg, "b", "pattern");
+            addNode(svg, "c", "pattern");
+            addNode(svg, "d", "pattern");
+            addNode(svg, "e", "pattern");
+            addNode(svg, "f", "pattern");
+            addNode(svg, "g", "pattern");
+            addNode(svg, "h", "pattern");
+            addNode(svg, "i", "pattern");
+
+           
+
+        });
+        
+
+        calls[0] = function() { // start
+            data.duration = 1000;
+            moveNode(loc, "a", -199, 32);
+            moveNode(loc, "b", -213, 153);
+            moveNode(loc, "c", 14, 101);
+            moveNode(loc, "d", -50, -133);
+            moveNode(loc, "e", -155, -72);
+            moveNode(loc, "f", -397, -101);
+            moveNode(loc, "g", -419, 163);
+            moveNode(loc, "h", -339, 67);
+            moveNode(loc, "i", -95, 16);
+
+            $(".step.present circle").removeClass("dimmedNode");
+            $(".step.present circle.node-b").removeClass("selectedNode");
+
+            $(".step.present .s1").removeClass("show");
+            $(".step.present .s2").removeClass("show");
+        };
+
+        calls[1] = function(next) { // first edge
+            $(".step.present circle").addClass("dimmedNode");
+            $(".step.present circle.node-g").removeClass("dimmedNode");
+            $(".step.present circle.node-b").removeClass("dimmedNode").addClass("selectedNode");
+
+            $(".step.present circle.node-a").removeClass("selectedNode");
+            $(".step.present circle.node-i").removeClass("selectedNode");
+            $(".step.present circle.node-c").removeClass("selectedNode");
+            $(".step.present circle.node-h").removeClass("selectedNode");
+
+            $(".step.present .s1").addClass("show");
+            $(".step.present .s2").addClass("show");
+        }
+
+        calls[2] = function(next) { // first candidates
+           $(".step.present circle.node-a").addClass("selectedNode");
+           $(".step.present circle.node-i").addClass("selectedNode");
+           $(".step.present circle.node-c").addClass("selectedNode");
+           $(".step.present circle.node-h").addClass("selectedNode");
+
+           $(".step.present circle.node-i").removeClass("breadthSearch");
+           $(".step.present circle.node-d").removeClass("breadthSearch");
+           $(".step.present circle.node-f").removeClass("breadthSearch");
+           $(".step.present circle.node-c").removeClass("breadthSearch");
+
+           
+        }
+
+        calls[3] = function(next) { // breadth search1
+            if (next) {
+                $(".step.present circle.node-i").addClass("breadthSearch");
+                setTimeout(function() {
+                    $(".step.present circle.node-d").addClass("breadthSearch");
+                }, 2000);
+                setTimeout(function() {
+                    $(".step.present circle.node-f").addClass("breadthSearch");
+                    $(".step.present circle.node-c").addClass("breadthSearch");
+                }, 4000);
+            } else {
+                $(".step.present circle.node-i").addClass("breadthSearch");
+                $(".step.present circle.node-d").addClass("breadthSearch");
+                $(".step.present circle.node-f").addClass("breadthSearch");
+                $(".step.present circle.node-c").addClass("breadthSearch");
+
+                $(".step.present circle.node-a").removeClass("breadthSearch");
+                $(".step.present circle.node-h").removeClass("breadthSearch");
+                $(".step.present circle.node-e").removeClass("breadthSearch");
+            }
+        }
+
+        calls[4] = function(next) { // breadth search2
+            $(".step.present circle.node-i").removeClass("breadthSearch");
+            $(".step.present circle.node-d").removeClass("breadthSearch");
+            $(".step.present circle.node-f").removeClass("breadthSearch");
+            $(".step.present circle.node-c").removeClass("breadthSearch");
+
+            if (next) {
+                $(".step.present circle.node-a").addClass("breadthSearch");
+                setTimeout(function() {
+                    $(".step.present circle.node-h").addClass("breadthSearch");
+                    $(".step.present circle.node-f").addClass("breadthSearch");
+                    $(".step.present circle.node-e").addClass("breadthSearch");
+                }, 2000);
+            } else {
+                $(".step.present circle.node-a").addClass("breadthSearch");
+                $(".step.present circle.node-h").addClass("breadthSearch");
+                $(".step.present circle.node-f").addClass("breadthSearch");
+                $(".step.present circle.node-e").addClass("breadthSearch");
+
+                $(".step.present circle.node-a").addClass("selectedNode");
+                $(".step.present circle.node-i").addClass("selectedNode");
+                $(".step.present circle.node-c").addClass("selectedNode");
+                $(".step.present circle.node-h").addClass("selectedNode");
+                $(".step.present circle.node-b").addClass("selectedNode");
+                $(".step.present circle.node-a").addClass("dimmedNode");
+                $(".step.present circle.node-a").addClass("dimmedNode");
+            }
+        }
+
+        calls[5] = function(next) { // breadth search3
+            $(".step.present circle").removeClass("breadthSearch");
+            $(".step.present circle.node-i").removeClass("selectedNode");
+            $(".step.present circle.node-c").removeClass("selectedNode");
+            $(".step.present circle.node-h").removeClass("selectedNode");
+            $(".step.present circle.node-b").removeClass("selectedNode");
+            $(".step.present circle.node-a").addClass("selectedNode");
+            $(".step.present circle.node-a").removeClass("dimmedNode");
+
+            $(".step.present circle.node-f").addClass("dimmedNode").removeClass("selectedNode");
+        }
+
+        calls[6] = function(next) { // breadth search4
+            $(".step.present circle.node-a").removeClass("selectedNode");
+            $(".step.present circle.node-f").addClass("selectedNode").removeClass("dimmedNode");
+
+            $(".step.present circle.node-e").addClass("dimmedNode").removeClass("selectedNode");
+        }
+
+        calls[7] = function(next) { // breadth search5
+            $(".step.present circle.node-f").removeClass("selectedNode");
+            $(".step.present circle.node-e").addClass("selectedNode").removeClass("dimmedNode");
+        }
+
+        calls[8] = function(next) { // breadth search5
+            $(".step.present circle.node-f").addClass("selectedNode");
+            $(".step.present circle.node-e").removeClass("selectedNode");
+
+            $(".step.present circle.node-d").removeClass("selectedNode").addClass("dimmedNode");
+        }
+
+        calls[9] = function(next) { // breadth search6
+            $(".step.present circle.node-f").removeClass("selectedNode");
+            $(".step.present circle.node-d").addClass("selectedNode").removeClass("dimmedNode");
+
+            $(".step.present circle.node-i").removeClass("selectedNode").addClass("dimmedNode");
+        }
+
+        calls[10] = function(next) { // breadth search6
+            $(".step.present circle.node-d").removeClass("selectedNode");
+            $(".step.present circle.node-i").addClass("selectedNode").removeClass("dimmedNode");
+
+            $(".step.present circle.node-c").removeClass("selectedNode").addClass("dimmedNode");
+        }
+
+        calls[11] = function(next) { // breadth search6
+            $(".step.present circle.node-i").removeClass("selectedNode");
+            $(".step.present circle.node-c").addClass("selectedNode").removeClass("dimmedNode");
+
+            $(".step.present circle.node-h").removeClass("selectedNode").addClass("dimmedNode");
+        }
+
+        calls[12] = function(next) { // breadth search6
+            $(".step.present circle.node-c").removeClass("selectedNode");
+            $(".step.present circle.node-h").addClass("selectedNode").removeClass("dimmedNode");
+        }
+
+
+        $(this).data("calls", calls);
+        calls[0]();
+    });
+
 
 
     $("circle")

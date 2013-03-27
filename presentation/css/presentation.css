@@ -262,7 +262,7 @@ h2 {
 
 
 
-#subsea1 .text1, #subsea1 .text2, #subsea1 .text3, #subsea1 .text4, #subsea1 .text5{
+#subsea1 .text1, #subsea1 .text2, #subsea1 .text3, #subsea1 .text4, #subsea1 .text5 {
     position: absolute;
     top: -300px;
 }
@@ -273,6 +273,30 @@ h2 {
 
 #subsea1 .highlight2 {
     stroke: orange;
+}
+
+
+
+#subsea2 .text1, #subsea2 .text2, #subsea2 .text3, #subsea2 .text4, #subsea2 .text5 {
+    position: absolute;
+    top: -280px;
+}
+
+#subsea2 .table1 {
+    position: absolute;
+    top: 250px;
+    font-size: 25px;
+}
+
+#subsea2 td {
+    padding: 5px 20px 0px 20px;
+    line-height: 1;
+    vertical-align: middle;
+}
+
+#subsea2 .breadthSearch {
+    opacity: 0.5;
+    fill: #95ec00;
 }
 
 
@@ -295,4 +319,12 @@ h2 {
 
 .edgeHide {
     opacity: 0.0;
+}
+
+.selectedNode {
+    stroke-width: 3px;
+}
+
+.dimmedNode.selectedNode {
+    opacity: 0.5;
 }

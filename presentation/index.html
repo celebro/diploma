@@ -482,23 +482,35 @@
     <div id="subsea2" class="step" data-x="-1500" data-y="500">
         <h1>Subsea</h1>
         <ul class="text1">
-            <li>Zgodovina pregleda grafa</li>
+            Zgodovina pregleda grafa
+            <li>Preiskovanje v globino</li>
+            <li>Najboljši kandidat s preiskovanjem v širino</li>
         </ul>
+        <table class="table1">
+            <tr>
+                <td class="hide s1">1(g)</td>
+                <td class="hide s2">2(b)</td>
+                <td class="hide s3">3(a)</td> 
+                <td class="hide s4">4(f)</td>
+                <td class="hide s5">5(e)</td>
+                <td class="hide s6">6(d)</td>
+                <td class="hide s7">7(c)</td> 
+                <td class="hide s8">8(h)</td>
+            </tr>
+            <tr>
+                <td class="hide s1">&empty;</td>
+                <td class="hide s2">g</td>
+                <td class="hide s3">b</td> 
+                <td class="hide s4">a, f</td>
+                <td class="hide s5">a, f</td>
+                <td class="hide s6">b, f</td>
+                <td class="hide s7">b, d</td> 
+                <td class="hide s8">a, g</td>
+            </tr>
+        </table>
         <div class="graphContainer directed">
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -526,31 +538,6 @@
     </div>
 
 </div>
-
-<!--
-    
-    Hint is not related to impress.js in any way.
-    
-    But it can show you how to use impress.js features in creative way.
-    
-    When the presentation step is shown (selected) its element gets the class of "active" and the body element
-    gets the class based on active step id `impress-on-ID` (where ID is the step's id)... It may not be
-    so clear because of all these "ids" in previous sentence, so for example when the first step (the one with
-    the id of `bored`) is active, body element gets a class of `impress-on-bored`.
-    
-    This class is used by this hint below. Check CSS file to see how it's shown with delayed CSS animation when
-    the first step of presentation is visible for a couple of seconds.
-    
-    ...
-    
-    And when it comes to this piece of JavaScript below ... kids, don't do this at home ;)
-    It's just a quick and dirty workaround to get different hint text for touch devices.
-    In a real world it should be at least placed in separate JS file ... and the touch content should be
-    probably just hidden somewhere in HTML - not hard-coded in the script.
-    
-    Just sayin' ;)
-    
--->
 
 
 <!--
