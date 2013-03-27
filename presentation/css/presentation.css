@@ -85,7 +85,7 @@ svg {
 
 h1 {
     font-size: 2.0em;
-    text-transform: lowercase;
+    /*text-transform: lowercase;*/
     color: transparent;
     text-shadow: 2px 2px 10px rgba(50,50,50,.8);
     position: absolute;
@@ -260,6 +260,20 @@ h2 {
     fill: #ffe700;
 }
 
+
+
+#subsea1 .text1, #subsea1 .text2, #subsea1 .text3, #subsea1 .text4, #subsea1 .text5{
+    position: absolute;
+    top: -300px;
+}
+
+#subsea1 .highlight {
+    stroke: red;
+}
+
+
+
+
 .border-left {
     border-left: 1px solid black !important;
 }
@@ -274,4 +288,8 @@ h2 {
 
 .dimmedNode {
     opacity: 0.2;
+}
+
+.edgeHide {
+    opacity: 0.0;
 }
