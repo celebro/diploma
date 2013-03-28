@@ -583,9 +583,9 @@ $("#ullmann1").each(function() {
                 moveNode2Node(loc, "d", "8", true);
 
                 data.duration = 2000;
-                moveNode2Node(loc, "d", "3", true);
+                moveNode2Node(loc, "d", "4", true);
             } else {
-                moveNode2Node(loc, "d", "3", true);
+                moveNode2Node(loc, "d", "4", true);
 
                 $(".step.present circle").removeClass("dimmedNode");
                 $(".step.present circle").removeClass("setTin");

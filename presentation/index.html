@@ -184,6 +184,11 @@
         </ul>
         <div class="graphContainer directed">
         </div>
+        <div class="notes">
+            <p>Vzorčni - rdeč, ciljni - moder. Pattern, target</p>
+            <p>Poiskati preslikavo vozlišč iz vzorčnega v ciljni graf, ki ohrani povezave.</p>
+            <p>Povezan/nepovezan graf. Induciran podgraf.</p>
+        </div>
     </div>
 
     <!--
@@ -201,6 +206,11 @@
             <li>Iskalni problem: poišči en izomorfen podgraf</li>
             <li class="mark1">Naštevalni problem: poišči vse izomorfne podgrafe</li>
         </ul>
+        <div class="notes">
+            <p>Obstoj</p>
+            <p>Iskanje dejanske preslikave</p>
+            <p>Ukvarjali smo se z najtežjim problemom (bold)</p>
+        </div>
     </div>
 
     <!--
@@ -237,6 +247,13 @@
                 <li>QuickSI, GADDI, GraphQL, SPath</li>
                 <li class="mark1">Subsea</li>
             </ul>
+        </div>
+        <div class="notes">
+            <p>Ull - prvi, še vedno uporabljan</p>
+            <p>VF2 standardni algoritem, najbolj uporabljan</p>
+            <p>GADDI in GrqphQL bolj splošne algoritma za poizvedbe na grafih. Obstoječi članki na majhnih grafih</p>
+            <p>Subsea - iskanje manjhnih vzorcev v velikih grafih</p>
+            <p>Izbira: standard, primerno za večje grafe</p>
         </div>
     </div>
 
@@ -414,6 +431,14 @@
 
         <div class="graphContainer">
         </div>
+
+        <div class="notes">
+            <p>Predstavitev z matrikami, 1 pomeni da je povezava iz vrstice v stolpec. Simetrične, ker so neusmerjene povezave</p>
+            <p>M - vozlišče v vrstici se preslika v vozlišče v stolpcu </p>
+            <p>Eksponent T transponiranje. P če inducirano; če v P potem v produktu za splošno</p>
+            <p>M v preiskovanju predstavlja združljive pare. Začnemo glede na stopnjo.</p>
+            <p>Refine: vozlišči i in j združljivi, če je vsak sosed od i združljiv s sosedom od j</p>
+        </div>
     </div>
 
     <!-- 
@@ -430,6 +455,11 @@
             <li>Dodatna omejitev prostora preiskovanja po izbiri stolpca</li>
             <li class="multiLine extraPadding">&forall;x &isin; N<sub>p</sub>(i) &forall;y &notin; N<sub>t</sub>(j) : m<sub>x,y</sub> = 0</li>
         </ul>
+        <div class="notes">
+            <p>Jurij Mihelič in Uroš Čibej s te fakultete</p>
+            <p>2 in 3 back slide</p>
+            <p>Sosed od i se ne more preslikati v vozlišče, ki ni sosed of j</p>
+        </div>
     </div>
 
     <!-- 
@@ -449,14 +479,22 @@
         </ul>
         <ul class="text4 hide">
             <li>Filtriranje kandidatov</li>
-            <li class="multiLine extraPadding">|N<sub>p</sub><sup>+/-</sup>(n) &cap; T<sub>p</sub><sup>+/-</sup>(s)| &le; |N<sub>t</sub><sup>+/-</sup>(n) &cap; T<sub>t</sub><sup>+/-</sup>(s)|</li>
+            <li class="multiLine extraPadding">|N<sub>p</sub><sup>+/-</sup>(n) &cap; T<sub>p</sub><sup>+/-</sup>(s)| &le; |N<sub>t</sub><sup>+/-</sup>(m) &cap; T<sub>t</sub><sup>+/-</sup>(s)|</li>
         </ul>
         <ul class="text5 hide">
             <li>Filtriranje kandidatov</li>
             <li class="multiLine extraPadding">|N<sub>p</sub><sup>+/-</sup>(n) \ (M<sub>p</sub>(s) &cup; T<sub>p</sub><sup>+/-</sup>(s))| &le;
-                |N<sub>t</sub><sup>+/-</sup>(n) \ (M<sub>t</sub>(s) &cup; T<sub>t</sub><sup>+/-</sup>(s))|
+                |N<sub>t</sub><sup>+/-</sup>(m) \ (M<sub>t</sub>(s) &cup; T<sub>t</sub><sup>+/-</sup>(s))|
         </ul>
         <div class="graphContainer directed">
+        </div>
+        <div class="notes">
+            <p>
+                Vzame naslednje nepregledano vozlišče iz vzorčnega grafa in ga preveri ustreznost z vsakim iz ciljnega. Na začetku je to poljubno vozlišče, ki ga preveri z vsakim iz ciljnega grafa.
+                V drugem koraku vzame eno vozlišče, ki je sosednje že pregledanim, in ja preveri z sosedi že pregledanih v ciljnem grafu.
+            </p>
+            <p>Kandidata iz iste množice: vhodni/izhodni sosedi</p>
+            <p>Število sosedov po različnih množicah.</p>
         </div>
     </div>
 
@@ -476,6 +514,12 @@
             <li multiLine extraPadding>požrešni algoritem menja pare vozlišč</li>
         </ul>
         <div class="graphContainer directed">
+        </div>
+        <div class="notes">
+            <p>Vozlišča ciljnega grafa razdeli v dve množici - minimalno bisekcijo</p>
+            <p>Izmenično dodaja po enega sosede množice, požrešni algoritem zamenja pare, če ugotovi, da se s tem zmanjša število vovezav.</p>
+            <p>Za vsako povezavo najdemo vse podgrafne izomorfizme, ki vsebujejo to povezavo. Samo preiskovanje podobno kot v VF2.</p>
+            <p>Preiskano povezavo načeloma odstranimo, pri induciranih podgrafih pa jo označimo kot črno.</p>
         </div>
     </div>
 
@@ -513,6 +557,14 @@
         </table>
         <div class="graphContainer directed">
         </div>
+         <div class="notes">
+            <p>Ena glavnih prednosti je vrstni red preiskovanja. Med preiskovanjem primerjamo zgodovino pregleda.</p>
+            <p>Začnemo s podano povezavo. Zgodovino generiramo za vsak par vozlišč.</p>
+            <p>Kandidati so sosedje zadnje dodanega vozlišča, izberemo tistega, ki po najkrajši poti pripelje nazaj do že preiskanega vozlišča, med izenačenimi pa tistega, ki vodi do največ vozlišč</p>
+            <p>Spodaj je zgodovina pregleda. To generiramo med preiskovanjem tudi za ciljni graf in jih primerjamo.</p>
+            <p>V zgodovini so zaporedne številke, ne oznake vozlišč. Ločeno za vhodne in izhodne sosede</p>
+            <p>Motivacija je pregled gostejših delov grafov</p>
+        </div>
     </div>
 
     <!-- 
@@ -525,6 +577,8 @@
             <li>9000 parov generiranih naključnih grafov</li>
             <li>Relativna velikost podgrafa 20 %, 40 % in 60 %</li>
             <li>Verjetnost povezav 0.01, 0.05, 0.10</li>
+            <li>Velikost ciljnega grafa 20, 40, 60, 80, 100, 200, 400,</li>
+            <li class="multiLine">600, 800, 1000 vozlišč</li>
 
             <div class="title">Algoritmi</div>
             <li>Izboljšan Ullmannov algoritem</li>
